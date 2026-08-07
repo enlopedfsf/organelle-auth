@@ -1,10 +1,10 @@
 Run Name: $runName
 
 <% if (success){
-    out << "## LinweiLi/organelleauth execution completed successfully! ##"
+    out << "## enlopedfsf/organelleauth execution completed successfully! ##"
 } else {
     out << """####################################################
-## LinweiLi/organelleauth execution completed unsuccessfully! ##
+## enlopedfsf/organelleauth execution completed unsuccessfully! ##
 ####################################################
 The exit status of the task that caused the workflow execution to fail was: $exitStatus.
 The full error message was:
@@ -27,5 +27,5 @@ Pipeline Configuration:
 <% out << summary.collect{ k,v -> " - $k: $v" }.join("\n") %>
 
 --
-LinweiLi/organelleauth
-https://github.com/LinweiLi/organelleauth
+enlopedfsf/organelleauth
+https://github.com/enlopedfsf/organelleauth

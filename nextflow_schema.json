@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/LinweiLi/organelleauth/master/nextflow_schema.json",
-    "title": "LinweiLi/organelleauth pipeline parameters",
+    "$id": "https://raw.githubusercontent.com/enlopedfsf/organelleauth/master/nextflow_schema.json",
+    "title": "enlopedfsf/organelleauth pipeline parameters",
     "description": "TCM organelle genome authentication system",
     "type": "object",
     "$defs": {

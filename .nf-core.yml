@@ -25,10 +25,10 @@ lint:
     - .github/workflows/awsfulltest.yml
 
 template:
-  org: LinweiLi
+  org: enlopedfsf
   name: organelleauth
   description: TCM organelle genome authentication system
-  author: LinweiLi
+  author: enlopedfsf
   version: 0.1.0dev
   force: true
   outdir: /home/iris-hp/Project/organelle-auth-staging

@@ -36,7 +36,7 @@
 
 ## 7. 协作治理模板
 
-- [x] 7.1 `.github/CODEOWNERS` 已创建（5 区职责，允许兼任；@LinweiLi 为占位待替换）
+- [x] 7.1 `.github/CODEOWNERS` 已创建（5 区职责，允许兼任；@enlopedfsf 为占位待替换）
 - [x] 7.2 `.github/PULL_REQUEST_TEMPLATE.md` 已覆盖为 7 必填字段版（OpenSpec change ID / 受影响 ReqID / 科学行为是否变更 / 测试 / 验证证据 / breaking / rollback）
 - [x] 7.3 `.github/ISSUE_TEMPLATE/` 6 类齐备：bug、feature（保留模板）+ scientific-discrepancy、tool-admission-request、hypothesis-status-change、reference-policy-update（新增）
 
