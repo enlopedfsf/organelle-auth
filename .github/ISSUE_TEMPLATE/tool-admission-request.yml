@@ -1,0 +1,48 @@
+name: Tool admission request
+description: Request admitting or re-grading a tool across the 5-level admission system (§8.1)
+labels: ["tool-admission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Admission levels: APPROVED / CONDITIONAL / EXPERIMENTAL / DEFERRED / PROHIBITED.
+        EXPERIMENTAL tools cannot be the sole basis for a formal call. ONT-model / HiFi-only
+        tools are PROHIBITED for CycloneSEQ data.
+  - type: input
+    id: tool
+    attributes:
+      label: Tool & version
+    validations:
+      required: true
+  - type: input
+    id: role
+    attributes:
+      label: Role / use case
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Requested admission status
+      options:
+        - APPROVED
+        - CONDITIONAL
+        - EXPERIMENTAL
+        - DEFERRED (re-evaluate later)
+        - PROHIBITED → reconsider
+    validations:
+      required: true
+  - type: textarea
+    id: platforms
+    attributes:
+      label: Platform applicability
+      description: DNBSEQ / CycloneSEQ. Note any ONT-model or HiFi-only constraint.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Validation evidence
+      description: Validation protocol, dataset, error spectrum, container digest, validation_record.
+    validations:
+      required: true

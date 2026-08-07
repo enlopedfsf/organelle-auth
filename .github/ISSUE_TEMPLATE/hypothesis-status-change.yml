@@ -1,0 +1,37 @@
+name: Hypothesis status change
+description: Move a hypothesis registry entry along its state machine (§9.4)
+labels: ["hypothesis"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        State machine: proposed → under_validation → validated | rejected → superseded.
+        The pipeline MUST NOT depend on a `proposed` or `rejected` hypothesis as a validated
+        parameter. Status transitions require an OpenSpec change.
+  - type: input
+    id: id
+    attributes:
+      label: Hypothesis ID
+      placeholder: e.g. HYP-DNA-001
+    validations:
+      required: true
+  - type: dropdown
+    id: from
+    attributes:
+      label: From status
+      options: [proposed, under_validation, validated, rejected, superseded]
+    validations:
+      required: true
+  - type: dropdown
+    id: to
+    attributes:
+      label: To status
+      options: [under_validation, validated, rejected, superseded]
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Validation protocol + evidence supporting the transition
+    validations:
+      required: true

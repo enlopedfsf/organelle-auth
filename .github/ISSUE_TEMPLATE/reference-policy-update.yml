@@ -1,0 +1,42 @@
+name: Reference / policy update
+description: Update a reference pack, policy pack, Kraken DB, or the compatibility manifest (§9/§10)
+labels: ["ref-policy"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Assets version INDEPENDENTLY. Threshold / diagnostic-site / decision-rule changes are
+        NEVER a silent pipeline PATCH — bump the policy/reference version and update the
+        compatibility manifest.
+  - type: dropdown
+    id: asset
+    attributes:
+      label: Asset type
+      options:
+        - reference_pack
+        - policy_pack
+        - kraken_db
+        - tool_registry
+        - compatibility_manifest
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version change
+      placeholder: e.g. tcm-plant-0.1.0 → tcm-plant-1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: checksums
+    attributes:
+      label: Checksums + source + license + scope
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Affected ReqIDs + compatibility impact
+      description: Which SCI/DATA/ENG-POL/TEST/REL/HYP IDs are affected; what breaks.
+    validations:
+      required: true
