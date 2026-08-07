@@ -1,0 +1,69 @@
+# Requirement traceability matrix — initial M0 baseline
+#
+# Source of truth: 总方案 v1.1.1 (docs/specification/)
+# Each Requirement ID maps to exactly ONE of the 5 spec domains and is tracked from
+# implementation area -> engineering test -> scientific validation -> release evidence.
+#
+# status: planned (not yet implemented) | in_progress | validated | n/a
+# milestone: target milestone per 总方案 §18 (M0 skeleton; M1 plant short-read; M2 animal;
+#            M3 CycloneSEQ/PMAT2 transfer; M4 hybrid reference build; M5 v1.0 qualification)
+#
+# M0 note: every entry is `planned` — this matrix records the frozen design baseline,
+# NOT validated results. No requirement is marked `validated` without evidence.
+# CI (spec-and-schema.yml) cross-checks: every ID here appears in a spec delta, and every
+# Requirement ID cited in openspec/specs/ appears here with a unique spec_domain.
+
+schema_version: 1
+method_spec_version: "1.1.1"
+spec_domains:
+  - scope-routing-and-input
+  - asset-tool-and-policy
+  - evidence-decision-and-status
+  - validation-and-go-no-go
+  - provenance-and-release
+
+requirements:
+  # ===================== SCI (§2.1) =====================
+  # SCI-001..009 -> evidence-decision-and-status ; SCI-010 -> validation-and-go-no-go
+  - { id: SCI-001, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "鉴定结论建立在预定义证据组合规则上，禁止单一距离阈值/单个组装强判", implementation_area: "decision engine", engineering_test: "T2/T3 decision-from-reference-pack", scientific_validation: "blind-set evidence-combination study", release_evidence: "decision JSON in audit bundle", status: planned, milestone: M1 }
+  - { id: SCI-002, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "细胞器基因组非绝对物种身份证；杂交/叶绿体捕获/ILS/NUMT/NUPT/MTPT 风险必须进入判定规则", implementation_area: "decision engine conflict_rules", engineering_test: "T2 conflict-routing tests", scientific_validation: "complex-taxon validation set", release_evidence: "decision JSON", status: planned, milestone: M1 }
+  - { id: SCI-003, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "纯 CycloneSEQ 序列不得单独升级为正式鉴定终序列", implementation_area: "long-read workflow + decision engine", engineering_test: "long-only pipeline test (TEST-003)", scientific_validation: "CycloneSEQ error/decision study", release_evidence: "evidence bundle", status: planned, milestone: M3 }
+  - { id: SCI-004, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "参考级终序列可判定区域须具满足 policy pack 的 DNBSEQ 位点证据", implementation_area: "hybrid evidence subworkflow", engineering_test: "site-evidence nf-test", scientific_validation: "orthogonal site validation", release_evidence: "evidence bundle", status: planned, milestone: M4 }
+  - { id: SCI-005, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "证据不足须保留不确定位点或输出 INCONCLUSIVE，禁止强补碱基/强环化/强归属", implementation_area: "status model + reporting", engineering_test: "low-coverage/conflict tests", scientific_validation: "blind inconclusive analysis", release_evidence: "decision JSON", status: planned, milestone: M1 }
+  - { id: SCI-006, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "植物线粒体首版限研究性证据层，不进日常判定", implementation_area: "plant mitome research branch", engineering_test: "n/a (research)", scientific_validation: "research-only", release_evidence: "report marker", status: planned, milestone: M3 }
+  - { id: SCI-007, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "动物核标记不得统一硬编码 ITS2，由分类群专用 marker panel 声明", implementation_area: "taxon-specific nuclear marker panel", engineering_test: "T2 marker-panel routing", scientific_validation: "taxon validation set", release_evidence: "reference pack", status: planned, milestone: M2 }
+  - { id: SCI-008, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "reads 比例不得直接解释为混合药材质量比例（定量属 qPCR/dPCR）", implementation_area: "reporting", engineering_test: "T3 report caveat", scientific_validation: "n/a (out of scope)", release_evidence: "report caveat", status: planned, milestone: M1 }
+  - { id: SCI-009, spec_domain: evidence-decision-and-status, ref: "§2.1", statement: "DNA 阴性不得直接推断原料从未存在", implementation_area: "reporting", engineering_test: "T3 report caveat", scientific_validation: "n/a", release_evidence: "report caveat", status: planned, milestone: M1 }
+  - { id: SCI-010, spec_domain: validation-and-go-no-go, ref: "§2.1/§15.5", statement: "诊断位点须经独立个体发现、独立验证集确认，并记录不适用类群与例外", implementation_area: "diagnostic-site pipeline + validation protocol", engineering_test: "T4 diagnostic-site reproducibility", scientific_validation: "independent discovery + validation sets", release_evidence: "diagnostic-site record", status: planned, milestone: M5 }
+
+  # ===================== DATA (§4.2) -> scope-routing-and-input =====================
+  - { id: DATA-001, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "所有 samplesheet 字段须经 JSON Schema 验证后才能创建分析 channel", implementation_area: "input schema / preflight", engineering_test: "T0/T1 schema test", scientific_validation: "n/a", release_evidence: "schema report", status: planned, milestone: M1 }
+  - { id: DATA-002, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "路径存在性/压缩完整性/FASTQ 配对/样本 ID 唯一性须在计算密集步骤前检查", implementation_area: "preflight", engineering_test: "T1 preflight tests", scientific_validation: "n/a", release_evidence: "preflight log", status: planned, milestone: M1 }
+  - { id: DATA-003, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "分析 samplesheet 禁含真值；truthset.csv 仅由揭盲评价加载", implementation_area: "input schema / preflight", engineering_test: "truth-field leakage test", scientific_validation: "blind freeze check", release_evidence: "schema report", status: planned, milestone: M1 }
+  - { id: DATA-004, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "reference_build 须提供 specimen role / DNA 完整性 / voucher metadata 或缺失原因", implementation_area: "input schema", engineering_test: "T1 metadata tests", scientific_validation: "n/a", release_evidence: "schema", status: planned, milestone: M1 }
+  - { id: DATA-005, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "缺 reference pack 或版本不兼容须快速失败，不得静默用默认公共库", implementation_area: "asset preflight", engineering_test: "incompatible-pack failure test", scientific_validation: "n/a", release_evidence: "compatibility manifest", status: planned, milestone: M1 }
+  - { id: DATA-006, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "分析模式/分类群/目标不得由文件名或目录名隐式推断", implementation_area: "routing", engineering_test: "T2/T3 routing tests", scientific_validation: "n/a", release_evidence: "routing logic", status: planned, milestone: M1 }
+  - { id: DATA-007, spec_domain: scope-routing-and-input, ref: "§4.2", statement: "阴性/混合对照须作为正式样本实体，不得在报告聚合前删除", implementation_area: "reporting / preflight", engineering_test: "T3 control handling", scientific_validation: "control validation", release_evidence: "report", status: planned, milestone: M1 }
+
+  # ===================== ENG-POL (§9.1) + HYP (§9.4) -> asset-tool-and-policy =====================
+  - { id: ENG-POL-001, spec_domain: asset-tool-and-policy, ref: "§9.1", statement: "未经验证阈值不得出现在 production profile 有效默认值", implementation_area: "policy loader", engineering_test: "production-null rejection test", scientific_validation: "threshold protocol review", release_evidence: "policy approval record", status: planned, milestone: M1 }
+  - { id: ENG-POL-002, spec_domain: asset-tool-and-policy, ref: "§9.1", statement: "未标定值用 null，production 启动完整性检查 fail-fast", implementation_area: "policy loader / schema", engineering_test: "T1 null-rejection test", scientific_validation: "n/a", release_evidence: "schema/policy", status: planned, milestone: M1 }
+  - { id: ENG-POL-003, spec_domain: asset-tool-and-policy, ref: "§9.1", statement: "experimental policy 须显著标识，不得伪装 production", implementation_area: "reporting", engineering_test: "T2 marker tests", scientific_validation: "n/a", release_evidence: "output marker", status: planned, milestone: M1 }
+  - { id: ENG-POL-004, spec_domain: asset-tool-and-policy, ref: "§9.1", statement: "policy 变更单独版本化，记录验证数据与适用 reference pack", implementation_area: "versioning", engineering_test: "T0 version checks", scientific_validation: "validation data record", release_evidence: "compatibility manifest", status: planned, milestone: M1 }
+  - { id: ENG-POL-005, spec_domain: asset-tool-and-policy, ref: "§9.1", statement: "判定阈值/QC 阈值/运行资源参数分开；CPU/内存调整不触发科学版本变化", implementation_area: "config / policy", engineering_test: "T0 config separation", scientific_validation: "n/a", release_evidence: "config", status: planned, milestone: M1 }
+  - { id: HYP-DNA-001, spec_domain: asset-tool-and-policy, ref: "§9.4", statement: "以提取 DNA 片段分布划分长读长适用档（≥25kb/10–<25kb/<10kb）；区分片段分布与 read N50", implementation_area: "hypothesis registry + QC_LONG", engineering_test: "派生规则单测", scientific_validation: "§15.2 下采样/降解梯度", release_evidence: "hypothesis status record", status: planned, milestone: M3 }
+
+  # ===================== TEST (§13.3) -> validation-and-go-no-go =====================
+  - { id: TEST-001, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "每个 local module 至少有正常输入与失败/边界输入测试", implementation_area: "module tests", engineering_test: "T1", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+  - { id: TEST-002, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "每个 local subworkflow 须验证路由与显式状态输出", implementation_area: "subworkflow tests", engineering_test: "T2", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+  - { id: TEST-003, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "pipeline test 须覆盖 short/long/hybrid；long-only 应产生受限等级结果", implementation_area: "pipeline tests", engineering_test: "T3", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+  - { id: TEST-004, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "snapshot 仅用于稳定输出；易变时间戳/绝对路径/运行 ID 须归一化或排除", implementation_area: "nf-test snapshots", engineering_test: "T1", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+  - { id: TEST-005, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "不仅断言文件存在，还检查关键 schema/状态/序列长度范围/证据字段", implementation_area: "tests", engineering_test: "T1/T2", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+  - { id: TEST-006, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "对预期失败场景断言 reason code，不把任意非零退出当正确失败", implementation_area: "tests", engineering_test: "T1/T2", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+  - { id: TEST-007, spec_domain: validation-and-go-no-go, ref: "§13.3", statement: "nf-core/modules 引入模块先复用其测试，再补本项目输入合同测试", implementation_area: "module tests", engineering_test: "T1", scientific_validation: "n/a", release_evidence: "CI logs", status: planned, milestone: M1 }
+
+  # ===================== REL (§16.5) -> provenance-and-release =====================
+  - { id: REL-001, spec_domain: provenance-and-release, ref: "§16.5", statement: "正式 release 须经受保护 qualification workflow 且强制门禁全通过", implementation_area: "release workflow", engineering_test: "release dry run", scientific_validation: "qualification complete", release_evidence: "release assets", status: planned, milestone: M5 }
+  - { id: REL-002, spec_domain: provenance-and-release, ref: "§16.5", statement: "release tag 须唯一解析 pipeline commit / OpenSpec baseline / container lock / compatibility manifest", implementation_area: "release workflow", engineering_test: "T6", scientific_validation: "n/a", release_evidence: "release manifest", status: planned, milestone: M5 }
+  - { id: REL-003, spec_domain: provenance-and-release, ref: "§16.5", statement: "科学行为变化时 release notes 须列受影响 ReqID / policy-ref 版本 / 迁移影响", implementation_area: "release / docs", engineering_test: "T0 notes check", scientific_validation: "n/a", release_evidence: "release notes", status: planned, milestone: M5 }
+  - { id: REL-004, spec_domain: provenance-and-release, ref: "§16.5", statement: "发布后科学性缺陷须保留原 release + 撤回/警示，禁止无痕覆盖", implementation_area: "release workflow", engineering_test: "T6", scientific_validation: "n/a", release_evidence: "release record", status: planned, milestone: M5 }
