@@ -1,0 +1,31 @@
+name: spec-and-schema
+# T0 (M0): OpenSpec validate + JSON/YAML schema sanity + Requirement traceability
+# matrix integrity. (总方案 v1.1.1 §14.1 / §12.7 Lean M0)
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  spec-and-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install OpenSpec
+        run: npm install -g @fission-ai/openspec@latest
+
+      - name: OpenSpec validate
+        run: openspec validate --changes
+
+      - name: JSON/YAML schema + traceability matrix integrity
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 .github/scripts/check_schema_traceability.py
