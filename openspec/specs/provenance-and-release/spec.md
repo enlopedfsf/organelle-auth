@@ -31,4 +31,3 @@ Pipeline、method specification、reference pack、policy pack、Kraken DB、val
 - **WHEN** a post-release scientific defect is discovered
 - **THEN** the original release is retained with a retraction or warning
 - **AND** the fix ships as a new version
-

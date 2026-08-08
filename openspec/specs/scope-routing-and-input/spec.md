@@ -36,4 +36,3 @@ Analysis samplesheets MUST NOT carry expected taxonomic truth. The `VALIDATE` un
 - **WHEN** an analysis samplesheet is constructed for any entry workflow
 - **THEN** it contains no expected-truth column
 - **AND** `truthset.csv` is loaded only by the unblinding evaluation step after result freeze
-
