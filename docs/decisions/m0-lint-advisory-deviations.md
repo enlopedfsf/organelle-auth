@@ -10,14 +10,15 @@ M0 验收要求"仓库中不存在任何生信工具模块代码",据此剥离�
 
 ## 9 个偏差及消除方式
 
-| # | lint 规则 | 对象 | 原因 | 消除方式 |
-|---|---|---|---|---|
-| 1–8 | `container_configs` | `conf/containers_{conda_lock_files,docker,singularity_https,singularity_oras}_{amd64,arm64}.config`(共 8 文件) | M0 剥离 fastqc/multiqc 后 `modules.json` 的 nf-core 模块为空,但这 8 个容器配置仍引用已删除模块 → 要求按 `modules.json` 重新生成 | **M1 自动消失**:加入第一个真实模块时 `nf-core modules install` 重新生成这 8 个文件。或现在在 PR 评论 `/fix-linting` 触发 `nf-core pipelines lint --fix` 立即重生(代价:同时回退 PR 模板,需重做) |
-| 9 | `files_unchanged` | `.github/PULL_REQUEST_TEMPLATE.md` | 本项目 7 字段 PR 模板(OpenSpec change ID / 受影响 ReqID / 科学行为 / 测试 / 验证证据 / breaking / rollback)与 nf-core 默认模板不一致 | **M1 决策**: (a) 保留 7 字段模板 → 本项持续 advisory;或 (b) 回退 nf-core 默认模板 → 全绿,7 字段纪律改放 CONTRIBUTING/checklist |
+| #   | lint 规则           | 对象                                                                                                           | 原因                                                                                                                                 | 消除方式                                                                                                                                                                                       |
+| --- | ------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1–8 | `container_configs` | `conf/containers_{conda_lock_files,docker,singularity_https,singularity_oras}_{amd64,arm64}.config`(共 8 文件) | M0 剥离 fastqc/multiqc 后 `modules.json` 的 nf-core 模块为空,但这 8 个容器配置仍引用已删除模块 → 要求按 `modules.json` 重新生成      | **M1 自动消失**:加入第一个真实模块时 `nf-core modules install` 重新生成这 8 个文件。或现在在 PR 评论 `/fix-linting` 触发 `nf-core pipelines lint --fix` 立即重生(代价:同时回退 PR 模板,需重做) |
+| 9   | `files_unchanged`   | `.github/PULL_REQUEST_TEMPLATE.md`                                                                             | 本项目 7 字段 PR 模板(OpenSpec change ID / 受影响 ReqID / 科学行为 / 测试 / 验证证据 / breaking / rollback)与 nf-core 默认模板不一致 | **M1 决策**: (a) 保留 7 字段模板 → 本项持续 advisory;或 (b) 回退 nf-core 默认模板 → 全绿,7 字段纪律改放 CONTRIBUTING/checklist                                                                 |
 
 ## 恢复 lint 为阻塞门禁的判据
 
 当 `nf-core pipelines lint` 在 PR CI 上 **0 failure**:
+
 1. GitHub branch protection 把 `nf-core` / `linting` check 设为 **required**;
 2. 在本文件顶部把状态从 advisory 改为 blocking;
 3. 关闭追踪 issue #2。
