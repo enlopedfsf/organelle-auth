@@ -1,0 +1,107 @@
+nextflow_process {
+
+    name "Test Process GETORGANELLE_RESULT_ADAPTER"
+    script "../main.nf"
+    process "GETORGANELLE_RESULT_ADAPTER"
+    tag "modules_local"
+    tag "getorganelle_result_adapter"
+
+    // CANDIDATE = DUAL check (BUG #6 fix): GetOrganelle completeness marker "circular"
+    // (filename *.complete.* / *.nearly-complete.* on the path_sequence) AND result contig
+    // count == 1. A *.scaffolds.graph1.1.path_sequence* (multi-scaffold) must be DRAFT.
+    // Synthetic GetOrganelle results exercise the real bash logic.
+
+    test("complete circular plastome (1 contig, complete marker) -> CANDIDATE") {
+
+        setup {
+            // module-copied result (1 contig) + marker-bearing path_sequence + graph
+            run "touch demo.K115.assembly_graph.fastg"
+            File circ = new File("demo.embplant_pt.fasta.gz")
+            circ.bytes = ">scaffold_1\nACGTACGTACGT\n".bytes
+            File pathseq = new File("demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta")
+            pathseq.bytes = ">scaffold_1\nACGTACGTACGT\n".bytes
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', single_end:false ],
+                    [ file('demo.embplant_pt.fasta.gz'), file('demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta'), file('demo.K115.assembly_graph.fastg') ]
+                ]
+                input[1] = 'embplant_pt'
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.plastome.size() == 1
+            assert process.out.plastome.get(0).get(1).getName() == "demo_plastome.fasta"
+            assert path(process.out.grade_file.get(0).get(1)).text == "CANDIDATE"
+            assert path(process.out.produced_file.get(0).get(1)).text == "true"
+        }
+    }
+
+    test("REGRESSION (BUG #6): multi-scaffold (scaffolds marker, 6 contigs) -> DRAFT") {
+
+        setup {
+            // GetOrganelle produces *.scaffolds.graph1.1.path_sequence* even for a fragmented
+            // 6-scaffold result (observed for Corydalis SRR38978846). Must NOT be CANDIDATE.
+            run "touch demo.K115.assembly_graph.fastg"
+            File circ = new File("demo.embplant_pt.fasta.gz")
+            circ.bytes = ">scaffold_1\nACGT\n>scaffold_2\nACGT\n>scaffold_3\nACGT\n>scaffold_4\nACGT\n>scaffold_5\nACGT\n>scaffold_6\nACGT\n".bytes
+            File pathseq = new File("demo.embplant_pt.K105.scaffolds.graph1.1.path_sequence.fasta")
+            pathseq.bytes = ">scaffold_1\nACGT\n>scaffold_2\nACGT\n>scaffold_3\nACGT\n>scaffold_4\nACGT\n>scaffold_5\nACGT\n>scaffold_6\nACGT\n".bytes
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', single_end:false ],
+                    [ file('demo.embplant_pt.fasta.gz'), file('demo.embplant_pt.K105.scaffolds.graph1.1.path_sequence.fasta'), file('demo.K115.assembly_graph.fastg') ]
+                ]
+                input[1] = 'embplant_pt'
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.plastome.size() == 1
+            assert process.out.plastome.get(0).get(1).getName() == "demo_plastome.scaffold.fasta"   // DRAFT naming
+            assert path(process.out.grade_file.get(0).get(1)).text == "DRAFT"
+            assert path(process.out.produced_file.get(0).get(1)).text == "true"
+        }
+    }
+
+    test("no usable sequence -> NOT_APPLICABLE (edge/failure)") {
+
+        setup {
+            run "touch demo.K115.assembly_graph.fastg"   // graph present but no circularized/scaffold fasta
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', single_end:false ],
+                    [ file('demo.K115.assembly_graph.fastg') ]
+                ]
+                input[1] = 'embplant_pt'
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            // "always present" contract: the plastome emit carries the .NONE placeholder when
+            // nothing was assembled; the real "no assembly" signal is grade + produced.
+            assert process.out.plastome.size() == 1
+            assert process.out.plastome.get(0).get(1).getName() == "demo_plastome.NONE"
+            assert path(process.out.grade_file.get(0).get(1)).text == "NOT_APPLICABLE"
+            assert path(process.out.produced_file.get(0).get(1)).text == "false"
+        }
+    }
+}

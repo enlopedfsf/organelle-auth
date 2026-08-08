@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: qc_short
+description: Short-read QC via fastp (方法学 §2.1); fastp Q/length thresholds injected only by the experimental profile (ENG-POL-001)
+keywords:
+  - qc
+  - fastp
+  - short-read
+components:
+  - fastp
+input:
+  - ch_reads:
+      type: channel
+      description: "(meta, [short_reads...]) paired short reads."
+output:
+  - clean_reads:
+      type: channel
+      description: "(meta, [trimmed_R1, trimmed_R2])"
+  - json: { type: channel, description: "fastp JSON report" }
+  - html: { type: channel, description: "fastp HTML report" }
+  - versions: { type: channel, description: "tool versions" }
+authors:
+  - "enlopedfsf"

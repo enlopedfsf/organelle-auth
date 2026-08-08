@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: plant_sr_assembly
+description: Plant short-read organelle assembly (方法学 §3.1/§3.2 Scenario A) via nf-core getorganelle + a local circularization-aware result adapter; ①→② interface contract outputs
+keywords:
+  - getorganelle
+  - plastome
+  - nrdna
+  - assembly
+components:
+  - getorganelle_config
+  - getorganelle_fromreads
+  - getorganelle_result_adapter
+input:
+  - ch_clean_reads:
+      type: channel
+      description: "(meta, [clean_R1, clean_R2])"
+output:
+  - assembly:
+      type: channel
+      description: "(meta, plastome_file, graph_file, grade_file, produced_pt_file, nrdna_file, produced_nr_file)"
+  - versions: { type: channel, description: "tool versions" }
+authors:
+  - "enlopedfsf"

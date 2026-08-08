@@ -25,8 +25,21 @@ M0 + `define-core-contracts` 提供了骨架与可执行契约。本变更是 **
 ### 决策 3:read-back 用 minimap2 `-ax sr`(已批准)
 理由:方法 §3.5 明确 minimap2 回贴;且 minimap2 同时支持短读长与未来长读长,bwa 仅短读长——为 M3/M4 一致性预留。clean reads `-ax sr` 回贴组装 FASTA → sorted BAM → samtools depth/flagstat。
 
-### 决策 4:GetOrganelle 自建模块(nf-core 无)
-bioconda `getorganelle`;容器用 Wave/biocontainer 生成并固定 tag+digest;模块输出 `versions.yml`;两个 `-F` 目标作为同一模块的两次调用(或 mode 输入),由 `targets` 路由(plastome/nrdna)。登记到 tool registry,admission CONDITIONAL,`container_digest` 在容器构建后填入。
+### 决策 4:GetOrganelle 用 nf-core 模块(apply 期前提变更)
+**前提变更(2026-08-08,apply 期发现):** 原"自建模块(nf-core 无)"的前提已失效——nf-core/modules 现已提供 `getorganelle/fromreads` + `getorganelle/config`(v1.7.7.1,`quay.io/biocontainers` 预构建镜像)。依 TEST-007(优先复用 nf-core 模块)+ 避免自建 Wave 容器,改用 nf-core 模块。
+
+- **两次调用**(由 `targets` 路由,§3.1/§3.2 逐字算法参数经 `ext.args` 注入):
+  - plastome:`GETORGANELLE_CONFIG(embplant_pt)` → `GETORGANELLE_FROMREADS`(`ext.args='-R 15 -k 21,45,65,85,105'`)
+  - nrdna:`GETORGANELLE_CONFIG(embplant_nr)` → `GETORGANELLE_FROMREADS`(`ext.args='-k 35,85,115'`)
+  - `-F` 由模块 `organelle_type` 输入给出。`-R`/`-k` 为 GetOrganelle 算法参数(决策 2 / §9.3),**逐字**对齐 Scenario A,置于 `conf/modules.config` 的 `withName` `ext.args`(全 profile 一致,非 experimental、非 policy)。
+- **与逐字命令的偏离(已记录)**:nf-core `fromreads` 强制 `--config-dir ${db}`(由 `config` 模块产出的种子库)。方法学 §3.1/§3.2 逐字命令不含 `--config-dir`(用 GetOrganelle 内置/默认种子库)。**科学参数(`-F`/`-R`/`-k`)保持逐字不变;仅参考库交付机制由"运行时自动下载"改为"预构建固定 db"——可重复性更强,非科学方法改变。**
+- **输出适配(满足①→②接口合同)**:nf-core 模块输出 `results/${prefix}.${organelle_type}.fasta.gz` + `results/*`,与接口合同命名(`<sample_id>_plastome.fasta` / `_plastome.scaffold.fasta` / `_nrdna.fasta` / `_assembly_graph.fastg`)不一致 → 需自建**本地输出适配模块**(检测环化 graph1.1 → CANDIDATE,否则 scaffold → DRAFT;采集 fastg;按合同重命名)。该适配模块遵循 §12.3 local module 规范(meta/versions/stub/test)。
+- **DB 资产**:`getorganelle/config` 产出的种子库作为本流程内构建资产(embplant_pt + embplant_nr 各一),首次运行经网络下载后随 resume 缓存。登记于 tool registry,admission CONDITIONAL,`container_digest` 填 `quay.io/biocontainers/getorganelle:1.7.7.1--pyhdfd78af_0` 的 digest(install 后由 containers config 确认)。
+
+### 决策 4-附:参数放置(对决策 2 的细化,消解"零硬编码"与"照抄 Scenario A"的表面张力)
+- **fastp 科学阈值**(`--qualified_quality_phred 15 --length_required 50`)= 未标定 QC 阈值 → **仅 `conf/experimental.config`**,production `null`(ENG-POL-001)。`--detect_adapter_for_pe` 已内置于 nf-core fastp 模块的 PE 分支,非可调阈值。
+- **GetOrganelle `-R`/`-k`/`-F`** = 工具算法参数(§9.3)→ `conf/modules.config` `ext.args`,**全 profile 一致**(experimental 与 production 同值),**不**进 experimental.config、**不**在 production 置 null。此细化使"零硬编码科学阈值"(fastp/覆盖系数走 policy)与"逐字照抄 Scenario A"(GetOrganelle 算法参数固化)并存。
+- **覆盖洼地系数** = 科学阈值 → policy pack(experimental `null` → 仅标注,不硬编码)。
 
 ### 决策 5:低覆盖不强环化(§3.6/§5.2)
 GetOrganelle 未环化 → 输出 scaffold,`assembly_grade = DRAFT`,status WARN;数据严重不足 → INCONCLUSIVE + `LOW_COVERAGE`,**禁止强行闭环/强判**。

@@ -13,14 +13,14 @@
 - **WHEN** 检查 fastp 的 Q 值/长度/接头阈值
 - **THEN** 它们只出现在 experimental profile 配置；production profile 中为 `null`，由批准的 policy pack 注入
 
-### Requirement: 植物细胞器组装（PLANT_SR_ASSEMBLY，自建 GetOrganelle 模块）
+### Requirement: 植物细胞器组装（PLANT_SR_ASSEMBLY，GetOrganelle 模块）
 
-植物样本 SHALL 用自建 `getorganelle` 模块（nf-core 无此模块；bioconda 可得）组装,执行方法学 Scenario A 的两条命令:`-F embplant_pt -R 15 -k 21,45,65,85,105`(叶绿体)与 `-F embplant_nr -k 35,85,115`(nrDNA)。`-R`/`-k` 为 GetOrganelle 算法参数(§9.3 工具算法参数,登记于 tool registry 为 CONDITIONAL),不是科学验收阈值。模块 SHALL 输出叶绿体 FASTA、nrDNA FASTA 与 `versions.yml`。系统 MUST NOT 因期望叶绿体为圆形而强行闭环——未环化时输出 scaffold 并标 `DRAFT`(§5.2)。
+植物样本 SHALL 用 nf-core `getorganelle/fromreads` 模块(配合 `getorganelle/config` 构建种子库)组装,执行方法学 Scenario A 的两条算法参数集:`-F embplant_pt -R 15 -k 21,45,65,85,105`(叶绿体)与 `-F embplant_nr -k 35,85,115`(nrDNA),由 `targets` 路由。`-R`/`-k` 为 GetOrganelle 算法参数(§9.3 工具算法参数,登记于 tool registry 为 CONDITIONAL),不是科学验收阈值。**科学参数(`-F`/`-R`/`-k`)逐字对齐 Scenario A;仅参考库交付改为预构建固定 db(`--config-dir`),非科学方法改变。** 模块 SHALL 输出叶绿体 FASTA、nrDNA FASTA 与 `versions.yml`,并经本地输出适配模块产出①→②接口合同约定的路径与环化判定。系统 MUST NOT 因期望叶绿体为圆形而强行闭环——未环化时输出 scaffold 并标 `DRAFT`(§5.2)。
 
-#### Scenario: GetOrganelle 双目标命令与 Scenario A 一致
+#### Scenario: GetOrganelle 双目标算法参数与 Scenario A 一致
 
 - **WHEN** 植物样本进入 PLANT_SR_ASSEMBLY
-- **THEN** 对叶绿体执行 `-F embplant_pt -R 15 -k 21,45,65,85,105`、对 nrDNA 执行 `-F embplant_nr -k 35,85,115`,并输出 `versions.yml`
+- **THEN** 对叶绿体执行 `-F embplant_pt -R 15 -k 21,45,65,85,105`、对 nrDNA 执行 `-F embplant_nr -k 35,85,115`(经 `ext.args` 注入,逐字),并输出 `versions.yml`
 
 #### Scenario: 低覆盖不强环化
 

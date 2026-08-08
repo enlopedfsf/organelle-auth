@@ -20,3 +20,13 @@ codes:
   - code: TOOL_MISSING_DIGEST
     category: engineering_fail
     meaning: "工具 container_digest/validation_record 缺失，production 拒绝使用（工程失败，非科学无法判定）"
+  # ---- M1-① assembly-stage codes (design 决策 4.2 / 接口合同 §3) ----
+  - code: NO_CIRCULARIZATION
+    category: warn
+    meaning: "plastome 未能环化，仅产出 scaffold（assembly_grade=DRAFT，status=WARN）；不强环化（方法学 §3.6/§5.2）"
+  - code: ASSEMBLY_FAILED
+    category: engineering_fail
+    meaning: "组装未产出可用序列（无 contig / 工具错误），assembly_grade=NOT_APPLICABLE，status=FAIL（非科学灰区）"
+  - code: COVERAGE_ANOMALY
+    category: scientific_inconclusive
+    meaning: "read-back 覆盖异常（双峰 / 异常低覆盖），疑似污染或 NUMT/MTPT 干扰（M1 临时污染信号，Kraken2 自建库落地后细化）；标 INCONCLUSIVE/WARN"

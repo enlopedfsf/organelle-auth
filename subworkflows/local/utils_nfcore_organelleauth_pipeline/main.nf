@@ -93,21 +93,20 @@ workflow PIPELINE_INITIALISATION {
 
     channel
         .fromList(samplesheetToList(input, "${projectDir}/assets/schema_input.json"))
-        .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
-                } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
-                }
-        }
-        .groupTuple()
-        .map { samplesheet ->
-            validateInputSamplesheet(samplesheet)
-        }
-        .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
+        .map { meta, sr1, sr2, lr ->
+            def short_reads = []
+            if (sr1) { short_reads << sr1 }
+            if (sr2) { short_reads << sr2 }
+            def enriched = meta + [
+                single_end:      (short_reads.size() < 2),
+                has_short_reads: (!short_reads.isEmpty()),
+                // lr may be null or an empty list/string for samples without long reads
+                has_long_reads:  (lr != null && lr.toString().trim() != '' && lr.toString() != '[]'),
+                // targets is CSV-encoded as ';' delimited (nf-schema cannot read array columns);
+                // split into a list here so downstream routing sees a true list.
+                targets:         (meta.targets instanceof CharSequence ? meta.targets.tokenize(';')*.trim() : meta.targets)
+            ]
+            return [ enriched, short_reads, lr ]
         }
         .set { ch_samplesheet }
 
