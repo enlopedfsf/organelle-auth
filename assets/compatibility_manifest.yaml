@@ -1,0 +1,12 @@
+# Compatibility manifest — 总方案 §10.3。
+# 各资产（pipeline / method_spec / reference_pack / kraken_db / policy_pack / validation_dataset）
+# 独立版本化，由 compatibility_id 统一 reconciliation —— 不强制同版本号（§10.3）。
+# 空框架：字段为 null，正式运行前填充。
+
+compatibility_id: null
+pipeline: null
+method_spec: "1.1.1"
+reference_pack: null
+kraken_db: null
+policy_pack: null
+validation_dataset: null

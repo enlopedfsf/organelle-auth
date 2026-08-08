@@ -1,33 +1,77 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/enlopedfsf/organelleauth/master/assets/schema_input.json",
-    "title": "enlopedfsf/organelleauth pipeline - params.input schema",
-    "description": "Schema for the file provided with params.input",
-    "type": "array",
-    "items": {
-        "type": "object",
-        "properties": {
-            "sample": {
-                "type": "string",
-                "pattern": "^\\S+$",
-                "errorMessage": "Sample name must be provided and cannot contain spaces",
-                "meta": ["id"]
-            },
-            "fastq_1": {
-                "type": "string",
-                "format": "file-path",
-                "exists": true,
-                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 1 must be provided, cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
-            },
-            "fastq_2": {
-                "type": "string",
-                "format": "file-path",
-                "exists": true,
-                "pattern": "^([\\S\\s]*\\/)?[^\\s\\/]+\\.f(ast)?q\\.gz$",
-                "errorMessage": "FastQ file for reads 2 cannot contain spaces and must have extension '.fq.gz' or '.fastq.gz'"
-            }
-        },
-        "required": ["sample", "fastq_1"]
-    }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/enlopedfsf/organelle-auth/assets/schema_input.json",
+  "title": "organelle-auth samplesheet (总方案 §4.1)",
+  "description": "Samplesheet contract. items.additionalProperties:false enforces DATA-003 (forbids any expected-truth / taxonomy-truth column). Field names follow §4.1 (sample_id / short_reads_1 / short_reads_2 / long_reads ...), not the nf-core template default.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "sample_id": {
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_.-]+$",
+        "errorMessage": "sample_id 必填，仓库与批次内唯一，仅安全文件名字符 (DATA-001/002)",
+        "meta": ["id"]
+      },
+      "analysis_mode": {
+        "type": "string",
+        "enum": ["reference_build", "identify", "validate"]
+      },
+      "taxon_group": {
+        "type": "string",
+        "enum": ["plant", "animal"]
+      },
+      "targets": {
+        "type": "array",
+        "items": { "type": "string", "enum": ["plastome", "mitome", "nrdna"] },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "short_reads_1": {
+        "type": ["string", "null"],
+        "pattern": "^\\S+\\.(fq|fastq)(\\.gz)?$",
+        "errorMessage": "FASTQ/FASTQ.GZ 路径"
+      },
+      "short_reads_2": {
+        "type": ["string", "null"],
+        "pattern": "^\\S+\\.(fq|fastq)(\\.gz)?$"
+      },
+      "long_reads": {
+        "type": ["string", "null"],
+        "pattern": "^\\S+\\.(fq|fastq)(\\.gz)?$",
+        "errorMessage": "平台由 metadata 声明，不由扩展名推断 (DATA-006)"
+      },
+      "specimen_role": {
+        "type": "string",
+        "enum": ["voucher", "reference_candidate", "routine_test", "blind_control", "negative_control", "mixture_control"]
+      },
+      "dna_integrity": {
+        "type": ["string", "null"],
+        "enum": ["hmw_pass", "fragmented", "degraded", "unknown", null],
+        "errorMessage": "最终由验证后规则从 QC 指标派生 (HYP-DNA-001)；冻结前允许人工填写并标 manual"
+      },
+      "reference_pack_id": { "type": ["string", "null"] },
+      "policy_pack_id": { "type": "string" },
+      "batch_id": { "type": ["string", "null"] }
+    },
+    "required": ["sample_id", "analysis_mode", "taxon_group", "targets", "specimen_role", "policy_pack_id"],
+    "allOf": [
+      {
+        "$comment": "DATA-004: reference_build 须提供 dna_integrity",
+        "if": { "properties": { "analysis_mode": { "const": "reference_build" } }, "required": ["analysis_mode"] },
+        "then": { "required": ["dna_integrity"] }
+      },
+      {
+        "$comment": "DATA-005 前置: identify 须显式 reference_pack_id (缺/不兼容的运行时 fail-fast 见 CI 断言 + 设计说明)",
+        "if": { "properties": { "analysis_mode": { "const": "identify" } }, "required": ["analysis_mode"] },
+        "then": { "required": ["reference_pack_id"] }
+      },
+      {
+        "$comment": "paired-end: short_reads_2 必填当 short_reads_1 存在",
+        "if": { "required": ["short_reads_1"] },
+        "then": { "required": ["short_reads_2"] }
+      }
+    ]
+  }
 }

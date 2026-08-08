@@ -25,7 +25,7 @@ jobs:
       - name: OpenSpec validate
         run: openspec validate --changes
 
-      - name: JSON/YAML schema + traceability matrix integrity
+      - name: JSON/YAML schema + registry + contract integrity
         run: |
-          python3 -m pip install --quiet pyyaml
+          python3 -m pip install --quiet pyyaml jsonschema
           python3 .github/scripts/check_schema_traceability.py

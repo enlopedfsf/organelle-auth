@@ -1,0 +1,3 @@
+sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id
+S001,identify,plant,"plastome,nrdna",/data/S001_R1.fq.gz,/data/S001_R2.fq.gz,,routine_test,unknown,tcm-plant-ref-0.1,tcm-plant-experimental-0.1.0,B001
+S002,reference_build,animal,mitome,/data/S002_R1.fq.gz,/data/S002_R2.fq.gz,,voucher,hmw_pass,,tcm-animal-experimental-0.1.0,B001

@@ -1,0 +1,38 @@
+# Hypothesis registry — 总方案 §9.4。与 tool registry 平行管理。
+#
+# 状态机：
+#   proposed -> under_validation -> validated | rejected
+#   validated / rejected -> superseded
+# 状态含义见下方 state_machine。
+# 流程 MUST NOT 依赖处于 proposed 或 rejected 状态的假设作为已验证参数（asset-tool-and-policy 规范域）。
+
+schema_version: 1
+
+state_machine:
+  proposed: "有理论/文献依据，尚未安排验证"
+  under_validation: "验证协议已冻结，实验进行中"
+  validated: "按协议验证通过，可转化为 policy 参数或流程行为"
+  rejected: "验证未通过，流程不得依赖该假设"
+  superseded: "被更新版本假设取代（保留历史）"
+
+hypotheses:
+  - hypothesis_id: HYP-DNA-001
+    statement: >
+      以提取 DNA 片段分布划分长读长适用档：
+      ≥25 kb 为长片段候选档（可跨越典型植物 plastome IR，约 20–25 kb）；
+      10–<25 kb 为中间档（可上三代，但 IR 边界需短读长辅助确认）；
+      <10 kb 为短片段/降解档（仅走短读长路线）。
+    basis: 典型植物叶绿体反向重复区（IR）长度约 20–25 kb 的结构约束
+    scope_notes: >
+      该假设基于常见植物 plastome IR 长度提出；
+      不能作为所有植物、动物和线粒体目标的通用真理；
+      必须分别验证 plant plastome、animal mitome 和 plant mitome；
+      动物 mitome（约 16 kb 环状、无 IR 结构）的跨越需求与植物 plastome 不同。
+    metric_definitions: >
+      必须区分两个指标——(a) 提取 DNA 的片段分布/主带/大于某长度比例
+      （Qsep/FemtoPulse 等测定）；(b) 实际测序 reads 的 read N50
+      （NanoPlot 测定）。两者禁止统称为“片段 N50”。
+    derived_fields: [dna_integrity]
+    status: proposed
+    validation_protocol: null
+    review_date: 2026-08-07
