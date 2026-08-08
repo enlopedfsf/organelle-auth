@@ -4,7 +4,13 @@
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {
-                "nf-core": {}
+                "nf-core": {
+                    "fastp": {
+                        "branch": "master",
+                        "git_sha": "826a9b28d6da61097d60e1923bb8a2e51de3c5b4",
+                        "installed_by": ["modules"]
+                    }
+                }
             },
             "subworkflows": {
                 "nf-core": {
