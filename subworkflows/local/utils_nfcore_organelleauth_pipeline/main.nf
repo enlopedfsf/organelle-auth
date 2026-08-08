@@ -1,5 +1,5 @@
 //
-// Subworkflow with functionality specific to the LinweiLi/organelleauth pipeline
+// Subworkflow with functionality specific to the enlopedfsf/organelleauth pipeline
 //
 
 /*

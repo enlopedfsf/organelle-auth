@@ -9,12 +9,10 @@ lint:
     - docs/images/nf-core-organelleauth_logo_light.png
     - docs/images/nf-core-organelleauth_logo_dark.png
     - .github/ISSUE_TEMPLATE/bug_report.yml
-    - .github/PULL_REQUEST_TEMPLATE.md
     - assets/email_template.txt
     - docs/README.md
   nextflow_config:
     - manifest.name
-    - manifest.homePage
   multiqc_config:
     - report_comment
   files_exist:
@@ -27,10 +25,10 @@ lint:
     - .github/workflows/awsfulltest.yml
 
 template:
-  org: LinweiLi
+  org: enlopedfsf
   name: organelleauth
   description: TCM organelle genome authentication system
-  author: LinweiLi
+  author: enlopedfsf
   version: 0.1.0dev
   force: true
   outdir: /home/iris-hp/Project/organelle-auth-staging

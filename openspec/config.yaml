@@ -1,0 +1,46 @@
+schema: spec-driven
+
+# Project context — shown to AI when creating artifacts.
+context: |
+  Project: organelle-auth — Traditional Chinese Medicine (TCM) organelle-genome
+    authentication system. Targets: plant plastome + nrDNA/ITS; animal mitogenome.
+    Three entry workflows: REFERENCE_BUILD, IDENTIFY, VALIDATE.
+  Tech stack: nf-core pipeline template + Nextflow DSL2 + nf-test (engineering tests)
+    + OpenSpec (change governance) + GitHub Actions (release discipline).
+  Method spec (design baseline, NOT a validated SOP):
+    docs/specification/中药材细胞器基因组鉴定与Nextflow规范开发总方案_v1.1.1.md (v1.1.1).
+  Evidence-first discipline (hard): anything marked 【待验证】/EXPERIMENTAL/DEFERRED in
+    the method spec MUST NOT appear as a production default. Uncalibrated thresholds
+    are null and fail-fast in production (ENG-POL-001/002). Pure CycloneSEQ is never
+    a sole terminal authentication call (SCI-003).
+  Naming: nf-core forbids hyphens, so the pipeline internal name is `organelleauth`
+    (workflow id ORGANELLEAUTH); the repository / GitHub project is `organelle-auth`.
+    manifest.homePage points at the organelle-auth repository.
+  Versioning: pipeline / method-spec / reference-pack / policy-pack / kraken-db /
+    validation-set are versioned INDEPENDENTLY and reconciled by a compatibility
+    manifest. Threshold/site/rule changes never ship as a silent PATCH.
+  Testing tiers: T0 (static) from M0; T1-T3 from M1; T4 from M3; T5-T6 from M5.
+  When referencing the method spec in artifacts, cite by Requirement ID
+    (SCI/DATA/ENG-POL/TEST/REL/HYP) — do not restate long passages.
+
+# Per-artifact rules (optional)
+rules:
+  proposal:
+    - Reference the method spec by Requirement ID, not by restating long passages.
+    - Explicitly list what is out of scope for the change and where it lands next.
+  specs:
+    - Anchor each requirement to its Requirement ID (SCI/DATA/ENG-POL/TEST/REL/HYP).
+    - Never encode an unverified threshold or EXPERIMENTAL tool as a production default.
+  tasks:
+    - Keep each task verifiable; prefer one concrete outcome per checkbox.
+
+# Per-operation guidance (optional)
+operations:
+  apply:
+    guidance:
+      - Preserve the nf-core vanilla commit as the repo's first commit.
+      - Do not add bioinformatics analysis modules in M0 (Lean M0 = skeleton only).
+  archive:
+    guidance:
+      - Confirm the 5 spec domains land under openspec/specs/ with no extra empty domains.
+      - Confirm openspec/traceability.yaml covers all Requirement IDs in the spec deltas.

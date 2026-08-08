@@ -1,0 +1,29 @@
+name: template-check
+# T0 (M0): minimal nf-core template-structure self-check. (总方案 v1.1.1 §12.7)
+on:
+  push:
+    branches: [master, dev]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  template-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Minimal template-structure check
+        run: |
+          set -e
+          for f in main.nf nextflow.config nextflow_schema.json modules.json .nf-core.yml CHANGELOG.md manifest.* ; do
+            test -e "$f" && continue
+            case "$f" in
+              manifest.*) ;; # glob may expand to nothing; handled below
+              *) echo "missing required file: $f"; exit 1 ;;
+            esac
+          done
+          for d in workflows modules subworkflows conf assets tests openspec; do
+            test -d "$d" || { echo "missing required directory: $d"; exit 1; }
+          done
+          echo "template structure ok"

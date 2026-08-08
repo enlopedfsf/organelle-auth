@@ -1,0 +1,36 @@
+name: Scientific discrepancy
+description: Report a result that conflicts with the method spec (v1.1.1) or known biology
+labels: ["scientific"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use for results that conflict with the 总方案 or with expected biology.
+        Cite Requirement IDs (SCI-/DATA-) where relevant.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Discrepancy summary
+      description: What result conflicts with expectation? Which Requirement ID is involved?
+    validations:
+      required: true
+  - type: input
+    id: sample
+    attributes:
+      label: Sample / run / pipeline version
+    validations:
+      required: false
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Status JSON, evidence bundle, decision JSON, logs.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected per method spec
+      description: What the spec says should happen (cite ReqID).
+    validations:
+      required: true

@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://raw.githubusercontent.com/LinweiLi/organelleauth/master/assets/schema_input.json",
-    "title": "LinweiLi/organelleauth pipeline - params.input schema",
+    "$id": "https://raw.githubusercontent.com/enlopedfsf/organelleauth/master/assets/schema_input.json",
+    "title": "enlopedfsf/organelleauth pipeline - params.input schema",
     "description": "Schema for the file provided with params.input",
     "type": "array",
     "items": {

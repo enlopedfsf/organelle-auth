@@ -1,0 +1,34 @@
+# CODEOWNERS — 职责分区 (总方案 v1.1.1 §17.2)
+#
+# 这是"职责分区"而非"人数要求"：1–3 人团队可兼任多区，但科学行为变化与代码实现
+# 至少须经一次交叉审阅（见 .github/PULL_REQUEST_TEMPLATE.md 强制字段）。
+#
+# TODO M0: replace @enlopedfsf placeholders with real team members / GitHub orgs.
+
+# Default — everything not matched below
+*                           @enlopedfsf
+
+# Methods & policies (科学行为变化 — 需方法学负责人审阅)
+/docs/specification/        @enlopedfsf
+/openspec/specs/            @enlopedfsf
+/openspec/traceability.yaml @enlopedfsf
+
+# Reference schemas & registries (data contracts)
+/assets/schema_input.json   @enlopedfsf
+/assets/schema_status.json  @enlopedfsf
+/registries/                @enlopedfsf
+
+# Nextflow engineering: modules / subworkflows / workflows / configs
+/main.nf                    @enlopedfsf
+/workflows/                 @enlopedfsf
+/modules/                   @enlopedfsf
+/subworkflows/              @enlopedfsf
+/conf/                      @enlopedfsf
+/nextflow.config            @enlopedfsf
+/nextflow_schema.json       @enlopedfsf
+
+# GitHub Actions / CI / supply-chain security
+/.github/                   @enlopedfsf
+
+# Reports & documentation
+/docs/                      @enlopedfsf
