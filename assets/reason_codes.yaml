@@ -1,0 +1,22 @@
+# Reason-code dictionary — 总方案 §5.5。
+# 版本化字典：报告生成器只负责解释，不重新判断。
+# pipeline failure 与 scientific INCONCLUSIVE 分开编码。
+# 本文件先建空框架 + 3 个示例码（各覆盖一类）；后续随实现扩展。
+
+version: "0.1.0-dev"
+
+categories:
+  scientific_inconclusive: "证据不足/落入灰区——合法的科学'无法判定'，非流程失败"
+  warn: "可继续但需标注/降级（如覆盖偏低）"
+  engineering_fail: "工程/资源/配置失败（非科学无法判定）"
+
+codes:
+  - code: INSUFFICIENT_JUNCTION_SUPPORT
+    category: scientific_inconclusive
+    meaning: "跨 IR/重复区/环化连接的独立长 reads 支持不足，无法判定（非流程失败）"
+  - code: LOW_COVERAGE
+    category: warn
+    meaning: "可判定区域覆盖低于预期，结果降级为草稿并标注"
+  - code: TOOL_MISSING_DIGEST
+    category: engineering_fail
+    meaning: "工具 container_digest/validation_record 缺失，production 拒绝使用（工程失败，非科学无法判定）"

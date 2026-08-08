@@ -1,0 +1,16 @@
+# Fixture for ENG-POL-002: a production-scope policy whose rule-referenced thresholds are all null.
+# A production policy loader MUST reject this (fail-fast) before producing a formal conclusion.
+# M0 has no loader code (no analysis modules); this fixture + a test stub assert future rejection.
+policy_id: fixture-all-null
+status: production
+scope:
+  taxon_group: plant
+  targets: [plastome]
+thresholds:
+  short_read_qc: null
+  callable_site: null
+  junction_support: null
+  uncertainty_zone: null
+validation:
+  protocol_id: null
+  record_id: null

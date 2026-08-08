@@ -37,4 +37,3 @@
 - **WHEN** any key subworkflow completes
 - **THEN** it emits a status JSON whose fields conform to the allowed enumerations
 - **AND** whose `reason_codes` reference a versioned dictionary rather than free text
-

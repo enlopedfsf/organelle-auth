@@ -1,0 +1,140 @@
+# Tool registry — 总方案 §8.2 条目结构 + §8.3 首版候选分层。
+#
+# 语义区分（重要）：
+#   PROHIBITED = 当前有明确科学理由禁用（见各条 reason）；须满足 re_evaluation_trigger 才可重新评估。
+#   DEFERRED   = 暂无条件评估；证据/资源到位即可激活，无需"解禁"科学理由。
+#
+# 当 container_digest 或 validation_record 为 null 时，production profile 拒绝使用该工具（§8.2 / asset-tool-and-policy 规范域）。
+# 这里的初始等级是开发起点，不是最终 SOP 批准结论（§8.3）。
+
+schema_version: 1
+review_date: 2026-08-08
+
+candidates:
+  - tool_id: fastp
+    role: DNBSEQ QC
+    admission_status: CONDITIONAL
+    supported_platforms: [dnbseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "阈值待 policy 验证"
+  - tool_id: nanoplot
+    role: 长读长描述性 QC
+    admission_status: APPROVED
+    supported_platforms: [cycloneseq, ont]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "仅限描述性 QC"
+  - tool_id: kraken2
+    role: 污染预检（自建中药专用库）
+    admission_status: CONDITIONAL
+    supported_platforms: [dnbseq, cycloneseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "必须自建库；不能独立真伪判定"
+  - tool_id: getorganelle
+    role: 植物 plastome/nrDNA 候选组装
+    admission_status: CONDITIONAL
+    supported_platforms: [dnbseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: ""
+  - tool_id: novoplasty
+    role: 植物候选复核
+    admission_status: EXPERIMENTAL
+    supported_platforms: [dnbseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "仅作独立候选复核"
+  - tool_id: mitofinder_mitoz
+    role: 动物 mitogenome 候选分析（MitoFinder / MitoZ）
+    admission_status: CONDITIONAL
+    supported_platforms: [dnbseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "具体角色待验证协议固定"
+  - tool_id: flye
+    role: 长读长子集组装
+    admission_status: EXPERIMENTAL
+    supported_platforms: [cycloneseq, ont]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "用 raw 档"
+  - tool_id: pmat2
+    role: 长读长 organelle 候选组装
+    admission_status: EXPERIMENTAL
+    supported_platforms: [cycloneseq, ont]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "CycloneSEQ 适配待转移验证"
+  - tool_id: racon
+    role: 纯长读长候选一致性
+    admission_status: EXPERIMENTAL
+    supported_platforms: [cycloneseq, ont]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: ""
+  - tool_id: polypolish
+    role: 混合路线候选抛光
+    admission_status: EXPERIMENTAL
+    supported_platforms: [dnbseq, cycloneseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "适用性按 §6.4 四层职责判定"
+  - tool_id: bcftools_consensus
+    role: 显式位点证据候选（minimap2/bwa 回贴 → bcftools call → consensus）
+    admission_status: EXPERIMENTAL
+    supported_platforms: [dnbseq, cycloneseq]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: ""
+  - tool_id: nextpolish2
+    role: 混合抛光
+    admission_status: DEFERRED
+    supported_platforms: []
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "CycloneSEQ 骨架适配未验证"
+  - tool_id: geseq_plastidhub
+    role: 人工注释辅助（GeSeq / PlastidHub）
+    admission_status: DEFERRED
+    supported_platforms: []
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: null
+    notes: "不进入自动化 production"
+
+prohibited:
+  - tool_id: medaka
+    reason: "ONT 化学/basecaller 模型绑定；无 CycloneSEQ 兼容模型（方法学 §7.2 模型绑定层）"
+    re_evaluation_trigger: "官方发布 CycloneSEQ 兼容模型，或本项目转移验证通过"
+  - tool_id: nanopolish
+    reason: "依赖 ONT fast5 原始信号；CycloneSEQ 输入物理不可用（§7.2）"
+    re_evaluation_trigger: "出现基于 CycloneSEQ 原始信号的等价工具且通过转移验证"
+  - tool_id: clair3_ont
+    reason: "ONT 预训练模型；无 CycloneSEQ 训练模型（§7.2）"
+    re_evaluation_trigger: "发布 CycloneSEQ 训练模型并通过本项目验证"
+  - tool_id: oatk
+    reason: "HiFi 专用；不属于 CycloneSEQ 适用工具（§7.2）"
+    re_evaluation_trigger: "工具官方支持 CycloneSEQ 原始读长并通过转移验证"
+  - tool_id: tippo
+    reason: "HiFi 专用（同 Oatk 族）；不适用 CycloneSEQ（§7.2）"
+    re_evaluation_trigger: "官方支持 CycloneSEQ 并通过转移验证"
+  - tool_id: mitohifi
+    reason: "以 PacBio HiFi reads 为原始输入；非 CycloneSEQ 验证组装器（§7.2）"
+    re_evaluation_trigger: "官方支持 CycloneSEQ 原始 reads 并通过转移验证"
+  - tool_id: hifiasm
+    reason: "HiFi 专用基因组组装器；不适用 CycloneSEQ（§7.2）"
+    re_evaluation_trigger: "官方支持 CycloneSEQ 并通过转移验证"

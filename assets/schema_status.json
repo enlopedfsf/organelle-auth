@@ -1,0 +1,24 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/enlopedfsf/organelle-auth/assets/schema_status.json",
+    "title": "organelle-auth per-sample status object (总方案 §5.5)",
+    "description": "每个关键 subworkflow 输出的机器可读状态。pipeline failure 与 scientific INCONCLUSIVE 分开编码。",
+    "type": "object",
+    "required": ["sample_id", "stage", "status", "reason_codes", "policy_pack_id"],
+    "properties": {
+        "sample_id": { "type": "string" },
+        "stage": { "type": "string" },
+        "status": { "type": "string", "enum": ["PASS", "WARN", "FAIL", "INCONCLUSIVE"] },
+        "assembly_grade": {
+            "type": ["string", "null"],
+            "enum": ["REFERENCE", "DRAFT", "CANDIDATE", "NOT_APPLICABLE", null]
+        },
+        "decision": {
+            "type": ["string", "null"],
+            "enum": ["AUTHENTIC", "NON_AUTHENTIC", "INCONCLUSIVE", "NOT_APPLICABLE", null]
+        },
+        "reason_codes": { "type": "array", "items": { "type": "string" } },
+        "policy_pack_id": { "type": "string" },
+        "evidence_files": { "type": "array", "items": { "type": "string" } }
+    }
+}

@@ -1,0 +1,17 @@
+# Policy pack — 总方案 §9.2 experimental 示例。
+# 所有阈值字段为 null —— production profile 加载本 policy 必须拒绝（ENG-POL-002）。
+# 进入 production 前，所有被规则引用的字段必须非空，并由验证记录支持。
+
+policy_id: tcm-plant-experimental-0.1.0
+status: experimental
+scope:
+  taxon_group: plant
+  targets: [plastome, nrdna]
+thresholds:
+  short_read_qc: null
+  callable_site: null
+  junction_support: null
+  uncertainty_zone: null
+validation:
+  protocol_id: cycloneseq-transfer-0.1
+  record_id: null

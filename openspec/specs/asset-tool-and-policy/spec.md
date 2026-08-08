@@ -51,4 +51,3 @@
 - **WHEN** a hypothesis（例如 HYP-DNA-001 提取 DNA 片段档位）处于 `proposed` 或 `rejected` 状态
 - **THEN** the pipeline MUST NOT use it as a validated routing or qualification parameter
 - **AND** any manual `dna_integrity` value carries a `manual` provenance marker until a validated derivation rule is frozen
-
