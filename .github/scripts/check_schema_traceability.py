@@ -43,13 +43,16 @@ def load_json(path):
 
 
 def _rows(path):
-    """Parse a samplesheet CSV into row dicts; empty cells -> None (absence); split comma-list `targets`."""
+    """Parse a samplesheet CSV into row dicts; empty cells -> None (absence).
+
+    `targets` is kept as the raw `;`-delimited STRING — schema_input.json declares it
+    `type:string` with pattern `^(plastome|nrdna|mitome)(;...)*$`. CSV cannot hold array
+    columns, so it is deliberately NOT split here. (An earlier version split a comma-list
+    into a Python list, which contradicted the string schema and failed spec-and-schema CI.)"""
     out = []
     with open(path) as fh:
         for raw in csv.DictReader(fh):
             row = {k: (None if v is None or v == "" else v) for k, v in raw.items()}
-            if isinstance(row.get("targets"), str):
-                row["targets"] = [t.strip() for t in row["targets"].split(",") if t.strip()]
             out.append(row)
     return out
 

@@ -12,59 +12,35 @@
                 "type": "string",
                 "pattern": "^[A-Za-z0-9_.-]+$",
                 "errorMessage": "sample_id 必填，仓库与批次内唯一，仅安全文件名字符 (DATA-001/002)",
-                "meta": [
-                    "id"
-                ]
+                "meta": ["id"]
             },
             "analysis_mode": {
                 "type": "string",
-                "enum": [
-                    "reference_build",
-                    "identify",
-                    "validate"
-                ],
-                "meta": [
-                    "analysis_mode"
-                ]
+                "enum": ["reference_build", "identify", "validate"],
+                "meta": ["analysis_mode"]
             },
             "taxon_group": {
                 "type": "string",
-                "enum": [
-                    "plant",
-                    "animal"
-                ],
-                "meta": [
-                    "taxon_group"
-                ]
+                "enum": ["plant", "animal"],
+                "meta": ["taxon_group"]
             },
             "targets": {
-                "meta": [
-                    "targets"
-                ],
+                "meta": ["targets"],
                 "type": "string",
                 "pattern": "^(plastome|nrdna|mitome)(;(plastome|nrdna|mitome))*$",
                 "errorMessage": "targets 为 plastome/nrdna/mitome 的 ;-分隔列表(≥1,CSV 不支持数组列,故定界串编码)"
             },
             "short_reads_1": {
-                "type": [
-                    "string",
-                    "null"
-                ],
+                "type": ["string", "null"],
                 "pattern": "^\\S+\\.(fq|fastq)(\\.gz)?$",
                 "errorMessage": "FASTQ/FASTQ.GZ 路径"
             },
             "short_reads_2": {
-                "type": [
-                    "string",
-                    "null"
-                ],
+                "type": ["string", "null"],
                 "pattern": "^\\S+\\.(fq|fastq)(\\.gz)?$"
             },
             "long_reads": {
-                "type": [
-                    "string",
-                    "null"
-                ],
+                "type": ["string", "null"],
                 "pattern": "^\\S+\\.(fq|fastq)(\\.gz)?$",
                 "errorMessage": "平台由 metadata 声明，不由扩展名推断 (DATA-006)"
             },
@@ -78,60 +54,28 @@
                     "negative_control",
                     "mixture_control"
                 ],
-                "meta": [
-                    "specimen_role"
-                ]
+                "meta": ["specimen_role"]
             },
             "dna_integrity": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "enum": [
-                    "hmw_pass",
-                    "fragmented",
-                    "degraded",
-                    "unknown",
-                    null
-                ],
+                "type": ["string", "null"],
+                "enum": ["hmw_pass", "fragmented", "degraded", "unknown", null],
                 "errorMessage": "最终由验证后规则从 QC 指标派生 (HYP-DNA-001)；冻结前允许人工填写并标 manual",
-                "meta": [
-                    "dna_integrity"
-                ]
+                "meta": ["dna_integrity"]
             },
             "reference_pack_id": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "meta": [
-                    "reference_pack_id"
-                ]
+                "type": ["string", "null"],
+                "meta": ["reference_pack_id"]
             },
             "policy_pack_id": {
                 "type": "string",
-                "meta": [
-                    "policy_pack_id"
-                ]
+                "meta": ["policy_pack_id"]
             },
             "batch_id": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "meta": [
-                    "batch_id"
-                ]
+                "type": ["string", "null"],
+                "meta": ["batch_id"]
             }
         },
-        "required": [
-            "sample_id",
-            "analysis_mode",
-            "taxon_group",
-            "targets",
-            "specimen_role",
-            "policy_pack_id"
-        ],
+        "required": ["sample_id", "analysis_mode", "taxon_group", "targets", "specimen_role", "policy_pack_id"],
         "allOf": [
             {
                 "$comment": "DATA-004: reference_build 须提供 dna_integrity",
@@ -141,14 +85,10 @@
                             "const": "reference_build"
                         }
                     },
-                    "required": [
-                        "analysis_mode"
-                    ]
+                    "required": ["analysis_mode"]
                 },
                 "then": {
-                    "required": [
-                        "dna_integrity"
-                    ]
+                    "required": ["dna_integrity"]
                 }
             },
             {
@@ -159,27 +99,19 @@
                             "const": "identify"
                         }
                     },
-                    "required": [
-                        "analysis_mode"
-                    ]
+                    "required": ["analysis_mode"]
                 },
                 "then": {
-                    "required": [
-                        "reference_pack_id"
-                    ]
+                    "required": ["reference_pack_id"]
                 }
             },
             {
                 "$comment": "paired-end: short_reads_2 必填当 short_reads_1 存在",
                 "if": {
-                    "required": [
-                        "short_reads_1"
-                    ]
+                    "required": ["short_reads_1"]
                 },
                 "then": {
-                    "required": [
-                        "short_reads_2"
-                    ]
+                    "required": ["short_reads_2"]
                 }
             }
         ]
