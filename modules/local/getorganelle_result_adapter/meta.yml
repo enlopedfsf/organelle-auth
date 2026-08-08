@@ -1,0 +1,84 @@
+name: getorganelle_result_adapter
+description: Adapt nf-core getorganelle/fromreads output to the ①→② interface contract (circularization-aware plastome/nrDNA FASTA + assembly graph + grade)
+keywords:
+  - getorganelle
+  - organelle
+  - plastome
+  - nrdna
+  - circularization
+tools:
+  - shell:
+      description: Shell-only adapter (find/cp/gunzip); no third-party bioinformatics tool invoked.
+      licence: ["GPL-3.0"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata (id, taxon_group, targets, ...).
+  - - results:
+      type: file
+      description: The `etc` emit of nf-core getorganelle/fromreads (results/*), always present.
+  - organelle_type:
+      type: string
+      description: "embplant_pt (plastome) or embplant_nr (nrDNA). Drives output naming and circularization semantics."
+output:
+  plastome:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_plastome.fasta":
+          type: file
+          description: Circularized plastome (CANDIDATE). Absent if not circularized.
+  plastome_scaffold:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_plastome.scaffold.fasta":
+          type: file
+          description: Non-circularized plastome scaffold (DRAFT).
+  nrdna:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_nrdna.fasta":
+          type: file
+          description: nrDNA 45S consensus repeat unit (~5.8 kb).
+  graph:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_assembly_graph.fastg":
+          type: file
+          description: GetOrganelle assembly graph (Bandage / structural review).
+  grade_file:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.grade.txt":
+          type: file
+          description: "Single token: CANDIDATE | DRAFT | NOT_APPLICABLE (interface contract assembly_grade source for plastome)."
+  circularized_file:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.circularized.txt":
+          type: file
+          description: "true | false (plastome circularization)."
+  produced_file:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.produced.txt":
+          type: file
+          description: "true | false (a usable sequence was produced for this target)."
+  versions:
+    - - "${task.process}":
+          type: string
+          description: Process name.
+      - getorganelle_result_adapter:
+          type: string
+          description: Adapter name.
+      - "0.1.0":
+          type: string
+          description: Adapter version.
+authors:
+  - "enlopedfsf"

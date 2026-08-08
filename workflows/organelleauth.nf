@@ -2,12 +2,18 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Lean M0 skeleton: no analysis modules are wired yet.
-    The nf-core demo modules (fastqc/multiqc) were intentionally removed; see
-    openspec/changes/bootstrap-nfcore-repository. This workflow parses and runs
-    schema validation but performs no bioinformatics analysis until M1+.
+    M1-①: plant short-read samples (taxon_group=plant, short reads available,
+    targets ⊂ {plastome, nrdna}) are routed explicitly through QC_SHORT →
+    PLANT_SR_ASSEMBLY → ASSEMBLY_QC → assembly_qc status emission (§3.3 routing, DATA-006;
+    design 决策 on explicit routing). Other sample classes (animal, long-read, hybrid) are
+    not handled by ① and remain future milestones.
 ----------------------------------------------------------------------------------------
 */
+
+include { QC_SHORT               } from '../subworkflows/local/qc_short'
+include { PLANT_SR_ASSEMBLY      } from '../subworkflows/local/plant_sr_assembly'
+include { ASSEMBLY_QC            } from '../subworkflows/local/assembly_qc'
+include { EMIT_ASSEMBLY_QC_STATUS } from '../modules/local/emit_assembly_qc_status/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,28 +24,35 @@
 workflow ORGANELLEAUTH {
 
     take:
-    ch_samplesheet // channel: samplesheet read in from --input
-    multiqc_config
-    multiqc_logo
-    multiqc_methods_description
+    ch_samplesheet // channel: (meta, [short_reads...], long_reads) from PIPELINE_INITIALISATION
     outdir
 
     main:
 
     //
-    // Lean M0: empty skeleton pipeline.
-    // No analysis modules wired. The take/emit signature is preserved so the
-    // entry workflow (main.nf) and PIPELINE_COMPLETION remain valid.
+    // Explicit routing (§3.3 / DATA-006): plant samples with short reads whose targets are a
+    // subset of {plastome, nrdna} (must include plastome). Nothing is inferred from filenames.
     //
-    log.info "[organelleauth] Lean M0 skeleton: samplesheet received; no analysis modules wired yet."
+    ch_plant_sr = ch_samplesheet.filter { row ->
+        def meta = row[0]
+        meta.taxon_group == 'plant' &&
+        meta.has_short_reads &&
+        meta.targets.every { it in ['plastome', 'nrdna'] } &&
+        meta.targets.contains('plastome')
+    }
+
+    qc  = QC_SHORT(ch_plant_sr)
+    asm = PLANT_SR_ASSEMBLY(qc.clean_reads)
+    aqc = ASSEMBLY_QC(qc.clean_reads, asm.assembly)
+
+    // Emit stage=assembly_qc status (decision=NOT_APPLICABLE; ① does not decide).
+    // coverage_valley_coefficient is policy-injected (null in experimental).
+    EMIT_ASSEMBLY_QC_STATUS(aqc.assembly_qc)
+
+    log.info "[organelleauth] M1-①: plant short-read samples routed through assembly + read-back evidence."
 
     emit:
-    multiqc_report = channel.empty().toList() // M0: no report produced
-    versions       = channel.empty()          // M0: no tool versions collected
+    multiqc_report = channel.empty().toList()   // MultiQC wiring is out of scope for ①
+    versions       = EMIT_ASSEMBLY_QC_STATUS.out.versions.mix(asm.versions)
+    status         = EMIT_ASSEMBLY_QC_STATUS.out.status_json
 }
-
-/*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    THE END
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/

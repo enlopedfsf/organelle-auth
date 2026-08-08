@@ -230,6 +230,20 @@
                     "description": "Display hidden parameters in the help message (only works when --help or --help_full are provided)."
                 }
             }
+        },
+        "plant_short_read_assembly_options": {
+            "title": "Plant short-read assembly options (M1-①)",
+            "type": "object",
+            "fa_icon": "fas fa-leaf",
+            "description": "Scientific thresholds for plant short-read assembly + read-back evidence. fastp Q/length thresholds are NOT exposed here — they live only in the experimental profile (ENG-POL-001).",
+            "properties": {
+                "coverage_valley_coefficient": {
+                    "type": ["number", "null"],
+                    "default": null,
+                    "description": "Coverage-valley coefficient (总方案 §3.5: local depth < median × coefficient flags a region draft-grade). Policy-injected; null in experimental → annotate only, no valley call.",
+                    "hidden": true
+                }
+            }
         }
     },
     "allOf": [
@@ -244,6 +258,9 @@
         },
         {
             "$ref": "#/$defs/generic_options"
+        },
+        {
+            "$ref": "#/$defs/plant_short_read_assembly_options"
         }
     ]
 }

@@ -1,0 +1,36 @@
+name: touch_readback_markers
+description: Emit empty read-back markers for samples with no assembled plastome (ASSEMBLY_FAILED path)
+keywords:
+  - status
+  - assembly-failed
+tools:
+  - shell:
+      description: Shell-only touch; no third-party tool.
+      licence: ["GPL-3.0"]
+input:
+  - meta:
+      type: map
+      description: Sample metadata.
+output:
+  readback:
+    - - meta:
+          type: map
+          description: Sample metadata.
+      - "*.sorted.bam":
+          type: file
+          description: Empty marker BAM (no real read-back).
+      - "*.depth.tsv":
+          type: file
+          description: Empty marker depth file.
+      - "*.flagstat.txt":
+          type: file
+          description: Empty marker flagstat file.
+  versions:
+    - - "${task.process}":
+          type: string
+      - touch_readback_markers:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"

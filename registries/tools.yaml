@@ -40,9 +40,13 @@ candidates:
     admission_status: CONDITIONAL
     supported_platforms: [dnbseq]
     project_validated_platforms: []
-    container_digest: null
+    # nf-core getorganelle/fromreads v1.7.7.1 image (quay.io/biocontainers). Manifest digest
+    # resolved via skopeo; tag pinned at registration. admission stays CONDITIONAL (project
+    # validation pending; container_digest present so the §8.2 production gate is satisfiable
+    # once validation_record is filled).
+    container_digest: quay.io/biocontainers/getorganelle:1.7.7.1--pyhdfd78af_0@sha256:8254b6f5591ee106d23d9c5841fb642b382ab784dad176a7244610d0e1f4b13d
     validation_record: null
-    notes: ""
+    notes: "via nf-core getorganelle/fromreads + config; -F/-R/-k = Scenario A tool params"
   - tool_id: novoplasty
     role: 植物候选复核
     admission_status: EXPERIMENTAL

@@ -16,17 +16,19 @@
             },
             "analysis_mode": {
                 "type": "string",
-                "enum": ["reference_build", "identify", "validate"]
+                "enum": ["reference_build", "identify", "validate"],
+                "meta": ["analysis_mode"]
             },
             "taxon_group": {
                 "type": "string",
-                "enum": ["plant", "animal"]
+                "enum": ["plant", "animal"],
+                "meta": ["taxon_group"]
             },
             "targets": {
-                "type": "array",
-                "items": { "type": "string", "enum": ["plastome", "mitome", "nrdna"] },
-                "minItems": 1,
-                "uniqueItems": true
+                "meta": ["targets"],
+                "type": "string",
+                "pattern": "^(plastome|nrdna|mitome)(;(plastome|nrdna|mitome))*$",
+                "errorMessage": "targets 为 plastome/nrdna/mitome 的 ;-分隔列表(≥1,CSV 不支持数组列,故定界串编码)"
             },
             "short_reads_1": {
                 "type": ["string", "null"],
@@ -51,36 +53,66 @@
                     "blind_control",
                     "negative_control",
                     "mixture_control"
-                ]
+                ],
+                "meta": ["specimen_role"]
             },
             "dna_integrity": {
                 "type": ["string", "null"],
                 "enum": ["hmw_pass", "fragmented", "degraded", "unknown", null],
-                "errorMessage": "最终由验证后规则从 QC 指标派生 (HYP-DNA-001)；冻结前允许人工填写并标 manual"
+                "errorMessage": "最终由验证后规则从 QC 指标派生 (HYP-DNA-001)；冻结前允许人工填写并标 manual",
+                "meta": ["dna_integrity"]
             },
-            "reference_pack_id": { "type": ["string", "null"] },
-            "policy_pack_id": { "type": "string" },
-            "batch_id": { "type": ["string", "null"] }
+            "reference_pack_id": {
+                "type": ["string", "null"],
+                "meta": ["reference_pack_id"]
+            },
+            "policy_pack_id": {
+                "type": "string",
+                "meta": ["policy_pack_id"]
+            },
+            "batch_id": {
+                "type": ["string", "null"],
+                "meta": ["batch_id"]
+            }
         },
         "required": ["sample_id", "analysis_mode", "taxon_group", "targets", "specimen_role", "policy_pack_id"],
         "allOf": [
             {
                 "$comment": "DATA-004: reference_build 须提供 dna_integrity",
                 "if": {
-                    "properties": { "analysis_mode": { "const": "reference_build" } },
+                    "properties": {
+                        "analysis_mode": {
+                            "const": "reference_build"
+                        }
+                    },
                     "required": ["analysis_mode"]
                 },
-                "then": { "required": ["dna_integrity"] }
+                "then": {
+                    "required": ["dna_integrity"]
+                }
             },
             {
                 "$comment": "DATA-005 前置: identify 须显式 reference_pack_id (缺/不兼容的运行时 fail-fast 见 CI 断言 + 设计说明)",
-                "if": { "properties": { "analysis_mode": { "const": "identify" } }, "required": ["analysis_mode"] },
-                "then": { "required": ["reference_pack_id"] }
+                "if": {
+                    "properties": {
+                        "analysis_mode": {
+                            "const": "identify"
+                        }
+                    },
+                    "required": ["analysis_mode"]
+                },
+                "then": {
+                    "required": ["reference_pack_id"]
+                }
             },
             {
                 "$comment": "paired-end: short_reads_2 必填当 short_reads_1 存在",
-                "if": { "required": ["short_reads_1"] },
-                "then": { "required": ["short_reads_2"] }
+                "if": {
+                    "required": ["short_reads_1"]
+                },
+                "then": {
+                    "required": ["short_reads_2"]
+                }
             }
         ]
     }

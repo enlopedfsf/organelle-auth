@@ -4,7 +4,48 @@
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {
-                "nf-core": {}
+                "nf-core": {
+                    "fastp": {
+                        "branch": "master",
+                        "git_sha": "826a9b28d6da61097d60e1923bb8a2e51de3c5b4",
+                        "installed_by": ["modules"]
+                    },
+                    "getorganelle/config": {
+                        "branch": "master",
+                        "git_sha": "ffd937afa727698ce50700a6a9e4748ded247a00",
+                        "installed_by": ["modules"]
+                    },
+                    "getorganelle/fromreads": {
+                        "branch": "master",
+                        "git_sha": "ffd937afa727698ce50700a6a9e4748ded247a00",
+                        "installed_by": ["modules"]
+                    },
+                    "minimap2/align": {
+                        "branch": "master",
+                        "git_sha": "135d883a43b1a2324b4112cd270cf22e20835533",
+                        "installed_by": ["modules"]
+                    },
+                    "samtools/depth": {
+                        "branch": "master",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
+                        "installed_by": ["modules"]
+                    },
+                    "samtools/flagstat": {
+                        "branch": "master",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
+                        "installed_by": ["modules"]
+                    },
+                    "samtools/index": {
+                        "branch": "master",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
+                        "installed_by": ["modules"]
+                    },
+                    "samtools/sort": {
+                        "branch": "master",
+                        "git_sha": "9339809fcb90af8a8b7051e6cd914894d5c52002",
+                        "installed_by": ["modules"]
+                    }
+                }
             },
             "subworkflows": {
                 "nf-core": {

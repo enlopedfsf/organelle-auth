@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: assembly_qc
+description: Read-back evidence (方法学 §3.5/§3.6); clean reads remapped with minimap2 -ax sr → sorted BAM → samtools depth/flagstat. Coverage-valley coefficient is policy-injected (null→annotate only)
+keywords:
+  - minimap2
+  - samtools
+  - readback
+  - coverage
+components:
+  - minimap2_align
+  - samtools_index
+  - samtools_depth
+  - samtools_flagstat
+  - touch_readback_markers
+input:
+  - ch_clean_reads: { type: channel, description: "(meta, [clean_R1, clean_R2])" }
+  - ch_assembly: { type: channel, description: "PLANT_SR_ASSEMBLY assembly channel" }
+output:
+  - assembly_qc:
+      type: channel
+      description: "(meta, plastome, graph, grade, produced_pt, nrdna, produced_nr, bam, depth, flagstat)"
+  - versions: { type: channel, description: "tool versions" }
+authors:
+  - "enlopedfsf"

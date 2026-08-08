@@ -53,4 +53,3 @@ The system SHALL provide `assets/reason_codes.yaml` as a versioned reason-code d
 
 - **WHEN** a subworkflow emits a reason code
 - **THEN** it references a code defined in the versioned `reason_codes.yaml`, not free text
-

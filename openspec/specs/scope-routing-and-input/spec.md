@@ -57,4 +57,3 @@ The schema SHALL enforce **DATA-001** (no analysis channel before JSON Schema va
 
 - **WHEN** `identify` mode is requested with a missing or incompatible `reference_pack_id`
 - **THEN** the run fails fast (asserted by a CI test / documented preflight design), and MUST NOT silently fall back to a default public database
-

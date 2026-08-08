@@ -1,0 +1,71 @@
+name: emit_assembly_qc_status
+description: Stage read-back evidence to the ①→② contract paths and emit the stage=assembly_qc status JSON (schema_status.json)
+keywords:
+  - status
+  - evidence
+  - assembly-qc
+tools:
+  - python:
+      description: JSON construction + file staging; no third-party bioinformatics tool.
+      licence: ["PSF-2.0"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata.
+    - plastome:
+        type: file
+        description: Selected plastome FASTA (circularized .fasta / scaffold .scaffold.fasta / .NONE marker).
+    - graph:
+        type: file
+        description: Plastome assembly graph (.fastg / .NONE marker).
+    - grade:
+        type: string
+        description: "CANDIDATE | DRAFT | NOT_APPLICABLE (from getorganelle_result_adapter)."
+    - produced_pt:
+        type: boolean
+        description: Whether a usable plastome sequence was produced.
+    - nrdna:
+        type: file
+        description: nrDNA FASTA (.fasta / .NONE marker).
+    - produced_nr:
+        type: boolean
+        description: Whether a usable nrDNA sequence was produced.
+    - bam:
+        type: file
+        description: Read-back sorted BAM (or empty marker).
+    - depth:
+        type: file
+        description: samtools depth TSV (or empty marker).
+    - flagstat:
+        type: file
+        description: samtools flagstat TXT (or empty marker).
+  - policy_pack_id:
+      type: string
+      description: Policy pack id from the samplesheet (recorded in status).
+  - coverage_coefficient:
+      type: number
+      description: Policy-injected coverage-valley coefficient; null in experimental (no valley call).
+output:
+  status_json:
+    - - meta:
+          type: map
+          description: Sample metadata.
+      - "*.assembly_qc.status.json":
+          type: file
+          description: stage=assembly_qc status object (schema_status.json-valid).
+  status_summary:
+    - - meta:
+          type: map
+      - grade:
+          type: string
+      - produced_pt:
+          type: boolean
+  versions:
+    - - "${task.process}":
+          type: string
+      - emit_assembly_qc_status:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"
