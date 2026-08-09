@@ -1,0 +1,9 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/environment-schema.json
+# MitoFinder 1.4.2 (Python 2.7 core) — container built from GitHub source (containers/mitofinder/Dockerfile).
+# The official conda package is a py27-only biocontainer (1.4.1); the built image matches the
+# official Singularity container (v1.4.2) environment. No conda runtime is used.
+channels:
+  - bioconda
+dependencies:
+  - mitofinder=1.4.2

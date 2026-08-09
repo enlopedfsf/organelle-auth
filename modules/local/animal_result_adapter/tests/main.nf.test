@@ -1,0 +1,109 @@
+nextflow_process {
+
+    name "Test Process ANIMAL_RESULT_ADAPTER"
+    script "../main.nf"
+    process "ANIMAL_RESULT_ADAPTER"
+    tag "modules_local"
+    tag "animal_result_adapter"
+
+    // CANDIDATE = DUAL check (plant BUG #6 pattern): MitoFinder stats (`<sid>.infos`) reports
+    // "Circularization: Yes" AND the primary mitogenome FASTA has exactly ONE contig. A
+    // multi-contig or non-circularized result must be DRAFT. MitoFinder names the single-contig
+    // final `<sid>_mtDNA_contig.fasta` and multi-contig `<sid>_mtDNA_contig_<N>.fasta`.
+    //
+    // Setup files: nf-test's `setup` writes with CWD = launchDir (where nf-test runs); the
+    // process `file()` inputs must therefore be anchored with $launchDir too (M2 engineering note).
+
+    test("circular single-contig mitogenome (Circularization: Yes) -> CANDIDATE") {
+
+        setup {
+            new File("$launchDir/demo_mtDNA_contig.fasta").text = ">contig_1\nACGTACGTACGTACGT\n"
+            new File("$launchDir/demo_mtDNA_contig.gb").text = "LOCUS       demo 16 bp\n"
+            new File("$launchDir/demo.infos").text = "Initial contig name: contig_1\nStatistics for final sequence:\nLength: 16\nGC content: 50.00%\nCircularization: Yes\n"
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal', policy_pack_id:'tcm-animal-experimental-0.1.0' ],
+                    [ file("$launchDir/demo_mtDNA_contig.fasta") ],
+                    [ file("$launchDir/demo_mtDNA_contig.gb") ],
+                    [ file("$launchDir/demo.infos") ]
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.mitogenome.size() == 1
+            assert path(process.out.mitogenome.get(0).get(1)).getFileName().toString() == "demo_mitogenome.fasta"
+            assert path(process.out.grade_file.get(0).get(1)).text.trim() == "CANDIDATE"
+            assert path(process.out.circularized_file.get(0).get(1)).text.trim() == "true"
+            assert path(process.out.produced_file.get(0).get(1)).text.trim() == "true"
+            assert path(process.out.annotation.get(0).get(1)).getFileName().toString() == "demo_annotation.gb"
+        }
+    }
+
+    test("multi-contig mitogenome (Circularization: Not found) -> DRAFT scaffold") {
+
+        setup {
+            new File("$launchDir/demo_mtDNA_contig_1.fasta").text = ">contig_1\nACGTACGTACGTACGT\n"
+            new File("$launchDir/demo_mtDNA_contig_2.fasta").text = ">contig_2\nTGCAACGT\n"
+            new File("$launchDir/demo_mtDNA_contig.gb").text = "LOCUS       demo 8 bp\n"
+            new File("$launchDir/demo.infos").text = "Initial contig name: contig_1\nStatistics for final sequence:\nLength: 16\nGC content: 50.00%\nCircularization: Not found\n"
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal' ],
+                    [ file("$launchDir/demo_mtDNA_contig_1.fasta"), file("$launchDir/demo_mtDNA_contig_2.fasta") ],
+                    [ file("$launchDir/demo_mtDNA_contig.gb") ],
+                    [ file("$launchDir/demo.infos") ]
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert path(process.out.mitogenome.get(0).get(1)).getFileName().toString() == "demo_mitogenome.scaffold.fasta"
+            assert path(process.out.grade_file.get(0).get(1)).text.trim() == "DRAFT"
+            assert path(process.out.circularized_file.get(0).get(1)).text.trim() == "false"
+            assert path(process.out.produced_file.get(0).get(1)).text.trim() == "true"
+        }
+    }
+
+    test("only .NONE markers -> NOT_APPLICABLE") {
+
+        setup {
+            new File("$launchDir/demo_mtDNA_contig.NONE.fasta").text = ""
+            new File("$launchDir/demo_mtDNA_contig.NONE.gb").text = ""
+            new File("$launchDir/demo.NONE.infos").text = ""
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal' ],
+                    [ file("$launchDir/demo_mtDNA_contig.NONE.fasta") ],
+                    [ file("$launchDir/demo_mtDNA_contig.NONE.gb") ],
+                    [ file("$launchDir/demo.NONE.infos") ]
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert path(process.out.grade_file.get(0).get(1)).text.trim() == "NOT_APPLICABLE"
+            assert path(process.out.produced_file.get(0).get(1)).text.trim() == "false"
+            assert path(process.out.circularized_file.get(0).get(1)).text.trim() == "false"
+            assert path(process.out.mitogenome.get(0).get(1)).getFileName().toString() == "demo_mitogenome.NONE"
+        }
+    }
+}

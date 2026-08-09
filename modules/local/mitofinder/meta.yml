@@ -1,0 +1,47 @@
+name: mitofinder
+description: MitoFinder 1.4.2 — de novo assembly + annotation of animal mitogenomes from mito-enriched short reads against a GenBank reference
+keywords:
+  - mitofinder
+  - mitogenome
+  - assembly
+  - annotation
+  - animal
+tools:
+  - mitofinder:
+      description: MitoFinder — mitogenome assembly + annotation pipeline (Allio et al. 2020, Mol Ecol Resour).
+      homepage: https://github.com/RemiAllio/MitoFinder
+      documentation: https://github.com/RemiAllio/MitoFinder
+      licence: ["GPL-3.0"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata (id, taxon_group, targets, ...).
+  - - r1:
+      type: file
+      description: Mitogenome-enriched forward reads (bait_mito_reads output).
+  - - r2:
+      type: file
+      description: Mitogenome-enriched reverse reads.
+  - - reference:
+      type: file
+      description: Single GenBank (.gb) reference mitogenome for annotation.
+output:
+  result_dir:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "${meta.id}":
+          type: directory
+          description: MitoFinder output directory (CWD/<seqid>/): *_mtDNA_contig.fasta, *_mtDNA_contig.gb, *.infos, assembly dirs.
+  versions:
+    - - "${task.process}":
+        type: string
+        description: Process name.
+      - mitofinder:
+        type: string
+        description: Module name.
+      - "1.4.2":
+        type: string
+        description: MitoFinder version.
+authors:
+  - "enlopedfsf"

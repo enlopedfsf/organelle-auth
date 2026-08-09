@@ -1,0 +1,53 @@
+name: numt_risk_screen
+description: Minimal NUMT risk screening — coverage heterogeneity + multi-mapping signal on a mitogenome assembly (risk screen, NOT confirmation)
+keywords:
+  - numt
+  - mitochondrial
+  - coverage
+  - multimapping
+  - risk
+tools:
+  - samtools:
+      description: Utilities for SAM/BAM manipulation (view -c, flag filtering).
+      homepage: https://www.htslib.org/
+      licence: ["MIT"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata (id, taxon_group, targets, ...).
+  - - mitogenome:
+      type: file
+      description: Mitogenome FASTA (or scaffold) to screen.
+  - - bam:
+      type: file
+      description: Read-back sorted BAM (clean reads mapped to the mitogenome).
+  - - depth:
+      type: file
+      description: samtools depth TSV (read-back coverage).
+output:
+  report:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.numt_report.tsv":
+          type: file
+          description: NUMT screening metrics (median depth, valley bp, multi-map fraction, per-dimension + overall signal).
+  signal:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.numt_signal.txt":
+          type: file
+          description: "true | false — NUMT risk signal per policy thresholds (false when thresholds null)."
+  versions:
+    - - "${task.process}":
+        type: string
+        description: Process name.
+      - numt_risk_screen:
+        type: string
+        description: Module name.
+      - "0.1.0":
+        type: string
+        description: Module version.
+authors:
+  - "enlopedfsf"

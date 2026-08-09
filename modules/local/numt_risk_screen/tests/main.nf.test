@@ -1,0 +1,88 @@
+nextflow_process {
+
+    name "Test Process NUMT_RISK_SCREEN"
+    script "../main.nf"
+    process "NUMT_RISK_SCREEN"
+    tag "modules_local"
+    tag "numt_risk_screen"
+
+    // Minimal NUMT risk screen: coverage-heterogeneity (valley) + multi-mapping signal. Thresholds
+    // are policy-injected (params). null -> signal false (annotate only, design 决策 6).
+    // Setup files: nf-test writes with CWD=launchDir; anchor file() inputs with $launchDir (M2 note).
+
+    test("valley signal fires when coefficient configured") {
+
+        setup {
+            // depth.tsv: median ~1000, one valley region at depth 50 (< 1000*0.2 = 200)
+            new File("$launchDir/demo.depth.tsv").text = """1\t1\t1000
+1\t2\t1000
+1\t3\t1000
+1\t4\t1000
+1\t5\t1000
+1\t6\t1000
+1\t7\t1000
+1\t8\t1000
+1\t9\t1000
+1\t10\t50
+"""
+            new File("$launchDir/demo.sorted.bam").text = ""   // empty BAM -> multi-mapping metrics 0
+            new File("$launchDir/demo_mitogenome.fasta").text = ">contig_1\nACGTACGTACGTACGT\n"
+        }
+
+        when {
+            params {
+                numt_coverage_coefficient = 0.2
+                numt_multimap_fraction    = 0.1
+            }
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal' ],
+                    file("$launchDir/demo_mitogenome.fasta"),
+                    file("$launchDir/demo.sorted.bam"),
+                    file("$launchDir/demo.depth.tsv")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert path(process.out.signal.get(0).get(1)).text.trim() == "true"
+            def report = path(process.out.report.get(0).get(1)).text
+            assert report.contains("valley_signal\ttrue")
+        }
+    }
+
+    test("null thresholds -> signal false, report still written (annotate only)") {
+
+        setup {
+            new File("$launchDir/demo.depth.tsv").text = "1\t1\t1000\n1\t2\t1000\n1\t3\t1000\n"
+            new File("$launchDir/demo.sorted.bam").text = ""
+            new File("$launchDir/demo_mitogenome.fasta").text = ">contig_1\nACGTACGTACGTACGT\n"
+        }
+
+        when {
+            params {
+                numt_coverage_coefficient = null
+                numt_multimap_fraction    = null
+            }
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal' ],
+                    file("$launchDir/demo_mitogenome.fasta"),
+                    file("$launchDir/demo.sorted.bam"),
+                    file("$launchDir/demo.depth.tsv")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert path(process.out.signal.get(0).get(1)).text.trim() == "false"
+            assert path(process.out.report.get(0).get(1)).text.contains("median_depth")
+        }
+    }
+}

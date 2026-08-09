@@ -1,0 +1,51 @@
+name: bait_mito_reads
+description: Multi-reference mitochondrial bait extraction (minimap2 -x sr + samtools proper-pair filter) for animal short-read mitogenome assembly
+keywords:
+  - minimap2
+  - mitochondrial
+  - bait
+  - extraction
+  - animal
+tools:
+  - minimap2:
+      description: All-versus-all overlap / short-read aligner (minimap2 -ax sr).
+      homepage: https://github.com/lh3/minimap2
+      documentation: https://lh3.github.io/minimap2/minimap2.html
+      licence: ["MIT"]
+  - samtools:
+      description: Utilities for SAM/BAM manipulation (view/collate/fixmate/fastq).
+      homepage: https://www.htslib.org/
+      licence: ["MIT"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata (id, taxon_group, targets, ...).
+  - - reads:
+      type: file
+      description: Paired-end clean short reads [R1, R2].
+  - - reference:
+      type: file
+      description: Multi-reference mitogenome FASTA (bundled tool-level bait set).
+output:
+  reads:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.R1.fastq":
+          type: file
+          description: Mitogenome-enriched forward reads (proper pairs, both mates mapped to reference set).
+      - "*.R2.fastq":
+          type: file
+          description: Mitogenome-enriched reverse reads.
+  versions:
+    - - "${task.process}":
+        type: string
+        description: Process name.
+      - bait_mito_reads:
+        type: string
+        description: Module name.
+      - "0.1.0":
+        type: string
+        description: Module version.
+authors:
+  - "enlopedfsf"

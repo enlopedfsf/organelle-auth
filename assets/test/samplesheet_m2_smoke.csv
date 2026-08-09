@@ -1,0 +1,3 @@
+sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id
+COR_NORMAL,identify,plant,plastome;nrdna,/mnt/ssd_pool/home/iris-hp/zhongyao/corydalis_test/SRR38978846_1.fastq.gz,/mnt/ssd_pool/home/iris-hp/zhongyao/corydalis_test/SRR38978846_2.fastq.gz,,routine_test,unknown,corydalis-test-0.1,tcm-plant-engineering-test-0.1.0,m2smoke
+WTM_NORMAL,reference_build,animal,mitome,/mnt/ssd_pool/home/iris-hp/zhongyao/whitmania_test/SRR27841063_1.fastq.gz,/mnt/ssd_pool/home/iris-hp/zhongyao/whitmania_test/SRR27841063_2.fastq.gz,,routine_test,unknown,,tcm-animal-experimental-0.1.0,m2smoke

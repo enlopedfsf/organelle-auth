@@ -1,0 +1,46 @@
+nextflow_process {
+
+    name "Test Process BAIT_MITO_READS"
+    script "../main.nf"
+    process "BAIT_MITO_READS"
+    tag "modules_local"
+    tag "bait_mito_reads"
+
+    // Multi-reference mitochondrial bait: minimap2 -x sr + samtools proper-pair filter. Real run
+    // on reads derived from a real NC_023928 fragment (W. acranulata), guaranteeing a proper pair.
+    // Setup files: nf-test writes with CWD=launchDir; anchor file() inputs with $launchDir (M2 note).
+
+    test("paired reads mapping to the multi-reference are extracted as proper pairs") {
+
+        setup {
+            def ref = "CCATATTATGGACCATTGGGTTTCTATTTCTATTTACAATAGGGGGTTTAACTGGGTTAGTGTTATCAAATTCTTCATTAGATATCGTCCTTCATGATACTTATTATGTAGTAGCTCATTTCCATTATGTACTTAGAATAGGAGCTGTATTCGCTATCTTTGCAGCCTTTAATTATTGGTACCCCTTATTTATTGGGTTGGGGCTAAATCCAATTCTATCTTTAAGTCAGGTTTATGTTATGTTTTTAGGTGTAAACATTACCTTTTTCCCTCAACATTTTTTAGGATTAAGTGGAATAC"
+            def r1 = ref.substring(0, 150)
+            def rc = { s -> def c = ['A':'T','T':'A','G':'C','C':'G']; s.reverse().collect { c[it] }.join() }
+            def r2 = rc(ref.substring(150, 300))
+            new File("$launchDir/ref.fasta").text = ">NC_023928.frag\n${ref}\n"
+            new File("$launchDir/r1.fq").text = "@r1\n${r1}\n+\n${'I'*150}\n"
+            new File("$launchDir/r2.fq").text = "@r1\n${r2}\n+\n${'I'*150}\n"
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal' ],
+                    [ file("$launchDir/r1.fq"), file("$launchDir/r2.fq") ],
+                    file("$launchDir/ref.fasta")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.reads.size() == 1
+            def r1out = path(process.out.reads.get(0).get(1)).text
+            assert r1out.contains("@r1")
+            // The proper pair must survive the extraction
+            assert r1out.contains("CCATATTATGGACCATTGGGTTTCTATTTCTATTTACAATAGGGGGTTTAACTGGGTTAGTG")
+        }
+    }
+}

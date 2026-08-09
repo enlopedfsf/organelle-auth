@@ -1,0 +1,70 @@
+name: emit_animal_assembly_qc_status
+description: Emit the animal branch stage=assembly_qc status JSON (schema_status.json) + stage the ①→② contract evidence tree
+keywords:
+  - status
+  - assembly_qc
+  - mitogenome
+  - animal
+  - numt
+tools:
+  - shell:
+      description: Python3 status emitter + shutil staging.
+      licence: ["GPL-3.0"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata (id, policy_pack_id, taxon_group, targets, ...).
+  - - mitogenome:
+      type: file
+      description: Selected mitogenome FASTA or scaffold (from animal_result_adapter).
+  - - annotation:
+      type: file
+      description: MitoFinder GenBank annotation.
+  - - infos:
+      type: file
+      description: MitoFinder stats file.
+  - - grade:
+      type: string
+      description: CANDIDATE | DRAFT | NOT_APPLICABLE.
+  - - produced:
+      type: string
+      description: "true | false — a usable mitogenome sequence was produced."
+  - - bam:
+      type: file
+      description: Read-back sorted BAM.
+  - - depth:
+      type: file
+      description: samtools depth TSV.
+  - - flagstat:
+      type: file
+      description: samtools flagstat.
+  - - numt_signal:
+      type: file
+      description: NUMT risk-screen signal file (true/false).
+output:
+  status_json:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "animal_sr_assembly/${meta.id}/${meta.id}.assembly_qc.status.json":
+          type: file
+          description: stage=assembly_qc status object.
+  status_summary:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.grade.txt":
+          type: file
+          description: grade + produced tokens.
+  versions:
+    - - "${task.process}":
+        type: string
+        description: Process name.
+      - emit_animal_assembly_qc_status:
+        type: string
+        description: Module name.
+      - "0.1.0":
+        type: string
+        description: Module version.
+authors:
+  - "enlopedfsf"

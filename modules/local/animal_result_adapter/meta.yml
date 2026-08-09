@@ -1,0 +1,81 @@
+name: animal_result_adapter
+description: Adapt MitoFinder output to the ①→② interface contract (circularization-aware mitogenome FASTA + annotation + grade)
+keywords:
+  - mitofinder
+  - mitogenome
+  - adapter
+  - circularization
+  - animal
+tools:
+  - shell:
+      description: Shell-only adapter (find/cp/grep/awk); no third-party bioinformatics tool invoked.
+      licence: ["GPL-3.0"]
+input:
+  - - meta:
+      type: map
+      description: Sample metadata (id, taxon_group, targets, ...).
+  - - result_dir:
+      type: directory
+      description: MitoFinder output directory (CWD/<seqid>/).
+output:
+  mitogenome:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_mitogenome.fasta":
+          type: file
+          description: Circularized mitogenome (CANDIDATE). Absent if not circularized.
+  mitogenome_scaffold:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_mitogenome.scaffold.fasta":
+          type: file
+          description: Non-circularized mitogenome scaffold (DRAFT).
+  annotation:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*_annotation.gb":
+          type: file
+          description: MitoFinder GenBank annotation of the mitogenome.
+  infos:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.infos":
+          type: file
+          description: MitoFinder stats file (length, GC, Circularization Yes/Not found).
+  grade_file:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.grade.txt":
+          type: file
+          description: "Single token: CANDIDATE | DRAFT | NOT_APPLICABLE (interface contract assembly_grade source)."
+  circularized_file:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.circularized.txt":
+          type: file
+          description: "true | false (mitogenome circularization, from MitoFinder .infos)."
+  produced_file:
+    - - meta:
+        type: map
+        description: Sample metadata.
+      - "*.produced.txt":
+          type: file
+          description: "true | false (a usable mitogenome sequence was produced)."
+  versions:
+    - - "${task.process}":
+        type: string
+        description: Process name.
+      - animal_result_adapter:
+        type: string
+        description: Adapter name.
+      - "0.1.0":
+        type: string
+        description: Adapter version.
+authors:
+  - "enlopedfsf"

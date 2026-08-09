@@ -1,0 +1,121 @@
+nextflow_process {
+
+    name "Test Process EMIT_ANIMAL_ASSEMBLY_QC_STATUS"
+    script "../main.nf"
+    process "EMIT_ANIMAL_ASSEMBLY_QC_STATUS"
+    tag "modules_local"
+    tag "emit_animal_assembly_qc_status"
+
+    // Setup files: nf-test writes with CWD=launchDir; anchor file() inputs with $launchDir (M2 note).
+
+    test("CANDIDATE, no NUMT signal -> PASS/CANDIDATE, decision NOT_APPLICABLE") {
+
+        setup {
+            new File("$launchDir/demo_mitogenome.fasta").text = ">contig_1\nACGTACGTACGTACGT\n"
+            new File("$launchDir/demo_annotation.gb").text = "LOCUS       demo 16 bp\n"
+            new File("$launchDir/demo.infos").text = "Circularization: Yes\n"
+            new File("$launchDir/demo.sorted.bam").text = "x"
+            new File("$launchDir/demo.depth.tsv").text = "1\t1\t1000\n"
+            new File("$launchDir/demo.flagstat.txt").text = "1 + 0 in total\n"
+            new File("$launchDir/demo.numt_signal.txt").text = "false\n"
+        }
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', policy_pack_id:'tcm-animal-experimental-0.1.0' ],
+                    file("$launchDir/demo_mitogenome.fasta"), file("$launchDir/demo_annotation.gb"), file("$launchDir/demo.infos"), 'CANDIDATE', 'true', file("$launchDir/demo.sorted.bam"), file("$launchDir/demo.depth.tsv"), file("$launchDir/demo.flagstat.txt"), file("$launchDir/demo.numt_signal.txt")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            def json = new groovy.json.JsonSlurper().parseText(path(process.out.status_json.get(0).get(1)).text)
+            assert json.stage == "assembly_qc"
+            assert json.status == "PASS"
+            assert json.assembly_grade == "CANDIDATE"
+            assert json.decision == "NOT_APPLICABLE"
+            assert json.reason_codes == []
+            assert json.policy_pack_id == "tcm-animal-experimental-0.1.0"
+        }
+    }
+
+    test("DRAFT + NUMT signal -> WARN [NO_CIRCULARIZATION, NUMT_RISK_SUSPECTED]") {
+
+        setup {
+            new File("$launchDir/demo_mitogenome.scaffold.fasta").text = ">contig_1\nACGT\n>contig_2\nACGT\n"
+            new File("$launchDir/demo_annotation.gb").text = "LOCUS       demo 8 bp\n"
+            new File("$launchDir/demo.infos").text = "Circularization: Not found\n"
+            new File("$launchDir/demo.sorted.bam").text = "x"
+            new File("$launchDir/demo.depth.tsv").text = "1\t1\t1000\n"
+            new File("$launchDir/demo.flagstat.txt").text = "1 + 0 in total\n"
+            new File("$launchDir/demo.numt_signal.txt").text = "true\n"
+        }
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', policy_pack_id:'tcm-animal-experimental-0.1.0' ],
+                    file("$launchDir/demo_mitogenome.scaffold.fasta"), file("$launchDir/demo_annotation.gb"), file("$launchDir/demo.infos"), 'DRAFT', 'true', file("$launchDir/demo.sorted.bam"), file("$launchDir/demo.depth.tsv"), file("$launchDir/demo.flagstat.txt"), file("$launchDir/demo.numt_signal.txt")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            def json = new groovy.json.JsonSlurper().parseText(path(process.out.status_json.get(0).get(1)).text)
+            assert json.status == "WARN"
+            assert json.assembly_grade == "DRAFT"
+            assert json.decision == "NOT_APPLICABLE"
+            assert json.reason_codes.contains("NO_CIRCULARIZATION")
+            assert json.reason_codes.contains("NUMT_RISK_SUSPECTED")
+        }
+    }
+
+    test("no usable sequence -> FAIL/NOT_APPLICABLE [ASSEMBLY_FAILED]") {
+
+        setup {
+            new File("$launchDir/demo_mitogenome.NONE").text = ""
+            new File("$launchDir/demo_annotation.gb").text = ""
+            new File("$launchDir/demo.infos").text = ""
+            new File("$launchDir/demo.sorted.bam").text = ""
+            new File("$launchDir/demo.depth.tsv").text = ""
+            new File("$launchDir/demo.flagstat.txt").text = ""
+            new File("$launchDir/demo.numt_signal.txt").text = "false\n"
+        }
+
+        when {
+            params {
+                outdir = "$outputDir"
+            }
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', policy_pack_id:'tcm-animal-experimental-0.1.0' ],
+                    file("$launchDir/demo_mitogenome.NONE"), file("$launchDir/demo_annotation.gb"), file("$launchDir/demo.infos"), 'NOT_APPLICABLE', 'false', file("$launchDir/demo.sorted.bam"), file("$launchDir/demo.depth.tsv"), file("$launchDir/demo.flagstat.txt"), file("$launchDir/demo.numt_signal.txt")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            def json = new groovy.json.JsonSlurper().parseText(path(process.out.status_json.get(0).get(1)).text)
+            assert json.status == "FAIL"
+            assert json.assembly_grade == "NOT_APPLICABLE"
+            assert json.decision == "NOT_APPLICABLE"
+            assert json.reason_codes == ["ASSEMBLY_FAILED"]
+        }
+    }
+}

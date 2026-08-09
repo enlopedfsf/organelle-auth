@@ -1,0 +1,70 @@
+nextflow_process {
+
+    name "Test Process MITOFINDER"
+    script "../main.nf"
+    process "MITOFINDER"
+    tag "modules_local"
+    tag "mitofinder"
+
+    // Real MitoFinder 1.4.2 run (container ghcr.io/enlopedfsf/mitofinder:1.4.2) on reads derived
+    // from the real W. acranulata reference NC_023928.gb. With a handful of reads MitoFinder runs
+    // the full pipeline (megahit assembly + blast identification + annotation) and, since the
+    // reads are a tiny fragment, produces a scaffold or the .NONE markers — the CONTRACT outputs
+    // (glob emits) must be present either way. This verifies module + container + blast integration.
+    // Setup files: nf-test writes with CWD=launchDir; anchor file() inputs with $launchDir (M2 note).
+
+    test("runs MitoFinder and emits the contract globs (real reads from NC_023928)") {
+
+        setup {
+            // 8 tiling 150 bp PE reads derived from a real NC_023928 region (step 40, ~470 bp span),
+            // so megahit assembles a non-empty contig and MitoFinder's blast step runs to completion.
+            def r1 = [
+                "AATACCTATTCTTATTGGAGGCTTCGGTAATTGATTATTACCTTTAATAGTAGGGGCAGTAGACATGTCATTCCCACGGTTAAATAATCTTAGATTTTGATTGCTTCCGCCTTCTATGATCATACTATTAAGATCTTCAATAATTGAGGG",
+                "CCTTTAATAGTAGGGGCAGTAGACATGTCATTCCCACGGTTAAATAATCTTAGATTTTGATTGCTTCCGCCTTCTATGATCATACTATTAAGATCTTCAATAATTGAGGGTGGTGTAGGAGCCGGCTGGACACTTTATCCTCCACTATCA",
+                "TAAATAATCTTAGATTTTGATTGCTTCCGCCTTCTATGATCATACTATTAAGATCTTCAATAATTGAGGGTGGTGTAGGAGCCGGCTGGACACTTTATCCTCCACTATCAGACTCCGTATCTCATTCAGGCCCATCCGTTGACATAGCCA",
+                "CATACTATTAAGATCTTCAATAATTGAGGGTGGTGTAGGAGCCGGCTGGACACTTTATCCTCCACTATCAGACTCCGTATCTCATTCAGGCCCATCCGTTGACATAGCCATCTTTTCATTACATATAGCTGGTGCCTCATCTATTTTAGG",
+                "GCCGGCTGGACACTTTATCCTCCACTATCAGACTCCGTATCTCATTCAGGCCCATCCGTTGACATAGCCATCTTTTCATTACATATAGCTGGTGCCTCATCTATTTTAGGGTCATTAAATTTTATTTCGACTATTATAAATATACGAACT",
+                "CTCATTCAGGCCCATCCGTTGACATAGCCATCTTTTCATTACATATAGCTGGTGCCTCATCTATTTTAGGGTCATTAAATTTTATTTCGACTATTATAAATATACGAACTAAAGGAATAACAACTGAACGAGTACCATTATTTGTTTGGT",
+                "ACATATAGCTGGTGCCTCATCTATTTTAGGGTCATTAAATTTTATTTCGACTATTATAAATATACGAACTAAAGGAATAACAACTGAACGAGTACCATTATTTGTTTGGTCAGTTGTTATTACTACTATTTTATTATTGTTATCATTACC",
+                "TTTATTTCGACTATTATAAATATACGAACTAAAGGAATAACAACTGAACGAGTACCATTATTTGTTTGGTCAGTTGTTATTACTACTATTTTATTATTGTTATCATTACCAGTTTTAGCAGCAGCTATTACAATATTACTTACAGATCGA",
+            ]
+            def r2 = [
+                "TTTATAATAGTCGAAATAAAATTTAATGACCCTAAAATAGATGAGGCACCAGCTATATGTAATGAAAAGATGGCTATGTCAACGGATGGGCCTGAATGAGATACGGAGTCTGATAGTGGAGGATAAAGTGTCCAGCCGGCTCCTACACCA",
+                "TAATGGTACTCGTTCAGTTGTTATTCCTTTAGTTCGTATATTTATAATAGTCGAAATAAAATTTAATGACCCTAAAATAGATGAGGCACCAGCTATATGTAATGAAAAGATGGCTATGTCAACGGATGGGCCTGAATGAGATACGGAGTC",
+                "ACAATAATAAAATAGTAGTAATAACAACTGACCAAACAAATAATGGTACTCGTTCAGTTGTTATTCCTTTAGTTCGTATATTTATAATAGTCGAAATAAAATTTAATGACCCTAAAATAGATGAGGCACCAGCTATATGTAATGAAAAGA",
+                "AGTAATATTGTAATAGCTGCTGCTAAAACTGGTAATGATAACAATAATAAAATAGTAGTAATAACAACTGACCAAACAAATAATGGTACTCGTTCAGTTGTTATTCCTTTAGTTCGTATATTTATAATAGTCGAAATAAAATTTAATGAC",
+                "TATAGGGTCAAAGAAAGTAGTATTTAAATTTCGATCTGTAAGTAATATTGTAATAGCTGCTGCTAAAACTGGTAATGATAACAATAATAAAATAGTAGTAATAACAACTGACCAAACAAATAATGGTACTCGTTCAGTTGTTATTCCTTT",
+                "ACCAAAATAAATGTTGAAGCAAAATAGGATCCCCCCCTCCTATAGGGTCAAAGAAAGTAGTATTTAAATTTCGATCTGTAAGTAATATTGTAATAGCTGCTGCTAAAACTGGTAATGATAACAATAATAAAATAGTAGTAATAACAACTG",
+                "CCAGGTAAAATCAAAATATATACTTCTGGATGCCCAAAAAACCAAAATAAATGTTGAAGCAAAATAGGATCCCCCCCTCCTATAGGGTCAAAGAAAGTAGTATTTAAATTTCGATCTGTAAGTAATATTGTAATAGCTGCTGCTAAAACT",
+                "TTTAGATCTACCTGATACAATATGGGAAATAGCACCAAAACCAGGTAAAATCAAAATATATACTTCTGGATGCCCAAAAAACCAAAATAAATGTTGAAGCAAAATAGGATCCCCCCCTCCTATAGGGTCAAAGAAAGTAGTATTTAAATT",
+            ]
+            def fq = { list -> list.withIndex().collect { s, i -> "@r${i}\n${s}\n+\n${'I'*s.size()}" }.join("\n") + "\n" }
+            new File("$launchDir/r1.fq").text = fq(r1)
+            new File("$launchDir/r2.fq").text = fq(r2)
+        }
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'demo', taxon_group:'animal' ],
+                    file("$launchDir/r1.fq"),
+                    file("$launchDir/r2.fq"),
+                    file("$projectDir/assets/bait_references/mitofinder-bait-v0.1/NC_023928.gb")
+                ]
+                """
+            }
+        }
+
+        then {
+            assert process.success
+            assert process.out.mitogenome.size() == 1
+            assert process.out.annotation.size() == 1
+            assert process.out.infos.size() == 1
+            // mitogenome emit: either a real *_mtDNA_contig*.fasta (scaffold/DRAFT) or the .NONE marker
+            def m = process.out.mitogenome.get(0).get(1)
+            def names = (m instanceof List) ? m.collect { it.toString().split('/')[-1] } : [m.toString().split('/')[-1]]
+            assert names.any { it.contains("demo_mtDNA_contig") || it.contains("demo_mtDNA_contig.NONE") }
+        }
+    }
+}

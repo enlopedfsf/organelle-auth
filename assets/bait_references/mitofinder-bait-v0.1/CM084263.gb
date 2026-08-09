@@ -1,0 +1,42 @@
+LOCUS       CM084263               14505 bp    DNA     circular CON 21-AUG-2024
+DEFINITION  Whitmania acranulata isolate jianxi01 mitochondrion, complete
+            sequence, whole genome shotgun sequence.
+ACCESSION   CM084263 JBDFUC010000000
+VERSION     CM084263.1
+DBLINK      BioProject: PRJNA1072149
+            BioSample: SAMN39735897
+KEYWORDS    WGS.
+SOURCE      mitochondrion Whitmania acranulata
+  ORGANISM  Whitmania acranulata
+            Eukaryota; Metazoa; Spiralia; Lophotrochozoa; Annelida; Clitellata;
+            Hirudinea; Hirudinida; Hirudiniformes; Haemopidae; Whitmania.
+REFERENCE   1  (bases 1 to 14505)
+  AUTHORS   Lin,G.
+  TITLE     Comparative genomics of three non-hematophagous leeches (Whitmania
+            spp.): focusing on antithrombotic genes
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 14505)
+  AUTHORS   Lin,G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (05-MAY-2024) School of Life Sciences, Jinggangshan
+            University, Xueyuan Road, Ji'an, Jiangxi 343009, China
+COMMENT     ##Genome-Assembly-Data-START##
+            Assembly Method        :: NextDenovo v. 2.5.0
+            Genome Representation  :: Full
+            Expected Final Version :: Yes
+            Genome Coverage        :: 100x
+            Sequencing Technology  :: Oxford Nanopore PromethION
+            ##Genome-Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..14505
+                     /organism="Whitmania acranulata"
+                     /organelle="mitochondrion"
+                     /mol_type="genomic DNA"
+                     /isolate="jianxi01"
+                     /db_xref="taxon:1329092"
+                     /tissue_type="head"
+                     /geo_loc_name="China: Shandong, Yutai"
+                     /collection_date="2022-05"
+CONTIG      join(JBDFUC010000018.1:1..14505)
+//
+

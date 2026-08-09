@@ -1,0 +1,7 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/environment-schema.json
+# Shell-only adapter (find/cp/grep/awk). A python base image provides coreutils + gzip.
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12

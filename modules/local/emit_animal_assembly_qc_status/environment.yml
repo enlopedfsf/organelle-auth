@@ -1,0 +1,7 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/environment-schema.json
+# Animal assembly_qc status emitter: python3 + shutil.
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12

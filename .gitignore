@@ -18,3 +18,16 @@ null/
 /policy.json
 /lrp_packs/
 stub_results/
+/demo.infos
+/demo_mtDNA_contig*
+/demo.NONE*
+/demo.sorted.bam
+/demo.depth.tsv
+/demo.flagstat.txt
+/demo.numt_signal.txt
+/demo_mitogenome*
+/demo_annotation.gb
+/demo.grade.txt
+/demo.produced.txt
+/demo.circularized.txt
+/containers/mitofinder/MitoFinder-master.tar.gz

@@ -5,8 +5,12 @@
     M1-①: plant short-read samples (taxon_group=plant, short reads available,
     targets ⊂ {plastome, nrdna}) are routed explicitly through QC_SHORT →
     PLANT_SR_ASSEMBLY → ASSEMBLY_QC → assembly_qc status emission (§3.3 routing, DATA-006;
-    design 决策 on explicit routing). Other sample classes (animal, long-read, hybrid) are
-    not handled by ① and remain future milestones.
+    design 决策 on explicit routing).
+    M2-①: animal short-read samples (taxon_group=animal, short reads available,
+    targets ⊇ {mitome}) are routed explicitly through the SAME QC_SHORT → ANIMAL_SR_ASSEMBLY
+    (multi-ref bait → MitoFinder) → ANIMAL_ASSEMBLY_QC (read-back) → NUMT risk screen →
+    animal assembly_qc status emission. Plant branch is untouched (regression lossless).
+    Other sample classes (long-read, hybrid) remain future milestones.
 ----------------------------------------------------------------------------------------
 */
 
@@ -15,6 +19,10 @@ include { PLANT_SR_ASSEMBLY      } from '../subworkflows/local/plant_sr_assembly
 include { ASSEMBLY_QC            } from '../subworkflows/local/assembly_qc'
 include { IDENTIFY               } from '../subworkflows/local/identify'
 include { EMIT_ASSEMBLY_QC_STATUS } from '../modules/local/emit_assembly_qc_status/main'
+include { ANIMAL_SR_ASSEMBLY     } from '../subworkflows/local/animal_sr_assembly'
+include { ANIMAL_ASSEMBLY_QC     } from '../subworkflows/local/animal_assembly_qc'
+include { NUMT_RISK_SCREEN       } from '../modules/local/numt_risk_screen/main'
+include { EMIT_ANIMAL_ASSEMBLY_QC_STATUS } from '../modules/local/emit_animal_assembly_qc_status/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,9 +50,23 @@ workflow ORGANELLEAUTH {
         meta.targets.contains('plastome')
     }
 
-    qc  = QC_SHORT(ch_plant_sr)
-    asm = PLANT_SR_ASSEMBLY(qc.clean_reads)
-    aqc = ASSEMBLY_QC(qc.clean_reads, asm.assembly)
+    // M2-① animal routing: taxon_group=animal + short reads + targets ⊇ {mitome}.
+    ch_animal_sr = ch_samplesheet.filter { row ->
+        def meta = row[0]
+        meta.taxon_group == 'animal' &&
+        meta.has_short_reads &&
+        meta.targets.contains('mitome')
+    }
+
+    // One QC_SHORT (fastp) invocation serves BOTH branches (Nextflow DSL2: a process cannot be
+    // included twice in one workflow). Plant + animal clean reads are split after QC.
+    ch_all_sr    = ch_plant_sr.mix(ch_animal_sr)
+    qc           = QC_SHORT(ch_all_sr)
+    ch_plant_clean = qc.clean_reads.filter { meta, reads -> meta.taxon_group == 'plant' }
+    ch_animal_clean = qc.clean_reads.filter { meta, reads -> meta.taxon_group == 'animal' }
+
+    asm = PLANT_SR_ASSEMBLY(ch_plant_clean)
+    aqc = ASSEMBLY_QC(ch_plant_clean, asm.assembly)
 
     // Emit stage=assembly_qc status (decision=NOT_APPLICABLE; ① does not decide).
     // coverage_valley_coefficient is policy-injected (null in experimental).
@@ -57,10 +79,31 @@ workflow ORGANELLEAUTH {
     ch_id_status = emit_asm.status_json.filter { meta, status_json -> meta.analysis_mode == 'identify' }
     identify = IDENTIFY(ch_id_asm, ch_id_status)
 
-    log.info "[organelleauth] M1-①+②: plant short-read samples → assembly + read-back evidence; identify-mode samples → IDENTIFY."
+    //
+    // M2-① animal branch: same QC_SHORT + read-back reuse; animal-specific assembly (MitoFinder),
+    // NUMT risk screen, and a dedicated animal assembly_qc status emitter.
+    //
+    asm_a = ANIMAL_SR_ASSEMBLY(ch_animal_clean, params.animal_bait_reference_fasta, params.animal_annotation_reference_gb)
+    aqc_a = ANIMAL_ASSEMBLY_QC(ch_animal_clean, asm_a.assembly)
+
+    // NUMT risk screen on the mitogenome + read-back (coverage heterogeneity + multi-mapping).
+    ch_numt_in = aqc_a.assembly_qc.map { meta, mito, ann, infos, grade, prod, bam, depth, flagstat ->
+        tuple(meta, mito, bam, depth)
+    }
+    numt_a = NUMT_RISK_SCREEN(ch_numt_in)
+
+    // Emit animal stage=assembly_qc status (decision=NOT_APPLICABLE). NUMT signal → WARN +
+    // NUMT_RISK_SUSPECTED (design 决策 6; screening, not confirmation).
+    ch_emit_a = aqc_a.assembly_qc.join(numt_a.signal).map { meta, mito, ann, infos, grade, prod, bam, depth, flagstat, ns ->
+        tuple(meta, mito, ann, infos, grade, prod, bam, depth, flagstat, ns)
+    }
+    emit_a = EMIT_ANIMAL_ASSEMBLY_QC_STATUS(ch_emit_a)
+
+    log.info "[organelleauth] M1-①+②: plant short-read samples → assembly + read-back evidence; identify-mode samples → IDENTIFY. M2-①: animal short-read samples → mitogenome assembly + read-back + NUMT risk screen."
 
     emit:
     multiqc_report = channel.empty().toList()   // MultiQC wiring is out of scope
     versions       = emit_asm.versions.mix(asm.versions).mix(identify.versions)
-    status         = emit_asm.status_json.mix(identify.status)
+                        .mix(asm_a.versions).mix(aqc_a.versions).mix(numt_a.versions).mix(emit_a.versions)
+    status         = emit_asm.status_json.mix(identify.status).mix(emit_a.status_json)
 }

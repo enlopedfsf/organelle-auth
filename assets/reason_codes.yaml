@@ -3,7 +3,7 @@
 # pipeline failure 与 scientific INCONCLUSIVE 分开编码。
 # 本文件先建空框架 + 3 个示例码（各覆盖一类）；后续随实现扩展。
 
-version: "0.3.0-dev"
+version: "0.4.0-dev"
 
 categories:
   scientific_inconclusive: "证据不足/落入灰区——合法的科学'无法判定'，非流程失败"
@@ -34,6 +34,9 @@ codes:
   - code: COVERAGE_ANOMALY
     category: scientific_inconclusive
     meaning: "read-back 覆盖异常（双峰 / 异常低覆盖），疑似污染或 NUMT/MTPT 干扰（M1 临时污染信号，Kraken2 自建库落地后细化）；标 INCONCLUSIVE/WARN"
+  - code: NUMT_RISK_SUSPECTED
+    category: warn
+    meaning: "M2 动物线粒体组装结果检出 NUMT 风险信号（覆盖异质性/多重比对异常，numt_risk_screen，方法学 §3.3 首步）；WARN——风险筛查非确证，确证需核侧翼/提前终止/移码检查 + 长读长证据（design known limitations）"
   # ---- M1-② identify-stage codes (design 决策 1 / 决策 6) ----
   - code: INCOMPLETE_ASSEMBLY
     category: warn
