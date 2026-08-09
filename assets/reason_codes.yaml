@@ -3,7 +3,7 @@
 # pipeline failure 与 scientific INCONCLUSIVE 分开编码。
 # 本文件先建空框架 + 3 个示例码（各覆盖一类）；后续随实现扩展。
 
-version: "0.2.0-dev"
+version: "0.3.0-dev"
 
 categories:
   scientific_inconclusive: "证据不足/落入灰区——合法的科学'无法判定'，非流程失败"
@@ -15,9 +15,12 @@ codes:
   - code: INSUFFICIENT_JUNCTION_SUPPORT
     category: scientific_inconclusive
     meaning: "跨 IR/重复区/环化连接的独立长 reads 支持不足，无法判定（非流程失败）"
-  - code: LOW_COVERAGE
+  - code: LOW_SEQUENCING_DEPTH
     category: warn
-    meaning: "可判定区域覆盖低于预期，结果降级为草稿并标注"
+    meaning: "回贴 reads 的均一化测序深度低于 policy 阈值（min_mean_depth），不足以支撑可靠判定；INCONCLUSIVE"
+  - code: LOW_CALLABLE_COVERAGE
+    category: scientific_inconclusive
+    meaning: "组装序列覆盖的 callable-region 比例低于 policy 阈值（min_callable_fraction），反映组装完整度不足；INCONCLUSIVE"
   - code: TOOL_MISSING_DIGEST
     category: engineering_fail
     meaning: "工具 container_digest/validation_record 缺失，production 拒绝使用（工程失败，非科学无法判定）"
@@ -40,7 +43,9 @@ codes:
     meaning: "参考 pack 诊断位点落在组装缺失/不可判区，即使全局一致性高也无法做位点级身份判定；INCONCLUSIVE（决策 1 位点级门控）"
   - code: CONTAMINATION_SUSPECTED
     category: scientific_inconclusive
-    meaning: "read-back/组装图污染或 NUMT/MTPT 信号；INCONCLUSIVE，不强判 AUTHENTIC（M1 临时污染信号，Kraken2 自建库落地后细化）"
+    dormant: true
+    meaning: "read-back/组装图污染或 NUMT/MTPT 信号；INCONCLUSIVE，不强判 AUTHENTIC"
+    dormant_note: "DORMANT in M1: ① emit_assembly_qc_status 当前不输出 COVERAGE_ANOMALY（Kraken2 自建库缺口，M2 补），且动物×植物混合夹具对质体招募无鉴别力（实测 50:50 后 callable_cov/depth 不变）。正式污染验证改用近缘植物混合夹具，随 Kraken2 自建库 change 一并实装并移除 dormant 标记。"
   - code: THRESHOLD_NOT_CONFIGURED
     category: scientific_inconclusive
     meaning: "policy 判定阈值为 null（模块层防御，决策 2）；输出 INCONCLUSIVE，非崩溃"

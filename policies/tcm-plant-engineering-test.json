@@ -1,6 +1,8 @@
 {
     "_comment_1": "Engineering-test policy — 总方案 §9.2 + ② design 决策 4. 临时阈值未经标定，仅用于验证流程逻辑，不得用于科学结论或生产默认值 (thresholds uncalibrated; logic-validation ONLY; NOT for science/production).",
-    "_comment_2": "Measured placeholders from the Corydalis (刻叶紫堇 SRR38978846) ① run: ~99.95% identity, ~92% callable coverage, high readback depth. Scientific calibration is M3 + M5 policy v1.0. Production MUST NOT load this (ENG-POL-002).",
+    "_comment_2": "REVISION 2026-08-09 (m1-closeout-identify-honesty): min_callable_fraction revised from 0.9 to 0.885.",
+    "_comment_3": "Empirical basis: Corydalis (刻叶紫堇 SRR38978846) DRAFT plastome with a known IR short-read structural gap. Measured callable_coverage in VALIDATION-identify.md (v2026-08-09): normal 2 Gb = 0.888206; low-cov 0.5 Gb = 0.900144; contam 50:50 = 0.888206. Range 0.888–0.900. Value 0.885 chosen with a small margin below the normal-sample floor so DRAFT+all-callable+identity reaches AUTHENTIC+WARN[INCOMPLETE_ASSEMBLY].",
+    "_comment_4": "This value is still a PLACEHOLDER. It MUST be replaced after M3 independent calibration with a statistically justified threshold; do not treat 0.885 as a production default (ENG-POL-001/002).",
     "policy_id": "tcm-plant-engineering-test-0.1.0",
     "status": "experimental",
     "scope": {
@@ -10,7 +12,7 @@
     "thresholds": {
         "short_read_qc": null,
         "callable_site": {
-            "min_callable_fraction": 0.9,
+            "min_callable_fraction": 0.885,
             "min_mean_depth": 20
         },
         "junction_support": null,

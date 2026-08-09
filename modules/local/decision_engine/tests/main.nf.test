@@ -134,4 +134,52 @@ nextflow_process {
             assert d.reason_codes == ['ASSEMBLY_FAILED']     // 透传 ① reason
         }
     }
+
+    test("callable coverage below threshold -> INCONCLUSIVE + [LOW_CALLABLE_COVERAGE]") {
+        setup {
+            new File('asm.json').bytes = '{"status":"WARN","assembly_grade":"DRAFT","reason_codes":["NO_CIRCULARIZATION"]}'.bytes
+            new File('cm.json').bytes  = '{"callable_coverage":0.85,"mean_readback_depth":500.0}'.bytes
+            new File('dm.json').bytes  = '{"n_diagnostic_total":5,"n_diagnostic_callable":5,"diagnostic_identity":0.9995,"uncallable_sites":[]}'.bytes
+            new File('man.json').bytes = '{"conflict_rules":{"non_authentic_identity":0.90}}'.bytes
+            new File('policy.json').bytes = '{"policy_id":"p","status":"experimental","thresholds":{"callable_site":{"min_callable_fraction":0.90,"min_mean_depth":20},"uncertainty_zone":{"lower":0.90,"upper":0.99}}}'.bytes
+        }
+        when {
+            process {
+                """
+                input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
+                input[1] = file("${projectDir}/policy.json")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def d = new groovy.json.JsonSlurper().parseText(path(process.out.decision.get(0).get(1)).text)
+            assert d.decision == 'INCONCLUSIVE'
+            assert d.reason_codes == ['LOW_CALLABLE_COVERAGE']
+        }
+    }
+
+    test("mean readback depth below threshold -> INCONCLUSIVE + [LOW_SEQUENCING_DEPTH]") {
+        setup {
+            new File('asm.json').bytes = '{"status":"WARN","assembly_grade":"DRAFT","reason_codes":["NO_CIRCULARIZATION"]}'.bytes
+            new File('cm.json').bytes  = '{"callable_coverage":0.99,"mean_readback_depth":10.0}'.bytes
+            new File('dm.json').bytes  = '{"n_diagnostic_total":5,"n_diagnostic_callable":5,"diagnostic_identity":0.9995,"uncallable_sites":[]}'.bytes
+            new File('man.json').bytes = '{"conflict_rules":{"non_authentic_identity":0.90}}'.bytes
+            new File('policy.json').bytes = '{"policy_id":"p","status":"experimental","thresholds":{"callable_site":{"min_callable_fraction":0.90,"min_mean_depth":20},"uncertainty_zone":{"lower":0.90,"upper":0.99}}}'.bytes
+        }
+        when {
+            process {
+                """
+                input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
+                input[1] = file("${projectDir}/policy.json")
+                """
+            }
+        }
+        then {
+            assert process.success
+            def d = new groovy.json.JsonSlurper().parseText(path(process.out.decision.get(0).get(1)).text)
+            assert d.decision == 'INCONCLUSIVE'
+            assert d.reason_codes == ['LOW_SEQUENCING_DEPTH']
+        }
+    }
 }

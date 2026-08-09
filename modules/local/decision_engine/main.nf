@@ -12,9 +12,10 @@
 // INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED], NO crash, NO forced call. This complements (does NOT
 // replace) the ENG-POL-002 production startup gate. "无法判定" is a legitimate quality output.
 //
-// Precedence: ①-unusable passthrough → contamination → null-threshold → diagnostic-sites-not-callable
-// → coverage-inadequate → identity-below-conflict → grey-zone → AUTHENTIC (CANDIDATE: PASS;
-// DRAFT: WARN + [INCOMPLETE_ASSEMBLY]). See design.md 决策 1 matrix.
+// Precedence: ①-unusable passthrough → contamination (dormant: ① does not emit COVERAGE_ANOMALY
+// in M1) → null-threshold → diagnostic-sites-not-callable → coverage-inadequate
+// (LOW_CALLABLE_COVERAGE before LOW_SEQUENCING_DEPTH) → identity-below-conflict → grey-zone
+// → AUTHENTIC (CANDIDATE: PASS; DRAFT: WARN + [INCOMPLETE_ASSEMBLY]). See design.md 决策 1 matrix.
 
 process DECISION_ENGINE {
     tag "${meta.id}"
@@ -89,7 +90,9 @@ reason = []
 if (not produced_pt) or asm_status == "FAIL" or grade == "NOT_APPLICABLE" or assembly_grade_1 == "NOT_APPLICABLE":
     decision, status = "INCONCLUSIVE", "INCONCLUSIVE"
     reason = list(asm_reasons) if asm_reasons else []
-# 2. contamination signal from ① (COVERAGE_ANOMALY) → INCONCLUSIVE, never AUTHENTIC
+# 2. contamination signal from ① (COVERAGE_ANOMALY) → INCONCLUSIVE, never AUTHENTIC.
+#    DORMANT in M1: emit_assembly_qc_status currently does not emit COVERAGE_ANOMALY, so this
+#    branch is effectively unreachable until Kraken2 self-built DB contamination screening lands.
 elif "COVERAGE_ANOMALY" in asm_reasons:
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["CONTAMINATION_SUSPECTED"]
 # 3. 决策 2: null policy threshold → INCONCLUSIVE + THRESHOLD_NOT_CONFIGURED (no crash)
@@ -98,9 +101,11 @@ elif cs is None or uz is None or min_cf is None or min_md is None or uz_lo is No
 # 4. diagnostic sites not all callable → INCONCLUSIVE (site-level gate, even if global identity high)
 elif dm.get("n_diagnostic_callable", 0) < dm.get("n_diagnostic_total", 0):
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["DIAGNOSTIC_SITES_NOT_CALLABLE"]
-# 5. coverage inadequate → INCONCLUSIVE + LOW_COVERAGE
-elif (min_cf is not None and call_cov < min_cf) or (min_md is not None and mean_dep < min_md):
-    decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["LOW_COVERAGE"]
+# 5. coverage inadequate → INCONCLUSIVE with code split by root cause
+elif min_cf is not None and call_cov < min_cf:
+    decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["LOW_CALLABLE_COVERAGE"]
+elif min_md is not None and mean_dep < min_md:
+    decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["LOW_SEQUENCING_DEPTH"]
 else:
     # identity ladders
     if ident is None:

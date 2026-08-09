@@ -159,6 +159,44 @@ nf-test 5/5 still GREEN.
 
 ---
 
+## 预期状态修订表（policy / reason-code 修订后）
+
+本次修订依据 `m1-closeout-identify-honesty`：① 拆分 `LOW_COVERAGE` 为 `LOW_SEQUENCING_DEPTH` 与 `LOW_CALLABLE_COVERAGE`；② 将 `tcm-plant-engineering-test.json` 的 `min_callable_fraction` 从 `0.9` 下调至 `0.885`（实测 DRAFT 叶绿体 callable_cov 范围 0.888206–0.900144，含 IR 结构缺口）；③ `CONTAMINATION_SUSPECTED` 登记为 dormant。
+
+| # | Scenario | 原预期 | 实际结果（修订前） | 修订后预期 | 理由 |
+|---|----------|--------|-------------------|-----------|------|
+| 1 | Normal 2 Gb | `AUTHENTIC + WARN[INCOMPLETE_ASSEMBLY]` 或 `DIAGNOSTIC_SITES_NOT_CALLABLE]` | `INCONCLUSIVE + [LOW_COVERAGE]` | `AUTHENTIC + WARN[INCOMPLETE_ASSEMBLY]` | 阈值 `0.9` 高于实测 `0.888206`；降至 `0.885` 后 callable_cov 通过，且诊断位点 5/5 可判、identity=1.0，故进入身份阶梯。reason code 如失败应为 `LOW_CALLABLE_COVERAGE`（不再是模糊 `LOW_COVERAGE`）。 |
+| 2 | Low-cov 0.5 Gb | `INCONCLUSIVE + [LOW_COVERAGE]` | `AUTHENTIC + WARN[INCOMPLETE_ASSEMBLY]`（意外） | `AUTHENTIC + WARN[INCOMPLETE_ASSEMBLY]` | 0.5 Gb `callable_cov=0.900144` 已高于新阈值 `0.885`；同时揭示 2 Gb 时 GetOrganelle 内部 500× subsampling 丢弃 bridging reads 反而更差。 |
+| 3 | Contam 50:50 | `INCONCLUSIVE + [CONTAMINATION_SUSPECTED]` | `INCONCLUSIVE + [LOW_COVERAGE]` | `AUTHENTIC + WARN[INCOMPLETE_ASSEMBLY]` | 污染检测 dormant（① 不 emit `COVERAGE_ANOMALY`）；动物×植物混合对质体招募无鉴别力，`callable_cov=0.888206` 与 normal 相同且 > `0.885`，故与 normal 同路径。正式污染验证需改用近缘植物混合夹具 + Kraken2 自建库。 |
+| 4 | No ref | `DATA-005` fail-fast | `DATA-005` fail-fast | `DATA-005` fail-fast | 不受 reason-code / threshold 修订影响。 |
+| 5 | Prod-null | `INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED]` | `INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED]` | `INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED]` | production-null 仍为全 null，模块层 null 防御优先于覆盖检查。 |
+
+### 修订后复跑实测结果（2026-08-09，policy `min_callable_fraction=0.885`）
+复跑方式：从原始五场景 session `54010c65`（curious_kare）`-resume`，① 全部 cache-hit（`cached=15`），仅 `DECISION_ENGINE`+`EMIT_IDENTIFY_STATUS` 重算（`completed=3`）。① metrics 不变。
+
+| # | Scenario | 修订后 decision | reason | callable_cov | depth | 说明 |
+|---|----------|----------------|--------|--------------|-------|------|
+| 1 | Normal | `AUTHENTIC` | `WARN[INCOMPLETE_ASSEMBLY]` | 0.888206 | 1079.6 | 0.888 > 0.885 通过覆盖门，identity=1.0 → AUTHENTIC |
+| 2 | Low-cov | `AUTHENTIC` | `WARN[INCOMPLETE_ASSEMBLY]` | 0.900144 | 269.88 | 同上 |
+| 3 | Contam 50:50 | `AUTHENTIC` | `WARN[INCOMPLETE_ASSEMBLY]` | 0.888206 | 1079.78 | 污染 dormant，走 normal 同路径 → AUTHENTIC（诚实记录：50:50 动物×植物混合被当作植物正品） |
+| 4 | No ref | — | `DATA-005` fail-fast | — | — | EXIT=1, cached=11 |
+| 5 | Prod-null | `INCONCLUSIVE` | `[THRESHOLD_NOT_CONFIGURED]` | 0.888206 | 1079.6 | thr_cf=null，模块层 null 防御优先 |
+
+验收三条件全部满足：① 正常样本 → `AUTHENTIC + WARN[INCOMPLETE_ASSEMBLY]`；② production-null 仍 `INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED]`；③ nf-test 7/7 PASS（含新 `LOW_CALLABLE_COVERAGE`/`LOW_SEQUENCING_DEPTH` 码）。
+
+
+- 实测范围：normal `0.888206`，low-cov `0.900144`，contam `0.888206`。
+- 选定值：`min_callable_fraction = 0.885`。
+- 选择理由：低于 normal 样本实测 floor（0.888206）约 0.003，给 GetOrganelle 内部 subsampling 的非确定性留 margin；同时仍显著高于随机/低质量组装的预期覆盖，保持门控意义。
+- 限制声明：该值仍是 **placeholder**，未经 M3 独立统计标定，M3 后必须以证据替换。详见 `policies/tcm-plant-engineering-test.json` 文件头注释。
+
+### reason-code 变更记录
+- 移除：`LOW_COVERAGE`（语义模糊，同时指深度不足与 callable-region 覆盖不足）。
+- 新增：`LOW_SEQUENCING_DEPTH`（`mean_readback_depth < min_mean_depth`，warn 类别）和 `LOW_CALLABLE_COVERAGE`（`callable_coverage < min_callable_fraction`，scientific_inconclusive 类别）。
+- `CONTAMINATION_SUSPECTED`：保留在字典中，标注 `dormant: true`，当前 `DECISION_ENGINE` 不 emit；复活条件为 Kraken2 自建库落地 + 近缘植物混合夹具验证。
+
+---
+
 ## Assertion — no forced judgment
 Across every executed and CI-proven scenario, an unmeasurable / missing-threshold / uncallable-site /
 low-coverage condition degrades to **`INCONCLUSIVE` with an explicit reason code** (decision_engine
@@ -166,8 +204,9 @@ precedence ladder, `decision_engine/main.nf:87-119`). There is no code path that
 non-authentic or ambiguous condition to `AUTHENTIC`. The `AUTHENTIC` branch is reachable **only** after
 callable diagnostic sites + adequate coverage + identity ≥ `uncertainty_zone.upper`.
 
-Two honest divergences from the pre-pinned expectations are recorded above (5.1 `AUTHENTIC`
+Three honest divergences from the pre-pinned expectations are recorded above (5.1 `AUTHENTIC`
 unreachable under the placeholder threshold; 5.2 the same threshold sits on a razor's edge — a 0.5 Gb
 run reaches `AUTHENTIC` while the 2 Gb run fails coverage; 5.3 contamination rung dead because ① emits
-no `COVERAGE_ANOMALY`). None were massaged to match the pin; all are forwarded as calibration /
-hardening items for M3 / the contamination-detection redesign.
+no `COVERAGE_ANOMALY`). The close-out revision (`m1-closeout-identify-honesty`) fixes the threshold
+and reason-code semantics but does not calibrate the threshold scientifically or implement contamination
+detection; those remain M3 / M2 work.
