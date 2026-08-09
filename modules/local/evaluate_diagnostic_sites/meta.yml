@@ -1,0 +1,39 @@
+name: evaluate_diagnostic_sites
+description: Per diagnostic-site window, check assembly→reference alignment SPANS it (callable) and read =/X CIGAR identity; emits diagnostic.metrics.json (the 决策 1 site-level identity gate).
+keywords:
+  - diagnostic-sites
+  - identity
+  - identify
+tools:
+  - python:
+      description: Pure-stdlib PAF CIGAR parsing; no third-party bioinformatics tool.
+      licence: ["PSF-2.0"]
+input:
+  - - meta:
+        type: map
+        description: Sample metadata.
+    - paf:
+        type: file
+        description: assembly→reference PAF with --eqx CIGAR.
+    - diagnostic_sites_tsv:
+        type: file
+        description: Pack diagnostic_sites TSV (name, ref_contig, start, end).
+    - reference_fasta:
+        type: file
+        description: Reference FASTA (for contig reference).
+output:
+  metrics:
+    - - meta:
+          type: map
+      - "*.diagnostic.metrics.json":
+          type: file
+          description: n_callable/n_total + diagnostic_identity + uncallable_sites.
+  versions:
+    - - "${task.process}":
+          type: string
+      - evaluate_diagnostic_sites:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"

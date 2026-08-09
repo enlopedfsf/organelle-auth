@@ -1,0 +1,37 @@
+name: align_assembly_to_reference
+description: Align ①'s selected plastome to the reference-pack reference with minimap2 (-x asm5 -c --eqx), emitting a plain-text PAF for downstream site-level callability + identity.
+keywords:
+  - minimap2
+  - alignment
+  - identify
+tools:
+  - minimap2:
+      description: Versatile pairwise aligner (assembly-to-reference, asm5 preset).
+      homepage: https://github.com/lh3/minimap2
+      licence: ["MIT"]
+input:
+  - - meta:
+        type: map
+        description: Sample metadata.
+    - plastome:
+        type: file
+        description: ① selected plastome FASTA (circular contig or multi-scaffold DRAFT).
+    - reference_fasta:
+        type: file
+        description: Reference plastome FASTA from the loaded pack.
+output:
+  paf:
+    - - meta:
+          type: map
+      - "*.assembly_to_ref.paf":
+          type: file
+          description: minimap2 PAF with =/X CIGAR (cg tag) for identity + reference spans.
+  versions:
+    - - "${task.process}":
+          type: string
+      - align_assembly_to_reference:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"

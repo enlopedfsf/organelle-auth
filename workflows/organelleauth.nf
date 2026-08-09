@@ -13,6 +13,7 @@
 include { QC_SHORT               } from '../subworkflows/local/qc_short'
 include { PLANT_SR_ASSEMBLY      } from '../subworkflows/local/plant_sr_assembly'
 include { ASSEMBLY_QC            } from '../subworkflows/local/assembly_qc'
+include { IDENTIFY               } from '../subworkflows/local/identify'
 include { EMIT_ASSEMBLY_QC_STATUS } from '../modules/local/emit_assembly_qc_status/main'
 
 /*
@@ -47,12 +48,19 @@ workflow ORGANELLEAUTH {
 
     // Emit stage=assembly_qc status (decision=NOT_APPLICABLE; ① does not decide).
     // coverage_valley_coefficient is policy-injected (null in experimental).
-    EMIT_ASSEMBLY_QC_STATUS(aqc.assembly_qc)
+    emit_asm = EMIT_ASSEMBLY_QC_STATUS(aqc.assembly_qc)
 
-    log.info "[organelleauth] M1-①: plant short-read samples routed through assembly + read-back evidence."
+    // ② IDENTIFY (M1-②): route analysis_mode=identify plant samples → IDENTIFY after ① assembly_qc.
+    // ① outputs feed ② unchanged (read-only); non-identify samples are filtered out, so when no
+    // identify-mode sample is present IDENTIFY simply runs no tasks (empty input channel).
+    ch_id_asm    = aqc.assembly_qc.filter { meta, pl, gr, grade, ppt, nr, pnr, bam, dp, fs -> meta.analysis_mode == 'identify' }
+    ch_id_status = emit_asm.status_json.filter { meta, status_json -> meta.analysis_mode == 'identify' }
+    identify = IDENTIFY(ch_id_asm, ch_id_status)
+
+    log.info "[organelleauth] M1-①+②: plant short-read samples → assembly + read-back evidence; identify-mode samples → IDENTIFY."
 
     emit:
-    multiqc_report = channel.empty().toList()   // MultiQC wiring is out of scope for ①
-    versions       = EMIT_ASSEMBLY_QC_STATUS.out.versions.mix(asm.versions)
-    status         = EMIT_ASSEMBLY_QC_STATUS.out.status_json
+    multiqc_report = channel.empty().toList()   // MultiQC wiring is out of scope
+    versions       = emit_asm.versions.mix(asm.versions).mix(identify.versions)
+    status         = emit_asm.status_json.mix(identify.status)
 }
