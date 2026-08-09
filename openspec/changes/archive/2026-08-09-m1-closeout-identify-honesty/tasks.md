@@ -34,4 +34,4 @@
 ## 6. Archive and commit
 
 - [x] 6.1 Archive this change into the main specs (`openspec archive m1-closeout-identify-honesty`) once the implementation is verified.
-- [ ] 6.2 Commit all changes (reason_codes.yaml, decision_engine, policy file, tests, VALIDATION-identify.md, archived specs) with a descriptive message ending in `Co-Authored-By: Claude <noreply@anthropic.com>`.
+- [x] 6.2 Commit all changes (reason_codes.yaml, decision_engine, policy file, tests, VALIDATION-identify.md, archived specs) with a descriptive message ending in `Co-Authored-By: Claude <noreply@anthropic.com>`.
