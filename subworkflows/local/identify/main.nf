@@ -66,7 +66,11 @@ workflow IDENTIFY {
 
     dec_in = ch_metrics.map { meta, pl, gr, grade, ppt, nr, pnr, bam, dp, fs, st, man, ref, dtv, ctv, paf_f, cm_f, dm_f ->
         tuple(meta, grade, ppt, st, cm_f, dm_f, man) }
-    dec = DECISION_ENGINE(dec_in, channel.value(params.policy_pack_file ?: ''))
+    // policy_pack_file is staged as a path (file(...)) so DECISION_ENGINE can read it inside the
+    // container — a host-path val is NOT mounted under docker (BUG surfaced by the scenario-1 real
+    // run; same val→path fix as LOAD_REFERENCE_PACK). null/production → /dev/null stages an empty
+    // file → DECISION_ENGINE policy={} → THRESHOLD_NOT_CONFIGURED (决策 2 null defense, unchanged).
+    dec = DECISION_ENGINE(dec_in, channel.value(file(params.policy_pack_file ?: '/dev/null')))
     // dec.decision = (meta, decision.json)
 
     // ---- EMIT_IDENTIFY_STATUS: stage=identify status JSON + staged evidence ----

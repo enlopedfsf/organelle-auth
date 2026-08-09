@@ -27,7 +27,7 @@ process DECISION_ENGINE {
 
     input:
     tuple val(meta), val(grade), val(produced_pt), path(asm_status_json), path(callable_metrics), path(diagnostic_metrics), path(manifest)
-    val   policy_path
+    path  policy_file
 
     output:
     tuple val(meta), path("${meta.id}.decision.json"), emit: decision
@@ -41,7 +41,7 @@ process DECISION_ENGINE {
     SAMPLE_ID="${meta.id}" \\
     GRADE="${grade}" \\
     PRODUCED_PT="${produced_pt}" \\
-    POLICY_PATH="${policy_path}" \\
+    POLICY_PATH="${policy_file}" \\
     python3 - <<'PYEOF'
 import os, json
 
@@ -53,9 +53,10 @@ asm      = json.load(open("${asm_status_json}"))
 cm       = json.load(open("${callable_metrics}"))
 dm       = json.load(open("${diagnostic_metrics}"))
 manifest = json.load(open("${manifest}"))
-# policy_path is a string (params.policy_pack_file). Missing/null/unreadable → empty policy → all
-# thresholds null → INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED] (决策 2, no crash). This is the robust
-# module-layer null defense: even a totally unset policy degrades to an honest INCONCLUSIVE.
+# policy_file is a STAGED path (params.policy_pack_file, staged by Nextflow so it is visible inside
+# the container — a host-path val is NOT mounted under docker). Missing/null/unreadable → empty
+# policy → all thresholds null → INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED] (决策 2, no crash). This is
+# the robust module-layer null defense: even a totally unset policy degrades to an honest INCONCLUSIVE.
 ppath = os.environ.get("POLICY_PATH", "")
 policy = {}
 if ppath and ppath not in ("null", "None"):

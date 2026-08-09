@@ -6,8 +6,9 @@ nextflow_process {
     tag "modules_local"
     tag "decision_engine"
 
-    // 决策 1 gating matrix + 决策 2 null defense. policy_path is a val(string) = absolute path to a
-    // staged JSON policy; the path inputs are staged as files. Decision is read from decision.json.
+    // 决策 1 gating matrix + 决策 2 null defense. policy_file is a path(staged file) so it is visible
+    // inside the docker container (a host-path val is NOT mounted — BUG fixed after the scenario-1
+    // real run). The other path inputs are staged as files. Decision is read from decision.json.
     //
     // Staged inputs use `${projectDir}/x.json` (nf-test's projectDir == repo root == the cwd that the
     // setup `new File('x')` writes to), so setup-write and input-stage always agree. This is the
@@ -25,7 +26,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
-                input[1] = "${projectDir}/policy.json"
+                input[1] = file("${projectDir}/policy.json")
                 """
             }
         }
@@ -50,7 +51,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
-                input[1] = "${projectDir}/policy.json"
+                input[1] = file("${projectDir}/policy.json")
                 """
             }
         }
@@ -74,7 +75,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
-                input[1] = "${projectDir}/policy.json"
+                input[1] = file("${projectDir}/policy.json")
                 """
             }
         }
@@ -98,7 +99,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [ [id:'S1'], 'CANDIDATE', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
-                input[1] = "${projectDir}/policy.json"
+                input[1] = file("${projectDir}/policy.json")
                 """
             }
         }
@@ -122,7 +123,7 @@ nextflow_process {
             process {
                 """
                 input[0] = [ [id:'S1'], 'NOT_APPLICABLE', false, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
-                input[1] = "${projectDir}/policy.json"
+                input[1] = file("${projectDir}/policy.json")
                 """
             }
         }
