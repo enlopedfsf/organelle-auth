@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/environment-schema.json
+# Thin shell wrapper around the minimap2 binary (-x asm5 -c --eqx → plain-text PAF).
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - minimap2

@@ -1,0 +1,80 @@
+nextflow_process {
+
+    name "Test Process LOAD_REFERENCE_PACK"
+    script "../main.nf"
+    process "LOAD_REFERENCE_PACK"
+    tag "modules_local"
+    tag "load_reference_pack"
+
+    // DATA-005: missing/incompatible reference pack → fail-fast, NO public-DB fallback.
+    // reference_pack_id is read from meta; reference_pack_dir is input[1] staged as a PATH
+    // (a host-path val would be invisible inside the container). Setup writes the pack root to
+    // `${projectDir}/lrp_packs` (== setup cwd) and input[1] stages that same path. See design 决策 3.
+
+    test("valid pack resolved -> manifest + fasta + TSVs emitted") {
+        setup {
+            new File('lrp_packs/mypack/').mkdirs()
+            new File('lrp_packs/mypack/manifest.json').bytes = '{"reference_pack_id":"mypack","version":"0.1.0","status":"test","reference_fasta":"ref.fa","conflict_rules":{"non_authentic_identity":0.90}}'.bytes
+            new File('lrp_packs/mypack/ref.fa').bytes = '>ref\nACGTACGT\n'.bytes
+            new File('lrp_packs/mypack/diagnostic_sites.tsv').bytes = 'name\tref_contig\tstart\tend\nds1\tref\t1\t2\n'.bytes
+            new File('lrp_packs/mypack/callable_regions.tsv').bytes = 'ref_contig\tstart\tend\nref\t1\t8\n'.bytes
+        }
+        when {
+            process {
+                """
+                input[0] = [id:'S1', reference_pack_id:'mypack']
+                input[1] = file("${projectDir}/lrp_packs")
+                """
+            }
+        }
+        then {
+            assert process.success
+            assert process.out.pack.size() == 1
+            def dumped = process.out.pack.get(0).toString()
+            assert dumped.contains('pack.manifest.json')
+            assert dumped.contains('pack.reference.fasta')
+            assert dumped.contains('pack.diagnostic_sites.tsv')
+            assert dumped.contains('pack.callable_regions.tsv')
+        }
+    }
+
+    test("DATA-005: missing reference_pack_id -> fail-fast (no public-DB fallback)") {
+        setup {
+            // root exists (staged) but has no 'nonexistent' subdir
+            new File('lrp_packs/').mkdirs()
+            new File('lrp_packs/.keep').bytes = ''.bytes
+        }
+        when {
+            process {
+                """
+                input[0] = [id:'S1', reference_pack_id:'nonexistent']
+                input[1] = file("${projectDir}/lrp_packs")
+                """
+            }
+        }
+        then {
+            assert !process.success        // DATA-005 fail-fast
+        }
+    }
+
+    test("DATA-005: empty reference FASTA -> fail-fast (CLAUDE.md hard rule #2)") {
+        setup {
+            new File('lrp_packs/badpack/').mkdirs()
+            new File('lrp_packs/badpack/manifest.json').bytes = '{"reference_pack_id":"badpack","reference_fasta":"empty.fa","conflict_rules":{"non_authentic_identity":0.90}}'.bytes
+            new File('lrp_packs/badpack/empty.fa').bytes = ''.bytes          // empty -> reject
+            new File('lrp_packs/badpack/diagnostic_sites.tsv').bytes = 'name\tref_contig\tstart\tend\n'.bytes
+            new File('lrp_packs/badpack/callable_regions.tsv').bytes = 'ref_contig\tstart\tend\n'.bytes
+        }
+        when {
+            process {
+                """
+                input[0] = [id:'S1', reference_pack_id:'badpack']
+                input[1] = file("${projectDir}/lrp_packs")
+                """
+            }
+        }
+        then {
+            assert !process.success        // DATA-005 fail-fast on empty reference
+        }
+    }
+}

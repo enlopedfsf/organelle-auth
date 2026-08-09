@@ -1,0 +1,39 @@
+name: evaluate_callable_regions
+description: Compute reference-coordinate callable coverage (alignment spans ∩ pack callable_regions) + mean read-back depth (① depth.tsv adequacy); emits callable.metrics.json.
+keywords:
+  - callable-regions
+  - coverage
+  - identify
+tools:
+  - python:
+      description: Pure-stdlib PAF/TSV parsing; no third-party bioinformatics tool.
+      licence: ["PSF-2.0"]
+input:
+  - - meta:
+        type: map
+        description: Sample metadata.
+    - paf:
+        type: file
+        description: assembly→reference PAF (from align_assembly_to_reference).
+    - callable_regions_tsv:
+        type: file
+        description: Pack callable_regions TSV.
+    - depth_tsv:
+        type: file
+        description: ① read-back samtools depth TSV (assembly-coord).
+output:
+  metrics:
+    - - meta:
+          type: map
+      - "*.callable.metrics.json":
+          type: file
+          description: callable_coverage + mean_readback_depth metrics.
+  versions:
+    - - "${task.process}":
+          type: string
+      - evaluate_callable_regions:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"

@@ -1,0 +1,51 @@
+name: decision_engine
+description: Apply the assembly_grade↔decision gating matrix (决策 1) from pack conflict_rules + policy thresholds + diagnostic/callable metrics; null threshold → INCONCLUSIVE + [THRESHOLD_NOT_CONFIGURED] (决策 2, no crash).
+keywords:
+  - decision
+  - gating
+  - identify
+tools:
+  - python:
+      description: Pure-stdlib decision logic over JSON metrics; no third-party bioinformatics tool.
+      licence: ["PSF-2.0"]
+input:
+  - - meta:
+        type: map
+        description: Sample metadata.
+    - grade:
+        type: string
+        description: ① assembly_grade (CANDIDATE | DRAFT | NOT_APPLICABLE).
+    - produced_pt:
+        type: boolean
+        description: Whether ① produced a usable plastome.
+    - asm_status_json:
+        type: file
+        description: ① stage=assembly_qc status JSON (status, reason_codes).
+    - callable_metrics:
+        type: file
+        description: callable.metrics.json.
+    - diagnostic_metrics:
+        type: file
+        description: diagnostic.metrics.json.
+    - manifest:
+        type: file
+        description: pack.manifest.json (conflict_rules).
+  - policy_path:
+      type: string
+      description: Path to the loaded policy pack JSON (params.policy_pack_file); missing/null → all-null → INCONCLUSIVE.
+output:
+  decision:
+    - - meta:
+          type: map
+      - "*.decision.json":
+          type: file
+          description: decision, status, reason_codes, thresholds_used + metrics provenance.
+  versions:
+    - - "${task.process}":
+          type: string
+      - decision_engine:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"

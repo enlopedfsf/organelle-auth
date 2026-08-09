@@ -10,3 +10,10 @@ null/
 .lineage/
 .nf-test/
 .nf-test.log
+# nf-test local scratch — setup-created fixtures written to repo root (regenerated each test run)
+/asm.json
+/cm.json
+/dm.json
+/man.json
+/policy.json
+/lrp_packs/

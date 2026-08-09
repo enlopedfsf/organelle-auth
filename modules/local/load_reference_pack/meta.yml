@@ -1,0 +1,42 @@
+name: load_reference_pack
+description: Resolve samplesheet reference_pack_id to a reference pack (manifest.json + reference FASTA + diagnostic_sites/callable_regions TSV); DATA-005 fail-fast on missing/incompatible (no public-DB fallback).
+keywords:
+  - reference-pack
+  - identify
+  - data-005
+tools:
+  - python:
+      description: JSON/TSV parsing + file validation; no third-party bioinformatics tool.
+      licence: ["PSF-2.0"]
+input:
+  - meta:
+      type: map
+      description: Sample metadata (carries reference_pack_id).
+  - reference_pack_dir:
+      type: file
+      description: Directory holding per-id pack subdirectories (staged as a path so it is visible inside the container).
+output:
+  pack:
+    - - meta:
+          type: map
+      - pack.manifest.json:
+          type: file
+          description: Pack manifest (JSON; conflict_rules, scope).
+      - pack.reference.fasta:
+          type: file
+          description: Reference plastome FASTA.
+      - pack.diagnostic_sites.tsv:
+          type: file
+          description: Diagnostic-site windows (name, ref_contig, start, end).
+      - pack.callable_regions.tsv:
+          type: file
+          description: Callable regions (ref_contig, start, end).
+  versions:
+    - - "${task.process}":
+          type: string
+      - load_reference_pack:
+          type: string
+      - "0.1.0":
+          type: string
+authors:
+  - "enlopedfsf"

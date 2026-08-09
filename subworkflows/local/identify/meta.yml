@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "identify"
+description: "M1-② reference-first IDENTIFY subworkflow — consumes ① frozen outputs, runs the decision engine, emits stage=identify status (decision filled)."
+keywords:
+  - identify
+  - authentication
+  - decision
+components:
+  - load_reference_pack
+  - align_assembly_to_reference
+  - evaluate_callable_regions
+  - evaluate_diagnostic_sites
+  - decision_engine
+  - emit_identify_status
+input:
+  - ch_assembly_qc:
+      type: channel
+      description: "(meta, plastome, graph, grade, prod_pt, nrdna, prod_nr, bam, depth, flagstat) from ① ASSEMBLY_QC (identify samples only)."
+  - ch_asm_status:
+      type: channel
+      description: "(meta, status_json) — ① stage=assembly_qc status JSON (identify samples only)."
+output:
+  status:
+    type: channel
+    description: "(meta, <sid>.identify.status.json) — schema_status.json-valid stage=identify status."
+  versions:
+    type: channel
+    description: "Aggregated module versions."
+authors:
+  - "enlopedfsf"

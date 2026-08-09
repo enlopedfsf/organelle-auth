@@ -43,4 +43,3 @@ PLANT_SR_ASSEMBLY + ASSEMBLY_QC 完成后 SHALL 输出符合 `assets/schema_stat
 
 - **WHEN** 组装 + read-back 完成
 - **THEN** 输出的状态 JSON 通过 `schema_status.json` 校验,`stage = assembly_qc`,`decision = NOT_APPLICABLE`,`reason_codes` 引用版本化字典,`evidence_files` 非空
-
