@@ -13,7 +13,7 @@
 
 process ALIGN_ASSEMBLY_TO_REFERENCE {
     tag "${meta.id}"
-    label 'process_low'
+    label 'process_low_memory'
 
     conda "${moduleDir}/environment.yml"
     // minimap2 binary-only image (no python needed — this is a pure shell wrapper). Reuses the

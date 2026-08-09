@@ -13,7 +13,7 @@
 
 process LOAD_REFERENCE_PACK {
     tag "${meta.id}"
-    label 'process_low'
+    label 'process_low_memory'
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine in ['singularity', 'apptainer'] && !task.ext.singularity_pull_docker_container
