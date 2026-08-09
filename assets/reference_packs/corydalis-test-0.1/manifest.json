@@ -1,20 +1,20 @@
 {
-  "reference_pack_id": "corydalis-test-0.1",
-  "version": "0.1.0",
-  "status": "test",
-  "schema_version": "0.1",
-  "scope": {
-    "taxon_group": "plant",
-    "targets": ["plastome"],
-    "taxon": "Corydalis ophiocarpa",
-    "source_accession": "PZ405204.1"
-  },
-  "reference_fasta": "PZ405204_plastome.fasta",
-  "reference_length": 200540,
-  "conflict_rules": {
-    "non_authentic_identity": 0.90
-  },
-  "required_evidence": ["diagnostic_sites_callable"],
-  "supporting_evidence": ["callable_coverage", "readback_depth"],
-  "notes": "Degenerate v0.1 form (NO adulterant controls; global-alignment substitute per design Risks). PZ405204.1 is a CONGENERIC Corydalis reference (C. ophiocarpa), not conspecific with the C. incisa (刻叶紫堇) normal sample; acceptable for a logic test. Real decision outcome is measured + recorded honestly (VALIDATION-identify.md), never forced. diagnostic_site windows are spread over single-copy regions, avoiding the IR / ①-observed structural gap so the AUTHENTIC path is reachable."
+    "reference_pack_id": "corydalis-test-0.1",
+    "version": "0.1.0",
+    "status": "test",
+    "schema_version": "0.1",
+    "scope": {
+        "taxon_group": "plant",
+        "targets": ["plastome"],
+        "taxon": "Corydalis ophiocarpa",
+        "source_accession": "PZ405204.1"
+    },
+    "reference_fasta": "PZ405204_plastome.fasta",
+    "reference_length": 200540,
+    "conflict_rules": {
+        "non_authentic_identity": 0.9
+    },
+    "required_evidence": ["diagnostic_sites_callable"],
+    "supporting_evidence": ["callable_coverage", "readback_depth"],
+    "notes": "Degenerate v0.1 form (NO adulterant controls; global-alignment substitute per design Risks). PZ405204.1 is a CONGENERIC Corydalis reference (C. ophiocarpa), not conspecific with the C. incisa (刻叶紫堇) normal sample; acceptable for a logic test. Real decision outcome is measured + recorded honestly (VALIDATION-identify.md), never forced. diagnostic_site windows are spread over single-copy regions, avoiding the IR / ①-observed structural gap so the AUTHENTIC path is reachable."
 }
