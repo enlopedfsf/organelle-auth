@@ -50,7 +50,7 @@ for descriptive metrics only.
 
 ### 3. PMAT2 module and tool arguments
 
-Create a local `PMAT2` process with a pinned bioconda/container recipe, explicit `versions.yml`,
+Create a local `PMAT2` process with PMAT2 release `v2.1.5` pinned in the tool registry and a pinned bioconda/container recipe, explicit `versions.yml`,
 resource trace, deterministic output staging, and an nf-test stub. Pass `-t ont -x 0` exactly as
 method/tool parameters. Container digest and PMAT2 version are recorded at apply time and linked
 to `registries/tools.yaml`; the registry remains `EXPERIMENTAL` and no production profile loads it.
