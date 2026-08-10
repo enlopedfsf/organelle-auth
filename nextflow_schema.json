@@ -244,6 +244,58 @@
                     "hidden": true
                 }
             }
+        },
+        "decision_asset_options": {
+            "title": "Decision assets and policy controls",
+            "type": "object",
+            "fa_icon": "fas fa-shield-alt",
+            "description": "Versioned reference-pack and policy-pack locations. These are engineering asset locators, not scientific acceptance thresholds.",
+            "properties": {
+                "reference_pack_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "description": "Directory containing versioned reference packs.",
+                    "hidden": true
+                },
+                "policy_pack_file": {
+                    "type": ["string", "null"],
+                    "format": "file-path",
+                    "description": "Policy pack JSON path; null preserves production INCONCLUSIVE behavior until thresholds are configured.",
+                    "hidden": true
+                }
+            }
+        },
+        "animal_short_read_assembly_options": {
+            "title": "Animal short-read assembly controls (M2)",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Animal assembly resources and policy-injected NUMT screen controls. Null NUMT thresholds emit metrics without a screening call.",
+            "properties": {
+                "animal_bait_reference_fasta": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "MitoFinder multi-reference bait FASTA.",
+                    "hidden": true
+                },
+                "animal_annotation_reference_gb": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "MitoFinder annotation GenBank reference.",
+                    "hidden": true
+                },
+                "numt_coverage_coefficient": {
+                    "type": ["number", "null"],
+                    "default": null,
+                    "description": "Policy-injected NUMT coverage screen coefficient.",
+                    "hidden": true
+                },
+                "numt_multimap_fraction": {
+                    "type": ["number", "null"],
+                    "default": null,
+                    "description": "Policy-injected NUMT multi-map fraction threshold.",
+                    "hidden": true
+                }
+            }
         }
     },
     "allOf": [
@@ -261,6 +313,12 @@
         },
         {
             "$ref": "#/$defs/plant_short_read_assembly_options"
+        },
+        {
+            "$ref": "#/$defs/decision_asset_options"
+        },
+        {
+            "$ref": "#/$defs/animal_short_read_assembly_options"
         }
     ]
 }

@@ -1,52 +1,52 @@
 {
-  "reference_pack_id": "tcm-animal-cm084263-v0.1",
-  "version": "0.1.0",
-  "status": "experimental",
-  "taxon_group": "animal",
-  "targets": ["mitome"],
-  "reference_fasta": "CM084263.1.fasta",
-  "sha256": {
-    "CM084263.1.fasta": "3bd6b997a0ef0fd3e35c9ef8169e1f48338334ee9ee90f90b95f8ef52faf5468"
-  },
-  "decision_reference": {
-    "accession": "CM084263.1",
-    "organism": "Whitmania acranulata",
-    "isolate": "jianxi01",
-    "source": "NCBI GenBank CM084263.1; complete mitochondrial sequence, whole genome shotgun sequence",
-    "bioproject": "PRJNA1072149",
-    "biosample": "SAMN39735897",
-    "length_bp": 14505,
-    "topology": "circular",
-    "circularity_disclosure": "CM084263.1 and the M2-① validation reads are BioProject-derived from the same provenance chain; the observed agreement tests workflow reproducibility/lineage consistency, not independent biological validation.",
-    "source_citation": "Lin G., Comparative genomics of three non-hematophagous leeches (Whitmania spp.): focusing on antithrombotic genes (NCBI record, unpublished; direct submission 05-May-2024, School of Life Sciences, Jinggangshan University)."
-  },
-  "quarantined_records": [
-    {
-      "accession": "NC_023928.1",
-      "status": "QUARANTINED",
-      "decision_eligible": false,
-      "organism": "Whitmania acranulata",
-      "source_bioproject": "PRJNA927338",
-      "observed_divergence_vs_CM084263": 0.8762,
-      "divergence_percent": 87.62,
-      "evidence_link": "openspec/changes/archive/2026-08-10-animal-short-read-assembly-evidence/VALIDATION-animal.md#参考考据-b-whitmania-公共库物种错误鉴定",
-      "stop_report_link": "openspec/changes/archive/2026-08-10-animal-short-read-assembly-evidence/VALIDATION-animal.md#停-报记录",
-      "literature": "Ye et al. (2015), citation and misidentification evidence recorded in VALIDATION-animal.md."
+    "reference_pack_id": "tcm-animal-cm084263-v0.1",
+    "version": "0.1.0",
+    "status": "experimental",
+    "taxon_group": "animal",
+    "targets": ["mitome"],
+    "reference_fasta": "CM084263.1.fasta",
+    "sha256": {
+        "CM084263.1.fasta": "3bd6b997a0ef0fd3e35c9ef8169e1f48338334ee9ee90f90b95f8ef52faf5468"
+    },
+    "decision_reference": {
+        "accession": "CM084263.1",
+        "organism": "Whitmania acranulata",
+        "isolate": "jianxi01",
+        "source": "NCBI GenBank CM084263.1; complete mitochondrial sequence, whole genome shotgun sequence",
+        "bioproject": "PRJNA1072149",
+        "biosample": "SAMN39735897",
+        "length_bp": 14505,
+        "topology": "circular",
+        "circularity_disclosure": "CM084263.1 and the M2-① validation reads are BioProject-derived from the same provenance chain; the observed agreement tests workflow reproducibility/lineage consistency, not independent biological validation.",
+        "source_citation": "Lin G., Comparative genomics of three non-hematophagous leeches (Whitmania spp.): focusing on antithrombotic genes (NCBI record, unpublished; direct submission 05-May-2024, School of Life Sciences, Jinggangshan University)."
+    },
+    "quarantined_records": [
+        {
+            "accession": "NC_023928.1",
+            "status": "QUARANTINED",
+            "decision_eligible": false,
+            "organism": "Whitmania acranulata",
+            "source_bioproject": "PRJNA927338",
+            "observed_divergence_vs_CM084263": 0.8762,
+            "divergence_percent": 87.62,
+            "evidence_link": "openspec/changes/archive/2026-08-10-animal-short-read-assembly-evidence/VALIDATION-animal.md#参考考据-b-whitmania-公共库物种错误鉴定",
+            "stop_report_link": "openspec/changes/archive/2026-08-10-animal-short-read-assembly-evidence/VALIDATION-animal.md#停-报记录",
+            "literature": "Ye et al. (2015), citation and misidentification evidence recorded in VALIDATION-animal.md."
+        }
+    ],
+    "gap_mask": "gap_mask.bed",
+    "d_loop_exclusion": {
+        "mode": "coding_features_only",
+        "basis": "M2-① annotation has no control-region feature; non-coding/high-variation space is excluded by allowing only the three declared coding windows"
+    },
+    "diagnostic_sites": "diagnostic_sites.tsv",
+    "callable_regions": "callable_regions.tsv",
+    "conflict_rules": {
+        "non_authentic_identity": 0.9
+    },
+    "provenance": {
+        "reference_record": "assets/bait_references/mitofinder-bait-v0.1/CM084263.gb",
+        "validation_coords": "/home/iris-hp/whitmania_validation/identity/wtm_final.1coords",
+        "sha256_required": true
     }
-  ],
-  "gap_mask": "gap_mask.bed",
-  "d_loop_exclusion": {
-    "mode": "coding_features_only",
-    "basis": "M2-① annotation has no control-region feature; non-coding/high-variation space is excluded by allowing only the three declared coding windows"
-  },
-  "diagnostic_sites": "diagnostic_sites.tsv",
-  "callable_regions": "callable_regions.tsv",
-  "conflict_rules": {
-    "non_authentic_identity": 0.90
-  },
-  "provenance": {
-    "reference_record": "assets/bait_references/mitofinder-bait-v0.1/CM084263.gb",
-    "validation_coords": "/home/iris-hp/whitmania_validation/identity/wtm_final.1coords",
-    "sha256_required": true
-  }
 }
