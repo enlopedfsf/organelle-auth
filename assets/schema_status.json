@@ -26,7 +26,10 @@
                 "interface_id": { "type": ["string", "null"] },
                 "version": { "type": ["string", "null"] },
                 "panel_status": { "type": ["string", "null"] },
-                "state": { "type": ["string", "null"], "enum": ["NOT_APPLICABLE", "PRESENT", "MISSING", "UNCALLABLE", "MISMATCH", null] },
+                "state": {
+                    "type": ["string", "null"],
+                    "enum": ["NOT_APPLICABLE", "PRESENT", "MISSING", "UNCALLABLE", "MISMATCH", null]
+                },
                 "reason_code": { "type": ["string", "null"] },
                 "required_for_decision": { "type": ["boolean", "null"] }
             }

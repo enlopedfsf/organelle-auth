@@ -27,6 +27,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
@@ -52,6 +53,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
@@ -76,6 +78,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
@@ -100,6 +103,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'CANDIDATE', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
@@ -124,6 +128,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'NOT_APPLICABLE', false, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
@@ -148,6 +153,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
@@ -172,6 +178,7 @@ nextflow_process {
                 """
                 input[0] = [ [id:'S1'], 'DRAFT', true, file("${projectDir}/asm.json"), file("${projectDir}/cm.json"), file("${projectDir}/dm.json"), file("${projectDir}/man.json") ]
                 input[1] = file("${projectDir}/policy.json")
+                input[2] = file("${projectDir}/assets/marker_interfaces/animal-sci-007-empty.json")
                 """
             }
         }
