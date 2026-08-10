@@ -1,0 +1,22 @@
+{
+  "interface_id": "SCI-007-animal-nuclear-marker",
+  "version": "0.1.0",
+  "taxon_group": "animal",
+  "marker_panel_id": null,
+  "marker_panel_version": null,
+  "panel_status": "EMPTY_PLACEHOLDER",
+  "decision_eligible": false,
+  "input_contract": {
+    "sample_id": "string",
+    "taxon_group": "animal",
+    "evidence_paths": [],
+    "callable": false,
+    "summary": null,
+    "provenance": null
+  },
+  "output_contract": {
+    "status": "MISSING",
+    "reason_code": "MARKER_PANEL_MISSING"
+  },
+  "prohibitions": ["no fabricated marker", "no automatic ITS2 fallback"]
+}
