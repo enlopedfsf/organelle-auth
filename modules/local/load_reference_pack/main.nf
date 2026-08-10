@@ -90,7 +90,7 @@ if manifest.get("taxon_group") == "animal":
     if expected:
         got = hashlib.sha256(open(ref_path, "rb").read()).hexdigest()
         if got != expected:
-            sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: reference checksum mismatch\n")
+            sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: reference checksum mismatch\\n")
             sys.exit(1)
     # Diagnostic windows must be bounded, non-empty, and outside the declared gap mask.
     gaps = []
