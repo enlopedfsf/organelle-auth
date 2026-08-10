@@ -262,6 +262,12 @@
                     "format": "file-path",
                     "description": "Policy pack JSON path; null preserves production INCONCLUSIVE behavior until thresholds are configured.",
                     "hidden": true
+                },
+                "animal_marker_interface_file": {
+                    "type": ["string", "null"],
+                    "format": "file-path",
+                    "description": "SCI-007 animal nuclear-marker interface JSON; v0.1 may be an explicit empty placeholder.",
+                    "hidden": true
                 }
             }
         },

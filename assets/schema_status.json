@@ -19,6 +19,18 @@
         },
         "reason_codes": { "type": "array", "items": { "type": "string" } },
         "policy_pack_id": { "type": "string" },
+        "nuclear_marker": {
+            "type": ["object", "null"],
+            "description": "SCI-007 marker-panel interface state; absent evidence is explicit and is never replaced with an inferred ITS2 result.",
+            "properties": {
+                "interface_id": { "type": ["string", "null"] },
+                "version": { "type": ["string", "null"] },
+                "panel_status": { "type": ["string", "null"] },
+                "state": { "type": ["string", "null"], "enum": ["NOT_APPLICABLE", "PRESENT", "MISSING", "UNCALLABLE", "MISMATCH", null] },
+                "reason_code": { "type": ["string", "null"] },
+                "required_for_decision": { "type": ["boolean", "null"] }
+            }
+        },
         "evidence_files": { "type": "array", "items": { "type": "string" } }
     }
 }

@@ -26,13 +26,16 @@ workflow PLANT_SR_ASSEMBLY {
     // both, to disentangle MTPT/PTMT). The nf-core config module fetches only the requested type,
     // so we fetch pt+mt together here. from_reads still assembles the PLASTOME only (-F embplant_pt);
     // the mt DB is present purely to satisfy the cross-check / MTPT filtering.
-    db_pt_full = GETORGANELLE_CONFIG_PT(channel.of('embplant_pt,embplant_mt'))
+    // Derive the configuration trigger from actual plant input.  A static channel.of() starts
+    // remote database downloads even in animal-only runs, where the plant assembly channel is
+    // empty; that blocks otherwise completed M2 validation without contributing evidence.
+    db_pt_full = GETORGANELLE_CONFIG_PT(ch_clean_reads.map { meta, reads -> 'embplant_pt,embplant_mt' }.unique())
     db_pt      = db_pt_full.db.map { organelle_type, db -> tuple('embplant_pt', db) }
     asm_pt     = GETORGANELLE_FROMREADS_PT(ch_clean_reads, db_pt)
     adapter_pt = GETORGANELLE_RESULT_ADAPTER_PT(asm_pt.etc, channel.value('embplant_pt'))
 
     // ---- nrDNA (embplant_nr): 方法学 §3.2 (-k 35,85,115 in modules.config) ----
-    db_nr      = GETORGANELLE_CONFIG_NR(channel.of('embplant_nr'))
+    db_nr      = GETORGANELLE_CONFIG_NR(ch_clean_reads.map { meta, reads -> 'embplant_nr' }.unique())
     asm_nr     = GETORGANELLE_FROMREADS_NR(ch_clean_reads, db_nr.db)
     adapter_nr = GETORGANELLE_RESULT_ADAPTER_NR(asm_nr.etc, channel.value('embplant_nr'))
 

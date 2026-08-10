@@ -41,6 +41,11 @@
     },
     "diagnostic_sites": "diagnostic_sites.tsv",
     "callable_regions": "callable_regions.tsv",
+    "marker_requirements": {
+        "required_for_decision": false,
+        "interface_id": "SCI-007-animal-nuclear-marker",
+        "rationale": "M2-② supplies only the typed empty SCI-007 interface; a future approved taxon-specific panel may turn this requirement on."
+    },
     "conflict_rules": {
         "non_authentic_identity": 0.9
     },
