@@ -14,10 +14,10 @@
 
 ## 3. Evaluation workflow
 
-- [x] 3.1 Implement the plant long-read pilot subworkflow consuming filtered ONT reads and M1 short-read evidence read-only.
+- [ ] 3.1 Implement the plant long-read pilot subworkflow consuming filtered ONT reads and M1 short-read evidence read-only.
 - [ ] 3.2 Implement sequence comparison against PZ405204 and the M1 short-read assembly, recording aligned span, identity, conflicts, gaps, tool versions, and command provenance without hardcoded acceptance thresholds.
 - [ ] 3.3 Implement coordinate-aware circularity and 38 kb IR-gap closure assessment with `closed`/`not_closed`/`not_assessable` outcomes and evidence references; never force circularization or gap filling.
-- [x] 3.4 Implement the reusable homopolymer error-spectrum procedure: scan maximal SR homopolymer intervals, lift through the fixed alignment, stratify LR-vs-SR substitutions/indels and run-length deltas by reference run length, record callable/ambiguous coordinates, and emit versioned TSV/JSON outputs that can be rerun unchanged for CycloneSEQ.
+- [ ] 3.4 Implement the reusable homopolymer error-spectrum procedure: scan maximal SR homopolymer intervals, lift through the fixed alignment, stratify LR-vs-SR substitutions/indels and run-length deltas by reference run length, record callable/ambiguous coordinates, and emit versioned TSV/JSON outputs that can be rerun unchanged for CycloneSEQ.
 - [ ] 3.5 Add normalized resource accounting (wall time, CPU, peak memory, disk, input/output sizes) and a machine-readable evaluation JSON.
 
 ## 4. Tests and regression protection
@@ -30,7 +30,7 @@
 ## 5. Real-data validation and Go/No-Go record
 
 - [ ] 5.1 Run PMAT2 end-to-end on the Corydalis ONT fixture with the paired SR anchor and record the exact command, platform, versions, digest, and resource trace.
-- [x] 5.2 Write `VALIDATION-plant-lr.md` with input integrity, QC, assembly status, circularity, IR-gap closure, PZ405204/SR concordance, homopolymer spectrum, resources, and explicit ONT/CycloneSEQ limitations.
+- [ ] 5.2 Write `VALIDATION-plant-lr.md` with input integrity, QC, assembly status, circularity, IR-gap closure, PZ405204/SR concordance, homopolymer spectrum, resources, and explicit ONT/CycloneSEQ limitations.
 - [x] 5.3 Write the M3 Go/No-Go document skeleton; populate ONT evidence and leave CycloneSEQ transfer fields `PENDING_REAL_DATA`.
 - [x] 5.4 Update `registries/tools.yaml` validation_record for PMAT2 without changing `EXPERIMENTAL` admission, and reconcile the compatibility manifest versions.
 
