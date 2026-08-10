@@ -4,7 +4,7 @@ nextflow_pipeline {
     script "../main.nf"
     tag "pipeline"
 
-    test("-stub -profile test") {
+    test("-stub-run -profile test") {
 
         setup {
             def read1 = new File("${launchDir}/ci_stub_R1.fastq")

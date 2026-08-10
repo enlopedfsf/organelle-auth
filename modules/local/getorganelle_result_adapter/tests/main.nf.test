@@ -16,7 +16,6 @@ nextflow_process {
         setup {
             // module-copied result (1 contig) + marker-bearing path_sequence + graph
             new File("${launchDir}/demo.K115.assembly_graph.fastg").bytes = "".bytes
-            new File("${launchDir}/demo.embplant_pt.fasta.gz").bytes = ">scaffold_1\nACGTACGTACGT\n".bytes
             new File("${launchDir}/demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta").bytes = ">scaffold_1\nACGTACGTACGT\n".bytes
         }
 
@@ -25,7 +24,7 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id:'demo', single_end:false ],
-                    [ file("${launchDir}/demo.embplant_pt.fasta.gz"), file("${launchDir}/demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta"), file("${launchDir}/demo.K115.assembly_graph.fastg") ]
+                    [ file("${launchDir}/demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta"), file("${launchDir}/demo.K115.assembly_graph.fastg") ]
                 ]
                 input[1] = 'embplant_pt'
                 """
