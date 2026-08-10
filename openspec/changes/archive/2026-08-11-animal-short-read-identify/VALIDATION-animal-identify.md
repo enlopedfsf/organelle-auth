@@ -49,6 +49,9 @@ reason code. No marker sequence or taxon-specific panel is fabricated.
 
 ## Gate status
 
-The local strict OpenSpec validation currently passes 8/8. T1–T3 must be rerun after the evidence
-labeling fix, then the changes must be pushed and GitHub Actions must be fully green (including the
-canonical image job) before merge and `/opsx:archive animal-short-read-identify`.
+The local strict OpenSpec validation passes 8/8, and the local schema/traceability gate passes all
+checks. The canonical CI run is
+`https://github.com/enlopedfsf/organelle-auth/actions/runs/31407939848`; its immutable image is
+`ghcr.io/enlopedfsf/mitofinder@sha256:174e1384dc549acb77ea57ab1ddfe55974dfcee9fe9c1965b6c8d3248bbfe4c2`.
+The image build, T1–T3 animal smoke, both Nextflow matrices, pre-commit, schema, nf-core, and
+confirm-pass checks are all green. The merged PR is #7 (`b6e9caa5e39e9c0544e9cbff9dc94dffe1eaa63e`).
