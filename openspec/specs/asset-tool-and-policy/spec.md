@@ -102,4 +102,3 @@ Any revision to a placeholder threshold in an `experimental` policy pack SHALL b
 - **WHEN** a threshold in a policy pack is changed
 - **THEN** the change is accompanied by the validation-artifact revision table
 - **AND** the reason for the new value is traceable to a validation run, not an undocumented round number
-
