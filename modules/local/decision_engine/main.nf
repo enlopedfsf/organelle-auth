@@ -82,6 +82,8 @@ non_auth  = (manifest.get("conflict_rules", {}) or {}).get("non_authentic_identi
 ident     = dm.get("diagnostic_identity")
 call_cov  = cm.get("callable_coverage", 0.0)
 mean_dep  = cm.get("mean_readback_depth", 0.0)
+numt_hit = "NUMT_RISK_SUSPECTED" in asm_reasons
+numt_blocks = bool(dm.get("numt_blocks_diagnostics", False))
 
 decision = status = "INCONCLUSIVE"
 reason = []
@@ -95,6 +97,10 @@ if (not produced_pt) or asm_status == "FAIL" or grade == "NOT_APPLICABLE" or ass
 #    branch is effectively unreachable until Kraken2 self-built DB contamination screening lands.
 elif "COVERAGE_ANOMALY" in asm_reasons:
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["CONTAMINATION_SUSPECTED"]
+# NUMT screening is not confirmation: a blocking overlap downgrades, otherwise the warning is
+# retained on an otherwise supportable result. It is never silently discarded or a standalone call.
+elif numt_hit and numt_blocks:
+    decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["NUMT_RISK_SUSPECTED"]
 # 3. 决策 2: null policy threshold → INCONCLUSIVE + THRESHOLD_NOT_CONFIGURED (no crash)
 elif cs is None or uz is None or min_cf is None or min_md is None or uz_lo is None or uz_hi is None:
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["THRESHOLD_NOT_CONFIGURED"]
@@ -118,9 +124,9 @@ else:
     else:
         # authentic-track: identity ≥ uncertainty_zone.upper
         if grade == "CANDIDATE":
-            decision, status, reason = "AUTHENTIC", "PASS", []
+            decision, status, reason = "AUTHENTIC", "WARN" if numt_hit else "PASS", ["NUMT_RISK_SUSPECTED"] if numt_hit else []
         elif grade == "DRAFT":
-            decision, status, reason = "AUTHENTIC", "WARN", ["INCOMPLETE_ASSEMBLY"]
+            decision, status, reason = "AUTHENTIC", "WARN", ["INCOMPLETE_ASSEMBLY"] + (["NUMT_RISK_SUSPECTED"] if numt_hit else [])
         else:
             decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", []  # unexpected grade → no forced call
 
@@ -138,6 +144,7 @@ out = {
     "uncallable_sites": dm.get("uncallable_sites", []),
     "callable_coverage": call_cov,
     "mean_readback_depth": mean_dep,
+    "numt_risk_detected": numt_hit,
     "thresholds_used": {
         "min_callable_fraction": min_cf,
         "min_mean_depth": min_md,
