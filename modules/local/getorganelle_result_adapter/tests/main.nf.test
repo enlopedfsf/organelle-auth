@@ -15,11 +15,9 @@ nextflow_process {
 
         setup {
             // module-copied result (1 contig) + marker-bearing path_sequence + graph
-            run """
-                touch demo.K115.assembly_graph.fastg
-                printf '>scaffold_1\\nACGTACGTACGT\\n' > demo.embplant_pt.fasta.gz
-                printf '>scaffold_1\\nACGTACGTACGT\\n' > demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta
-            """ {}
+            new File("${launchDir}/demo.K115.assembly_graph.fastg").bytes = "".bytes
+            new File("${launchDir}/demo.embplant_pt.fasta.gz").bytes = ">scaffold_1\nACGTACGTACGT\n".bytes
+            new File("${launchDir}/demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta").bytes = ">scaffold_1\nACGTACGTACGT\n".bytes
         }
 
         when {
@@ -27,7 +25,7 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id:'demo', single_end:false ],
-                    [ file('demo.embplant_pt.fasta.gz'), file('demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta'), file('demo.K115.assembly_graph.fastg') ]
+                    [ file("${launchDir}/demo.embplant_pt.fasta.gz"), file("${launchDir}/demo.embplant_pt.K105.complete.graph1.1.path_sequence.fasta"), file("${launchDir}/demo.K115.assembly_graph.fastg") ]
                 ]
                 input[1] = 'embplant_pt'
                 """
@@ -48,11 +46,9 @@ nextflow_process {
         setup {
             // GetOrganelle produces *.scaffolds.graph1.1.path_sequence* even for a fragmented
             // 6-scaffold result (observed for Corydalis SRR38978846). Must NOT be CANDIDATE.
-            run """
-                touch demo.K115.assembly_graph.fastg
-                printf '>scaffold_1\\nACGT\\n>scaffold_2\\nACGT\\n>scaffold_3\\nACGT\\n>scaffold_4\\nACGT\\n>scaffold_5\\nACGT\\n>scaffold_6\\nACGT\\n' > demo.embplant_pt.fasta.gz
-                printf '>scaffold_1\\nACGT\\n>scaffold_2\\nACGT\\n>scaffold_3\\nACGT\\n>scaffold_4\\nACGT\\n>scaffold_5\\nACGT\\n>scaffold_6\\nACGT\\n' > demo.embplant_pt.K105.scaffolds.graph1.1.path_sequence.fasta
-            """ {}
+            new File("${launchDir}/demo.K115.assembly_graph.fastg").bytes = "".bytes
+            new File("${launchDir}/demo.embplant_pt.fasta.gz").bytes = ">scaffold_1\nACGT\n>scaffold_2\nACGT\n>scaffold_3\nACGT\n>scaffold_4\nACGT\n>scaffold_5\nACGT\n>scaffold_6\nACGT\n".bytes
+            new File("${launchDir}/demo.embplant_pt.K105.scaffolds.graph1.1.path_sequence.fasta").bytes = ">scaffold_1\nACGT\n>scaffold_2\nACGT\n>scaffold_3\nACGT\n>scaffold_4\nACGT\n>scaffold_5\nACGT\n>scaffold_6\nACGT\n".bytes
         }
 
         when {
@@ -60,7 +56,7 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id:'demo', single_end:false ],
-                    [ file('demo.embplant_pt.fasta.gz'), file('demo.embplant_pt.K105.scaffolds.graph1.1.path_sequence.fasta'), file('demo.K115.assembly_graph.fastg') ]
+                    [ file("${launchDir}/demo.embplant_pt.fasta.gz"), file("${launchDir}/demo.embplant_pt.K105.scaffolds.graph1.1.path_sequence.fasta"), file("${launchDir}/demo.K115.assembly_graph.fastg") ]
                 ]
                 input[1] = 'embplant_pt'
                 """
@@ -79,7 +75,7 @@ nextflow_process {
     test("no usable sequence -> NOT_APPLICABLE (edge/failure)") {
 
         setup {
-            run "touch demo.K115.assembly_graph.fastg" {} // graph present but no circularized/scaffold fasta
+            new File("${launchDir}/demo.K115.assembly_graph.fastg").bytes = "".bytes // graph present but no circularized/scaffold fasta
         }
 
         when {
@@ -87,7 +83,7 @@ nextflow_process {
                 """
                 input[0] = [
                     [ id:'demo', single_end:false ],
-                    [ file('demo.K115.assembly_graph.fastg') ]
+                    [ file("${launchDir}/demo.K115.assembly_graph.fastg") ]
                 ]
                 input[1] = 'embplant_pt'
                 """
