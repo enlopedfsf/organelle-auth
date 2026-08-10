@@ -1,0 +1,11 @@
+{
+  "policy_id": "tcm-animal-production-null-0.1.0",
+  "status": "production",
+  "scope": {"taxon_group": "animal", "targets": ["mitome"]},
+  "thresholds": {
+    "short_read_qc": null,
+    "callable_site": {"min_callable_fraction": null, "min_mean_depth": null},
+    "junction_support": null,
+    "uncertainty_zone": {"lower": null, "upper": null}
+  }
+}
