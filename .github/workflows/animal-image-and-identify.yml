@@ -34,6 +34,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Fetch pinned MitoFinder source archive for the Docker build
+        run: |
+          test ! -e containers/mitofinder/MitoFinder-master.tar.gz
+          curl --fail --location --retry 2 \
+            https://github.com/RemiAllio/MitoFinder/archive/refs/heads/master.tar.gz \
+            --output containers/mitofinder/MitoFinder-master.tar.gz
+          test -s containers/mitofinder/MitoFinder-master.tar.gz
+
       - name: Log in to GHCR (canonical publisher)
         if: github.event_name == 'push'
         uses: docker/login-action@v3
