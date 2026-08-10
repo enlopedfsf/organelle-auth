@@ -9,14 +9,15 @@ PMAT2 remains `EXPERIMENTAL`; no output is connected to IDENTIFY or DECISION_ENG
 ## Input integrity
 
 The pipeline requires non-empty files, gzip validation, and FASTQ record validation before launch.
-The local files and exact byte sizes are recorded in the run manifest; a complete gzip pass is
-still required before the real run is accepted. Reference: `corydalis-test-0.1/PZ405204.1`.
+The local files are non-empty (R1 2.1G, R2 2.2G, ONT 15G); full validation is performed by the
+pilot before PMAT2 consumes the stream. Reference: `corydalis-test-0.1/PZ405204.1`.
 
 ## Method contract
 
 - NanoPlot descriptive QC before/after filtering.
 - filtlong is the selected filter; no scientific threshold is invented when the policy is null.
 - PMAT2 version is pinned to `2.1.5` from the upstream release; invocation is `PMAT autoMito -t ont -x 0`.
+- Runtime provisioned locally: NextDenovo 2.5.2, Canu 2.3, BLAST 2.17.0, R 4.x, Apptainer 1.5.3.
 - M1 IR gap is `PZ405204.1:96371..134285` (1-based inclusive), copied from archived M1 validation.
 - Homopolymer records use maximal SR runs, fixed-alignment lifting, callable denominators,
   substitutions/indels, and run-length delta; the schema is reusable for CycloneSEQ.
@@ -25,7 +26,7 @@ still required before the real run is accepted. Reference: `corydalis-test-0.1/P
 
 | Metric | Result |
 |---|---|
-| PMAT2 runtime | `PENDING_RUNTIME` (Apptainer/NextDenovo runtime not present on this host) |
+| PMAT2 runtime | `RUNNING` (started 2026-08-11 01:45 CST; log and PID under `/mnt/ssd_pool/home/iris-hp/zhongyao/corydalis_test/m3-pmat2-ont-v2.1.5/`) |
 | PMAT2 assembly | `not_assessable` |
 | IR gap closure | `not_assessable` (no assembly to align; no closure inferred) |
 | LR/SR concordance | `not_assessable` |
