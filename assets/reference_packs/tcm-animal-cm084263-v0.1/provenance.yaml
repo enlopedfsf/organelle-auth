@@ -1,0 +1,8 @@
+pack_id: tcm-animal-cm084263-v0.1
+reference_accession: CM084263.1
+source_record: assets/bait_references/mitofinder-bait-v0.1/CM084263.gb
+validation_alignment: /home/iris-hp/whitmania_validation/identity/wtm_final.1coords
+same_bioproject_circularity: true
+independent_biological_validation: false
+gap_mask_basis: M2-① wtm_final.1coords (106 unaligned reference bases)
+diagnostic_coordinate_system: CM084263.1, 1-based inclusive
