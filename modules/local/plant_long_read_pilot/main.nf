@@ -16,6 +16,7 @@ process PLANT_LONG_READ_PILOT_RUN {
     output:
     tuple val(meta), path("${meta.id}.plant-long-read-report.json"), emit: report
     tuple val(meta), path("${meta.id}.plant-long-read-status.json"), emit: status
+    path "versions.yml", emit: tool_versions
     tuple val("${task.process}"), val('plant_long_read_pilot'), val('0.1.0'), emit: versions
 
     script:
@@ -115,11 +116,13 @@ process PLANT_LONG_READ_PILOT_RUN {
     status={'sample_id':sid,'stage':'plant_long_read_pilot','status':'EXPERIMENTAL_COMPLETE' if pmat_state=='COMPLETED' else 'EXPERIMENTAL_BLOCKED','decision':'NOT_APPLICABLE','reason_codes':[] if pmat_state=='COMPLETED' else [pmat_state],'experimental_only':True}
     json.dump(status,open(sid+'.plant-long-read-status.json','w'),indent=2)
     PY
+    printf 'plant_long_read_pilot:\n  PMAT2: 2.1.5\n  platform: ONT\n  mode: "ont/plant"\n' > versions.yml
     """
 
     stub:
     """
     printf '{"sample_id":"%s","experimental_only":true,"pmat2_state":"STUB","ir_closure":"not_assessable"}' '${meta.id}' > '${meta.id}.plant-long-read-report.json'
     printf '{"sample_id":"%s","stage":"plant_long_read_pilot","status":"EXPERIMENTAL_BLOCKED","decision":"NOT_APPLICABLE","reason_codes":["STUB"]}' '${meta.id}' > '${meta.id}.plant-long-read-status.json'
+    printf 'plant_long_read_pilot:\n  PMAT2: stub\n' > versions.yml
     """
 }
