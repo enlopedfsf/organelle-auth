@@ -26,7 +26,7 @@ REFERENCE   3  (bases 1 to 14462)
             Drug Controls, DingZi QiaoRoad 54#, Wuhan, HuBei 430064, China
 COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
             reference sequence is identical to KC688271.
-            
+
             ##Assembly-Data-START##
             Sequencing Technology :: Sanger dideoxy sequencing
             ##Assembly-Data-END##
@@ -313,7 +313,7 @@ FEATURES             Location/Qualifiers
                      AGCMQSDLRALMAYSSISHLGWMMSVLSGVYKMLSIIYFIMYTLLVLPIFFIMAFVNI
                      KSMSMLFSINKISFSNLLVLYYLFCLLEVLPPLSGFMPKLMILNILVYENLLMGVLMV
                      IFSLMSLYMYMNMFFTMFIFYYMNLELKLEFNYVMLMSILISFCLLPMVMI"
-ORIGIN      
+ORIGIN
         1 atgcgttgaa tctactctac tagacataag gacattggaa ccttatattt tattttaggc
        61 gcatgagcgg ctatattggg ctcatccata agatctatta ttcgaattga attatctcaa
       121 ccagggagat ttttaggaga tgaccaacta tataattcat tagtaactgc acatgggtta
