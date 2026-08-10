@@ -77,7 +77,6 @@ workflow ORGANELLEAUTH {
     // identify-mode sample is present IDENTIFY simply runs no tasks (empty input channel).
     ch_id_asm    = aqc.assembly_qc.filter { meta, pl, gr, grade, ppt, nr, pnr, bam, dp, fs -> meta.analysis_mode == 'identify' }
     ch_id_status = emit_asm.status_json.filter { meta, status_json -> meta.analysis_mode == 'identify' }
-    identify = IDENTIFY(ch_id_asm, ch_id_status)
 
     //
     // M2-① animal branch: same QC_SHORT + read-back reuse; animal-specific assembly (MitoFinder),
@@ -98,6 +97,16 @@ workflow ORGANELLEAUTH {
         tuple(meta, mito, ann, infos, grade, prod, bam, depth, flagstat, ns)
     }
     emit_a = EMIT_ANIMAL_ASSEMBLY_QC_STATUS(ch_emit_a)
+
+    // M2-② animal identify reuses the frozen IDENTIFY skeleton. The adapter below only changes
+    // tuple shape: animal mitogenome/annotation are read-only evidence, and no plant asset is
+    // regenerated. The shared decision engine selects the animal pack from meta.reference_pack_id.
+    ch_id_animal_asm = aqc_a.assembly_qc.filter { meta, mito, ann, infos, grade, prod, bam, dp, fs -> meta.analysis_mode == 'identify' }
+        .map { meta, mito, ann, infos, grade, prod, bam, dp, fs ->
+            tuple(meta, mito, ann, grade, prod, ann, prod, bam, dp, fs)
+        }
+    ch_id_animal_status = emit_a.status_json.filter { meta, status_json -> meta.analysis_mode == 'identify' }
+    identify = IDENTIFY(ch_id_asm.mix(ch_id_animal_asm), ch_id_status.mix(ch_id_animal_status))
 
     log.info "[organelleauth] M1-①+②: plant short-read samples → assembly + read-back evidence; identify-mode samples → IDENTIFY. M2-①: animal short-read samples → mitogenome assembly + read-back + NUMT risk screen."
 
