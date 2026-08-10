@@ -45,3 +45,5 @@
 - [x] 7.1 `openspec validate --all` 全绿（含新 spec 域）
 - [x] 7.2 归档 change（`openspec archive animal-short-read-assembly-evidence`），spec 并入 `openspec/specs/animal-short-read-analysis/spec.md`
 - [x] 7.3 提交（descriptive message 以 `Co-Authored-By: Claude <noreply@anthropic.com>` 结尾）
+
+> **遗留(2026-08-10):** ghcr 镜像 push 卡在本机 snap docker 网络困境(dockerd 直连 ghcr 时通时断 + confinement 阻断 127.0.0.1 代理)。本地镜像 ghcr.io/enlopedfsf/mitofinder:1.4.2-fix 已构建可用、T1 本地 10/10、真实数据三场景全过。push 作为独立工程任务处理(可行路径:① v2ray 监听 0.0.0.0 让 snap daemon 可达代理;② 改 CI build)。详见 memory feedback_snap_docker_ghcr_push。
