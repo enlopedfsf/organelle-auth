@@ -2,6 +2,7 @@ nextflow_pipeline {
 
     name "Test pipeline"
     script "../main.nf"
+    config "./default.nextflow.config"
     tag "pipeline"
 
     test("test profile structural smoke") {
