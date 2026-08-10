@@ -33,5 +33,12 @@ pilot before PMAT2 consumes the stream. Reference: `corydalis-test-0.1/PZ405204.
 | Homopolymer spectrum | schema ready; measured values pending assembly |
 | T3 full real-data smoke | intentionally not a CI test; run only after runtime availability |
 
+### Observed ONT read census (PMAT2/NextDenovo pre-correction)
+
+The active run has recorded 1,782,187 raw reads / 15,242,639,075 bases, read N50 26,802 bp,
+and 1,409,638 clean reads / 14,997,098,903 bases after the tool's pre-correction filter. The
+estimated genome size is 201.55 Mb at an estimated clean depth of 74.41x; these are descriptive
+run metrics, not authentication thresholds.
+
 This is an honest blocked apply-stage record, not a pass. The Go/No-Go record therefore remains
 `NO_GO` for production and `PENDING_REAL_DATA` for CycloneSEQ.
