@@ -1,0 +1,2 @@
+sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id
+WTM_NORMAL,identify,animal,mitome,/home/iris-hp/whitmania_validation/reads/WTM_NORMAL_1.fastq.gz,/home/iris-hp/whitmania_validation/reads/WTM_NORMAL_2.fastq.gz,,routine_test,unknown,tcm-animal-cm084263-v0.1,tcm-animal-engineering-test-0.1.0,m2-identify-validation

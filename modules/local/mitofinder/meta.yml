@@ -32,7 +32,7 @@ output:
         description: Sample metadata.
       - "${meta.id}":
           type: directory
-          description: MitoFinder output directory (CWD/<seqid>/): *_mtDNA_contig.fasta, *_mtDNA_contig.gb, *.infos, assembly dirs.
+          description: "MitoFinder output directory (CWD/<seqid>/): *_mtDNA_contig.fasta, *_mtDNA_contig.gb, *.infos, assembly dirs."
   versions:
     - - "${task.process}":
         type: string

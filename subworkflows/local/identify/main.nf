@@ -70,13 +70,20 @@ workflow IDENTIFY {
     // container — a host-path val is NOT mounted under docker (BUG surfaced by the scenario-1 real
     // run; same val→path fix as LOAD_REFERENCE_PACK). null/production → /dev/null stages an empty
     // file → DECISION_ENGINE policy={} → THRESHOLD_NOT_CONFIGURED (决策 2 null defense, unchanged).
-    dec = DECISION_ENGINE(dec_in, channel.value(file(params.policy_pack_file ?: '/dev/null')))
+    dec = DECISION_ENGINE(
+        dec_in,
+        channel.value(file(params.policy_pack_file ?: '/dev/null')),
+        channel.value(file(params.animal_marker_interface_file ?: '/dev/null'))
+    )
     // dec.decision = (meta, decision.json)
 
     // ---- EMIT_IDENTIFY_STATUS: stage=identify status JSON + staged evidence ----
     ch_decided = ch_metrics.join(dec.decision)
     emit_in = ch_decided.map { meta, pl, gr, grade, ppt, nr, pnr, bam, dp, fs, st, man, ref, dtv, ctv, paf_f, cm_f, dm_f, dec_f ->
-        tuple(meta, dec_f, pl, gr, nr, bam, dp, fs, st) }
+        // M2-② must never publish into M2-①'s frozen animal_sr_assembly tree. Plant keeps its
+        // pre-existing M1-② contract; animal identify has an explicitly isolated tree.
+        def stage_root = meta.taxon_group == 'animal' ? 'animal_sr_identify' : 'plant_sr_assembly'
+        tuple(meta, stage_root, dec_f, pl, gr, nr, bam, dp, fs, st) }
     emitted = EMIT_IDENTIFY_STATUS(emit_in)
 
     emit:

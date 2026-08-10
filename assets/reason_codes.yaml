@@ -55,3 +55,9 @@ codes:
   - code: IDENTITY_BELOW_THRESHOLD
     category: non_authentic
     meaning: "诊断位点一致性低于 reference-pack conflict_rules 阈值；NON_AUTHENTIC"
+  - code: MARKER_PANEL_MISSING
+    category: scientific_inconclusive
+    meaning: "SCI-007 核 marker panel 为空或缺失；不虚构 marker 证据，INCONCLUSIVE"
+  - code: MARKER_PANEL_MISMATCH
+    category: engineering_fail
+    meaning: "SCI-007 marker panel 与样本 taxon/interface 不匹配；fail-fast"

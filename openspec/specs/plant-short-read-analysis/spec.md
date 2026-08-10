@@ -154,4 +154,3 @@ When ① emits a validated contamination or coverage-anomaly signal, `IDENTIFY` 
 
 - **WHEN** `IDENTIFY` 发出 reason code
 - **THEN** 该码定义于版本化 `reason_codes.yaml`（含 `THRESHOLD_NOT_CONFIGURED`/`IDENTITY_BELOW_THRESHOLD`/`CONTAMINATION_SUSPECTED`/`INCOMPLETE_ASSEMBLY`/`DIAGNOSTIC_SITES_NOT_CALLABLE`），非自由文本
-

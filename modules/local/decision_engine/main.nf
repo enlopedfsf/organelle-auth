@@ -29,6 +29,7 @@ process DECISION_ENGINE {
     input:
     tuple val(meta), val(grade), val(produced_pt), path(asm_status_json), path(callable_metrics), path(diagnostic_metrics), path(manifest)
     path  policy_file
+    path  marker_interface_file
 
     output:
     tuple val(meta), path("${meta.id}.decision.json"), emit: decision
@@ -40,6 +41,7 @@ process DECISION_ENGINE {
     script:
     """
     SAMPLE_ID="${meta.id}" \\
+    TAXON_GROUP="${meta.taxon_group}" \\
     GRADE="${grade}" \\
     PRODUCED_PT="${produced_pt}" \\
     POLICY_PATH="${policy_file}" \\
@@ -47,6 +49,7 @@ process DECISION_ENGINE {
 import os, json
 
 sid         = os.environ["SAMPLE_ID"]
+taxon_group = os.environ["TAXON_GROUP"]
 grade       = os.environ["GRADE"]
 produced_pt = os.environ["PRODUCED_PT"] == "true"
 
@@ -66,6 +69,27 @@ if ppath and ppath not in ("null", "None"):
     except Exception:
         policy = {}
 
+# SCI-007 is a typed input/status interface, not an inferred ITS2 fallback.  The M2 v0.1
+# interface is intentionally EMPTY_PLACEHOLDER.  A reference pack explicitly controls whether
+# an approved panel is required for this particular decision; absent approval is still preserved
+# in status provenance and never fabricated.
+marker = {}
+try:
+    marker = json.load(open("${marker_interface_file}"))
+except Exception:
+    marker = {}
+marker_state = "NOT_APPLICABLE"
+marker_reason = None
+if taxon_group == "animal":
+    if marker.get("taxon_group") not in (None, "animal"):
+        marker_state, marker_reason = "MISMATCH", "MARKER_PANEL_MISMATCH"
+    elif marker.get("panel_status") == "EMPTY_PLACEHOLDER" or not marker.get("marker_panel_id"):
+        marker_state, marker_reason = "MISSING", "MARKER_PANEL_MISSING"
+    else:
+        marker_state = "PRESENT" if marker.get("input_contract", {}).get("callable") else "UNCALLABLE"
+        marker_reason = None if marker_state == "PRESENT" else "MARKER_PANEL_MISSING"
+marker_required = bool((manifest.get("marker_requirements", {}) or {}).get("required_for_decision", False))
+
 asm_status       = asm.get("status")
 asm_reasons      = list(asm.get("reason_codes", []))
 assembly_grade_1 = asm.get("assembly_grade")
@@ -82,6 +106,8 @@ non_auth  = (manifest.get("conflict_rules", {}) or {}).get("non_authentic_identi
 ident     = dm.get("diagnostic_identity")
 call_cov  = cm.get("callable_coverage", 0.0)
 mean_dep  = cm.get("mean_readback_depth", 0.0)
+numt_hit = "NUMT_RISK_SUSPECTED" in asm_reasons
+numt_blocks = bool(dm.get("numt_blocks_diagnostics", False))
 
 decision = status = "INCONCLUSIVE"
 reason = []
@@ -95,9 +121,18 @@ if (not produced_pt) or asm_status == "FAIL" or grade == "NOT_APPLICABLE" or ass
 #    branch is effectively unreachable until Kraken2 self-built DB contamination screening lands.
 elif "COVERAGE_ANOMALY" in asm_reasons:
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["CONTAMINATION_SUSPECTED"]
+# NUMT screening is not confirmation: a blocking overlap downgrades, otherwise the warning is
+# retained on an otherwise supportable result. It is never silently discarded or a standalone call.
+elif numt_hit and numt_blocks:
+    decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["NUMT_RISK_SUSPECTED"]
 # 3. 决策 2: null policy threshold → INCONCLUSIVE + THRESHOLD_NOT_CONFIGURED (no crash)
 elif cs is None or uz is None or min_cf is None or min_md is None or uz_lo is None or uz_hi is None:
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["THRESHOLD_NOT_CONFIGURED"]
+# A pack may require a future approved SCI-007 panel. M2-②'s frozen empty interface is
+# explicitly non-required, so normal engineering-path validation remains callable while the
+# missing panel state stays visible in provenance.
+elif marker_required and marker_state != "PRESENT":
+    decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", [marker_reason or "MARKER_PANEL_MISSING"]
 # 4. diagnostic sites not all callable → INCONCLUSIVE (site-level gate, even if global identity high)
 elif dm.get("n_diagnostic_callable", 0) < dm.get("n_diagnostic_total", 0):
     decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", ["DIAGNOSTIC_SITES_NOT_CALLABLE"]
@@ -118,9 +153,9 @@ else:
     else:
         # authentic-track: identity ≥ uncertainty_zone.upper
         if grade == "CANDIDATE":
-            decision, status, reason = "AUTHENTIC", "PASS", []
+            decision, status, reason = "AUTHENTIC", "WARN" if numt_hit else "PASS", ["NUMT_RISK_SUSPECTED"] if numt_hit else []
         elif grade == "DRAFT":
-            decision, status, reason = "AUTHENTIC", "WARN", ["INCOMPLETE_ASSEMBLY"]
+            decision, status, reason = "AUTHENTIC", "WARN", ["INCOMPLETE_ASSEMBLY"] + (["NUMT_RISK_SUSPECTED"] if numt_hit else [])
         else:
             decision, status, reason = "INCONCLUSIVE", "INCONCLUSIVE", []  # unexpected grade → no forced call
 
@@ -138,6 +173,15 @@ out = {
     "uncallable_sites": dm.get("uncallable_sites", []),
     "callable_coverage": call_cov,
     "mean_readback_depth": mean_dep,
+    "numt_risk_detected": numt_hit,
+    "nuclear_marker": {
+        "interface_id": marker.get("interface_id"),
+        "version": marker.get("version"),
+        "panel_status": marker.get("panel_status"),
+        "state": marker_state,
+        "reason_code": marker_reason,
+        "required_for_decision": marker_required,
+    },
     "thresholds_used": {
         "min_callable_fraction": min_cf,
         "min_mean_depth": min_md,

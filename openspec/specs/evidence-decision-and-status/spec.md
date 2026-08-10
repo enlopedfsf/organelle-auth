@@ -89,4 +89,3 @@ While ① does not emit a coverage-anomaly signal and no validated contaminant s
 - **THEN** the contamination is not detected
 - **AND** `DECISION_ENGINE` does not emit `CONTAMINATION_SUSPECTED`
 - **AND** the gap is documented in the change design and linked to the future Kraken2 self-built DB change
-

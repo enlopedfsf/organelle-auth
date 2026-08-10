@@ -1,0 +1,6 @@
+# CM084263.1 reference coordinates; 0-based half-open.
+# Fixed non-risk windows from M2-② design: internal ATP6, CYTB, and ND6 coding sequence.
+ref_contig	start	end
+CM084263.1	499	700
+CM084263.1	1799	2000
+CM084263.1	2199	2350

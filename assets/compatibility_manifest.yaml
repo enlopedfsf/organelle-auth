@@ -3,10 +3,16 @@
 # 独立版本化，由 compatibility_id 统一 reconciliation —— 不强制同版本号（§10.3）。
 # 空框架：字段为 null，正式运行前填充。
 
-compatibility_id: null
+compatibility_id: "organelleauth-m2-002-animal-0.1"
 pipeline: null
 method_spec: "1.1.1"
-reference_pack: null
+reference_pack:
+  id: "tcm-animal-cm084263-v0.1"
+  version: "0.1.0"
+  requirements: [DATA-005, SCI-001, SCI-007]
 kraken_db: null
-policy_pack: null
+policy_pack:
+  engineering_test: "tcm-animal-engineering-test-0.1.0"
+  production_null: "tcm-animal-production-null-0.1.0"
+  requirements: [ENG-POL-001, ENG-POL-002, ENG-POL-003]
 validation_dataset: null

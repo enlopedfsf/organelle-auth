@@ -1,0 +1,2 @@
+sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id
+CI_STUB,identify,plant,plastome,../../../assets/test/ci_stub_R1.fastq,../../../assets/test/ci_stub_R2.fastq,,routine_test,unknown,corydalis-test-0.1,tcm-plant-production-null-0.1.0,ci

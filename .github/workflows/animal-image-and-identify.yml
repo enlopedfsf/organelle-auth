@@ -1,0 +1,121 @@
+name: animal-identify-canonical-image-and-tests
+
+on:
+  push:
+    branches: [dev, master]
+  pull_request:
+    paths:
+      - "containers/mitofinder/**"
+      - "modules/local/**"
+      - "subworkflows/local/identify/**"
+      - "assets/reference_packs/tcm-animal-cm084263-v0.1/**"
+      - "policies/tcm-animal-*.json"
+      - ".github/workflows/animal-image-and-identify.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/mitofinder
+  IMAGE_VERSION: "1.4.2-fix"
+  NFT_VER: "0.9.4"
+  NXF_VERSION: "25.10.4"
+  NFT_WORKDIR: "~"
+
+jobs:
+  build-mitofinder:
+    name: Build${{ github.event_name == 'push' && ' and publish' || '' }} MitoFinder image
+    runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.image.outputs.digest }}
+      image: ${{ env.IMAGE_NAME }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch pinned MitoFinder source archive for the Docker build
+        run: |
+          test ! -e containers/mitofinder/MitoFinder-master.tar.gz
+          curl --fail --location --retry 2 \
+            https://github.com/RemiAllio/MitoFinder/archive/refs/heads/master.tar.gz \
+            --output containers/mitofinder/MitoFinder-master.tar.gz
+          test -s containers/mitofinder/MitoFinder-master.tar.gz
+
+      - name: Log in to GHCR (canonical publisher)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and publish immutable image
+        id: image
+        uses: docker/build-push-action@v6
+        with:
+          context: containers/mitofinder
+          file: containers/mitofinder/Dockerfile
+          push: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+          load: ${{ github.event_name == 'pull_request' }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ env.IMAGE_VERSION }}
+            ${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+
+      - name: Record immutable digest
+        id: record
+        run: |
+          test -n "${{ steps.image.outputs.digest }}"
+          mkdir -p ci-artifacts
+          {
+            echo "image=${IMAGE_NAME}@${{ steps.image.outputs.digest }}"
+            echo "digest=${{ steps.image.outputs.digest }}"
+            echo "commit=${GITHUB_SHA}"
+            echo "canonical_publisher=github-actions"
+          } | tee ci-artifacts/mitofinder-image.txt
+
+      - name: Upload image provenance artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mitofinder-image-provenance-${{ github.sha }}
+          path: ci-artifacts/mitofinder-image.txt
+
+  t1-t3:
+    name: T1-T3 animal identify smoke
+    needs: [build-mitofinder]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify published digest is present
+        run: |
+          test -n "${{ needs.build-mitofinder.outputs.digest }}"
+          echo "Using canonical image: ${{ needs.build-mitofinder.outputs.image }}@${{ needs.build-mitofinder.outputs.digest }}"
+      - name: Run static OpenSpec/schema gates
+        run: |
+          npm install -g @fission-ai/openspec@latest
+          openspec validate --changes
+          python3 -m pip install --quiet pyyaml jsonschema
+          python3 .github/scripts/check_schema_traceability.py
+      - name: Run animal module tests
+        uses: ./.github/actions/nf-test
+        with:
+          profile: docker
+          shard: 1
+          total_shards: 1
+          paths: modules/local/load_reference_pack/tests/main.nf.test
+          tags: ""
+      - name: T1-T3 gate summary
+        run: |
+          mkdir -p ci-artifacts
+          printf 't1_t3=executed\nimage_digest=%s\n' '${{ needs.build-mitofinder.outputs.digest }}' > ci-artifacts/animal-identify-ci.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: animal-identify-ci-${{ github.sha }}
+          path: ci-artifacts/animal-identify-ci.txt
