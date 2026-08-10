@@ -16,7 +16,7 @@
             },
             "analysis_mode": {
                 "type": "string",
-                "enum": ["reference_build", "identify", "validate"],
+                "enum": ["reference_build", "identify", "validate", "long_read_pilot"],
                 "meta": ["analysis_mode"]
             },
             "taxon_group": {

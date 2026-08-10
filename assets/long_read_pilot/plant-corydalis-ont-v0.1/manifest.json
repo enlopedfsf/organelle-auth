@@ -1,0 +1,15 @@
+{
+  "pilot_id": "plant-corydalis-ont-v0.1",
+  "platform": "ONT",
+  "source_accession": "SRR38978847",
+  "source_file": "SRR38978847-long.fastq.gz",
+  "taxon_group": "plant",
+  "taxon": "Corydalis ophiocarpa",
+  "reference_pack_id": "corydalis-test-0.1",
+  "reference_accession": "PZ405204.1",
+  "m1_ir_gap": {"contig": "PZ405204.1", "start": 96371, "end": 134285, "coordinate_system": "1-based-inclusive", "source": "openspec/changes/archive/2026-08-09-plant-short-read-assembly-evidence/VALIDATION-7.1.md"},
+  "pmat2": {"mode": "autoMito", "technology": "ont", "taxon_code": 0, "admission_status": "EXPERIMENTAL"},
+  "cycloneseq_transferability": "PENDING_REAL_DATA",
+  "decision_path": "PROHIBITED",
+  "notes": "ONT public data are a method exercise only; conclusions must not be generalized to CycloneSEQ."
+}
