@@ -56,7 +56,7 @@ runs:
         channel-priority: strict
         conda-remove-defaults: true
 
-      - name: Run nf-test
+    - name: Run nf-test
       shell: bash
       env:
         NFT_WORKDIR: ${{ env.NFT_WORKDIR }}
