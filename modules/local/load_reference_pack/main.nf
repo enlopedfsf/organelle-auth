@@ -71,20 +71,20 @@ for aux in ("diagnostic_sites.tsv", "callable_regions.tsv"):
 if manifest.get("taxon_group") == "animal":
     dr = manifest.get("decision_reference", {}) or {}
     if dr.get("accession") != "CM084263.1" or dr.get("topology") != "circular" or dr.get("length_bp") != 14505:
-        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: invalid CM084263 decision-reference metadata\n")
+        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: invalid CM084263 decision-reference metadata\\n")
         sys.exit(1)
     if not manifest.get("d_loop_exclusion") or manifest["d_loop_exclusion"].get("mode") != "coding_features_only":
-        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: animal pack lacks D-loop exclusion declaration\n")
+        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: animal pack lacks D-loop exclusion declaration\\n")
         sys.exit(1)
     q = manifest.get("quarantined_records", []) or []
     nc = [r for r in q if r.get("accession") == "NC_023928.1"]
     if len(nc) != 1 or nc[0].get("status") != "QUARANTINED" or nc[0].get("decision_eligible") is not False:
-        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: NC_023928.1 must be a non-eligible QUARANTINED record\n")
+        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: NC_023928.1 must be a non-eligible QUARANTINED record\\n")
         sys.exit(1)
     gap_name = manifest.get("gap_mask")
     gap_path = os.path.join(pack, gap_name) if gap_name else ""
     if not gap_path or not os.path.isfile(gap_path) or os.path.getsize(gap_path) == 0:
-        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: animal gap mask missing/empty\n")
+        sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: animal gap mask missing/empty\\n")
         sys.exit(1)
     expected = (manifest.get("sha256", {}) or {}).get(ref_name)
     if expected:
@@ -97,16 +97,16 @@ if manifest.get("taxon_group") == "animal":
     with open(gap_path) as fh:
         for line in fh:
             if line.startswith("#") or not line.strip(): continue
-            f = line.rstrip("\n").split("\t")
+            f = line.rstrip("\\n").split("\\t")
             if len(f) >= 3: gaps.append((int(f[1]) + 1, int(f[2])))
     with open(os.path.join(pack, "diagnostic_sites.tsv")) as fh:
         for line in fh:
             if line.startswith("name") or line.startswith("#") or not line.strip(): continue
-            f = line.rstrip("\n").split("\t")
+            f = line.rstrip("\\n").split("\\t")
             if len(f) < 4: continue
             s, e = int(f[2]), int(f[3])
             if not (1 <= s <= e <= int(dr["length_bp"])) or any(max(s, gs) <= min(e, ge) for gs, ge in gaps):
-                sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: diagnostic window out of bounds or overlaps gap mask\n")
+                sys.stderr.write("[LOAD_REFERENCE_PACK] DATA-005: diagnostic window out of bounds or overlaps gap mask\\n")
                 sys.exit(1)
 
 # Stage to deterministic work-dir names so downstream modules can reference them.
