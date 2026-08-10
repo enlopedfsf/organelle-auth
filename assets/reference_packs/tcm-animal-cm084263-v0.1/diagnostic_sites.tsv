@@ -1,0 +1,4 @@
+name	ref_contig	start	end	feature	selection_reason
+ATP6_W1	CM084263.1	500	700	ATP6	internal_coding_window; scaffold_11981_12181; outside_D_loop_and_gap_mask
+CYTB_W1	CM084263.1	1800	2000	CYTB	internal_coding_window; scaffold_13281_13481; outside_D_loop_and_gap_mask
+ND6_W1	CM084263.1	2200	2350	ND6	internal_coding_window; scaffold_13681_13831; outside_D_loop_and_gap_mask
