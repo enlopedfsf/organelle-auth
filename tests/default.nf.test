@@ -10,8 +10,10 @@ nextflow_pipeline {
             def read1 = new File("${launchDir}/ci_stub_R1.fastq")
             def read2 = new File("${launchDir}/ci_stub_R2.fastq")
             def samplesheet = new File("${launchDir}/samplesheet_ci_stub.csv")
-            read1.text = "@ci_stub/1\nACGT\n+\n!!!!\n"
-            read2.text = "@ci_stub/2\nTGCA\n+\n!!!!\n"
+            def sequence = 'ACGT' * 25
+            def qualities = 'I' * 100
+            read1.text = "@ci_stub/1\n${sequence}\n+\n${qualities}\n"
+            read2.text = "@ci_stub/2\n${sequence.reverse()}\n+\n${qualities}\n"
             samplesheet.text = "sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id\nCI_STUB,identify,plant,plastome,${read1.absolutePath},${read2.absolutePath},,routine_test,unknown,corydalis-test-0.1,tcm-plant-production-null-0.1.0,ci\n"
         }
 

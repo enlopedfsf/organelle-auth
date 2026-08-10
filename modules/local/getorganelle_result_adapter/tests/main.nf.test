@@ -35,7 +35,7 @@ nextflow_process {
         then {
             assert process.success
             assert process.out.plastome.size() == 1
-            assert process.out.plastome.get(0).get(1).getName() == "demo_plastome.fasta"
+            assert path(process.out.plastome.get(0).get(1)).getName() == "demo_plastome.fasta"
             assert path(process.out.grade_file.get(0).get(1)).text == "CANDIDATE"
             assert path(process.out.produced_file.get(0).get(1)).text == "true"
         }
@@ -66,7 +66,7 @@ nextflow_process {
         then {
             assert process.success
             assert process.out.plastome.size() == 1
-            assert process.out.plastome.get(0).get(1).getName() == "demo_plastome.scaffold.fasta"   // DRAFT naming
+            assert path(process.out.plastome.get(0).get(1)).getName() == "demo_plastome.scaffold.fasta"   // DRAFT naming
             assert path(process.out.grade_file.get(0).get(1)).text == "DRAFT"
             assert path(process.out.produced_file.get(0).get(1)).text == "true"
         }
@@ -95,7 +95,7 @@ nextflow_process {
             // "always present" contract: the plastome emit carries the .NONE placeholder when
             // nothing was assembled; the real "no assembly" signal is grade + produced.
             assert process.out.plastome.size() == 1
-            assert process.out.plastome.get(0).get(1).getName() == "demo_plastome.NONE"
+            assert path(process.out.plastome.get(0).get(1)).getName() == "demo_plastome.NONE"
             assert path(process.out.grade_file.get(0).get(1)).text == "NOT_APPLICABLE"
             assert path(process.out.produced_file.get(0).get(1)).text == "false"
         }
