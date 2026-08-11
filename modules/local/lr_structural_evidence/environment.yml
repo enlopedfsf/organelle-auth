@@ -1,0 +1,3 @@
+name: lr_structural_evidence
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

@@ -1,0 +1,30 @@
+name: plant_long_read_pilot
+description: Experimental ONT plant long-read QC and PMAT2 pilot; outputs never enter decision.
+keywords: [long-read, ONT, PMAT2, experimental]
+tools:
+  - PMAT2:
+      description: Plant organelle assembly pilot, invoked with -t ont -x 0.
+      homepage: https://github.com/aiPGAB/PMAT2
+      licence: [MIT]
+input:
+  - - meta:
+        type: map
+    - short_reads:
+        type: file
+        description: Optional M1 short-read evidence paths, read-only.
+    - long_reads:
+        type: file
+        description: ONT FASTQ/FASTQ.GZ input.
+  - - reference_fasta:
+        type: file
+    - manifest:
+        type: file
+output:
+  report:
+    - - meta:
+        type: map
+      - "*.plant-long-read-report.json": { type: file }
+  status:
+    - - meta:
+        type: map
+      - "*.plant-long-read-status.json": { type: file }

@@ -1,0 +1,3 @@
+name: lr_select_paf
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

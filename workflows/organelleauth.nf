@@ -23,6 +23,7 @@ include { ANIMAL_SR_ASSEMBLY     } from '../subworkflows/local/animal_sr_assembl
 include { ANIMAL_ASSEMBLY_QC     } from '../subworkflows/local/animal_assembly_qc'
 include { NUMT_RISK_SCREEN       } from '../modules/local/numt_risk_screen/main'
 include { EMIT_ANIMAL_ASSEMBLY_QC_STATUS } from '../modules/local/emit_animal_assembly_qc_status/main'
+include { PLANT_LONG_READ_REFERENCE_FIRST } from '../subworkflows/local/plant_long_read_reference_first'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -57,6 +58,29 @@ workflow ORGANELLEAUTH {
         meta.has_short_reads &&
         meta.targets.contains('mitome')
     }
+
+    // M3 route is deliberately isolated from all short-read assembly/identify channels.
+    // Its outputs are experimental evidence only and cannot reach IDENTIFY or DECISION_ENGINE.
+    ch_plant_lr = ch_samplesheet.filter { row ->
+        def meta = row[0]
+        meta.analysis_mode == 'long_read_pilot' && meta.taxon_group == 'plant' && meta.has_long_reads
+    }
+    lr_policy_file = file(params.long_read_reference_first_policy_file)
+    lr_policy_data = new groovy.json.JsonSlurper().parse(lr_policy_file.toFile())
+    lr_manifest_file = file(params.long_read_pilot_manifest)
+    lr_manifest_data = new groovy.json.JsonSlurper().parse(lr_manifest_file.toFile())
+    // A missing M1 anchor is tolerated only when the LR channel is empty. Any actual pilot task
+    // stages this explicit path and fails before alignment if it is missing/empty.
+    lr_m1_anchor = file(params.long_read_pilot_m1_anchor_fasta ?: "${projectDir}/assets/long_read_pilot/M1_ANCHOR_NOT_CONFIGURED")
+    lr_pilot = PLANT_LONG_READ_REFERENCE_FIRST(
+        ch_plant_lr,
+        file(params.long_read_pilot_reference_fasta),
+        file(params.long_read_pilot_reference_metadata),
+        lr_m1_anchor,
+        lr_policy_file,
+        lr_policy_data,
+        lr_manifest_data.platform
+    )
 
     // One QC_SHORT (fastp) invocation serves BOTH branches (Nextflow DSL2: a process cannot be
     // included twice in one workflow). Plant + animal clean reads are split after QC.
@@ -108,11 +132,11 @@ workflow ORGANELLEAUTH {
     ch_id_animal_status = emit_a.status_json.filter { meta, status_json -> meta.analysis_mode == 'identify' }
     identify = IDENTIFY(ch_id_asm.mix(ch_id_animal_asm), ch_id_status.mix(ch_id_animal_status))
 
-    log.info "[organelleauth] M1-①+②: plant short-read samples → assembly + read-back evidence; identify-mode samples → IDENTIFY. M2-①: animal short-read samples → mitogenome assembly + read-back + NUMT risk screen."
+    log.info "[organelleauth] M1/M2 short-read routes remain unchanged. M3 uses isolated reference-first recruitment -> Flye subset primary -> PMAT2 -p 0 comparator evidence; it never feeds IDENTIFY/DECISION."
 
     emit:
     multiqc_report = channel.empty().toList()   // MultiQC wiring is out of scope
-    versions       = emit_asm.versions.mix(asm.versions).mix(identify.versions)
+    versions       = emit_asm.versions.mix(asm.versions).mix(identify.versions).mix(lr_pilot.versions)
                         .mix(asm_a.versions).mix(aqc_a.versions).mix(numt_a.versions).mix(emit_a.versions)
-    status         = emit_asm.status_json.mix(identify.status).mix(emit_a.status_json)
+    status         = emit_asm.status_json.mix(identify.status).mix(emit_a.status_json).mix(lr_pilot.status)
 }

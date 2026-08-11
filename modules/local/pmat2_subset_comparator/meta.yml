@@ -1,0 +1,21 @@
+name: pmat2_subset_comparator
+description: Run PMAT2 only as an optional experimental comparator on the exact Flye subset with correction disabled (-p 0).
+keywords: [long-read, pmat2, comparator, organelle]
+tools:
+  - PMAT2: { description: Plant mitochondrial assembly toolkit comparator., licence: ["GPL-3.0"] }
+input:
+  - - meta: { type: map }
+    - reads: { type: file }
+    - gate_status: { type: file }
+  - policy: { type: file }
+  - policy_data: { type: map }
+output:
+  assembly:
+    [
+      { meta: { type: map } },
+      { "*.pmat2-comparator.fasta": { type: file } },
+      { "*.pmat2-comparator-status.json": { type: file } },
+      { "*.pmat2-comparator-command.txt": { type: file } },
+    ]
+  versions: [{ "${task.process}": { type: string } }, { PMAT2: { type: string } }, { "2.1.5": { type: string } }]
+authors: ["enlopedfsf"]

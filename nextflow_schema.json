@@ -302,6 +302,69 @@
                     "hidden": true
                 }
             }
+        },
+        "plant_long_read_analysis_options": {
+            "title": "Plant long-read reference-first analysis (M3 EXPERIMENTAL)",
+            "type": "object",
+            "fa_icon": "fas fa-leaf",
+            "description": "Locators and runtimes for isolated reference-sensitive recruitment, target-evidence gating, Flye subset assembly, and PMAT2 -p 0 comparison. Scientific values live in a versioned policy and remain null in production.",
+            "properties": {
+                "long_read_pilot_reference_fasta": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Non-empty canonical organelle reference FASTA used for sensitive recruitment.",
+                    "hidden": true
+                },
+                "long_read_pilot_manifest": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Pilot provenance manifest declaring ONT platform and PENDING_REAL_DATA CycloneSEQ status.",
+                    "hidden": true
+                },
+                "long_read_pilot_reference_metadata": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Versioned reference status, circular rotation offsets, compatibility scope, and declared structural junctions.",
+                    "hidden": true
+                },
+                "long_read_pilot_m1_anchor_fasta": {
+                    "type": ["string", "null"],
+                    "format": "file-path",
+                    "description": "Explicit non-empty M1 short-read assembly evidence anchor; never substituted silently by the reference.",
+                    "hidden": true
+                },
+                "long_read_reference_first_policy_file": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "description": "Versioned policy containing raw processing budget, mapper/recruitment values, rescue-pass switch (maximum two), target gates, Flye settings, PMAT2 comparator settings, and disabled full-background fallback controls.",
+                    "hidden": true
+                },
+                "long_read_filter_policy_file": {
+                    "type": ["string", "null"],
+                    "format": "file-path",
+                    "description": "Optional descriptive long-read filter policy. Null means traceable pass-through, not an implicit threshold.",
+                    "hidden": true
+                },
+                "minimap2_container": {
+                    "type": "string",
+                    "description": "Pinned minimap2 container for read recruitment and assembly evidence alignment.",
+                    "hidden": true
+                },
+                "flye_container": {
+                    "type": "string",
+                    "description": "Pinned Flye container for primary target-subset assembly.",
+                    "hidden": true
+                },
+                "pmat2_container": {
+                    "type": "string",
+                    "description": "Runtime for the optional PMAT2 comparator. Until a PMAT2 image is validated, the default runnable shell image produces structured COMPARATOR_ASSEMBLY_FAILED evidence; override only with a verified PMAT2 image.",
+                    "hidden": true
+                }
+            }
         }
     },
     "allOf": [
@@ -325,6 +388,9 @@
         },
         {
             "$ref": "#/$defs/animal_short_read_assembly_options"
+        },
+        {
+            "$ref": "#/$defs/plant_long_read_analysis_options"
         }
     ]
 }

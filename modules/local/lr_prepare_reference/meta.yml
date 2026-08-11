@@ -1,0 +1,23 @@
+name: lr_prepare_reference
+description: Validate the canonical circular reference, M1 anchor, metadata compatibility, and emit deterministic reference rotations.
+keywords: [long-read, reference, circular, provenance]
+tools:
+  - python: { description: FASTA and metadata validation plus sequence rotation., licence: ["PSF-2.0"] }
+input:
+  - meta: { type: map, description: Sample metadata. }
+  - reference: { type: file, description: Non-empty canonical organelle reference FASTA. }
+  - reference_metadata: { type: file, description: Versioned reference metadata JSON. }
+  - m1_anchor: { type: file, description: Non-empty paired M1 evidence anchor FASTA. }
+output:
+  prepared:
+    - - meta: { type: map }
+      - "*.reference-rotations.fasta": { type: file }
+      - "*.reference-coordinate-map.tsv": { type: file }
+      - "*.reference-status.json": { type: file }
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { organelle_lr_evidence: { type: string } },
+      { "0.1.0": { type: string } },
+    ]
+authors: ["enlopedfsf"]

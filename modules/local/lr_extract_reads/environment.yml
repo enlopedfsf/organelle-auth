@@ -1,0 +1,3 @@
+name: lr_extract_reads
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

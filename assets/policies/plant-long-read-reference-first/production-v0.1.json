@@ -1,0 +1,66 @@
+{
+    "policy_id": "plant-long-read-reference-first-production-v0.1",
+    "version": "0.1.0",
+    "admission_status": "NOT_CONFIGURED",
+    "scientific_basis": "production calibration pending",
+    "raw_input": {
+        "target_bases": null,
+        "seed": null,
+        "purpose": "processing_budget_only"
+    },
+    "mapper": {
+        "preset": "map-ont",
+        "emit_cigar": true,
+        "emit_cs": "long",
+        "secondary": true,
+        "max_secondary": null,
+        "secondary_score_ratio": null
+    },
+    "structural_alignment": {
+        "preset": "asm5",
+        "emit_cigar": true,
+        "emit_cs": "long",
+        "secondary": true,
+        "max_secondary": null,
+        "secondary_score_ratio": null
+    },
+    "recruitment": {
+        "min_aligned_bases": null,
+        "min_query_aligned_fraction": null,
+        "max_divergence": null,
+        "mapq_is_sole_filter": false,
+        "retain_alignment_classes": ["primary", "secondary", "supplementary"]
+    },
+    "target_gate": {
+        "min_recruited_reads": null,
+        "min_recruited_bases": null,
+        "min_estimated_target_depth": null,
+        "min_reference_breadth": null,
+        "min_declared_junction_reads": null,
+        "max_recruited_to_aligned_ratio": null
+    },
+    "structural_evidence": {
+        "min_junction_flank_bases": null
+    },
+    "rescue": {
+        "enabled": false,
+        "max_passes": 2
+    },
+    "flye": {
+        "read_type": "nano-hq",
+        "genome_size": null,
+        "asm_coverage": null,
+        "iterations": null,
+        "min_overlap": null
+    },
+    "pmat2_comparator": {
+        "enabled": false,
+        "technology": "ont",
+        "taxon_code": 0,
+        "correction_mode": 0
+    },
+    "full_background_de_novo": {
+        "enabled": false,
+        "minimum_clean_depth": null
+    }
+}

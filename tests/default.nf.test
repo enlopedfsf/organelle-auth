@@ -29,4 +29,33 @@ nextflow_pipeline {
             assert workflow.success
         }
     }
+
+    test("M3 long-read pilot is isolated and experimental") {
+        setup {
+            def reads = new File("${launchDir}/ci_long.fastq")
+            def ref = new File("${launchDir}/ci_ref.fasta")
+            def manifest = new File("${launchDir}/ci_m3_manifest.json")
+            def sequence = 'ACGT' * 25
+            reads.text = "@ci_long\n${sequence}\n+\n${'I' * 100}\n"
+            ref.text = ">ref\n${'A' * 100}\n"
+            manifest.text = '{"platform":"ONT","source_accession":"TEST","m1_ir_gap":{"start":20,"end":40}}'
+            def samplesheet = new File("${launchDir}/samplesheet_m3_stub.csv")
+            samplesheet.text = "sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id\nM3_STUB,long_read_pilot,plant,plastome,,,${reads.absolutePath},routine_test,unknown,,plant-long-read-pilot-v0.1,ci\n"
+        }
+
+        when {
+            params {
+                outdir = "$outputDir"
+                input = "${launchDir}/samplesheet_m3_stub.csv"
+                long_read_pilot_reference_fasta = "${launchDir}/ci_ref.fasta"
+                long_read_pilot_manifest = "${launchDir}/ci_m3_manifest.json"
+            }
+        }
+
+        then {
+            assert workflow.success
+            assert workflow.trace.succeeded().size() == 21
+            assert path(outputDir).resolve('plant_long_read_evaluation/lr_structural_evidence/M3_STUB.structural-evidence.json').exists()
+        }
+    }
 }

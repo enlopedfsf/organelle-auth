@@ -1,0 +1,25 @@
+name: lr_homopolymer
+description: Measure anchor homopolymer run errors by lifting coordinates through minimap2 CIGAR operations.
+keywords: [long-read, homopolymer, cigar, error-spectrum]
+tools:
+  - python: { description: Alignment-aware maximal-run error analysis., licence: ["PSF-2.0"] }
+input:
+  - - meta: { type: map }
+    - anchor: { type: file }
+    - candidate: { type: file }
+    - anchor_paf: { type: file }
+  - platform: { type: string }
+output:
+  spectrum:
+    [
+      { meta: { type: map } },
+      { "*.homopolymer-spectrum.json": { type: file } },
+      { "*.homopolymer-spectrum.tsv": { type: file } },
+    ]
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { organelle_lr_evidence: { type: string } },
+      { "0.1.0": { type: string } },
+    ]
+authors: ["enlopedfsf"]

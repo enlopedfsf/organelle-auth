@@ -1,0 +1,24 @@
+name: lr_target_gate
+description: Emit reference-coordinate target evidence and apply only versioned experimental eligibility thresholds.
+keywords: [long-read, coverage, breadth, junction, gate]
+tools:
+  - python: { description: Canonical interval lifting and evidence gate evaluation., licence: ["PSF-2.0"] }
+input:
+  - - meta: { type: map }
+    - evidence: { type: file }
+    - ids: { type: file }
+    - coordinate_map: { type: file }
+    - recruited_reads: { type: file }
+  - reference_metadata: { type: file }
+  - policy: { type: file }
+  - gate_label: { type: string }
+output:
+  metrics: [{ meta: { type: map } }, { "*.target-metrics.json": { type: file } }]
+  status: [{ meta: { type: map } }, { "*.gate-status.json": { type: file } }]
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { organelle_lr_evidence: { type: string } },
+      { "0.1.0": { type: string } },
+    ]
+authors: ["enlopedfsf"]

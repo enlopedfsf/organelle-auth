@@ -3,7 +3,7 @@
 # pipeline failure 与 scientific INCONCLUSIVE 分开编码。
 # 本文件先建空框架 + 3 个示例码（各覆盖一类）；后续随实现扩展。
 
-version: "0.4.0-dev"
+version: "0.5.0-dev"
 
 categories:
   scientific_inconclusive: "证据不足/落入灰区——合法的科学'无法判定'，非流程失败"
@@ -61,3 +61,56 @@ codes:
   - code: MARKER_PANEL_MISMATCH
     category: engineering_fail
     meaning: "SCI-007 marker panel 与样本 taxon/interface 不匹配；fail-fast"
+  # ---- M3 plant long-read reference-first evidence codes ----
+  # These codes describe an EXPERIMENTAL evidence route. None implies an
+  # AUTHENTIC/NON_AUTHENTIC terminal decision.
+  - code: RECRUITMENT_COMPLETE
+    category: warn
+    stage: long_read_recruitment
+    decision_semantics: NOT_APPLICABLE
+    meaning: "参考敏感招募完成；完整 reads 与逐条 alignment 证据已留档，仅表示工程步骤完成"
+  - code: LOW_TARGET_READ_YIELD
+    category: scientific_inconclusive
+    stage: long_read_target_gate
+    decision_semantics: NOT_APPLICABLE
+    meaning: "招募到的目标 reads/bases 低于所选实验 policy，停止昂贵组装并报告 INCONCLUSIVE"
+  - code: LOW_TARGET_COVERAGE
+    category: scientific_inconclusive
+    stage: long_read_target_gate
+    decision_semantics: NOT_APPLICABLE
+    meaning: "按去重比对区间估计的目标细胞器深度低于实验 policy；与核基因组深度无关"
+  - code: LOW_REFERENCE_BREADTH
+    category: scientific_inconclusive
+    stage: long_read_target_gate
+    decision_semantics: NOT_APPLICABLE
+    meaning: "可招募 reads 覆盖的 canonical reference breadth 不足，不能进入子集组装"
+  - code: REFERENCE_DIVERGENCE_SUSPECTED
+    category: warn
+    stage: long_read_recruitment
+    decision_semantics: NOT_APPLICABLE
+    meaning: "比对分歧分布提示参考可能偏远；保留证据并 WARN，不据此强判阴性"
+  - code: OFFTARGET_RECRUITMENT_SUSPECTED
+    category: warn
+    stage: long_read_target_gate
+    decision_semantics: NOT_APPLICABLE
+    meaning: "完整招募 read bases 与可解释目标比对 bases 比例异常，提示 NUPT/非目标背景风险"
+  - code: JUNCTION_SUPPORT_INSUFFICIENT
+    category: scientific_inconclusive
+    stage: long_read_structural_validation
+    decision_semantics: NOT_APPLICABLE
+    meaning: "环化/IR 边界缺少 policy 要求的独立跨连接 reads；结构结论为 not_assessable 或 INCONCLUSIVE"
+  - code: SUBSET_ASSEMBLY_FAILED
+    category: engineering_fail
+    stage: long_read_subset_assembly
+    decision_semantics: NOT_APPLICABLE
+    meaning: "Flye 目标 read 子集主组装失败或未产生非空 FASTA"
+  - code: COMPARATOR_ASSEMBLY_FAILED
+    category: warn
+    stage: long_read_subset_comparator
+    decision_semantics: NOT_APPLICABLE
+    meaning: "PMAT2 -p 0 比较器失败；保留 Flye 主证据，不升级为鉴定结论"
+  - code: FULL_BACKGROUND_DE_NOVO_NOT_APPLICABLE
+    category: scientific_inconclusive
+    stage: long_read_routing
+    decision_semantics: NOT_APPLICABLE
+    meaning: "缺少可用参考时，高覆盖 de novo eligibility 未满足/未配置；禁止把浅层数据送入全背景纠错"

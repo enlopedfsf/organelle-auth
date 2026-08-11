@@ -1,0 +1,30 @@
+name: lr_structural_evidence
+description: Summarize candidate/reference/M1 alignments and independent read support for the declared IR gap.
+keywords: [long-read, structural-evidence, ir, junction]
+tools:
+  - python: { description: PAF-based structural evidence summarization., licence: ["PSF-2.0"] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - comparator: { type: file }
+    - reference_paf: { type: file }
+    - comparator_reference_paf: { type: file }
+    - anchor_paf: { type: file }
+    - read_candidate_paf: { type: file }
+  - reference_metadata: { type: file }
+  - policy: { type: file }
+  - platform: { type: string }
+output:
+  evidence:
+    [
+      { meta: { type: map } },
+      { "*.structural-evidence.json": { type: file } },
+      { "*.structural-evidence.tsv": { type: file } },
+    ]
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { organelle_lr_evidence: { type: string } },
+      { "0.1.0": { type: string } },
+    ]
+authors: ["enlopedfsf"]
