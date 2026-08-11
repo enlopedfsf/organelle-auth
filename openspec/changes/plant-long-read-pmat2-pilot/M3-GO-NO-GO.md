@@ -6,7 +6,7 @@ Status: `PENDING_REAL_DATA` (apply-stage scaffold; no admission promotion)
 |---|---|---|
 | Platform | ONT; method exercise only | `PENDING_REAL_DATA` |
 | PMAT2 admission | EXPERIMENTAL; output isolated from IDENTIFY/DECISION | `PENDING_REAL_DATA` |
-| PMAT2 end-to-end | `PENDING_RUNTIME` until PMAT2 + Apptainer/NextDenovo runtime is available | `PENDING_REAL_DATA` |
+| PMAT2 end-to-end | `IN_PROGRESS` (NextDenovo resumed from raw-align checkpoint; final assembly not yet emitted) | `PENDING_REAL_DATA` |
 | 38 kb IR gap closure | `not_assessable` until a non-empty PMAT2 assembly is produced and aligned | `PENDING_REAL_DATA` |
 | Homopolymer spectrum | schema and reusable method implemented; measured values pending assembly | `PENDING_REAL_DATA` |
 | Go/No-Go | `NO_GO` for production; research-only | `PENDING_REAL_DATA` |

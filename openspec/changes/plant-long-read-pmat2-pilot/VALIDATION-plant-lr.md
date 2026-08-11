@@ -9,8 +9,8 @@ PMAT2 remains `EXPERIMENTAL`; no output is connected to IDENTIFY or DECISION_ENG
 ## Input integrity
 
 The pipeline requires non-empty files, gzip validation, and FASTQ record validation before launch.
-The local files are non-empty (R1 2.1G, R2 2.2G, ONT 15G); full validation is performed by the
-pilot before PMAT2 consumes the stream. Reference: `corydalis-test-0.1/PZ405204.1`.
+The local files are present and non-empty (R1 2.1G, R2 2.2G, ONT 15G); the pilot performs gzip
+and FASTQ validation before PMAT2 consumes the stream. Reference: `corydalis-test-0.1/PZ405204.1`.
 
 ## Method contract
 
@@ -26,7 +26,7 @@ pilot before PMAT2 consumes the stream. Reference: `corydalis-test-0.1/PZ405204.
 
 | Metric | Result |
 |---|---|
-| PMAT2 runtime | `RUNNING` (started 2026-08-11 01:45 CST; log and PID under `/mnt/ssd_pool/home/iris-hp/zhongyao/corydalis_test/m3-pmat2-ont-v2.1.5/`) |
+| PMAT2 runtime | `IN_PROGRESS` (resumed 2026-08-11 11:04 CST from completed raw-align checkpoint; log and PID under `/mnt/ssd_pool/home/iris-hp/zhongyao/corydalis_test/m3-pmat2-ont-v2.1.5/`) |
 | PMAT2 assembly | `not_assessable` |
 | IR gap closure | `not_assessable` (no assembly to align; no closure inferred) |
 | LR/SR concordance | `not_assessable` |
@@ -40,5 +40,6 @@ and 1,409,638 clean reads / 14,997,098,903 bases after the tool's pre-correction
 estimated genome size is 201.55 Mb at an estimated clean depth of 74.41x; these are descriptive
 run metrics, not authentication thresholds.
 
-This is an honest blocked apply-stage record, not a pass. The Go/No-Go record therefore remains
-`NO_GO` for production and `PENDING_REAL_DATA` for CycloneSEQ.
+This is an honest in-progress apply-stage record, not a pass. The Go/No-Go record remains
+`NO_GO` for production and `PENDING_REAL_DATA` for CycloneSEQ until the runtime and structural
+evidence are complete.
