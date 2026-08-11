@@ -1,0 +1,3 @@
+name: lr_prepare_reference
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

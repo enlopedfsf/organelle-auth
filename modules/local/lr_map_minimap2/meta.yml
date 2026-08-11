@@ -1,0 +1,19 @@
+name: lr_map_minimap2
+description: Policy-controlled minimap2 mapping with CIGAR, long cs, secondary evidence, command, and runtime version provenance.
+keywords: [long-read, minimap2, paf, mapping]
+tools:
+  - minimap2: {description: Long-read and assembly mapper., homepage: https://github.com/lh3/minimap2, licence: ["MIT"]}
+input:
+  - - meta: {type: map}
+    - query: {type: file}
+    - target: {type: file}
+  - policy_data: {type: map}
+  - policy_section: {type: string}
+  - mapping_label: {type: string}
+output:
+  alignment:
+    - - meta: {type: map}
+      - "*.paf": {type: file}
+      - "*.command.txt": {type: file, description: Exact command and observed minimap2 version.}
+  versions: [{"${task.process}": {type: string}}, {minimap2: {type: string}}, {declared_container_policy: {type: string}}]
+authors: ["enlopedfsf"]

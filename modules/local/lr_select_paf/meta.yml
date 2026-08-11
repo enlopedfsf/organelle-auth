@@ -1,0 +1,15 @@
+name: lr_select_paf
+description: Select policy-eligible alignment evidence while retaining complete source read identifiers and non-primary classes.
+keywords: [long-read, recruitment, secondary-alignment, evidence]
+tools:
+  - python: {description: PAF parsing and policy evaluation., licence: ["PSF-2.0"]}
+input:
+  - - meta: {type: map}
+    - paf: {type: file}
+  - policy: {type: file}
+  - pass_number: {type: integer}
+output:
+  ids: [{meta: {type: map}}, {"*.selected.ids": {type: file}}]
+  evidence: [{meta: {type: map}}, {"*.alignment-evidence.tsv": {type: file}}, {"*.recruitment-status.json": {type: file}}]
+  versions: [{"${task.process}": {type: string}}, {organelle_lr_evidence: {type: string}}, {"0.1.0": {type: string}}]
+authors: ["enlopedfsf"]

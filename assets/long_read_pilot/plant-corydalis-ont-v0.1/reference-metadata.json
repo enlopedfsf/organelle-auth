@@ -1,0 +1,47 @@
+{
+  "schema_version": "plant-long-read-reference-metadata-0.1",
+  "reference_pack_id": "corydalis-test-0.1",
+  "reference_pack_version": "0.1.0",
+  "reference_accession": "PZ405204.1",
+  "reference_status": "ALLOWED_EXPERIMENTAL",
+  "topology": "circular",
+  "canonical_length": 200540,
+  "taxon_group": "plant",
+  "taxon": "Corydalis ophiocarpa",
+  "compatible_sample_ids": ["corydalis_ont_pilot", "SRR38978847"],
+  "rotation_offsets_0_based": [0, 50135, 100270, 150405],
+  "junctions": [
+    {
+      "id": "circular_origin",
+      "type": "circular_origin",
+      "left_start_1based": 199541,
+      "left_end_1based": 200540,
+      "right_start_1based": 1,
+      "right_end_1based": 1000
+    },
+    {
+      "id": "m1_ir_gap_left_boundary",
+      "type": "m1_gap_boundary",
+      "left_start_1based": 95371,
+      "left_end_1based": 96370,
+      "right_start_1based": 96371,
+      "right_end_1based": 97370
+    },
+    {
+      "id": "m1_ir_gap_right_boundary",
+      "type": "m1_gap_boundary",
+      "left_start_1based": 133286,
+      "left_end_1based": 134285,
+      "right_start_1based": 134286,
+      "right_end_1based": 135285
+    }
+  ],
+  "m1_ir_gap": {
+    "start_1based": 96371,
+    "end_1based": 134285,
+    "ir_copy_start_1based": 96562,
+    "ir_copy_end_1based": 121846,
+    "coordinate_source": "openspec/changes/archive/2026-08-09-plant-short-read-assembly-evidence/VALIDATION-7.1.md"
+  },
+  "notes": "Reference rotations mitigate the arbitrary circular FASTA origin. Coordinates are fixed scientific metadata and are not generated from the sample during execution."
+}

@@ -1,0 +1,15 @@
+name: lr_route_guard
+description: Prove that whole-background de novo assembly is not a silent fallback for shallow reference-first data.
+keywords: [long-read, routing, guard, de-novo]
+tools:
+  - python: {description: Versioned fallback eligibility evaluation., licence: ["PSF-2.0"]}
+input:
+  - meta: {type: map}
+  - policy: {type: file}
+  - reference_state: {type: string}
+  - strategy: {type: string}
+  - observed_clean_depth: {type: number}
+output:
+  status: [{meta: {type: map}}, {"*.full-background-route-status.json": {type: file}}]
+  versions: [{"${task.process}": {type: string}}, {organelle_lr_evidence: {type: string}}, {"0.1.0": {type: string}}]
+authors: ["enlopedfsf"]

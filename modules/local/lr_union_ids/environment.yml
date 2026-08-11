@@ -1,0 +1,3 @@
+name: lr_union_ids
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

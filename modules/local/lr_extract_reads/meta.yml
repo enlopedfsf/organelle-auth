@@ -1,0 +1,14 @@
+name: lr_extract_reads
+description: Extract complete long-read FASTQ records by selected identifiers and record checksum/count evidence.
+keywords: [long-read, fastq, whole-read, extraction]
+tools:
+  - python: {description: Streaming whole-read FASTQ extraction., licence: ["PSF-2.0"]}
+input:
+  - - meta: {type: map}
+    - reads: {type: file}
+    - ids: {type: file}
+  - extraction_label: {type: string}
+output:
+  recruited: [{meta: {type: map}}, {"*.fastq.gz": {type: file}}, {"*.manifest.json": {type: file}}]
+  versions: [{"${task.process}": {type: string}}, {organelle_lr_evidence: {type: string}}, {"0.1.0": {type: string}}]
+authors: ["enlopedfsf"]

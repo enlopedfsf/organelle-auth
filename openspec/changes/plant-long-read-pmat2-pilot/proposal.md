@@ -1,5 +1,7 @@
 ## Why
 
+> **SUPERSEDED:** The full-background PMAT2-first routing assumption in this unarchived change is superseded by `correct-plant-long-read-reference-first`. Preserve this artifact and its run evidence for audit, but do not archive its conflicting `plant-long-read-analysis` delta independently.
+
 M3 needs an evidence-first long-read pilot before any CycloneSEQ transfer decision or production
 integration. The repository already contains paired plant short-read and ONT public long-read data
 for *Corydalis* in `/mnt/ssd_pool/home/iris-hp/zhongyao/corydalis_test`; this change uses that pair

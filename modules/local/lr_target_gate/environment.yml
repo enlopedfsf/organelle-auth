@@ -1,0 +1,3 @@
+name: lr_target_gate
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

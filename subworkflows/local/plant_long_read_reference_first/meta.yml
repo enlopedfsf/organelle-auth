@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: plant_long_read_reference_first
+description: Isolated EXPERIMENTAL reference-first plant long-read recruitment, subset assembly, comparator, and structural-evidence route.
+keywords: [plant, long-read, reference-first, flye, pmat2]
+components:
+  - lr_budget_fastq
+  - lr_prepare_reference
+  - lr_map_minimap2
+  - lr_select_paf
+  - lr_extract_reads
+  - lr_target_gate
+  - flye_subset
+  - pmat2_subset_comparator
+  - lr_structural_evidence
+input:
+  - samples: {type: channel, description: "(meta, short_reads, long_reads) plant long-read samples."}
+  - reference_fasta: {type: file, description: Canonical organelle reference.}
+  - reference_metadata: {type: file, description: Versioned reference metadata.}
+  - m1_anchor_fasta: {type: file, description: Paired M1 evidence anchor.}
+  - policy_file: {type: file, description: Versioned route policy.}
+  - policy_data: {type: map, description: Parsed route policy.}
+  - platform: {type: string, description: Declared sequencing platform.}
+output:
+  - report: {type: channel, description: Structural evidence JSON/TSV.}
+  - status: {type: channel, description: Final target gate status.}
+  - primary_assembly: {type: channel, description: Flye subset assembly and status.}
+  - comparator_assembly: {type: channel, description: Optional PMAT2 comparator and status.}
+  - recruitment: {type: channel, description: Final whole-read identifiers and union manifest.}
+  - target_metrics: {type: channel, description: Target yield/depth/breadth/junction metrics.}
+  - homopolymer: {type: channel, description: Alignment-aware homopolymer error spectrum.}
+  - route_guard: {type: channel, description: Full-background fallback guard evidence.}
+  - versions: {type: channel, description: Tool version records.}
+authors: ["enlopedfsf"]

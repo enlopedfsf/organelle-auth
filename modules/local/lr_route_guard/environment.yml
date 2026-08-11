@@ -1,0 +1,3 @@
+name: lr_route_guard
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]
