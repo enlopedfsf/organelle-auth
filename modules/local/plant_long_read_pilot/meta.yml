@@ -23,8 +23,8 @@ output:
   report:
     - - meta:
         type: map
-      - "*.plant-long-read-report.json": {type: file}
+      - "*.plant-long-read-report.json": { type: file }
   status:
     - - meta:
         type: map
-      - "*.plant-long-read-status.json": {type: file}
+      - "*.plant-long-read-status.json": { type: file }

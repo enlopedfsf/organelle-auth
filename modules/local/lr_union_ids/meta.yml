@@ -2,13 +2,23 @@ name: lr_union_ids
 description: Deterministically union pass-one and one rescue-pass whole-read identifiers.
 keywords: [long-read, recruitment, rescue, union]
 tools:
-  - python: {description: Identifier union and pass-count manifest., licence: ["PSF-2.0"]}
+  - python: { description: Identifier union and pass-count manifest., licence: ["PSF-2.0"] }
 input:
-  - - meta: {type: map}
-    - pass1_ids: {type: file}
-    - pass2_ids: {type: file}
-  - policy: {type: file}
+  - - meta: { type: map }
+    - pass1_ids: { type: file }
+    - pass2_ids: { type: file }
+  - policy: { type: file }
 output:
-  union: [{meta: {type: map}}, {"*.final.selected.ids": {type: file}}, {"*.recruitment-union.json": {type: file}}]
-  versions: [{"${task.process}": {type: string}}, {organelle_lr_evidence: {type: string}}, {"0.1.0": {type: string}}]
+  union:
+    [
+      { meta: { type: map } },
+      { "*.final.selected.ids": { type: file } },
+      { "*.recruitment-union.json": { type: file } },
+    ]
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { organelle_lr_evidence: { type: string } },
+      { "0.1.0": { type: string } },
+    ]
 authors: ["enlopedfsf"]

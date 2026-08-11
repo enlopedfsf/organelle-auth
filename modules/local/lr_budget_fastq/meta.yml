@@ -6,13 +6,22 @@ tools:
       description: Streaming deterministic FASTQ selection and manifest generation.
       licence: ["PSF-2.0"]
 input:
-  - - meta: {type: map, description: Sample metadata.}
-    - reads: {type: file, description: Non-empty long-read FASTQ or FASTQ.GZ.}
-  - policy: {type: file, description: Versioned reference-first policy JSON.}
+  - - meta: { type: map, description: Sample metadata. }
+    - reads: { type: file, description: Non-empty long-read FASTQ or FASTQ.GZ. }
+  - policy: { type: file, description: Versioned reference-first policy JSON. }
 output:
   bounded:
-    - - meta: {type: map, description: Sample metadata.}
-      - "*.bounded.fastq": {type: file, description: Deterministically bounded complete reads; uncompressed to avoid recompression CPU.}
-      - "*.input-budget.json": {type: file, description: Counts, bases, seed, purpose, and checksum.}
-  versions: [{"${task.process}": {type: string}}, {organelle_lr_evidence: {type: string}}, {"0.1.0": {type: string}}]
+    - - meta: { type: map, description: Sample metadata. }
+      - "*.bounded.fastq":
+          {
+            type: file,
+            description: Deterministically bounded complete reads; uncompressed to avoid recompression CPU.,
+          }
+      - "*.input-budget.json": { type: file, description: Counts, bases, seed, purpose, and checksum. }
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { organelle_lr_evidence: { type: string } },
+      { "0.1.0": { type: string } },
+    ]
 authors: ["enlopedfsf"]

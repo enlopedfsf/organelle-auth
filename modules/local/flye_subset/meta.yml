@@ -2,15 +2,31 @@ name: flye_subset
 description: Assemble only an eligible recruited long-read subset with policy-supplied Flye arguments.
 keywords: [long-read, flye, organelle, assembly]
 tools:
-  - flye: {description: Long-read de novo assembler., homepage: https://github.com/mikolmogorov/Flye, licence: ["BSD-3-Clause"]}
+  - flye:
+      {
+        description: Long-read de novo assembler.,
+        homepage: https://github.com/mikolmogorov/Flye,
+        licence: ["BSD-3-Clause"],
+      }
 input:
-  - - meta: {type: map}
-    - reads: {type: file}
-    - gate_status: {type: file}
-  - policy: {type: file}
-  - policy_data: {type: map}
-  - assembly_label: {type: string}
+  - - meta: { type: map }
+    - reads: { type: file }
+    - gate_status: { type: file }
+  - policy: { type: file }
+  - policy_data: { type: map }
+  - assembly_label: { type: string }
 output:
-  assembly: [{meta: {type: map}}, {"*.flye.fasta": {type: file}}, {"*.flye-status.json": {type: file}}, {"*.flye-command.txt": {type: file}}]
-  versions: [{"${task.process}": {type: string}}, {flye: {type: string}}, {declared_container_policy: {type: string}}]
+  assembly:
+    [
+      { meta: { type: map } },
+      { "*.flye.fasta": { type: file } },
+      { "*.flye-status.json": { type: file } },
+      { "*.flye-command.txt": { type: file } },
+    ]
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { flye: { type: string } },
+      { declared_container_policy: { type: string } },
+    ]
 authors: ["enlopedfsf"]

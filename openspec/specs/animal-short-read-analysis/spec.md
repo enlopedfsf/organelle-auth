@@ -193,4 +193,3 @@ M2-② SHALL 记录 `VALIDATION-animal-identify.md`，覆盖本地真实数据 n
 - **WHEN** 用户请求归档 M2-② change
 - **THEN** T1、T2、T3 CI 均为 green，M2-① 镜像问题已解决且镜像 digest/日志可追溯
 - **AND** `openspec validate --strict` 通过，否则 SHALL 阻止归档
-

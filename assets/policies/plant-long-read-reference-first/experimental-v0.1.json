@@ -1,66 +1,66 @@
 {
-  "policy_id": "plant-long-read-reference-first-experimental-v0.1",
-  "version": "0.1.0",
-  "admission_status": "EXPERIMENTAL",
-  "scientific_basis": "exploratory_same_specimen_reference; values are engineering hypotheses for M3 transfer validation, not production thresholds",
-  "raw_input": {
-    "target_bases": 2000000000,
-    "seed": 11,
-    "purpose": "processing_budget_only"
-  },
-  "mapper": {
-    "preset": "map-ont",
-    "emit_cigar": true,
-    "emit_cs": "long",
-    "secondary": true,
-    "max_secondary": 20,
-    "secondary_score_ratio": 0.5
-  },
-  "structural_alignment": {
-    "preset": "asm5",
-    "emit_cigar": true,
-    "emit_cs": "long",
-    "secondary": true,
-    "max_secondary": 20,
-    "secondary_score_ratio": 0.5
-  },
-  "recruitment": {
-    "min_aligned_bases": 500,
-    "min_query_aligned_fraction": 0.1,
-    "max_divergence": 0.3,
-    "mapq_is_sole_filter": false,
-    "retain_alignment_classes": ["primary", "secondary", "supplementary"]
-  },
-  "target_gate": {
-    "min_recruited_reads": 5,
-    "min_recruited_bases": 200000,
-    "min_estimated_target_depth": 3.0,
-    "min_reference_breadth": 0.5,
-    "min_declared_junction_reads": 1,
-    "max_recruited_to_aligned_ratio": 20.0
-  },
-  "structural_evidence": {
-    "min_junction_flank_bases": 500
-  },
-  "rescue": {
-    "enabled": true,
-    "max_passes": 2
-  },
-  "flye": {
-    "read_type": "nano-hq",
-    "genome_size": "250k",
-    "asm_coverage": 50,
-    "iterations": 1,
-    "min_overlap": 5000
-  },
-  "pmat2_comparator": {
-    "enabled": true,
-    "technology": "ont",
-    "taxon_code": 0,
-    "correction_mode": 0
-  },
-  "full_background_de_novo": {
-    "enabled": false,
-    "minimum_clean_depth": null
-  }
+    "policy_id": "plant-long-read-reference-first-experimental-v0.1",
+    "version": "0.1.0",
+    "admission_status": "EXPERIMENTAL",
+    "scientific_basis": "exploratory_same_specimen_reference; values are engineering hypotheses for M3 transfer validation, not production thresholds",
+    "raw_input": {
+        "target_bases": 2000000000,
+        "seed": 11,
+        "purpose": "processing_budget_only"
+    },
+    "mapper": {
+        "preset": "map-ont",
+        "emit_cigar": true,
+        "emit_cs": "long",
+        "secondary": true,
+        "max_secondary": 20,
+        "secondary_score_ratio": 0.5
+    },
+    "structural_alignment": {
+        "preset": "asm5",
+        "emit_cigar": true,
+        "emit_cs": "long",
+        "secondary": true,
+        "max_secondary": 20,
+        "secondary_score_ratio": 0.5
+    },
+    "recruitment": {
+        "min_aligned_bases": 500,
+        "min_query_aligned_fraction": 0.1,
+        "max_divergence": 0.3,
+        "mapq_is_sole_filter": false,
+        "retain_alignment_classes": ["primary", "secondary", "supplementary"]
+    },
+    "target_gate": {
+        "min_recruited_reads": 5,
+        "min_recruited_bases": 200000,
+        "min_estimated_target_depth": 3.0,
+        "min_reference_breadth": 0.5,
+        "min_declared_junction_reads": 1,
+        "max_recruited_to_aligned_ratio": 20.0
+    },
+    "structural_evidence": {
+        "min_junction_flank_bases": 500
+    },
+    "rescue": {
+        "enabled": true,
+        "max_passes": 2
+    },
+    "flye": {
+        "read_type": "nano-hq",
+        "genome_size": "250k",
+        "asm_coverage": 50,
+        "iterations": 1,
+        "min_overlap": 5000
+    },
+    "pmat2_comparator": {
+        "enabled": true,
+        "technology": "ont",
+        "taxon_code": 0,
+        "correction_mode": 0
+    },
+    "full_background_de_novo": {
+        "enabled": false,
+        "minimum_clean_depth": null
+    }
 }
