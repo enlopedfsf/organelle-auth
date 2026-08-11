@@ -35,4 +35,9 @@ hypotheses:
     derived_fields: [dna_integrity]
     status: proposed
     validation_protocol: null
+    observations:
+      - date: 2026-08-11
+        evidence: "M3 Corydalis ONT reference-first pilot: a 2 Gb bounded input yielded 14,786 recruited reads (122.1 Mb; estimated target depth 594.6x); 37 independent reads closed the M1 38 kb IR gap, but Flye retained two contigs and did not confirm a single circle."
+        interpretation: "Observation-level support for the >=25 kb long-fragment rationale; unique topology-spanning molecules remained limiting near the IR/circular-origin junction. This does not validate the hypothesis or set a production threshold."
+        record: "openspec/changes/archive/2026-08-11-plant-long-read-pmat2-pilot/VALIDATION-plant-lr.md"
     review_date: 2026-08-07
