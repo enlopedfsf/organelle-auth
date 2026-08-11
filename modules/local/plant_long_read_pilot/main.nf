@@ -12,10 +12,12 @@ process PLANT_LONG_READ_PILOT_RUN {
     tuple val(meta), val(short_reads), path(long_reads)
     path reference_fasta
     path manifest
+    val filter_policy
 
     output:
     tuple val(meta), path("${meta.id}.plant-long-read-report.json"), emit: report
     tuple val(meta), path("${meta.id}.plant-long-read-status.json"), emit: status
+    tuple val(meta), path("${meta.id}_pmat2", optional: true), emit: assembly
     path "versions.yml", emit: tool_versions
     tuple val("${task.process}"), val('plant_long_read_pilot'), val('0.1.0'), emit: versions
 
@@ -28,8 +30,9 @@ process PLANT_LONG_READ_PILOT_RUN {
     export MANIFEST='${manifest}'
     export LONG_READS='${long_reads}'
     export SHORT_READS='${sr}'
+    export FILTER_POLICY='${filter_policy ?: ''}'
     python3 - <<'PY'
-    import gzip, json, os, shutil, statistics, subprocess, time
+    import gzip, hashlib, json, os, shutil, statistics, subprocess, time
     sid=os.environ['SAMPLE_ID']; lr=os.environ['LONG_READS']; ref=os.environ['REFERENCE']
     manifest=json.load(open(os.environ['MANIFEST']))
     if not os.path.exists(lr) or os.path.getsize(lr)==0: raise SystemExit('LONG_READ_INPUT_EMPTY')
@@ -67,15 +70,31 @@ process PLANT_LONG_READ_PILOT_RUN {
             subprocess.run(['NanoPlot','--fastq',lr,'--outdir',sid+'_nanoplot','--threads','1'],check=True)
             nanoplot_state='COMPLETED'
         except subprocess.CalledProcessError: nanoplot_state='FAILED'
-    filtered=lr; filter_state='NOT_RUN'
+    filtered=lr; filter_state='PASS_THROUGH_POLICY_NULL'; filter_params=None
     # No quality/length threshold is invented here. A null filter policy is an honest
-    # pass-through; a future engineering policy must be injected explicitly.
-    filter_state='PASS_THROUGH_POLICY_NULL'
+    # pass-through; when a policy is supplied, filtlong is the only transformation.
+    policy_path=os.environ.get('FILTER_POLICY','')
+    if policy_path:
+        if not os.path.exists(policy_path) or os.path.getsize(policy_path)==0:
+            raise SystemExit('FILTER_POLICY_NOT_FOUND')
+        filter_params=json.load(open(policy_path))
+        if not tools['filtlong']: raise SystemExit('FILTER_RUNTIME_UNAVAILABLE')
+        filtered=sid+'.filtered.fastq.gz'
+        cmd=['filtlong']
+        for key, flag in (('min_length','--min_length'),('keep_percent','--keep_percent'),('target_bases','--target_bases')):
+            if key in filter_params and filter_params[key] is not None:
+                cmd += [flag,str(filter_params[key])]
+        cmd += [lr]
+        with gzip.open(filtered,'wb') as out:
+            subprocess.run(cmd,check=True,stdout=out)
+        filter_state='COMPLETED'
+    filtered_sha256=hashlib.sha256(open(filtered,'rb').read()).hexdigest()
     pmat=next((x for x in ('PMAT','PMAT2','autoMito') if tools[x]),None)
     pmat_state='NOT_RUN'; pmat_cmd=None
     if pmat:
         out=sid+'_pmat2'; os.makedirs(out,exist_ok=True)
         pmat_cmd=[pmat,'autoMito','-i',filtered,'-o',out,'-t','ont','-x','0']
+        started=time.monotonic()
         try:
             subprocess.run(pmat_cmd,check=True)
             pmat_state='COMPLETED'
@@ -110,13 +129,14 @@ process PLANT_LONG_READ_PILOT_RUN {
                     hp['records'].append({'ref_start':run_start+1,'ref_end':i,'base':refseq[run_start],'reference_run_length':run_len,'lr_callable_bases':lr_len,'run_length_delta':lr_len-run_len})
                 run_start=i
         hp['callable_bases']=sum(x['reference_run_length'] for x in hp['records']); hp['state']='measured'
-    result={'schema_version':'m3-plant-long-read-pilot-0.1','sample_id':sid,'experimental_only':True,'platform':manifest.get('platform'),'source_accession':manifest.get('source_accession'),'qc':qc,'nanoplot_state':nanoplot_state,'tool_availability':tools,'filter_state':filter_state,'pmat2_state':pmat_state,'pmat2_command':pmat_cmd,'reference_fasta':ref,'m1_ir_gap':manifest.get('m1_ir_gap'),'sequence_comparison':sequence_comparison,'homopolymer_error_spectrum':hp,'resource_usage':{'wall_time_seconds':None,'cpu_seconds':None,'peak_memory_kb':None},'started_epoch':time.time()}
+    assembly_sha256={p:hashlib.sha256(open(p,'rb').read()).hexdigest() for p in assemblies}
+    result={'schema_version':'m3-plant-long-read-pilot-0.1','sample_id':sid,'experimental_only':True,'platform':manifest.get('platform'),'source_accession':manifest.get('source_accession'),'short_read_inputs':sr_paths,'qc':qc,'nanoplot_state':nanoplot_state,'tool_availability':tools,'filter_state':filter_state,'filter_policy':filter_params,'filtered_read_sha256':filtered_sha256,'pmat2_state':pmat_state,'pmat2_command':pmat_cmd,'reference_fasta':ref,'m1_ir_gap':manifest.get('m1_ir_gap'),'sequence_comparison':sequence_comparison,'homopolymer_error_spectrum':hp,'resource_usage':{'wall_time_seconds':round(time.monotonic()-started,3) if pmat_cmd else None,'cpu_seconds':None,'peak_memory_kb':None,'output_sha256':assembly_sha256},'started_epoch':time.time()}
     result['ir_closure']='not_assessable' if pmat_state!='COMPLETED' else 'pending_metric_extraction'
     json.dump(result,open(sid+'.plant-long-read-report.json','w'),indent=2)
-    status={'sample_id':sid,'stage':'plant_long_read_pilot','status':'EXPERIMENTAL_COMPLETE' if pmat_state=='COMPLETED' else 'EXPERIMENTAL_BLOCKED','decision':'NOT_APPLICABLE','reason_codes':[] if pmat_state=='COMPLETED' else [pmat_state],'experimental_only':True}
+    status={'sample_id':sid,'stage':'plant_long_read_pilot','status':'EXPERIMENTAL_COMPLETE' if pmat_state=='COMPLETED' else ('INCONCLUSIVE' if pmat_state=='PMAT2_RUNTIME_UNAVAILABLE' else 'FAIL'),'decision':'NOT_APPLICABLE','reason_codes':[] if pmat_state=='COMPLETED' else [pmat_state],'experimental_only':True}
     json.dump(status,open(sid+'.plant-long-read-status.json','w'),indent=2)
     PY
-    printf 'plant_long_read_pilot:\n  PMAT2: 2.1.5\n  platform: ONT\n  mode: "ont/plant"\n' > versions.yml
+    printf 'plant_long_read_pilot:\n  PMAT2: 2.1.5\n  platform: ONT\n  mode: "ont/plant"\n  filter: filtlong\n' > versions.yml
     """
 
     stub:

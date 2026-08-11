@@ -8,10 +8,11 @@ workflow PLANT_LONG_READ_PILOT {
     manifest
 
     main:
-    PLANT_LONG_READ_PILOT_RUN(samples, reference_fasta, manifest)
+    PLANT_LONG_READ_PILOT_RUN(samples, reference_fasta, manifest, params.long_read_filter_policy_file ?: '')
 
     emit:
     report = PLANT_LONG_READ_PILOT_RUN.report
     status = PLANT_LONG_READ_PILOT_RUN.status
+    assembly = PLANT_LONG_READ_PILOT_RUN.assembly
     versions = PLANT_LONG_READ_PILOT_RUN.versions
 }
