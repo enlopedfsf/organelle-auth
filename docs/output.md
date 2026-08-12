@@ -8,6 +8,27 @@ The directories listed below will be created in the results directory after the 
 
 <!-- TODO nf-core: Write this documentation describing your workflow's output -->
 
+## Canonical output and report locations
+
+The fixed local launcher publishes all ordinary runs under:
+
+```text
+runs/output/
+├── pipeline_info/
+│   ├── execution_report_latest.html
+│   ├── execution_timeline_latest.html
+│   ├── execution_trace_latest.txt
+│   ├── pipeline_dag_latest.html
+│   └── params_latest.json
+├── plant_long_read_evaluation/
+├── plant_sr_assembly/
+└── animal_sr_assembly/
+```
+
+Nextflow task scratch and resume data are kept separately in `runs/work/`. The technical
+method reports generated for project review remain in `docs/reports/`; they are not mixed
+with per-run execution reports.
+
 ## Pipeline overview
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:

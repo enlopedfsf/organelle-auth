@@ -26,8 +26,30 @@
                 "outdir": {
                     "type": "string",
                     "format": "directory-path",
-                    "description": "The output directory where the results will be saved. You have to use absolute paths to storage on Cloud infrastructure.",
+                    "default": "runs/output",
+                    "description": "Canonical output directory. The fixed launcher uses runs/output unless an intentional override is supplied.",
                     "fa_icon": "fas fa-folder-open"
+                },
+                "run_root": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "default": "runs",
+                    "description": "Canonical project run root containing input, output, and work.",
+                    "hidden": true
+                },
+                "input_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "default": "runs/input",
+                    "description": "Canonical input directory used by the fixed launcher.",
+                    "hidden": true
+                },
+                "work_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "default": "runs/work",
+                    "description": "Canonical Nextflow task work directory.",
+                    "hidden": true
                 },
                 "email": {
                     "type": "string",
