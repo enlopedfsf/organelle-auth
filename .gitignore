@@ -2,6 +2,11 @@
 work/
 data/
 results/
+runs/output/
+runs/work/
+# Interim animal LR run data stays local; committed reports/manifests are force-added explicitly.
+!runs/output/animal-lr-recruitment-diagnostics/
+!runs/output/animal-lr-recruitment-diagnostics/MANIFEST.sha256
 .DS_Store
 testing/
 testing*

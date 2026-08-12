@@ -1,0 +1,186 @@
+{
+  "schema_version": "animal-lr-repeat-insertion-audit-v0.1",
+  "input_bam": "runs/output/animal-lr-recruitment-diagnostics/forensics/coherent-primary-anchor.sorted.bam",
+  "parameters": {
+    "locus_start": 4200,
+    "locus_end": 4350,
+    "flank_bases_each_side": 1000,
+    "min_insertion_bases": 200,
+    "alignment_semantics": "primary_non_supplementary"
+  },
+  "spanning_read_count": 12,
+  "spanning_reads_with_large_insertion": 12,
+  "spanning_reads_without_large_insertion": 0,
+  "large_insertion_lengths": [
+    2634,
+    3020,
+    3040,
+    3523,
+    3948,
+    4324,
+    4330,
+    4330,
+    4382,
+    4385,
+    4824,
+    6127
+  ],
+  "supporting_records": [
+    {
+      "read_id": "SRR27841065.652351",
+      "mapq": 60,
+      "orientation": "forward",
+      "reference_start": 0,
+      "reference_end": 13944,
+      "large_insertions": [
+        {
+          "reference_position": 4322,
+          "length": 4382
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.2441594",
+      "mapq": 60,
+      "orientation": "forward",
+      "reference_start": 0,
+      "reference_end": 8529,
+      "large_insertions": [
+        {
+          "reference_position": 4281,
+          "length": 4824
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.62071",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 0,
+      "reference_end": 7223,
+      "large_insertions": [
+        {
+          "reference_position": 4281,
+          "length": 6127
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.1109456",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 0,
+      "reference_end": 8783,
+      "large_insertions": [
+        {
+          "reference_position": 4281,
+          "length": 2634
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.1705758",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 0,
+      "reference_end": 9148,
+      "large_insertions": [
+        {
+          "reference_position": 4323,
+          "length": 3523
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.2301522",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 0,
+      "reference_end": 5779,
+      "large_insertions": [
+        {
+          "reference_position": 4281,
+          "length": 4330
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.2936463",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 0,
+      "reference_end": 8609,
+      "large_insertions": [
+        {
+          "reference_position": 4276,
+          "length": 3020
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.2699844",
+      "mapq": 60,
+      "orientation": "forward",
+      "reference_start": 7,
+      "reference_end": 8269,
+      "large_insertions": [
+        {
+          "reference_position": 4279,
+          "length": 4330
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.1781471",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 189,
+      "reference_end": 14393,
+      "large_insertions": [
+        {
+          "reference_position": 4303,
+          "length": 3040
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.3047571",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 198,
+      "reference_end": 14393,
+      "large_insertions": [
+        {
+          "reference_position": 4323,
+          "length": 4324
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.710521",
+      "mapq": 60,
+      "orientation": "reverse",
+      "reference_start": 260,
+      "reference_end": 13075,
+      "large_insertions": [
+        {
+          "reference_position": 4281,
+          "length": 4385
+        }
+      ]
+    },
+    {
+      "read_id": "SRR27841065.1251933",
+      "mapq": 60,
+      "orientation": "forward",
+      "reference_start": 1405,
+      "reference_end": 14393,
+      "large_insertions": [
+        {
+          "reference_position": 4299,
+          "length": 3948
+        }
+      ]
+    }
+  ]
+}

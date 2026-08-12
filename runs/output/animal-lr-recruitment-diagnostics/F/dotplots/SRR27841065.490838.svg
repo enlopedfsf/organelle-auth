@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760">
+<rect width="100%" height="100%" fill="white"/>
+<text x="55" y="24" font-family="sans-serif" font-size="14">SRR27841065.490838 self-alignment</text>
+<line x1="55" y1="55" x2="705" y2="705" stroke="#9ca3af" stroke-dasharray="4 4"/>
+<line x1="129.22" y1="55.07" x2="203.49" y2="108.20" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="55.07" y1="129.22" x2="108.20" y2="203.49" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="343.58" y1="343.25" x2="668.21" y2="667.94" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="343.25" y1="343.58" x2="667.94" y2="668.21" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="528.74" y1="447.84" x2="532.33" y2="451.41" stroke="#2563eb" stroke-width="1.2" opacity="0.944" />
+<line x1="447.84" y1="528.74" x2="451.41" y2="532.33" stroke="#2563eb" stroke-width="1.2" opacity="0.944" />
+<text x="55" y="748" font-family="sans-serif" font-size="11">query 0..35480; blue=same strand, red=reverse</text>
+</svg>

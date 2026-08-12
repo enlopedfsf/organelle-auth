@@ -1,0 +1,134 @@
+{
+  "schema_version": "animal-lr-raven-comparator-0.1",
+  "experimental_only": true,
+  "decision": "NOT_APPLICABLE",
+  "topology": "INCONCLUSIVE",
+  "tool": {
+    "name": "raven-assembler",
+    "version": "1.8.3",
+    "executable": "/home/iris-hp/miniconda3/envs/raven-assembler/bin/raven",
+    "command_parameters": [
+      "--disable-checkpoints",
+      "-t",
+      "4"
+    ]
+  },
+  "anchor": {
+    "path": "runs/input/whitmania/m2_anchor/WTM_NORMAL_mitogenome.scaffold.fasta",
+    "bytes": 14408,
+    "sha256": "127ad0aad8cc9975e4d97af0156e484a5172b2d08496f2c31562787c9252aca8"
+  },
+  "runs": [
+    {
+      "name": "original_order",
+      "input": {
+        "path": "runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.1-coherent.fastq.gz",
+        "bytes": 1661082,
+        "sha256": "c0cad1fb291bfd0272fb9be1eb1e24249bf119d8973ac9d9834a02c508cc66fa"
+      },
+      "assembly": {
+        "path": "runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta",
+        "sha256": "7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502",
+        "contig_count": 1,
+        "total_bases": 19421,
+        "max_bases": 19421,
+        "gfa_self_loop": true
+      },
+      "anchor_alignment": {
+        "alignment_records": 2,
+        "target_length": 14393,
+        "target_breadth_bases": 14393,
+        "target_breadth_fraction": 1.0,
+        "full_alignment_identity": 0.739440961874422,
+        "gap_compressed_core_identity": 0.9997,
+        "query_inserted_bases_vs_target": 5067,
+        "records": [
+          {
+            "query": "Utg22",
+            "query_length": 19421,
+            "query_start": 3173,
+            "query_end": 19421,
+            "target": "WTM_NORMAL.1",
+            "target_length": 14393,
+            "target_start": 0,
+            "target_end": 11182,
+            "matches": 11180,
+            "block_length": 16250,
+            "mapq": 60,
+            "gap_compressed_divergence": 0.0003
+          },
+          {
+            "query": "Utg22",
+            "query_length": 19421,
+            "query_start": 0,
+            "query_end": 3212,
+            "target": "WTM_NORMAL.1",
+            "target_length": 14393,
+            "target_start": 11182,
+            "target_end": 14393,
+            "matches": 3211,
+            "block_length": 3212,
+            "mapq": 60,
+            "gap_compressed_divergence": 0.0003
+          }
+        ]
+      }
+    },
+    {
+      "name": "shuffle_seed_22",
+      "input": {
+        "path": "runs/output/animal-lr-recruitment-diagnostics/D/recruited.shuffle-22.fastq.gz",
+        "bytes": 1702250,
+        "sha256": "c7ee9ba1e5fe38cce73fa571d79369e15ef91a53ba54274949aef2085e6dac35"
+      },
+      "assembly": {
+        "path": "runs/output/animal-lr-recruitment-diagnostics/E/raven-shuffle-22/assembly.fasta",
+        "sha256": "20cd504e400aa8c6c03c7a6818f36cb1e73f0c560875bf9290e49e0e2168b41d",
+        "contig_count": 1,
+        "total_bases": 19271,
+        "max_bases": 19271,
+        "gfa_self_loop": true
+      },
+      "anchor_alignment": {
+        "alignment_records": 2,
+        "target_length": 14393,
+        "target_breadth_bases": 14393,
+        "target_breadth_fraction": 1.0,
+        "full_alignment_identity": 0.7448229447090495,
+        "gap_compressed_core_identity": 0.9997556867921906,
+        "query_inserted_bases_vs_target": 4919,
+        "records": [
+          {
+            "query": "Utg22",
+            "query_length": 19271,
+            "query_start": 0,
+            "query_end": 12934,
+            "target": "WTM_NORMAL.1",
+            "target_length": 14393,
+            "target_start": 0,
+            "target_end": 8015,
+            "matches": 8011,
+            "block_length": 12938,
+            "mapq": 60,
+            "gap_compressed_divergence": 0.0002
+          },
+          {
+            "query": "Utg22",
+            "query_length": 19271,
+            "query_start": 12895,
+            "query_end": 19271,
+            "target": "WTM_NORMAL.1",
+            "target_length": 14393,
+            "target_start": 8015,
+            "target_end": 14393,
+            "matches": 6376,
+            "block_length": 6378,
+            "mapq": 60,
+            "gap_compressed_divergence": 0.0003
+          }
+        ]
+      }
+    }
+  ],
+  "interpretation": "Raven is an independent OLC-family comparator. GFA self-loops and core agreement are experimental structural evidence only and cannot promote animal topology without the full project evidence gate."
+}

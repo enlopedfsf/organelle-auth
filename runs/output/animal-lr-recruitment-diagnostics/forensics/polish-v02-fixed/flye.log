@@ -1,0 +1,12 @@
+[2026-08-12 15:52:21] root: INFO: Running Flye polisher
+[2026-08-12 15:52:21] root: DEBUG: Cmd: /home/iris-hp/miniconda3/envs/flye/bin/flye --polish-target runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/00-assembly/draft_assembly.fasta --nano-raw runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.fastq.gz --out-dir runs/output/animal-lr-recruitment-diagnostics/forensics/polish-v02-fixed --iterations 1 --threads 4
+[2026-08-12 15:52:21] root: INFO: Polishing genome (1/1)
+[2026-08-12 15:52:21] root: INFO: Running minimap2
+[2026-08-12 15:52:24] root: INFO: Separating alignment into bubbles
+[2026-08-12 15:52:27] root: DEBUG: Generated 2290 bubbles
+[2026-08-12 15:52:27] root: DEBUG: Split 2 long bubbles
+[2026-08-12 15:52:27] root: DEBUG: Skipped 0 empty bubbles
+[2026-08-12 15:52:27] root: DEBUG: Skipped 0 bubbles with long branches
+[2026-08-12 15:52:27] root: INFO: Alignment error rate: 0.082940
+[2026-08-12 15:52:27] root: INFO: Correcting bubbles
+[2026-08-12 15:52:32] root: INFO: Done!

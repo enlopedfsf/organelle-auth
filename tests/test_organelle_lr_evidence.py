@@ -289,6 +289,9 @@ class LongReadEvidenceTests(unittest.TestCase):
         self.assertIn("pmat.correction_mode != 0", pmat)
         self.assertIn("COMPARATOR_ASSEMBLY_FAILED", pmat)
         self.assertIn("SUBSET_ASSEMBLY_FAILED", flye)
+        self.assertIn("flye-minimap2", flye)
+        self.assertIn("flye-samtools", flye)
+        self.assertIn("--deterministic", flye)
 
 
 if __name__ == "__main__":

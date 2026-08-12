@@ -51,7 +51,8 @@
         "genome_size": "250k",
         "asm_coverage": 50,
         "iterations": 1,
-        "min_overlap": 5000
+        "min_overlap": 5000,
+        "deterministic": true
     },
     "pmat2_comparator": {
         "enabled": true,

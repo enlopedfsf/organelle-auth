@@ -70,7 +70,16 @@ candidates:
     project_validated_platforms: []
     container_digest: null
     validation_record: "openspec/changes/archive/2026-08-11-plant-long-read-pmat2-pilot/VALIDATION-plant-lr.md"
-    notes: "ONT M3 reference-first pilot produced a near-reference two-contig candidate and closed the M1 IR gap; topology remains INCONCLUSIVE; admission stays EXPERIMENTAL"
+    notes: "ONT M3 reference-first pilot produced a near-reference two-contig candidate and closed the M1 IR gap; topology remains INCONCLUSIVE. Flye is not fully deterministic; authoritative runs use --deterministic to reduce variance, but exact hashes/lengths/circularity are not CI contracts because upstream Issue #640 documents remaining random sources. Admission stays EXPERIMENTAL."
+  - tool_id: raven
+    role: "动物长读长组装独立算法族对照（OLC）"
+    version: 1.8.3
+    admission_status: EXPERIMENTAL
+    supported_platforms: [ont]
+    project_validated_platforms: []
+    container_digest: null
+    validation_record: "runs/output/animal-lr-recruitment-diagnostics/VALIDATION-animal-lr.md"
+    notes: "MIT license verified from the installed raven-assembler package. Comparator-only admission for animal ONT M3; outputs cannot enter IDENTIFY or DECISION and a circular contig cannot bypass the project topology evidence gate. The dedicated flat Mamba runtime is /home/iris-hp/miniconda3/envs/raven-assembler; the unrelated Python package named raven in base is prohibited from this analysis."
   - tool_id: pmat2
     role: 长读长 organelle 候选组装
     version: 2.1.5

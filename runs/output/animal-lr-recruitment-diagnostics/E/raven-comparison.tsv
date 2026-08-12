@@ -1,0 +1,3 @@
+name	contigs	total_bases	max_bases	gfa_self_loop	anchor_breadth	full_alignment_identity	gap_compressed_core_identity	inserted_bases_vs_anchor
+original_order	1	19421	19421	true	1.000000	0.739441	0.999700	5067
+shuffle_seed_22	1	19271	19271	true	1.000000	0.744823	0.999756	4919
