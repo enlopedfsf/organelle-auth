@@ -1,11 +1,11 @@
 ## 1. Inventory and classification
 
-- [ ] 1.1 Record the complete CI lint failure list and baseline commit.
-- [ ] 1.2 Classify all 18 reported TODOs as pure template placeholders or genuine follow-up work; record genuine items as issues or retained documentation.
+- [x] 1.1 Record the complete CI lint failure list and baseline commit.
+- [x] 1.2 Classify all 18 reported TODOs individually as `template placeholder (remove)` or `genuine pending work (issue)`; include the complete list in the PR description.
 
 ## 2. Minimal metadata repair
 
-- [ ] 2.1 Add metadata-only `meta.yml` files for the nine named subworkflows using existing interfaces.
+- [x] 2.1 Add metadata-only `meta.yml` files for the nine named subworkflows using existing interfaces.
 - [ ] 2.2 Resolve the nf-core version warning with the smallest compatible metadata change.
 - [ ] 2.3 Remove only classified pure template TODOs; preserve policy/scientific TODOs.
 
@@ -14,6 +14,8 @@
 - [ ] 3.1 Verify no Nextflow process, parameter, module wiring, container, or evidence file changed.
 - [ ] 3.2 Run nf-core lint with the CI tool version and capture the result.
 - [ ] 3.3 Run schema checks and the full nf-test matrix; confirm no behavioral regression.
+- [ ] 3.4 Run the full nf-test matrix once on the baseline and once after the repair; verify identical result sets.
+- [ ] 3.5 Require the nf-core lint check to be fully green; no advisory/ignored lint result is acceptable.
 
 ## 4. Review handoff
 

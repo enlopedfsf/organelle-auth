@@ -10,6 +10,8 @@ The repository-wide nf-core lint gate currently fails on template TODO placehold
 - Add regression checks proving workflow source and nf-test behavior are unchanged.
 - Keep runs-data policy, full `.gitignore` policy, proxy normalization, and workflow logic changes out of scope.
 
+Acceptance is conditional on: `skip_specs: true` remaining justified as a pure tooling/CI structure repair with no specification behavior, parameters, routing, or decision-logic changes; a before/after full nf-test result-set comparison; an auditable classification of all 18 TODOs; manual edits only; and a fully green nf-core lint check.
+
 ## Capabilities
 
 ### New Capabilities

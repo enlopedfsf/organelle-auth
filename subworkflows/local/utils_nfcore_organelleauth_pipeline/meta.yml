@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: utils_nfcore_organelleauth_pipeline
+description: Pipeline initialisation, parameter validation, summaries, and completion helpers.
+keywords: [pipeline, initialization, schema, summary]
+components: [utils_nfschema_plugin, utils_nfcore_pipeline, utils_nextflow_pipeline]
+input:
+  - pipeline_options: {type: map, description: "Pipeline initialisation options."}
+output:
+  - versions: {type: channel, description: "Tool versions."}
+authors: [enlopedfsf]

@@ -22,6 +22,8 @@ See `proposal.md`. CI uses nf-core/tools 4.1.0 and currently reports repository-
 3. **TODOs are classified before editing.** Pure nf-core scaffolding is removed; policy, threshold, admission, and scientific TODOs become explicit issues or remain documented.
 4. **Behavioral regression is required.** Compare the changed tree against the baseline with nf-test and static source checks; only metadata/docs/CI files may differ.
 
+The change explicitly does **not** use `nf-core pipelines lint --fix`; all edits are manual and minimal. `skip_specs: true` is valid because this is a pure tooling/CI structure repair: it changes no specification behavior, parameters, routing, or decision logic. The lint check itself must be fully green before this PR can be accepted.
+
 ## Risks / Trade-offs
 
 - [Risk] A metadata description could drift from a workflow interface → Mitigation: derive fields from existing `take`/`emit` declarations and run lint.
