@@ -1,0 +1,12 @@
+metric	value
+schema_version	topology-junction-recount-0.1
+platform	ONT
+experimental_only	True
+paf	/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/lr_map_final_reads_to_flye/SRR38978847.reads_to_flye.paf
+paf_sha256	5c7b69fcf42aa1b22c6e9fa0c7ba571f06b99f9e86db590b76d82df92a09f460
+flank_bases	500
+prior_high_quality_count	37
+raw_read_identity_count	587
+mapq_ge_20_read_identity_count	2
+copy_aware_weighted_support	293.5
+decision	NOT_APPLICABLE
