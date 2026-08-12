@@ -1,0 +1,226 @@
+[2026-08-12 14:47:12] root: INFO: Starting Flye 2.9.3-b1797
+[2026-08-12 14:47:12] root: DEBUG: Cmd: /usr/bin/flye --nano-raw runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.fastq.gz --out-dir runs/output/animal-lr-recruitment-diagnostics/D/flye-v02 --genome-size 15k --asm-coverage 50 --iterations 1 --threads 4
+[2026-08-12 14:47:12] root: DEBUG: Python version: 3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]
+[2026-08-12 14:47:12] root: INFO: >>>STAGE: configure
+[2026-08-12 14:47:12] root: INFO: Configuring run
+[2026-08-12 14:47:12] root: INFO: Total read length: 2306582
+[2026-08-12 14:47:12] root: INFO: Input genome size: 15000
+[2026-08-12 14:47:12] root: INFO: Estimated coverage: 153
+[2026-08-12 14:47:12] root: INFO: Reads N50/N90: 9351 / 1946
+[2026-08-12 14:47:12] root: INFO: Minimum overlap set to 2000
+[2026-08-12 14:47:12] root: INFO: Using longest 50x reads for contig assembly
+[2026-08-12 14:47:12] root: DEBUG: Min read length cutoff: 15136
+[2026-08-12 14:47:12] root: INFO: >>>STAGE: assembly
+[2026-08-12 14:47:12] root: INFO: Assembling disjointigs
+[2026-08-12 14:47:12] root: DEBUG: -----Begin assembly log------
+[2026-08-12 14:47:12] root: DEBUG: Running: flye-modules assemble --reads /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.fastq.gz --out-asm /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/00-assembly/draft_assembly.fasta --config /usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_raw_reads.cfg --log /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/flye.log --threads 4 --genome-size 15000 --min-ovlp 2000 --min-read 15136
+[2026-08-12 14:47:12] DEBUG: Build date: Feb  2 2024 13:50:39
+[2026-08-12 14:47:12] DEBUG: Total RAM: 188 Gb
+[2026-08-12 14:47:12] DEBUG: Available RAM: 161 Gb
+[2026-08-12 14:47:12] DEBUG: Total CPUs: 32
+[2026-08-12 14:47:12] DEBUG: Loading /usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_raw_reads.cfg
+[2026-08-12 14:47:12] DEBUG: Loading /usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_defaults.cfg
+[2026-08-12 14:47:12] DEBUG: 	big_genome_threshold=29000000
+[2026-08-12 14:47:12] DEBUG: 	meta_read_filter_kmer_freq=100
+[2026-08-12 14:47:12] DEBUG: 	chain_large_gap_penalty=2
+[2026-08-12 14:47:12] DEBUG: 	chain_small_gap_penalty=0.5
+[2026-08-12 14:47:12] DEBUG: 	chain_gap_jump_threshold=100
+[2026-08-12 14:47:12] DEBUG: 	max_jump_gap=500
+[2026-08-12 14:47:12] DEBUG: 	max_coverage_drop_rate=5
+[2026-08-12 14:47:12] DEBUG: 	max_extensions_drop_rate=5
+[2026-08-12 14:47:12] DEBUG: 	chimera_window=100
+[2026-08-12 14:47:12] DEBUG: 	chimera_overhang=1000
+[2026-08-12 14:47:12] DEBUG: 	min_reads_in_disjointig=4
+[2026-08-12 14:47:12] DEBUG: 	max_inner_reads=10
+[2026-08-12 14:47:12] DEBUG: 	max_inner_fraction=0.25
+[2026-08-12 14:47:12] DEBUG: 	aggressive_dup_filter=1
+[2026-08-12 14:47:12] DEBUG: 	max_separation=500
+[2026-08-12 14:47:12] DEBUG: 	unique_edge_length=50000
+[2026-08-12 14:47:12] DEBUG: 	min_repeat_res_support=0.51
+[2026-08-12 14:47:12] DEBUG: 	out_paths_ratio=5
+[2026-08-12 14:47:12] DEBUG: 	graph_cov_drop_rate=5
+[2026-08-12 14:47:12] DEBUG: 	coverage_estimate_window=100
+[2026-08-12 14:47:12] DEBUG: 	max_bubble_length=50000
+[2026-08-12 14:47:12] DEBUG: 	loop_coverage_rate=1.5
+[2026-08-12 14:47:12] DEBUG: 	repeat_edge_cov_mult=1.75
+[2026-08-12 14:47:12] DEBUG: 	weak_detach_rate=5
+[2026-08-12 14:47:12] DEBUG: 	tip_coverage_rate=2
+[2026-08-12 14:47:12] DEBUG: 	tip_length_rate=2
+[2026-08-12 14:47:12] DEBUG: 	output_gfa_before_rr=1
+[2026-08-12 14:47:12] DEBUG: 	remove_alt_edges=0
+[2026-08-12 14:47:12] DEBUG: 	low_cutoff_warning=1
+[2026-08-12 14:47:12] DEBUG: 	kmer_size=17
+[2026-08-12 14:47:12] DEBUG: 	use_minimizers=0
+[2026-08-12 14:47:12] DEBUG: 	reads_base_alignment=0
+[2026-08-12 14:47:12] DEBUG: 	meta_read_top_kmer_rate=0.40
+[2026-08-12 14:47:12] DEBUG: 	maximum_jump=1500
+[2026-08-12 14:47:12] DEBUG: 	maximum_overhang=1500
+[2026-08-12 14:47:12] DEBUG: 	repeat_kmer_rate=100
+[2026-08-12 14:47:12] DEBUG: 	assemble_ovlp_divergence=0.10
+[2026-08-12 14:47:12] DEBUG: 	assemble_divergence_relative=1
+[2026-08-12 14:47:12] DEBUG: 	repeat_graph_ovlp_divergence=0.08
+[2026-08-12 14:47:12] DEBUG: 	read_align_ovlp_divergence=0.25
+[2026-08-12 14:47:12] DEBUG: 	hpc_scoring_on=0
+[2026-08-12 14:47:12] DEBUG: 	add_unassembled_reads=0
+[2026-08-12 14:47:12] DEBUG: 	extend_contigs_with_repeats=0
+[2026-08-12 14:47:12] DEBUG: 	min_read_cov_cutoff=3
+[2026-08-12 14:47:12] DEBUG: 	short_tip_length=20000
+[2026-08-12 14:47:12] DEBUG: 	long_tip_length=100000
+[2026-08-12 14:47:12] DEBUG: Running with k-mer size: 17
+[2026-08-12 14:47:12] DEBUG: Running with minimum overlap 2000
+[2026-08-12 14:47:12] DEBUG: Metagenome mode: N
+[2026-08-12 14:47:12] DEBUG: Short mode: N
+[2026-08-12 14:47:12] INFO: Reading sequences
+[2026-08-12 14:47:12] DEBUG: Building positional index
+[2026-08-12 14:47:12] DEBUG: Total sequence: 742550 bp
+[2026-08-12 14:47:19] INFO: Counting k-mers:
+[2026-08-12 14:47:19] DEBUG: Updating k-mer histogram
+[2026-08-12 14:49:02] DEBUG: Hash size: 14699
+[2026-08-12 14:49:02] DEBUG: Total k-mers 196501
+[2026-08-12 14:49:02] INFO: Filling index table (1/2)
+[2026-08-12 14:49:02] DEBUG: Mean k-mer frequency: 32.2472
+[2026-08-12 14:49:02] DEBUG: Repetitive k-mer frequency: 3224
+[2026-08-12 14:49:02] DEBUG: Filtered 0 repetitive k-mers (0)
+[2026-08-12 14:49:02] INFO: Filling index table (2/2)
+[2026-08-12 14:49:03] DEBUG: Sorting k-mer index
+[2026-08-12 14:49:03] DEBUG: Selected k-mers: 12214
+[2026-08-12 14:49:03] DEBUG: Index size: 301746
+[2026-08-12 14:49:03] DEBUG: Mean k-mer index frequency: 24.7049
+[2026-08-12 14:49:03] DEBUG: Peak RAM usage: 8 Gb
+[2026-08-12 14:49:03] DEBUG: Estimating k-mer identity bias
+[2026-08-12 15:06:18] DEBUG: Initial divergence estimate : 0.0690196
+[2026-08-12 15:06:18] DEBUG: Relative threshold: Y
+[2026-08-12 15:06:18] DEBUG: Max divergence threshold set to 0.16902
+[2026-08-12 15:06:18] INFO: Extending reads
+[2026-08-12 15:06:18] DEBUG: Estimating overlap coverage
+[2026-08-12 15:08:44] INFO: Overlap-based coverage: 21
+[2026-08-12 15:08:44] INFO: Median overlap divergence: 0.0673489
+[2026-08-12 15:08:44] DEBUG: Sequence divergence distribution:
+
+    |            *                    |
+    |            *                    |
+    |            *                    |
+    |            * *                  |
+    |            * *                  |
+    |            ***                  |
+    |           ****                  |
+    |           ****                  |
+    |           ****                  |
+    |           ****                  |
+    |           **** *                |
+    |           **** *                |
+    |           **** *                |
+    |         * **** ***  *           |
+    |         * **** ***  *           |
+    |         **********  *           |
+    |       ************  *           |
+    |       ************  *           |
+    |     ************** **      ** * |               *
+    |     ************** **      ** * |               *
+    ----------------------------------------------------------------------------------------------------
+    0%        5%        10%       15%       20%       25%       30%       35%       40%       45%
+
+    Q25 = 0.059, Q50 = 0.067, Q75 = 0.083
+
+[2026-08-12 15:08:46] DEBUG: Assembled disjointig 1
+	With 14 reads
+	Start read: +SRR27841065.2936463
+	At position: 10
+	leftTip: 0 rightTip: 0
+	Suspicious: 0
+	Short ext: 0
+	Mean extensions: 18
+	Avg overlap len: 15842
+	Min overlap len: 12929
+	Inner reads: 0
+	Length: 52550
+[2026-08-12 15:08:46] DEBUG: Inner: 68 covered: 78 total: 78
+[2026-08-12 15:08:55] INFO: Assembled 1 disjointigs
+[2026-08-12 15:08:55] INFO: Generating sequence
+[2026-08-12 15:08:56] DEBUG: Building positional index
+[2026-08-12 15:08:56] DEBUG: Total sequence: 53672 bp
+[2026-08-12 15:08:56] DEBUG: Mean k-mer frequency: 1.88118
+[2026-08-12 15:08:56] DEBUG: Repetitive k-mer frequency: 188
+[2026-08-12 15:08:56] DEBUG: Filtered 672 repetitive k-mers (0.0125245)
+[2026-08-12 15:08:56] DEBUG: Sorting k-mer index
+[2026-08-12 15:08:56] DEBUG: Selected k-mers: 28520
+[2026-08-12 15:08:56] DEBUG: K-mer index size: 52983
+[2026-08-12 15:08:56] DEBUG: Mean k-mer frequency: 1.85775
+[2026-08-12 15:08:56] DEBUG: Minimizer rate: 1.013
+[2026-08-12 15:08:56] INFO: Filtering contained disjointigs
+[2026-08-12 15:08:57] DEBUG: Computing transitive closure for overlaps
+[2026-08-12 15:08:57] DEBUG: Found 4 overlaps
+[2026-08-12 15:08:57] DEBUG: Left 4 overlaps after filtering
+[2026-08-12 15:08:57] INFO: Contained seqs: 0
+[2026-08-12 15:08:57] DEBUG: Writing FASTA
+[2026-08-12 15:08:57] DEBUG: Peak RAM usage: 8 Gb
+-----------End assembly log------------
+[2026-08-12 15:08:57] root: DEBUG: Disjointigs length: 53672, N50: 53672
+[2026-08-12 15:08:57] root: INFO: >>>STAGE: consensus
+[2026-08-12 15:08:57] root: INFO: Running Minimap2
+[2026-08-12 15:09:00] root: INFO: Computing consensus
+[2026-08-12 15:09:00] root: INFO: Alignment error rate: 0.000000
+[2026-08-12 15:09:00] root: INFO: >>>STAGE: repeat
+[2026-08-12 15:09:00] root: INFO: Building and resolving repeat graph
+[2026-08-12 15:09:00] root: DEBUG: -----Begin repeat analyser log------
+[2026-08-12 15:09:00] root: DEBUG: Running: flye-modules repeat --disjointigs /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/10-consensus/consensus.fasta --reads /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.fastq.gz --out-dir /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/20-repeat --config /usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_raw_reads.cfg --log /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/flye.log --threads 4 --min-ovlp 2000
+[2026-08-12 15:09:00] DEBUG: Build date: Feb  2 2024 13:50:39
+[2026-08-12 15:09:00] DEBUG: Total RAM: 188 Gb
+[2026-08-12 15:09:00] DEBUG: Available RAM: 159 Gb
+[2026-08-12 15:09:00] DEBUG: Total CPUs: 32
+[2026-08-12 15:09:00] DEBUG: Loading /usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_raw_reads.cfg
+[2026-08-12 15:09:00] DEBUG: Loading /usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_defaults.cfg
+[2026-08-12 15:09:00] DEBUG: 	big_genome_threshold=29000000
+[2026-08-12 15:09:00] DEBUG: 	meta_read_filter_kmer_freq=100
+[2026-08-12 15:09:00] DEBUG: 	chain_large_gap_penalty=2
+[2026-08-12 15:09:00] DEBUG: 	chain_small_gap_penalty=0.5
+[2026-08-12 15:09:00] DEBUG: 	chain_gap_jump_threshold=100
+[2026-08-12 15:09:00] DEBUG: 	max_jump_gap=500
+[2026-08-12 15:09:00] DEBUG: 	max_coverage_drop_rate=5
+[2026-08-12 15:09:00] DEBUG: 	max_extensions_drop_rate=5
+[2026-08-12 15:09:00] DEBUG: 	chimera_window=100
+[2026-08-12 15:09:00] DEBUG: 	chimera_overhang=1000
+[2026-08-12 15:09:00] DEBUG: 	min_reads_in_disjointig=4
+[2026-08-12 15:09:00] DEBUG: 	max_inner_reads=10
+[2026-08-12 15:09:00] DEBUG: 	max_inner_fraction=0.25
+[2026-08-12 15:09:00] DEBUG: 	aggressive_dup_filter=1
+[2026-08-12 15:09:00] DEBUG: 	max_separation=500
+[2026-08-12 15:09:00] DEBUG: 	unique_edge_length=50000
+[2026-08-12 15:09:00] DEBUG: 	min_repeat_res_support=0.51
+[2026-08-12 15:09:00] DEBUG: 	out_paths_ratio=5
+[2026-08-12 15:09:00] DEBUG: 	graph_cov_drop_rate=5
+[2026-08-12 15:09:00] DEBUG: 	coverage_estimate_window=100
+[2026-08-12 15:09:00] DEBUG: 	max_bubble_length=50000
+[2026-08-12 15:09:00] DEBUG: 	loop_coverage_rate=1.5
+[2026-08-12 15:09:00] DEBUG: 	repeat_edge_cov_mult=1.75
+[2026-08-12 15:09:00] DEBUG: 	weak_detach_rate=5
+[2026-08-12 15:09:00] DEBUG: 	tip_coverage_rate=2
+[2026-08-12 15:09:00] DEBUG: 	tip_length_rate=2
+[2026-08-12 15:09:00] DEBUG: 	output_gfa_before_rr=1
+[2026-08-12 15:09:00] DEBUG: 	remove_alt_edges=0
+[2026-08-12 15:09:00] DEBUG: 	low_cutoff_warning=1
+[2026-08-12 15:09:00] DEBUG: 	kmer_size=17
+[2026-08-12 15:09:00] DEBUG: 	use_minimizers=0
+[2026-08-12 15:09:00] DEBUG: 	reads_base_alignment=0
+[2026-08-12 15:09:00] DEBUG: 	meta_read_top_kmer_rate=0.40
+[2026-08-12 15:09:00] DEBUG: 	maximum_jump=1500
+[2026-08-12 15:09:00] DEBUG: 	maximum_overhang=1500
+[2026-08-12 15:09:00] DEBUG: 	repeat_kmer_rate=100
+[2026-08-12 15:09:00] DEBUG: 	assemble_ovlp_divergence=0.10
+[2026-08-12 15:09:00] DEBUG: 	assemble_divergence_relative=1
+[2026-08-12 15:09:00] DEBUG: 	repeat_graph_ovlp_divergence=0.08
+[2026-08-12 15:09:00] DEBUG: 	read_align_ovlp_divergence=0.25
+[2026-08-12 15:09:00] DEBUG: 	hpc_scoring_on=0
+[2026-08-12 15:09:00] DEBUG: 	add_unassembled_reads=0
+[2026-08-12 15:09:00] DEBUG: 	extend_contigs_with_repeats=0
+[2026-08-12 15:09:00] DEBUG: 	min_read_cov_cutoff=3
+[2026-08-12 15:09:00] DEBUG: 	short_tip_length=20000
+[2026-08-12 15:09:00] DEBUG: 	long_tip_length=100000
+[2026-08-12 15:09:00] DEBUG: Running with k-mer size: 17
+[2026-08-12 15:09:00] DEBUG: Selected minimum overlap 2000
+[2026-08-12 15:09:00] DEBUG: Metagenome mode: N
+[2026-08-12 15:09:00] INFO: Parsing disjointigs
+[2026-08-12 15:09:00] ERROR: parse error in /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/10-consensus/consensus.fasta on line 1: empty sequence
+-----------End assembly log------------
+[2026-08-12 15:09:00] root: ERROR: Command '['flye-modules', 'repeat', '--disjointigs', '/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/10-consensus/consensus.fasta', '--reads', '/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.fastq.gz', '--out-dir', '/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/20-repeat', '--config', '/usr/lib/python3/dist-packages/flye/config/bin_cfg/asm_raw_reads.cfg', '--log', '/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-v02/flye.log', '--threads', '4', '--min-ovlp', '2000']' returned non-zero exit status 1.
+[2026-08-12 15:09:00] root: ERROR: Pipeline aborted

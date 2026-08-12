@@ -1,0 +1,424 @@
+{
+    "schema_version": "hyp-dna-002-ultralong-read-audit-0.1",
+    "experimental_only": true,
+    "decision": "NOT_APPLICABLE",
+    "topology": "INCONCLUSIVE",
+    "inputs": {
+        "reads": {
+            "path": "runs/output/animal-lr-recruitment-diagnostics/Bplus/longreads.fastq",
+            "sha256": "79bc0b5898a1bf538398a4a986310a731cff3b3682a9a49c4d79ecea4ca30789"
+        },
+        "self_paf": {
+            "path": "runs/output/animal-lr-recruitment-diagnostics/Bplus/self.paf",
+            "sha256": "f6a384fce087c500220305c26ed76bad58e6ede01d4bae70ac8cb97f1d0004a6"
+        },
+        "anchor_paf": {
+            "path": "runs/output/animal-lr-recruitment-diagnostics/Bplus/longreads-vs-anchor.paf",
+            "sha256": "8ccbc3f9fd050a2e7850509620a1419a5efca82cb6f28ff7b6006a990eb7812a"
+        },
+        "anchor_length": 14393
+    },
+    "classification_counts": {
+        "CHIMERIC_JUNK": 12,
+        "NUMT_FLANK_CHIMERA": 1
+    },
+    "hypothesis": {
+        "id": "HYP-DNA-002",
+        "title": "AT-rich repeat adjacency and copy-number audit",
+        "grade": "SUGGESTIVE",
+        "true_same_orientation_multimer_subhypothesis": "REJECTED",
+        "reason": "No read contains two high-identity near-complete anchor units in the same orientation. Assembler repeat expansions and AT-rich micro-edge traversals remain suggestive, but adjacency and copy number are unresolved."
+    },
+    "classification_rule_note": "Thresholds are audit rules, not production policy: a near-complete unit requires >=80% anchor breadth and >=0.88 identity; TRUE_MULTIMER additionally requires >=2 such units in the same orientation.",
+    "reads": [
+        {
+            "read_id": "SRR27841065.1120618",
+            "read_length": 70627,
+            "at_fraction": 0.685828365922381,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 297,
+            "anchor_query_fraction": 0.004205190649468333,
+            "best_anchor_span": 297,
+            "best_anchor_identity": 0.8862876254180602,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 15160,
+                    "query_end": 15457,
+                    "query_breadth": 297,
+                    "target_breadth": 293,
+                    "target_breadth_fraction": 0.020357118043493366,
+                    "weighted_identity": 0.8862876254180602,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 10,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.1120618.svg"
+        },
+        {
+            "read_id": "SRR27841065.1280039",
+            "read_length": 48612,
+            "at_fraction": 0.6369003538221015,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 2024,
+            "anchor_query_fraction": 0.0416358100880441,
+            "best_anchor_span": 2024,
+            "best_anchor_identity": 0.932876041156296,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 22445,
+                    "query_end": 24469,
+                    "query_breadth": 2024,
+                    "target_breadth": 2021,
+                    "target_breadth_fraction": 0.14041547974709928,
+                    "weighted_identity": 0.932876041156296,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 4,
+            "high_identity_self_repeat_records": 0,
+            "classification": "NUMT_FLANK_CHIMERA",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "A substantial mt-like segment is embedded within much longer unaligned flanks; no nuclear reference is available for confirmation.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.1280039.svg"
+        },
+        {
+            "read_id": "SRR27841065.1765199",
+            "read_length": 69175,
+            "at_fraction": 0.6931550415612577,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 290,
+            "anchor_query_fraction": 0.004192265992049151,
+            "best_anchor_span": 290,
+            "best_anchor_identity": 0.8809523809523809,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 51135,
+                    "query_end": 51425,
+                    "query_breadth": 290,
+                    "target_breadth": 290,
+                    "target_breadth_fraction": 0.020148683387757937,
+                    "weighted_identity": 0.8809523809523809,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 4,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.1765199.svg"
+        },
+        {
+            "read_id": "SRR27841065.1920785",
+            "read_length": 39174,
+            "at_fraction": 0.6647776586511461,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 93,
+            "anchor_query_fraction": 0.002374023587073059,
+            "best_anchor_span": 93,
+            "best_anchor_identity": 0.967741935483871,
+            "anchor_groups": [
+                {
+                    "strand": "+",
+                    "query_start": 27066,
+                    "query_end": 27159,
+                    "query_breadth": 93,
+                    "target_breadth": 93,
+                    "target_breadth_fraction": 0.006461474327798236,
+                    "weighted_identity": 0.967741935483871,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 3,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.1920785.svg"
+        },
+        {
+            "read_id": "SRR27841065.2105647",
+            "read_length": 34103,
+            "at_fraction": 0.6408527109051989,
+            "anchor_alignment_records": 0,
+            "anchor_query_breadth": 0,
+            "anchor_query_fraction": 0.0,
+            "best_anchor_span": 0,
+            "best_anchor_identity": 0.0,
+            "anchor_groups": [],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 2,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.2105647.svg"
+        },
+        {
+            "read_id": "SRR27841065.2743708",
+            "read_length": 42510,
+            "at_fraction": 0.6850152905198776,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 293,
+            "anchor_query_fraction": 0.0068924958833215715,
+            "best_anchor_span": 293,
+            "best_anchor_identity": 0.9078498293515358,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 6138,
+                    "query_end": 6431,
+                    "query_breadth": 293,
+                    "target_breadth": 293,
+                    "target_breadth_fraction": 0.020357118043493366,
+                    "weighted_identity": 0.9078498293515358,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 3,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.2743708.svg"
+        },
+        {
+            "read_id": "SRR27841065.2890335",
+            "read_length": 41325,
+            "at_fraction": 0.690453720508167,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 849,
+            "anchor_query_fraction": 0.02054446460980036,
+            "best_anchor_span": 849,
+            "best_anchor_identity": 0.9707259953161592,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 1,
+                    "query_end": 850,
+                    "query_breadth": 849,
+                    "target_breadth": 842,
+                    "target_breadth_fraction": 0.0585006600430765,
+                    "weighted_identity": 0.9707259953161592,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 47,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.2890335.svg"
+        },
+        {
+            "read_id": "SRR27841065.2946767",
+            "read_length": 38227,
+            "at_fraction": 0.7750542810055719,
+            "anchor_alignment_records": 4,
+            "anchor_query_breadth": 27709,
+            "anchor_query_fraction": 0.7248541606717765,
+            "best_anchor_span": 10085,
+            "best_anchor_identity": 0.9789659917436603,
+            "anchor_groups": [
+                {
+                    "strand": "+",
+                    "query_start": 1044,
+                    "query_end": 15386,
+                    "query_breadth": 14342,
+                    "target_breadth": 14393,
+                    "target_breadth_fraction": 1.0,
+                    "weighted_identity": 0.9780287898615607,
+                    "records": 2
+                },
+                {
+                    "strand": "-",
+                    "query_start": 23842,
+                    "query_end": 37209,
+                    "query_breadth": 13367,
+                    "target_breadth": 14378,
+                    "target_breadth_fraction": 0.9989578267213228,
+                    "weighted_identity": 0.8303824841194756,
+                    "records": 2
+                }
+            ],
+            "high_confidence_anchor_units": 1,
+            "same_strand_high_confidence_units": 1,
+            "self_alignment_records": 206,
+            "high_identity_self_repeat_records": 6,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Near-complete anchor-scale groups occur in opposite orientations, not as a same-direction concatemer.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.2946767.svg"
+        },
+        {
+            "read_id": "SRR27841065.490838",
+            "read_length": 35480,
+            "at_fraction": 0.6660935738444194,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 94,
+            "anchor_query_fraction": 0.002649379932356257,
+            "best_anchor_span": 94,
+            "best_anchor_identity": 0.9574468085106383,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 13202,
+                    "query_end": 13296,
+                    "query_breadth": 94,
+                    "target_breadth": 93,
+                    "target_breadth_fraction": 0.006461474327798236,
+                    "weighted_identity": 0.9574468085106383,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 6,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.490838.svg"
+        },
+        {
+            "read_id": "SRR27841065.61915",
+            "read_length": 37365,
+            "at_fraction": 0.7086845978857219,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 295,
+            "anchor_query_fraction": 0.007895088987019938,
+            "best_anchor_span": 295,
+            "best_anchor_identity": 0.889261744966443,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 34391,
+                    "query_end": 34686,
+                    "query_breadth": 295,
+                    "target_breadth": 293,
+                    "target_breadth_fraction": 0.020357118043493366,
+                    "weighted_identity": 0.889261744966443,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 4,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.61915.svg"
+        },
+        {
+            "read_id": "SRR27841065.664285",
+            "read_length": 41929,
+            "at_fraction": 0.6842757995659329,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 290,
+            "anchor_query_fraction": 0.006916454005580863,
+            "best_anchor_span": 290,
+            "best_anchor_identity": 0.8873720136518771,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 11992,
+                    "query_end": 12282,
+                    "query_breadth": 290,
+                    "target_breadth": 293,
+                    "target_breadth_fraction": 0.020357118043493366,
+                    "weighted_identity": 0.8873720136518771,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 0,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.664285.svg"
+        },
+        {
+            "read_id": "SRR27841065.721323",
+            "read_length": 34429,
+            "at_fraction": 0.6448633419501002,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 654,
+            "anchor_query_fraction": 0.018995614162479305,
+            "best_anchor_span": 654,
+            "best_anchor_identity": 0.9848254931714719,
+            "anchor_groups": [
+                {
+                    "strand": "+",
+                    "query_start": 1466,
+                    "query_end": 2120,
+                    "query_breadth": 654,
+                    "target_breadth": 655,
+                    "target_breadth_fraction": 0.04550823316890155,
+                    "weighted_identity": 0.9848254931714719,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 8,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.721323.svg"
+        },
+        {
+            "read_id": "SRR27841065.735756",
+            "read_length": 32601,
+            "at_fraction": 0.6705622526916353,
+            "anchor_alignment_records": 1,
+            "anchor_query_breadth": 869,
+            "anchor_query_fraction": 0.026655624060611637,
+            "best_anchor_span": 869,
+            "best_anchor_identity": 0.9488320355951056,
+            "anchor_groups": [
+                {
+                    "strand": "-",
+                    "query_start": 5,
+                    "query_end": 874,
+                    "query_breadth": 869,
+                    "target_breadth": 894,
+                    "target_breadth_fraction": 0.06211352740915723,
+                    "weighted_identity": 0.9488320355951056,
+                    "records": 1
+                }
+            ],
+            "high_confidence_anchor_units": 0,
+            "same_strand_high_confidence_units": 0,
+            "self_alignment_records": 4,
+            "high_identity_self_repeat_records": 0,
+            "classification": "CHIMERIC_JUNK",
+            "evidence_grade": "SUGGESTIVE",
+            "rationale": "Only short or weak mt-like local matches occur and no near-complete anchor unit is supported.",
+            "dotplot": "runs/output/animal-lr-recruitment-diagnostics/F/dotplots/SRR27841065.735756.svg"
+        }
+    ]
+}

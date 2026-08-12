@@ -1,0 +1,19 @@
+# SHA256 manifest for local animal-LR interim files
+# Scope: runs/output/animal-lr-recruitment-diagnostics/** files larger than 1 MiB
+# Paths are repository-relative; generated 2026-08-12
+f4d483930b3e17d744687884cc51afefabc2cab6679237a3fc522146b7ab78c8  runs/output/animal-lr-recruitment-diagnostics/B/anchor.paf
+79bc0b5898a1bf538398a4a986310a731cff3b3682a9a49c4d79ecea4ca30789  runs/output/animal-lr-recruitment-diagnostics/Bplus/longreads.fastq
+7aa82a4378027d84cfab6289b516ac56e376bc9e0c0fa24f2c83be8758a71f96  runs/output/animal-lr-recruitment-diagnostics/D/recruited.shuffle-11.fastq.gz
+c7ee9ba1e5fe38cce73fa571d79369e15ef91a53ba54274949aef2085e6dac35  runs/output/animal-lr-recruitment-diagnostics/D/recruited.shuffle-22.fastq.gz
+04a01aea8673e04603a393d6ffdafd564e181d116ca7f57f24021120e6330ca7  runs/output/animal-lr-recruitment-diagnostics/D/recruited.shuffle-33.fastq.gz
+c0cad1fb291bfd0272fb9be1eb1e24249bf119d8973ac9d9834a02c508cc66fa  runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.1-coherent.fastq.gz
+bf03e52557caa687e2c78ee7e61b422a454054c4cf37b665690b032547240d3a  runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.fastq.gz
+845794ebaf3483e29e9a66d49cd929992676731404398c27b613636e0c8640a7  runs/output/animal-lr-recruitment-diagnostics/D/recruited.v03-25000-coherent.fastq.gz
+7e39750912e7ba00d7be615a4e6c262ed99b7641dd8e1f9a5225edf0a2f1feb4  runs/output/animal-lr-recruitment-diagnostics/D/recruited.v03-25000.fastq.gz
+03ed00ca54b2cd036fbf091ca1f0c77383d8da426111ccbab7d6748e53631d32  runs/output/animal-lr-recruitment-diagnostics/D/recruited.v03-30000-coherent.fastq.gz
+7e39750912e7ba00d7be615a4e6c262ed99b7641dd8e1f9a5225edf0a2f1feb4  runs/output/animal-lr-recruitment-diagnostics/D/recruited.v03-30000.fastq.gz
+ab041d0ae8a3df53c9c1b998d7d7f74c709a099e82d3dcac151fda44fad3ad09  runs/output/animal-lr-recruitment-diagnostics/E/raven-original/reads-vs-assembly.paf
+45b6304aae31e2b8e709618beed519e6c504db355a706c70f783297715ff53b0  runs/output/animal-lr-recruitment-diagnostics/forensics/coherent-primary-anchor.bam
+63bd968976d42309c2d34dd5eafa3f6464552cf20fe970c8f000e8f419132ccb  runs/output/animal-lr-recruitment-diagnostics/forensics/coherent-primary-anchor.sorted.bam
+57afefad5501d69706f852e9be5f6bba2ed32d1c4fb6f7d7594bf126d27b50b7  runs/output/animal-lr-recruitment-diagnostics/forensics/coherent-reads-vs-anchor.paf
+b40fb0312b150b8bd7ada4609aa1f97b69e52c0c4daf57109c675c920418a8eb  runs/output/animal-lr-recruitment-diagnostics/forensics/v02.minimap.bam

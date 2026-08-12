@@ -1,0 +1,41 @@
+{
+    "schema_version": "animal-lr-recruitment-diagnostics-0.1",
+    "experimental_only": true,
+    "decision": "NOT_APPLICABLE",
+    "A": {
+        "subsample_status": "PASS_USER_VERIFIED",
+        "subsample_path": "runs/output/animal-long-read-pilot/subsample/SRR27841065.seed11.p10.fastq.gz",
+        "subsample_bytes": 2181678470,
+        "seed": 11,
+        "fraction": 0.1,
+        "integrity": "USER_VERIFIED_IN_PERSISTENT_BASH"
+    },
+    "B": {
+        "paf": {
+            "path": "runs/output/animal-long-read-pilot/recruitment/SRR27841065.rotations.paf",
+            "bytes": 11413299,
+            "sha256": "e871671b2f86a4e3e0ff5e8eb499ef2926a7a6ed73c056afc804853f11d9010c"
+        },
+        "alignment_records": 5816,
+        "unique_recruited_reads": 824,
+        "mapq": {
+            "mapq0": 5215,
+            "mapq_positive": 601
+        },
+        "mapq0_fraction": 0.8966643741403026,
+        "mean_identity": 0.9386549137688781,
+        "read_length": {
+            "min": 85,
+            "max": 70627,
+            "mean": 4532.660194174758
+        },
+        "entropy": {
+            "min": 1.2962292854992832,
+            "max": 1.988710883343611,
+            "mean": 1.785395493840143
+        },
+        "anchor_intersection": 743,
+        "anchor_unique_reads": 743,
+        "note": "anchor PAF read IDs are compared; no threshold is applied"
+    }
+}

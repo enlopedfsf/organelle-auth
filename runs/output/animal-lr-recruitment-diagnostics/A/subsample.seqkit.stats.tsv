@@ -1,0 +1,2 @@
+file                                                                          format  type  num_seqs        sum_len  min_len  avg_len  max_len     Q1     Q2     Q3  sum_gap     N50  N50_num  Q20(%)  Q30(%)  AvgQual  GC(%)  sum_n
+runs/output/animal-long-read-pilot/subsample/SRR27841065.seed11.p10.fastq.gz  FASTQ   DNA    304,427  2,325,689,701        1  7,639.6  197,724  1,088  2,422  7,473        0  24,466   19,895   68.95    33.1    13.94   35.1      0

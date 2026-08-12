@@ -51,7 +51,8 @@
         "genome_size": null,
         "asm_coverage": null,
         "iterations": null,
-        "min_overlap": null
+        "min_overlap": null,
+        "deterministic": null
     },
     "pmat2_comparator": {
         "enabled": false,

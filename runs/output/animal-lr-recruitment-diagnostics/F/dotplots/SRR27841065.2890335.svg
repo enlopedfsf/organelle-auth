@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760">
+<rect width="100%" height="100%" fill="white"/>
+<text x="55" y="24" font-family="sans-serif" font-size="14">SRR27841065.2890335 self-alignment</text>
+<line x1="55" y1="55" x2="705" y2="705" stroke="#9ca3af" stroke-dasharray="4 4"/>
+<line x1="101.04" y1="101.21" x2="423.59" y2="423.18" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="107.64" y1="116.44" x2="135.39" y2="135.88" stroke="#2563eb" stroke-width="1.2" opacity="0.532" />
+<line x1="101.21" y1="101.04" x2="134.57" y2="124.76" stroke="#2563eb" stroke-width="1.2" opacity="0.372" />
+<line x1="110.79" y1="111.77" x2="134.64" y2="126.32" stroke="#2563eb" stroke-width="1.2" opacity="0.427" />
+<line x1="116.44" y1="107.64" x2="134.64" y2="120.43" stroke="#2563eb" stroke-width="1.2" opacity="0.504" />
+<line x1="110.65" y1="122.38" x2="132.18" y2="134.64" stroke="#2563eb" stroke-width="1.2" opacity="0.442" />
+<line x1="113.89" y1="111.45" x2="132.01" y2="123.67" stroke="#2563eb" stroke-width="1.2" opacity="0.443" />
+<line x1="107.64" y1="121.33" x2="120.43" y2="134.64" stroke="#2563eb" stroke-width="1.2" opacity="0.489" />
+<line x1="113.23" y1="116.66" x2="133.00" y2="128.58" stroke="#2563eb" stroke-width="1.2" opacity="0.409" />
+<line x1="332.70" y1="332.77" x2="423.18" y2="423.59" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="160.15" y1="160.29" x2="316.95" y2="317.41" stroke="#2563eb" stroke-width="1.2" opacity="0.180" />
+<line x1="111.22" y1="123.44" x2="129.24" y2="134.64" stroke="#2563eb" stroke-width="1.2" opacity="0.379" />
+<line x1="114.74" y1="119.65" x2="132.18" y2="128.27" stroke="#2563eb" stroke-width="1.2" opacity="0.410" />
+<line x1="111.77" y1="110.79" x2="121.23" y2="119.77" stroke="#2563eb" stroke-width="1.2" opacity="0.494" />
+<line x1="125.53" y1="112.79" x2="135.52" y2="118.89" stroke="#2563eb" stroke-width="1.2" opacity="0.524" />
+<line x1="107.64" y1="123.77" x2="114.79" y2="132.42" stroke="#2563eb" stroke-width="1.2" opacity="0.526" />
+<line x1="107.64" y1="125.75" x2="115.54" y2="134.64" stroke="#2563eb" stroke-width="1.2" opacity="0.484" />
+<line x1="111.25" y1="123.47" x2="117.98" y2="132.69" stroke="#2563eb" stroke-width="1.2" opacity="0.506" />
+<line x1="107.64" y1="127.70" x2="113.89" y2="134.46" stroke="#2563eb" stroke-width="1.2" opacity="0.553" />
+<line x1="366.18" y1="368.49" x2="376.31" y2="377.73" stroke="#2563eb" stroke-width="1.2" opacity="0.380" />
+<line x1="368.49" y1="366.18" x2="377.73" y2="376.31" stroke="#2563eb" stroke-width="1.2" opacity="0.380" />
+<line x1="115.24" y1="128.94" x2="123.19" y2="134.46" stroke="#2563eb" stroke-width="1.2" opacity="0.478" />
+<line x1="111.25" y1="113.68" x2="117.81" y2="119.28" stroke="#2563eb" stroke-width="1.2" opacity="0.561" />
+<line x1="124.99" y1="115.68" x2="133.49" y2="120.75" stroke="#2563eb" stroke-width="1.2" opacity="0.458" />
+<line x1="127.53" y1="112.84" x2="134.64" y2="117.00" stroke="#2563eb" stroke-width="1.2" opacity="0.508" />
+<line x1="117.57" y1="130.33" x2="127.29" y2="134.64" stroke="#2563eb" stroke-width="1.2" opacity="0.383" />
+<line x1="115.24" y1="124.52" x2="121.90" y2="128.27" stroke="#2563eb" stroke-width="1.2" opacity="0.496" />
+<line x1="372.71" y1="374.83" x2="375.60" y2="377.73" stroke="#2563eb" stroke-width="1.2" opacity="0.950" />
+<line x1="374.83" y1="372.71" x2="377.73" y2="375.60" stroke="#2563eb" stroke-width="1.2" opacity="0.950" />
+<line x1="107.64" y1="129.16" x2="112.58" y2="134.64" stroke="#2563eb" stroke-width="1.2" opacity="0.505" />
+<line x1="108.62" y1="110.57" x2="114.86" y2="121.72" stroke="#2563eb" stroke-width="1.2" opacity="0.313" />
+<line x1="123.77" y1="107.64" x2="132.69" y2="112.58" stroke="#2563eb" stroke-width="1.2" opacity="0.356" />
+<line x1="123.44" y1="121.00" x2="132.18" y2="125.34" stroke="#2563eb" stroke-width="1.2" opacity="0.365" />
+<line x1="119.13" y1="123.03" x2="125.65" y2="126.63" stroke="#2563eb" stroke-width="1.2" opacity="0.484" />
+<line x1="127.53" y1="115.29" x2="133.49" y2="119.28" stroke="#2563eb" stroke-width="1.2" opacity="0.491" />
+<line x1="117.90" y1="114.47" x2="123.19" y2="117.81" stroke="#2563eb" stroke-width="1.2" opacity="0.504" />
+<line x1="115.24" y1="131.88" x2="118.89" y2="135.52" stroke="#2563eb" stroke-width="1.2" opacity="0.597" />
+<line x1="372.71" y1="375.56" x2="374.88" y2="377.73" stroke="#2563eb" stroke-width="1.2" opacity="0.950" />
+<line x1="375.56" y1="372.71" x2="377.73" y2="374.88" stroke="#2563eb" stroke-width="1.2" opacity="0.950" />
+<line x1="127.78" y1="119.94" x2="132.18" y2="122.87" stroke="#2563eb" stroke-width="1.2" opacity="0.550" />
+<line x1="119.28" y1="114.38" x2="123.19" y2="117.32" stroke="#2563eb" stroke-width="1.2" opacity="0.610" />
+<line x1="116.17" y1="111.77" x2="123.42" y2="115.10" stroke="#2563eb" stroke-width="1.2" opacity="0.372" />
+<line x1="115.68" y1="126.94" x2="121.41" y2="129.73" stroke="#2563eb" stroke-width="1.2" opacity="0.431" />
+<line x1="117.19" y1="115.24" x2="125.65" y2="119.28" stroke="#2563eb" stroke-width="1.2" opacity="0.303" />
+<line x1="128.42" y1="124.00" x2="133.00" y2="126.63" stroke="#2563eb" stroke-width="1.2" opacity="0.495" />
+<line x1="125.75" y1="107.64" x2="133.00" y2="111.45" stroke="#2563eb" stroke-width="1.2" opacity="0.308" />
+<line x1="115.73" y1="115.24" x2="119.28" y2="117.81" stroke="#2563eb" stroke-width="1.2" opacity="0.558" />
+<text x="55" y="748" font-family="sans-serif" font-size="11">query 0..41325; blue=same strand, red=reverse</text>
+</svg>
