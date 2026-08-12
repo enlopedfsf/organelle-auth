@@ -63,4 +63,3 @@ output data as part of normal setup or launch.
 
 - **WHEN** a user explicitly supplies a legacy work directory with `-resume`
 - **THEN** the pipeline attempts compatible task reuse without moving or deleting that directory
-

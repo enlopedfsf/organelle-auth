@@ -79,4 +79,3 @@ starting Nextflow, and SHALL return a non-zero status with the path when the che
 
 - **WHEN** the default or explicitly selected samplesheet is absent or empty
 - **THEN** Nextflow is not started and the launcher reports the failing path
-
