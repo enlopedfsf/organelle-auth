@@ -12,6 +12,7 @@ lint:
     - assets/email_template.txt
     - docs/README.md
     - .github/PULL_REQUEST_TEMPLATE.md
+    - .gitignore
   # The repository-owned stub pipeline test asserts successful end-to-end routing;
   # its dynamic software-version report is validated by the dedicated CI artifact
   # rather than a version-sensitive nf-test snapshot.

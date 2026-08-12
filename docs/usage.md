@@ -52,10 +52,53 @@ An [example samplesheet](../assets/samplesheet.csv) has been provided with the p
 
 ## Running the pipeline
 
-The typical command for running the pipeline is as follows:
+### Canonical local layout
+
+For local runs, use the repository launcher so the input, output, and Nextflow task
+directories do not depend on the terminal's current directory:
+
+```text
+runs/input/   canonical samplesheet and staged input area
+runs/output/  published results and execution reports
+runs/work/    Nextflow task work directories and resume cache
+```
+
+The launcher is:
 
 ```bash
-nextflow run enlopedfsf/organelleauth --input ./samplesheet.csv --outdir ./results --genome GRCh37 -profile docker
+./scripts/run_organelleauth_fixed.sh -profile docker
+```
+
+It reads `runs/input/samplesheet.csv`, writes results to `runs/output/`, and uses
+`runs/work/` for Nextflow tasks. To intentionally use a different samplesheet while keeping
+the same output/work layout:
+
+```bash
+ORG_AUTH_INPUT=/absolute/path/to/samplesheet.csv \
+  ./scripts/run_organelleauth_fixed.sh -profile docker
+```
+
+旧缓存需要继续使用时，可以显式指定旧 work 目录；默认值仍然是固定的新目录：
+
+```bash
+ORG_AUTH_INPUT=/absolute/path/to/samplesheet.csv \
+ORG_AUTH_WORK=/home/iris-hp/Project/organelle-auth-ci-fix/work \
+  ./scripts/run_organelleauth_fixed.sh -profile docker -resume
+```
+
+只有在输入文件、参数、profile、容器和代码版本与旧运行兼容时，Nextflow 才会实际复用
+旧任务；不兼容的任务会自动重新执行。不要手动移动或删除旧 `work/` 目录。
+
+The launcher validates that the samplesheet exists and is non-empty before Nextflow starts.
+The pipeline still accepts explicit `--input`, `--outdir`, and `-work-dir` overrides when an
+isolated run is deliberately required; those overrides are the reason older runs may have
+appeared in different locations.
+
+The direct equivalent (when the fixed launcher is not used) is:
+
+```bash
+nextflow run . --input runs/input/samplesheet.csv --outdir runs/output \
+    -work-dir runs/work -profile docker
 ```
 
 This will launch the pipeline with the `docker` configuration profile. See below for more information about profiles.
@@ -86,7 +129,7 @@ with:
 
 ```yaml title="params.yaml"
 input: './samplesheet.csv'
-outdir: './results/'
+outdir: './runs/output/'
 genome: 'GRCh37'
 <...>
 ```
