@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: plant_long_read_pilot
+description: Experimental plant long-read reference-first pilot evidence route.
+keywords: [plant, long-read, experimental, reference-first]
+components: [plant_long_read_pilot_run]
+input:
+  - samples: { type: channel, description: "Plant sample and read channel." }
+  - reference_fasta: { type: file, description: "Canonical organelle reference FASTA." }
+  - manifest: { type: file, description: "Frozen long-read input manifest." }
+output:
+  - report: { type: channel, description: "Experimental structural evidence report." }
+  - status: { type: channel, description: "Experimental target gate status." }
+  - assembly: { type: channel, description: "Experimental assembly output." }
+  - versions: { type: channel, description: "Tool versions." }
+authors: [enlopedfsf]

@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: animal_sr_assembly
+description: Animal short-read mitogenome baiting, MitoFinder assembly, annotation, and grading.
+keywords: [animal, mitogenome, short-read, assembly]
+components: [bait_mito_reads, mitofinder, animal_result_adapter]
+input:
+  - ch_clean_reads: { type: channel, description: "(meta, [clean_R1, clean_R2])" }
+  - bait_ref: { type: file, description: "Multi-reference animal mitogenome bait FASTA." }
+  - ann_ref: { type: file, description: "Animal annotation reference GenBank file." }
+output:
+  - assembly: { type: channel, description: "Animal mitogenome, annotation, info, grade, and produced markers." }
+  - versions: { type: channel, description: "Tool versions." }
+authors: [enlopedfsf]

@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: animal_assembly_qc
+description: Animal mitogenome short-read assembly read-back QC and status evidence.
+keywords: [animal, mitogenome, assembly, qc, readback]
+components: [minimap2_align, samtools_index, samtools_depth, samtools_flagstat, touch_readback_markers]
+input:
+  - ch_clean_reads: { type: channel, description: "(meta, [clean_R1, clean_R2])" }
+  - ch_assembly: { type: channel, description: "Animal mitogenome assembly and grade channel." }
+output:
+  - assembly_qc: { type: channel, description: "Read-back BAM, depth, flagstat, or failure markers." }
+  - versions: { type: channel, description: "Tool versions." }
+authors: [enlopedfsf]
