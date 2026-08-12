@@ -3,8 +3,9 @@
 ### Requirement: Stable run report locations
 
 The local pipeline SHALL publish execution reports and parameter provenance under
-`runs/output/pipeline_info/` using stable, documented filenames while retaining run
-identity in the parameter content and Nextflow history.
+`runs/output/pipeline_info/` using stable, documented report filenames. The nf-core-owned
+parameter dump MAY retain a timestamped filename, provided it remains in that directory and
+run identity is retained in its content and Nextflow history.
 
 #### Scenario: Repeated local launch
 

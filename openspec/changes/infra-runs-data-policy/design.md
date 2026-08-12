@@ -10,9 +10,11 @@ empty.
 
 ## Provenance and collision control
 
-Pipeline reports use stable names under `runs/output/pipeline_info/` and overwrite only
-the named report files. Run parameters, commit, tool versions, and Nextflow history remain
-the provenance source; stable filenames are not treated as scientific identity.
+Pipeline execution reports use stable names under `runs/output/pipeline_info/` and overwrite
+only the named report files. The nf-core-owned parameter dump keeps its timestamped filename
+as provenance; it remains in the same canonical directory and does not create a new output
+tree. Run parameters, commit, tool versions, and Nextflow history remain the provenance
+source; filenames are not treated as scientific identity.
 
 ## Local-data policy
 

@@ -71,20 +71,13 @@ def getWorkflowVersion() {
 // Dump pipeline parameters to a JSON file
 //
 def dumpParametersToJSON(outdir) {
-    // Keep the canonical run layout deterministic. Run provenance is retained in the
-    // JSON contents and Nextflow history; the fixed filename prevents a new report path
-    // from being created on every launch.
-    def filename  = 'params_latest.json'
+    def timestamp = new java.util.Date().format('yyyy-MM-dd_HH-mm-ss')
+    def filename  = "params_${timestamp}.json"
     def temp_pf   = new File(workflow.launchDir.toString(), ".${filename}")
     def jsonStr   = groovy.json.JsonOutput.toJson(params)
     temp_pf.text  = groovy.json.JsonOutput.prettyPrint(jsonStr)
 
-    def target = new File("${outdir}/pipeline_info/${filename}")
-    target.parentFile.mkdirs()
-    if (target.exists()) {
-        target.delete()
-    }
-    nextflow.extension.FilesEx.copyTo(temp_pf.toPath(), target.toPath())
+    nextflow.extension.FilesEx.copyTo(temp_pf.toPath(), "${outdir}/pipeline_info/params_${timestamp}.json")
     temp_pf.delete()
 }
 
