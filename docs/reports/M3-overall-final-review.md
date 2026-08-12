@@ -8,18 +8,18 @@
 
 M3 is complete as an experimental evaluation milestone. It is **not** a production authentication release and does not authorize a topology upgrade or CycloneSEQ transfer claim.
 
-| Area | Final state | Evidence |
-|---|---|---|
-| Plant ONT route | `EXPERIMENTAL` | `docs/reports/M3-plant-long-read-reference-first-technical-report.md` |
-| Plant IR gap | `CLOSED` as a structural evidence result | 37 independent spanning-read candidates are recorded in the plant report |
-| Plant whole-plastome topology | `INCONCLUSIVE` | archived topology experiment and conclusion-revision reports |
-| Animal ONT route | `EXPERIMENTAL_COMPLETE` | `runs/output/animal-lr-recruitment-diagnostics/VALIDATION-animal-lr.md` |
-| Animal mitochondrial core | supported against M2-① anchor | Flye/Raven core agreement and anchor evidence |
-| Animal repeat adjacency/copy number | unresolved | HYP-DNA-002 and Raven insertion audit |
-| Animal topology | `INCONCLUSIVE` | animal validation report and `animal-long-read-analysis` spec |
-| IDENTIFY / DECISION | unchanged; ONT excluded | animal and plant specs |
-| PMAT2 | gated by Issue #10 | animal/plant governance records |
-| CycloneSEQ transfer and Go/No-Go | `PENDING_REAL_DATA` | plant report and capability specs |
+| Area                                | Final state                              | Evidence                                                                 |
+| ----------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------ |
+| Plant ONT route                     | `EXPERIMENTAL`                           | `docs/reports/M3-plant-long-read-reference-first-technical-report.md`    |
+| Plant IR gap                        | `CLOSED` as a structural evidence result | 37 independent spanning-read candidates are recorded in the plant report |
+| Plant whole-plastome topology       | `INCONCLUSIVE`                           | archived topology experiment and conclusion-revision reports             |
+| Animal ONT route                    | `EXPERIMENTAL_COMPLETE`                  | `runs/output/animal-lr-recruitment-diagnostics/VALIDATION-animal-lr.md`  |
+| Animal mitochondrial core           | supported against M2-① anchor            | Flye/Raven core agreement and anchor evidence                            |
+| Animal repeat adjacency/copy number | unresolved                               | HYP-DNA-002 and Raven insertion audit                                    |
+| Animal topology                     | `INCONCLUSIVE`                           | animal validation report and `animal-long-read-analysis` spec            |
+| IDENTIFY / DECISION                 | unchanged; ONT excluded                  | animal and plant specs                                                   |
+| PMAT2                               | gated by Issue #10                       | animal/plant governance records                                          |
+| CycloneSEQ transfer and Go/No-Go    | `PENDING_REAL_DATA`                      | plant report and capability specs                                        |
 
 ## Plant review
 
