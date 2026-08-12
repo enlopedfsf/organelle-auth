@@ -1,0 +1,5890 @@
+{
+  "schema_version": "topology-conclusion-revision-0.1",
+  "platform": "ONT",
+  "experimental_only": true,
+  "paf": "/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/lr_map_final_reads_to_flye/SRR38978847.reads_to_flye.paf",
+  "paf_sha256": "5c7b69fcf42aa1b22c6e9fa0c7ba571f06b99f9e86db590b76d82df92a09f460",
+  "flank_bases": 500,
+  "candidate_count": 587,
+  "qualifying_count": 0,
+  "classification_counts": {
+    "NON_UNIQUE_ANCHOR": 53,
+    "MAPQ_ZERO_AMBIGUOUS": 517,
+    "COPY_AMBIGUOUS": 17,
+    "QUALIFYING_CANDIDATE": 0
+  },
+  "formal_topology": "INCONCLUSIVE",
+  "decision": "NOT_APPLICABLE",
+  "ledger": [
+    {
+      "read_id": "SRR38978847.7296",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.16509",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.24316",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.25438",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.28383",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.30651",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.33837",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.35849",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.46573",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.47950",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.49755",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.50142",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.52937",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.53561",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.55823",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.57115",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.64418",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.67754",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.68752",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.70497",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.71060",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.71292",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.78770",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.88008",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.90578",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.93107",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.93935",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.93949",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.98103",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.98695",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.98806",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.100735",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.101234",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.103100",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.103202",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 4,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.109141",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.110127",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.116798",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.117648",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.117685",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.120163",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.123026",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.127702",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.135210",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.138450",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.139433",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.140984",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.144361",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.147929",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.148168",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.150809",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.150954",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.154833",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.164837",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.164894",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.165935",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.173058",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.173595",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.173901",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.175802",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.176441",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.187315",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.189880",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.192860",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.193883",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.195436",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.196673",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.198857",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.200520",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.201258",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.204400",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.204608",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.205806",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.207472",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.208046",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.208866",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.210752",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.211416",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.213206",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.214438",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.219596",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.220188",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.223604",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 4,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.227472",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.230909",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.232422",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.235586",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.240749",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.242630",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.243243",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.251243",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.254218",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.257392",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.261646",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.263260",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.265741",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.269051",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.270740",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.273480",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.274419",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.275022",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.283937",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.288411",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.291473",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.293600",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.295993",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.297809",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.299364",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.303793",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.303880",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.304559",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.307858",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.308662",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.311246",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.311765",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.313440",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.315297",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.315299",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.317099",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.323144",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.323197",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.323224",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.325803",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.328663",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.337595",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.339915",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.343584",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.347487",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 7,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.352834",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 4,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.356062",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.358313",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.359236",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.363000",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.369359",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.375119",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.378034",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 5,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.378755",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.383227",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.394328",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.402282",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.407027",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.409473",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.410242",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.411575",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.416715",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.419032",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.425270",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.425387",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.435871",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.441382",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.442678",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.445995",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.448395",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.448434",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 4,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.454438",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.455811",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.458795",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.461529",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.465800",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.468846",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.472577",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.474165",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.475228",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.477374",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.478969",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.481937",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.492163",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.495169",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.498098",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.498645",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.499522",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.501260",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 5,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.501334",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.502613",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.502712",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.506130",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.508002",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.511779",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.512402",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.523785",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.525325",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.527256",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.534717",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.536226",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 3,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.541867",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.541916",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.543568",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.545948",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.546741",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.548386",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.549273",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.551934",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.552338",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.552500",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.553987",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.561522",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.565564",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.568346",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.569787",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.570334",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.579350",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.579429",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.583400",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.584923",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 4,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.585815",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.588989",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.589599",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.592808",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.593992",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.601584",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.603033",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.609351",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.613088",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.614165",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.617274",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.620924",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.621374",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.627644",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.630936",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.633827",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.647605",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.648090",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.652872",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.656472",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.656631",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.660163",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.661660",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.667118",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.675281",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.676949",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.677514",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 4,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.681950",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.685173",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.685909",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.686419",
+      "left_alignments": 1,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.688820",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.689677",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 3,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.694162",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.698514",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.702413",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.703620",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.710123",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.710913",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.713364",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.715989",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.722098",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.726539",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.729151",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.731053",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.731213",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.732041",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.738399",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.743858",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 11,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.745640",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.747362",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.749868",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.750919",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.759603",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.761119",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.761766",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.764474",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.766508",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.767615",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.770777",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.778430",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.787271",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.787758",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.788351",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.788383",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.789790",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.791224",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.801111",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.803092",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.804976",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.808123",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.811621",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.811790",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 4,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.815342",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.823789",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.824370",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.824658",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.826750",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.828810",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.829101",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.829516",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.830252",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.830953",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.831064",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.832536",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.833483",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.833854",
+      "left_alignments": 3,
+      "right_alignments": 1,
+      "total_target_placements": 6,
+      "left_mapq": 60,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.834016",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.836242",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.840738",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.841709",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.844182",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.845880",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.845918",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.849604",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.854471",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.854755",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.855105",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.856005",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.856076",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.857045",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.857514",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.858441",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.858560",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.858880",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.859890",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.861622",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.862298",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.864287",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.867614",
+      "left_alignments": 1,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.867722",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.870659",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.874748",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.875717",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.879520",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.881240",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.881361",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.884983",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.885740",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.889461",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.889651",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.892908",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.893152",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.893641",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.896158",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.900135",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.907611",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.910519",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.915089",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.916743",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.920668",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 8,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.926161",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 3,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.938037",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.943351",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.948020",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.950426",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.951870",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.954814",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.957177",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.959015",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.963738",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.967576",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.968131",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.970044",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.973318",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.973925",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.977057",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.983213",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.983757",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 15,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.990545",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.993165",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.999535",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1000657",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1004600",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1010834",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1017682",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1017700",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1017728",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1018742",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1021189",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1025980",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1028395",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1030264",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1030504",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1031895",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1033735",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1035352",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1038039",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1046660",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1047057",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1048297",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1048564",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1055688",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1060001",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1060027",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1075731",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1077943",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1081090",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 60,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1095111",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1097644",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1101642",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1103110",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1106914",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1109084",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1114931",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1115347",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1116865",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1116987",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1118417",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1119810",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1122523",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1126784",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1128887",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1133203",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1134050",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1140465",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1145128",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1146975",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1154595",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1155364",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1155602",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1155748",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1161332",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1161753",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1167453",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1167835",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1170351",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1171793",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1174531",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1179914",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1179961",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1187226",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 6,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1203229",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1210485",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1213484",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1215398",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1217653",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1227835",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1229176",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1231440",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1233168",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1236049",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1236240",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1236855",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1239439",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1241611",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1244759",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1245893",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1251467",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1253303",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1255591",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1261179",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1272674",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1275390",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1281201",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1281676",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1282724",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1285409",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1285979",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1287686",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1292282",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1296070",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1310296",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1310411",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1312255",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1316852",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 4,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1320916",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1324337",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1327403",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1329154",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1337662",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1337933",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1347722",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1350480",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1351230",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1356981",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1363148",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1364106",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1365436",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1373902",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1374672",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1377165",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1380435",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1382857",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1383834",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1384250",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1384868",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1390133",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1392025",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1392568",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1398268",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1421545",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1422320",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1434774",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1441889",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1446179",
+      "left_alignments": 2,
+      "right_alignments": 1,
+      "total_target_placements": 6,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1446210",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1448354",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1448624",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1449274",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1450664",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 4,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1453761",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1460054",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1463683",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1463731",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 6,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1466202",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1471671",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1472215",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1475012",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1475057",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1475086",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1477708",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1479746",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1480499",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1482004",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1483085",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1489724",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1493607",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 10,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1494562",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1496537",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1507239",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 4,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1509240",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1515955",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1517362",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1523856",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1525031",
+      "left_alignments": 2,
+      "right_alignments": 2,
+      "total_target_placements": 6,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "COPY_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1527959",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1528664",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1529983",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1535443",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1548182",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1549095",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1555455",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1560192",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1562393",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1566529",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1568426",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1595110",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1596832",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1598051",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 60,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1599511",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1600961",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1609944",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1614182",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1621912",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1623989",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1626394",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1628369",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1634836",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1635046",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1636136",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1638454",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1648704",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1652270",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1652874",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1652878",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1656087",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1656881",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1658897",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1659042",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1665133",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 8,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1668475",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1671931",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1675438",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1681591",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1684398",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1684748",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1687724",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1696279",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1697059",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1716445",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1716700",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 5,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1716996",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1717044",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1717549",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1719227",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1721913",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1725736",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 1,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1729899",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1731991",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 4,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1732606",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1733415",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1734863",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1736284",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 2,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1736295",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1737070",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1740634",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1742441",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 39,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1743164",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1743670",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1745135",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1753243",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1754081",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1756176",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 4,
+      "right_mapq": 60,
+      "classification": "NON_UNIQUE_ANCHOR",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1758377",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1762976",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1765738",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1772598",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1773232",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1776318",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1777504",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1780101",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    },
+    {
+      "read_id": "SRR38978847.1781664",
+      "left_alignments": 1,
+      "right_alignments": 1,
+      "total_target_placements": 3,
+      "left_mapq": 0,
+      "right_mapq": 60,
+      "classification": "MAPQ_ZERO_AMBIGUOUS",
+      "independent_alignment_support": false
+    }
+  ]
+}

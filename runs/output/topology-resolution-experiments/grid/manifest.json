@@ -1,0 +1,15 @@
+{
+  "schema_version": "topology-resolution-experiments-0.1",
+  "platform": "ONT",
+  "experimental_only": true,
+  "input_sha256": "93f4fd3bc3969e5d4d3577870b32f4a63d99ddc57a325f84403d7f089531f3c8",
+  "input_bases": 122132426,
+  "available_flye": "2.9.3-b1797",
+  "status": "REDUCED_GRID_BLOCKED_RUNTIME_TERMINATION",
+  "threads": 4,
+  "retry_log": "../grid_retry/asm-200_overlap-5000/flye.log",
+  "combinations": [
+    {"asm_coverage": 200, "min_overlap": 5000, "status": "pending"},
+    {"asm_coverage": null, "min_overlap": 5000, "status": "pending"}
+  ]
+}
