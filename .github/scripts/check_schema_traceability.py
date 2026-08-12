@@ -10,7 +10,7 @@ Checks:
      passes and the truth-field fixture is rejected (DATA-003).
   3. assets/schema_status.json is valid; the 3 §5.5 enum sets are closed.
   4. Requirement traceability matrix integrity (bidirectional vs specs).
-  5. registries/tools.yaml: 13 §8.3 candidates + 7 PROHIBITED, each PROHIBITED with
+  5. registries/tools.yaml: 14 §8.3 candidates + 7 PROHIBITED, each PROHIBITED with
      reason + re_evaluation_trigger; spot-check no tier inflated.
   6. PROHIBITED tools do not appear in modules/ or conf/ (cheap T0 grep).
   7. registries/hypotheses.yaml: state machine + full HYP-DNA-001 (two-metric).
@@ -122,7 +122,7 @@ def check_traceability():
 
 EXPECTED_CANDIDATES = {
     "fastp", "nanoplot", "kraken2", "getorganelle", "novoplasty", "mitofinder_mitoz",
-    "flye", "pmat2", "racon", "polypolish", "bcftools_consensus", "nextpolish2", "geseq_plastidhub",
+    "flye", "raven", "pmat2", "racon", "polypolish", "bcftools_consensus", "nextpolish2", "geseq_plastidhub",
 }
 EXPECTED_PROHIBITED = {"medaka", "nanopolish", "clair3_ont", "oatk", "tippo", "mitohifi", "hifiasm"}
 
@@ -131,7 +131,7 @@ def check_tools_registry():
     t = load_yaml("registries/tools.yaml")
     cands = t.get("candidates", [])
     proh = t.get("prohibited", [])
-    assert len(cands) == 13, f"expected 13 candidates, got {len(cands)}"
+    assert len(cands) == 14, f"expected 14 candidates, got {len(cands)}"
     cand_ids = {c["tool_id"] for c in cands}
     assert cand_ids == EXPECTED_CANDIDATES, f"candidate mismatch: {cand_ids ^ EXPECTED_CANDIDATES}"
     tier = {c["tool_id"]: c["admission_status"] for c in cands}
