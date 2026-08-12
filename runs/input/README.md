@@ -53,4 +53,7 @@ and `runs/work/`, and only then other legacy paths. Historical Nextflow `work/<h
 trees are cache/intermediate locations, not canonical evidence paths; when a cache
 contains authoritative evidence, copy or register a stable manifest under `runs/input/`
 or `runs/output/` rather than relying on its hash directory.
+
+```
+
 ```
