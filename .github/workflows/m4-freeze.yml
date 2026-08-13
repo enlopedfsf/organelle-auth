@@ -29,7 +29,7 @@ jobs:
           - tool: bwa
             image: quay.io/biocontainers/bwa@sha256:99a35e5ee4e9c329e8746c4689890b97a3ac5620cb36d374cba69ba52016e72a
             entrypoint: bwa
-            args: ''
+            args: ""
             expected: 'Version: 0\.7\.19-r1273'
             allowed_exit: 1
           - tool: polypolish
