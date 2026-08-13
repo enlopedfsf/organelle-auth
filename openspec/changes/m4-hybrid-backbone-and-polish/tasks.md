@@ -37,4 +37,4 @@
 
 ## 6. Review gate
 
-- [ ] 6.1 Stop after proposal review; implementation requires explicit user approval and a separate `/opsx:apply` action.
+- [x] 6.1 Proposal review completed; explicit user approval for `/opsx:apply` received on 2026-08-13. Execution remains gated by the three-artifact freeze checklist in 1.3, 2.3, and 4.6.

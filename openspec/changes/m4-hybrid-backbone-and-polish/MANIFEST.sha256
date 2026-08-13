@@ -1,0 +1,10 @@
+# M4 freeze manifest (large files remain outside Git)
+# Format: SHA256  absolute_path  logical_role
+b8d56a6f4e8d38a08d5668faa36b481eb75e12133a67652d21c6d5871d55cf0b  /home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta  plant.B0
+d8d5f1215a8a688f0001d4fb9177c94d34c558c5f60879d3757ac366ae250e75  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta  animal.B0
+7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta  animal.Raven.comparator
+e41cb9ee4fb8de32e560760cd6842059d8575d7ddbccd9fd4a8211a5038fd767  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_1.fastq.heldout.R1.fastq.gz  plant.heldout.R1
+25281943dc5226d5ae3cdd78a7646523948294640c3f38dacb19f2803b50a78e  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_1.fastq.train.R1.fastq.gz  plant.train.R1
+7c58ae322370aba77f2b38ef7fce8cc4f26ea8389be66b741cd42dd0be2d005f  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_2.fastq.heldout.R2.fastq.gz  plant.heldout.R2
+305ac1c30c907399820029afdca721213cfdcc9c4d9e3cd7bd995604ba97baa4  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_2.fastq.train.R2.fastq.gz  plant.train.R2
+3725de073b661c6fb34d787f11029117458a62d8bc22ff150e6522b24101c606  /tmp/organelle-auth-m4-propose.fz4Rwg/runs/output/m4-hybrid-backbone-and-polish/animal-core-mask/animal-core.mask.bed  animal.core-mask.provisional
