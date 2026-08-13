@@ -1,0 +1,48 @@
+{
+  "schema_version": "m4-arm-protocols-v1",
+  "state": "FROZEN",
+  "frozen_before_arm_execution": true,
+  "short_read_platforms_in_this_evaluation": [
+    "ILLUMINA"
+  ],
+  "polypolish": {
+    "bwa_version": "0.7.19-r1273",
+    "polypolish_version": "0.7.1",
+    "index": "bwa index candidate.fasta",
+    "align_r1": "bwa mem -t 4 -a candidate.fasta train.R1.fastq.gz > train.R1.sam",
+    "align_r2": "bwa mem -t 4 -a candidate.fasta train.R2.fastq.gz > train.R2.sam",
+    "insert_filter": "polypolish filter --orientation auto --low 0.1 --high 99.9 --in1 train.R1.sam --in2 train.R2.sam --out1 train.R1.filtered.sam --out2 train.R2.filtered.sam",
+    "polish": "polypolish polish --debug polypolish.debug.tsv candidate.fasta train.R1.filtered.sam train.R2.filtered.sam > polished.fasta",
+    "polish_defaults": {
+      "fraction_invalid": 0.2,
+      "fraction_valid": 0.5,
+      "max_errors": 10,
+      "minimum_depth": 5,
+      "careful": false,
+      "rounds": 1
+    }
+  },
+  "bcftools_consensus": {
+    "mapper": "flye-minimap2 2.24-r1155-dirty",
+    "samtools_version": "1.20",
+    "bcftools_version": "1.21",
+    "align": "flye-minimap2 -ax sr --sam-hit-only -t 4 candidate.fasta train.R1.fastq.gz train.R2.fastq.gz",
+    "primary_filter": "samtools view -b -F 0x904 -q 20 -",
+    "mpileup": "bcftools mpileup -Ou -q 20 -Q 20 -d 20000000 -L 20000000 -a FORMAT/DP,FORMAT/AD -f candidate.fasta training.primary.q20.bam",
+    "call": "bcftools call --ploidy 1 -m -v -Ou",
+    "normalize": "bcftools norm -f candidate.fasta -m -both -Oz",
+    "filter": "bcftools view -i 'QUAL>=30 && FORMAT/DP[0]>=10 && FORMAT/AD[0:1]/FORMAT/DP[0]>=0.8' -Oz",
+    "consensus": "bcftools consensus -f candidate.fasta calls.filtered.vcf.gz > consensus.fasta",
+    "maximum_depth": 20000000,
+    "maximum_indel_depth": 20000000,
+    "ceiling_rationale": "Nonbinding computational ceiling above twice either taxon's frozen training-pair count; prevents default high-copy depth and indel truncation.",
+    "filter_rationale": "Training-only conservative candidate generation. bcftools consensus applies records already present in the VCF without its own allele-fraction decision."
+  },
+  "heldout_use": "PROHIBITED_FOR_POLISHING_OR_PARAMETER_SELECTION",
+  "method_sources": {
+    "bwa": "https://github.com/lh3/bwa",
+    "polypolish": "https://github.com/rrwick/Polypolish/wiki/How-to-run-Polypolish",
+    "bcftools_consensus": "https://samtools.github.io/bcftools/howtos/consensus-sequence.html",
+    "bcftools_manual": "https://samtools.github.io/bcftools/bcftools"
+  }
+}

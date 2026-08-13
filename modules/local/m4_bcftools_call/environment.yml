@@ -1,0 +1,3 @@
+name: m4_bcftools_call
+channels: [conda-forge, bioconda]
+dependencies: [bcftools=1.21]

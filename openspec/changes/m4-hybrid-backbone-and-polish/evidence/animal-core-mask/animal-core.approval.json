@@ -1,0 +1,26 @@
+{
+  "schema_version": "m4-animal-core-mask-owner-approval-v1",
+  "change": "m4-hybrid-backbone-and-polish",
+  "artifact": "evidence/animal-core-mask/animal-core.bed",
+  "artifact_sha256": "468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0",
+  "coordinate_frame": "animal Flye B0, 0-based half-open",
+  "intervals": [
+    "contig_1:500-2441",
+    "contig_3:515-3800",
+    "contig_3:4839-10305"
+  ],
+  "total_bases": 10692,
+  "approved_by": "validation/evidence owner",
+  "approved_on": "2026-08-13",
+  "approval_source": "explicit user approval in the Codex goal thread: 好的，按照你的要来做",
+  "approved_scope": "animal six-arm local sequence-ranking metrics only",
+  "prohibited_claims": [
+    "global query order",
+    "cross-block adjacency",
+    "repeat copy number",
+    "circularity",
+    "complete mitochondrial topology"
+  ],
+  "heldout_use": "PROHIBITED_FOR_MASK_CONSTRUCTION_OR_REVISION",
+  "decision_effect": "NONE; status remains INCONCLUSIVE, assembly_grade remains CANDIDATE, and decision remains NOT_APPLICABLE"
+}

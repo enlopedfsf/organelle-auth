@@ -1,0 +1,55 @@
+{
+  "schema_version": "m4-input-compatibility-v1",
+  "baseline": {
+    "origin_dev_commit": "d61db06266d38d6632c5913728ac7094b7d136c1",
+    "proposal_first_commit": "ea7f20c7f2560b4ab4c3469e6f757db77359358d",
+    "proposal_parent_is_origin_dev": true
+  },
+  "scope": "public-data experimental hybrid reference-build evaluation",
+  "cycloneseq_transfer": "PENDING_REAL_DATA",
+  "taxa": {
+    "plant": {
+      "short_read_run": "SRR38978846",
+      "short_read_platform": "ILLUMINA",
+      "short_read_instrument": "Illumina HiSeq 2500",
+      "long_read_run": "SRR38978847",
+      "biosample": "SAMN60565143",
+      "same_biosample": true,
+      "reference_pack_id": "corydalis-test-0.1",
+      "policy_pack_id": "tcm-plant-engineering-test-0.1.0",
+      "limitation": "Public same-BioSample engineering evidence; reference pack is not conspecific production truth."
+    },
+    "animal": {
+      "short_read_run": "SRR27841063",
+      "short_read_platform": "ILLUMINA",
+      "short_read_instrument": "Illumina HiSeq 2000",
+      "long_read_run": "SRR27841065",
+      "biosample": "SAMN39735897",
+      "same_biosample": true,
+      "reference_pack_id": "tcm-animal-cm084263-v0.1",
+      "policy_pack_id": "tcm-animal-engineering-test-0.1.0",
+      "limitation": "Public same-BioSample/BioProject engineering evidence; CM084263 agreement is not independent biological validation."
+    }
+  },
+  "tool_gate": {
+    "registry": "registries/tools.yaml",
+    "racon": "EXPERIMENTAL",
+    "bwa_mem": "EXPERIMENTAL",
+    "polypolish": "EXPERIMENTAL",
+    "bcftools_consensus": "EXPERIMENTAL",
+    "container_execution_probe": "PASS_CI_PR21_HEAD_26bbdcd",
+    "container_execution_probe_run": "https://github.com/enlopedfsf/organelle-auth/actions/runs/31689221509",
+    "pmat2": "GATED_ISSUE_10"
+  },
+  "metadata_source": {
+    "provider": "EMBL-EBI ENA Portal API",
+    "endpoint_pattern": "https://www.ebi.ac.uk/ena/portal/api/filereport?accession=<RUN>&result=read_run",
+    "retrieved_on": "2026-08-13"
+  },
+  "method_sources": {
+    "bwa": "https://github.com/lh3/bwa",
+    "polypolish": "https://github.com/rrwick/Polypolish/wiki/How-to-run-Polypolish",
+    "bcftools_consensus": "https://samtools.github.io/bcftools/howtos/consensus-sequence.html",
+    "bcftools_manual": "https://samtools.github.io/bcftools/bcftools"
+  }
+}

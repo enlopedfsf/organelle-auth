@@ -1,0 +1,26 @@
+name: m4_heldout_evaluate
+description: Calculate uniform held-out residual, concordance, and homopolymer metrics inside the lifted frozen core.
+keywords: [heldout, evaluation, edit-ledger, hybrid]
+tools:
+  - python: { description: Evidence-only metric calculation., licence: [PSF-2.0] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - bam: { type: file }
+    - bai: { type: file }
+    - depth: { type: file }
+    - vcf: { type: file }
+    - csi: { type: file }
+    - core_bed: { type: file }
+    - liftover_json: { type: file }
+  - evaluation_policy: { type: file }
+output:
+  evidence:
+    - - meta: { type: map }
+      - candidate: { type: file }
+      - "*.heldout-edit-ledger.tsv": { type: file }
+      - "*.metrics.json": { type: file }
+      - "*.core.bed": { type: file }
+  versions:
+    [{ "${task.process}": { type: string } }, { m4_hybrid_evidence: { type: string } }, { "0.1.0": { type: string } }]
+authors: ["enlopedfsf"]

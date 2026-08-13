@@ -1,0 +1,20 @@
+name: hybrid_reference_build
+description: Isolated M4 six-arm hybrid polishing and held-out evidence comparison for plant and animal candidates.
+keywords: [hybrid, polishing, heldout, plant, animal, experimental]
+components:
+  - m4_bwa_align
+  - m4_polypolish
+  - m4_sr_align
+  - m4_bcftools_call
+  - m4_bcftools_consensus
+  - m4_candidate_to_b0
+  - m4_lift_mask
+  - m4_heldout_evaluate
+input:
+  - samples: { type: channel, description: "(meta, B0, R1, train mates, held-out mates, frozen B0 BED)." }
+  - evaluation_policy: { type: file, description: Frozen experimental held-out evidence policy JSON. }
+output:
+  - candidates: { type: channel, description: Exactly six experimental candidates per taxon. }
+  - evidence: { type: channel, description: Uniform held-out ledgers and non-decision metric JSONs. }
+  - versions: { type: channel, description: Tool version records. }
+authors: ["enlopedfsf"]

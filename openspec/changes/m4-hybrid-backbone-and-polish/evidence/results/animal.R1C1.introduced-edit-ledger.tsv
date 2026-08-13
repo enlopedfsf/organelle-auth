@@ -1,0 +1,3 @@
+taxon	arm	route	contig	position_1based	ref	alt	variant_type	region	evaluation_status	depth	ref_count	alt_count	alt_fraction	qual	mapping_ambiguity	filter_reason	allele_evidence	support_source
+animal	R1C1	bcftools_consensus	contig_1	1716	T	TG	INDEL	core	EVALUABLE	179	25	151	0.8435754189944135	228.285	PRIMARY_MAPQ20_FILTERED	PASS_TRAINING_QUAL30_DP10_AF0.8	25,151	animal.R1.train.filtered.vcf.gz
+animal	R1C1	bcftools_consensus	contig_3	9065	T	TG	INDEL	core	EVALUABLE	345	25	319	0.9246376811594202	228.365	PRIMARY_MAPQ20_FILTERED	PASS_TRAINING_QUAL30_DP10_AF0.8	25,319	animal.R1.train.filtered.vcf.gz

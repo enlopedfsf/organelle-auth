@@ -1,0 +1,5 @@
+taxon	arm	matching_read_pairs	orientation	low_insert_threshold	high_insert_threshold	alignments_before_filter	alignments_after_filter	log_sha256
+plant	P0	434547	fr	52	640	1899948	1820549	62e3a3a7bfc32820eb737acf53b701bcb564a7b6ddcd5a3852fe1b2e5a9b39ad
+plant	R1P1	434713	fr	45	643	1900511	1820473	d9f5abda98006a4e4b99de18c4d6fa0b8c41051b407e6c09ef2c2f96da375064
+animal	P0	14250	fr	51	509	30498	30386	2ed364e234e5f20c2fba409be5829457436cf3f5f454f20678e71619658224dc
+animal	R1P1	14228	fr	56	509	30328	30246	fe8adf5a0196ba4af829c607c82fe3127a0aa8bcc1be82a3c7a4f90b6cddb7d9

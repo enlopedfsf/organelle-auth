@@ -1,0 +1,51 @@
+nextflow_workflow {
+    name "Test Workflow HYBRID_REFERENCE_BUILD"
+    script "../main.nf"
+    config "subworkflows/local/hybrid_reference_build/tests/nextflow.config"
+    workflow "HYBRID_REFERENCE_BUILD"
+    tag "subworkflows"
+    tag "hybrid_reference_build"
+    tag "m4"
+
+    test("six arms per taxon remain isolated and non-decision") {
+        options "-stub"
+
+        setup {
+            def fasta = new File("${launchDir}/stub.fasta")
+            def reads1 = new File("${launchDir}/stub.R1.fastq")
+            def reads2 = new File("${launchDir}/stub.R2.fastq")
+            def bed = new File("${launchDir}/stub.bed")
+            def policy = new File("${launchDir}/policy.json")
+            fasta.text = ">stub\nACGTACGT\n"
+            reads1.text = "@stub/1\nACGTACGT\n+\nIIIIIIII\n"
+            reads2.text = "@stub/2\nACGTACGT\n+\nIIIIIIII\n"
+            bed.text = "stub\t0\t8\tcore\n"
+            policy.text = '{"alignment_filters":{"minimum_callable_depth":10},"homopolymer":{"minimum_candidate_run_length":4}}'
+        }
+
+        when {
+            workflow {
+                """
+                input[0] = Channel.of(
+                    tuple([taxon:'plant', sample_id:'p'], file('${launchDir}/stub.fasta'), file('${launchDir}/stub.fasta'), file('${launchDir}/stub.R1.fastq'), file('${launchDir}/stub.R2.fastq'), file('${launchDir}/stub.R1.fastq'), file('${launchDir}/stub.R2.fastq'), file('${launchDir}/stub.bed')),
+                    tuple([taxon:'animal', sample_id:'a'], file('${launchDir}/stub.fasta'), file('${launchDir}/stub.fasta'), file('${launchDir}/stub.R1.fastq'), file('${launchDir}/stub.R2.fastq'), file('${launchDir}/stub.R1.fastq'), file('${launchDir}/stub.R2.fastq'), file('${launchDir}/stub.bed'))
+                )
+                input[1] = file('${launchDir}/policy.json')
+                """
+            }
+        }
+
+        then {
+            def candidates = workflow.out.candidates
+            def evidence = workflow.out.evidence
+            def expected = ['B0', 'R1', 'P0', 'C0', 'R1P1', 'R1C1'] as Set
+            assertAll(
+                { assert workflow.success },
+                { assert candidates.size() == 12 },
+                { assert evidence.size() == 12 },
+                { assert candidates.groupBy { it[0].taxon }.every { taxon, rows -> rows.collect { it[0].arm }.toSet() == expected } },
+                { assert evidence.every { it[0].status == 'INCONCLUSIVE' && it[0].decision == 'NOT_APPLICABLE' } }
+            )
+        }
+    }
+}

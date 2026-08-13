@@ -1,0 +1,18 @@
+name: m4_bwa_align
+description: Align the frozen M4 training mates separately with BWA-MEM -a for Polypolish.
+keywords: [bwa, short-read, hybrid, experimental]
+tools:
+  - bwa: { description: Burrows-Wheeler short-read aligner., licence: [GPL-3.0-or-later] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - reads_r1: { type: file }
+    - reads_r2: { type: file }
+output:
+  alignments:
+    - - meta: { type: map }
+      - candidate: { type: file }
+      - "*.train.R1.sam": { type: file }
+      - "*.train.R2.sam": { type: file }
+  versions: [{ "${task.process}": { type: string } }, { bwa: { type: string } }, { "0.7.19-r1273": { type: string } }]
+authors: ["enlopedfsf"]

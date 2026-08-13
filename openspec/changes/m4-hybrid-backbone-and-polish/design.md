@@ -1,0 +1,63 @@
+## Context
+
+M3 is closed on `origin/dev` with plant topology and animal repeat adjacency still experimental/inconclusive. Flye, Racon, Polypolish, and bcftools-consensus are registered as `EXPERIMENTAL`; PMAT2 remains gated by OPEN Issue #10. See the proposal and the existing SCI-003/004/005, DATA-001/002/004, ENG-POL-003/004, TEST-003, and REL-001 contracts.
+
+## Goals / Non-Goals
+
+**Goals:**
+
+- Build a reproducible hybrid evaluation around frozen B0 and R1 long-read structural candidates.
+- Evaluate the pre-registered six-arm matrix causally, including the incremental effect of Racon and the two short-read polishing routes.
+- Make every base edit, region, junction, and unresolved repeat claim auditable.
+- Keep public-data experiments distinct from CycloneSEQ transfer validation and authentication decisions.
+
+**Non-Goals:**
+
+- No production reference-grade promotion, IDENTIFY/DECISION integration, or Go/No-Go claim.
+- No PMAT2 execution while Issue #10 is OPEN.
+- No Medaka, Nanopolish, Clair3-ONT, Oatk, MitoHiFi, or other prohibited tools.
+- No forced circularization or inference that a polished candidate proves topology.
+
+## Decisions
+
+1. **Capability-domain spec.** Use `hybrid-reference-build`; the change name is not a spec domain. Existing governance domains remain authoritative for input, tool admission, status, validation, and release.
+
+2. **Frozen backbone strata.** The unpolished long-read candidate (B0) is assembled/selected once and checksum-frozen. R1 is produced from B0 by exactly two Racon rounds; each round maps the same frozen taxon-specific recruited long-read set to the current candidate with minimap2 `-x map-ont`, then runs `racon -w 500 -q 10.0 -e 0.3 -m 3 -x -5 -g -4 -t 4` without `-u`, `--no-trimming`, or CUDA flags. Round two remaps the same reads to the round-one candidate. The Racon version/container is selected under the existing tool-admission contract and checksum-frozen before execution. The stop rule is exactly two rounds: result-driven extra rounds and alternate read types are forbidden. B0 and R1 are frozen before any P/C arm starts; reassembly per polishing route would confound structure and polishing effects.
+
+3. **Pre-registered six-arm matrix.** For each taxon, the capped matrix is exactly twelve evaluations total (six arms × two taxa): B0 (unpolished backbone), R1 (Racon only), P0 (B0→Polypolish), C0 (B0→bcftools call/consensus), R1→P1 (Racon→Polypolish), and R1→C1 (Racon→bcftools call/consensus). No extra combination, polishing round, or alternate read type may be added during execution; a new arm is a new hypothesis and requires a change revision.
+
+4. **Parallel short-read routes.** The Polypolish and explicit align→call→consensus arms use the same paired reads and the declared B0 or R1 backbone. They are parallel candidates within each backbone stratum, not sequential alternatives. Insert size, pairing, multi-mapping, and repeat behavior are evidence fields, not a single automatic skip threshold.
+
+5. **Deterministic training/held-out split.** Before backbone freeze, each taxon's paired short reads are split deterministically 80/20 while preserving mate pairs. The canonical pair identifier is the first whitespace-delimited read-name token with a terminal `/1` or `/2` removed. Compute SHA256 over the UTF-8 string `m4-hybrid-v1\t<canonical_pair_id>`, interpret the first eight hexadecimal digits as an unsigned integer, and assign residues modulo 10: 0-1 to held-out and 2-9 to training. The seed/salt is therefore exactly `m4-hybrid-v1`. Training and held-out FASTQs, pair counts, command/rule text, and SHA256 checksums are frozen with B0/R1. Training reads may polish and define callability; the held-out set is used only for final arm evaluation and cannot tune parameters, masks, or candidates.
+
+6. **Uniform metrics and proxy-reference caveat.** The frozen held-out set is aligned independently to every final candidate with the same registered alignment and callability policy. Within the frozen evaluable core, every arm reports the same primary metric: `residual_unsupported_loci`, the count of candidate positions that are callable in held-out reads but unsupported by their read-backed allele evidence. `introduced_edits` are reported separately as step-local and cumulative candidate-versus-input-backbone edits; they are provenance, not a B0-favoring substitute for the uniform residual metric. Every arm also reports held-out core concordance, held-out-supported evaluable homopolymer discordances, SNVs, indels, residuals by region, resources, and manual-review burden. Reference comparisons remain proxy measures: reference disagreement does not equal assembly error, and discordant sites are adjudicated by this sample's reads.
+
+7. **Pre-registered winner rule.** An eligible arm is dominant only when, within the same taxon and frozen evaluable core, it (a) has fewer `residual_unsupported_loci` than every other eligible arm, (b) has fewer held-out-supported evaluable homopolymer discordances than every other eligible arm, and (c) does not reduce held-out core concordance relative to B0. The two counts plus the non-regression condition are the complete ranking combination. `introduced_edits` and reference-only metrics cannot select a winner. If no arm satisfies all three conditions, the scientific conclusion is multiple routes retained as `CONDITIONAL`; the machine result status remains `INCONCLUSIVE`, and no post hoc winner narrative is permitted.
+
+8. **Animal core-mask freeze.** Before any of the twelve arm/taxon evaluations, the validation/evidence owner creates and signs the animal evaluable-core BED in the B0/Flye coordinate frame. The frozen algorithm uses Flye-bundled minimap2 2.24 with `-x asm5 -c --cs=long --secondary=yes -N 20 -t 4` for Raven→B0 and M2-anchor→B0 projection. It starts only from Flye `assembly_info.txt` contigs with `repeat=N`, `circ=N`, and a single graph edge. For each evidence source it partitions target coordinates at every alignment boundary and retains only atomic B0 intervals covered by exactly one MAPQ 60 local alignment, with one orientation per B0 contig; each retained block is locally collinear, while global query order, cross-block adjacency, and topology are explicitly not inferred. It intersects Raven- and M2-supported bases with training-read depth from `flye-minimap2 -ax sr --sam-hit-only -t 4` plus samtools 1.20 primary mapped reads (`view -F 0x904 -q 20`, `depth -aa -q 20 -Q 20`) at depth `>=1`; and removes 500 bp from both ends of every resulting continuous projection block under the project's independent two-sided-anchor scale. This construction excludes the Flye repeat contig, multiply projected target intervals, unanchored AT-rich/D-loop expansion, ambiguous graph edges, alignment discontinuities, and unresolved junction flanks. It defines a local sequence-evaluation mask only and cannot support circularity or adjacency claims. The held-out set is never used. The manifest records exact retained/excluded coordinates, command/runtime identities, coordinate/liftover rule, owner, and BED SHA256. These rules are frozen before arm results and cannot be tuned with held-out reads.
+
+9. **Backbone-freeze responsibility.** The validation/evidence owner records the freeze checklist: assembly graph/path, contig status, core coverage, structural evidence, two-round Racon ledger, long-read manifest, training/held-out manifests, animal core-mask manifest, and SHA256 values. A route cannot silently replace a frozen input, split, backbone, or mask.
+
+10. **Evidence over reference concordance.** A related reference may be used as secondary context, but it cannot by itself validate edits or junctions. The primary ledger records read-backed support, ambiguity, and region-specific residuals; any in-sample validation is labeled as such.
+
+11. **Taxon-separated evaluation.** Plant IR/repeat regions and animal D-loop/AT-rich regions are evaluated separately. A successful plant route cannot qualify the animal route, and vice versa. Animal polishing may run over the full backbone, but ranking metrics are restricted to the frozen Flye/Raven-consensus core; edits inside unresolved regions are counted separately as `NOT_EVALUABLE` and cannot rank routes.
+
+12. **Status and tier isolation.** `EXPERIMENTAL` is an evidence/tool tier, not a result status. Every produced candidate records exactly `status=INCONCLUSIVE`, `assembly_grade=CANDIDATE`, and `decision=NOT_APPLICABLE`. Long-read/CycloneSEQ evidence stays outside `IDENTIFY` and `DECISION`; CycloneSEQ transfer remains `PENDING_REAL_DATA`; PMAT2 remains excluded while Issue #10 is OPEN.
+
+13. **Deterministic reproducibility.** Record fixed seeds, ordering, tool versions, containers, parameters, and checksums. Use attribute-based assertions for non-deterministic assembly outputs; exact output hashes are not scientific contracts unless the tool/runtime is proven deterministic.
+
+14. **Exact P/C arm protocols.** Each P arm indexes its declared B0 or R1 input with BWA-MEM `0.7.19`, aligns training R1 and R2 separately with `bwa mem -t 4 -a`, runs the recommended Polypolish paired-end insert filter once with fixed defaults (`orientation=auto`, percentile bounds `0.1/99.9`), records the inferred insert/orientation report, and runs Polypolish `0.7.1 polish` once with its registered defaults (`fraction_invalid=0.2`, `fraction_valid=0.5`, `max_errors=10`, `min_depth=5`, `--careful` disabled). Each C arm aligns the same training pair with Flye-bundled minimap2 `-ax sr --sam-hit-only -t 4`, retains primary mapped alignments with samtools 1.20 `view -b -F 0x904 -q 20`, coordinate-sorts/indexes, then executes bcftools 1.21 `mpileup -Ou -q 20 -Q 20 -d 20000000 -L 20000000 -a FORMAT/DP,FORMAT/AD -f`, `call --ploidy 1 -m -v -Ou`, and `norm -f -m -both -Oz`. It then applies the pre-registered training-only filter `QUAL>=30 && FORMAT/DP>=10 && FORMAT/AD[0:1]/FORMAT/DP>=0.8`, indexes the filtered normalized VCF, and applies it once with `consensus -f`. The 20,000,000-read ceilings exceed twice either taxon's training-pair count and therefore prevent bcftools' default depth/indel truncation without selecting biological evidence. The filter is fixed before execution because `bcftools consensus` otherwise applies VCF variants regardless of allele fraction. No held-out evidence, result-driven filter, or extra polishing round is permitted. P/C routes emit pre/post hashes and complete edit ledgers.
+
+15. **Held-out callability and allele algorithm.** The frozen 20% held-out pair is independently aligned to every final candidate with the same minimap2/samtools commands as the C route, never reused across candidate coordinate frames. Evaluation-policy values are externalized in `evidence/evaluation-policy.json`: mapping quality 20, base quality 20, callable depth 10, variant QUAL 30, alternate allele fraction 0.8, and minimum homopolymer run length 4. A `residual_unsupported_locus` is a normalized haploid ALT call inside the frozen evaluable core that passes all five applicable read-evidence filters; all other sites are reported separately as uncallable, ambiguous, or below-evidence and cannot rank routes. An evaluable homopolymer discordance is such a residual indel whose candidate reference context contains a run of at least four identical bases and whose normalized allele changes that run length. The JSON explicitly labels these values preregistered experimental evaluation parameters, not production thresholds.
+
+## Risks / Trade-offs
+
+- [Risk] Polypolish may be inapplicable to a particular library or multi-mapping pattern → Mitigation: preserve applicability evidence and report inapplicable rather than silently substituting a validated claim.
+- [Risk] Reusing polishing reads for evaluation inflates apparent support → Mitigation: require the frozen deterministic 80/20 split; train/polish on 80% and rank every final arm only with the untouched 20% held-out set.
+- [Risk] Repeat traversal can create unsupported length or circularity → Mitigation: require read-level junction/unique-flank evidence and report repeat regions separately.
+- [Risk] Public data may not represent CycloneSEQ chemistry → Mitigation: mark transfer and Go/No-Go `PENDING_REAL_DATA`.
+- [Risk] Experimental tools can drift → Mitigation: pin versions/containers and retain an audit bundle; no production default changes in this proposal.
+
+## Migration Plan
+
+No production migration is authorized. After proposal review, implementation would add the subworkflow and tests behind an experimental/reference-build route. Rollback is removal of the experimental route and its evidence bundle; existing M3 conclusions and decision routing remain unchanged.

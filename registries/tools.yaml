@@ -91,28 +91,40 @@ candidates:
     notes: "ONT-only M3 pilot record: PMAT2 comparator exit 127 / unavailable, no biological assembly result; container digest remains null and admission stays EXPERIMENTAL. Flye carried the successful reference-first route; CycloneSEQ 适配待转移验证"
   - tool_id: racon
     role: 纯长读长候选一致性
+    version: 1.4.20
     admission_status: EXPERIMENTAL
     supported_platforms: [cycloneseq, ont]
     project_validated_platforms: []
-    container_digest: null
-    validation_record: null
-    notes: ""
+    container_digest: "quay.io/biocontainers/racon@sha256:738d48f530c8e46b28c119da05dd36f552fe3dd00648af02d8f5e8808855cb72"
+    validation_record: "openspec/changes/m4-hybrid-backbone-and-polish/VALIDATION-m4.md"
+    notes: "Bioconda/BioContainers build hd03093a_2. The default local Racon 1.5.0 binary terminated with Illegal instruction on the first animal M4 alignment, so the compatible flat Mamba runtime /home/iris-hp/miniconda3/envs/racon_compat at Racon 1.4.20 was frozen for local reproduction; exactly two M4 rounds reproduced both plant and animal R1 hashes. The pinned 1.4.20 container passed its PR #21 execution probe on head 26bbdcd; local Snap Docker remains blocked by transient-scope DBus isolation. EXPERIMENTAL only; no IDENTIFY/DECISION use."
+  - tool_id: bwa_mem
+    role: Polypolish 多重比对保留型短读长回贴
+    version: 0.7.19
+    admission_status: EXPERIMENTAL
+    supported_platforms: [dnbseq, illumina]
+    project_validated_platforms: []
+    container_digest: "quay.io/biocontainers/bwa@sha256:99a35e5ee4e9c329e8746c4689890b97a3ac5620cb36d374cba69ba52016e72a"
+    validation_record: "openspec/changes/m4-hybrid-backbone-and-polish/VALIDATION-m4.md"
+    notes: "Bioconda/BioContainers build h577a1d6_1; flat Mamba executable SHA256 frozen. BWA upstream documents bwa mem for paired Illumina reads >~70 bp. M4 uses bwa mem -a separately for R1 and R2 so Polypolish can consume all alignments. The pinned container passed its PR #21 execution probe on head 26bbdcd. EXPERIMENTAL evidence-route dependency only; project_validated_platforms remains empty."
   - tool_id: polypolish
     role: 混合路线候选抛光
+    version: 0.7.1
     admission_status: EXPERIMENTAL
-    supported_platforms: [dnbseq, cycloneseq]
+    supported_platforms: [dnbseq, illumina, cycloneseq]
     project_validated_platforms: []
-    container_digest: null
-    validation_record: null
-    notes: "适用性按 §6.4 四层职责判定"
+    container_digest: "quay.io/biocontainers/polypolish@sha256:729c4fc24b3e81969c06e8c9eeaf498feb17eeabdb91808615b1e177dd06aa5d"
+    validation_record: "openspec/changes/m4-hybrid-backbone-and-polish/VALIDATION-m4.md"
+    notes: "Bioconda/BioContainers build hec9b1f2_0; flat Mamba executable SHA256 frozen. Upstream defines Polypolish as a short-read polisher and recommends separate bwa mem -a alignments plus its paired insert filter. Applicability follows the pre-registered M4 evidence route and project §6.4 responsibilities. The pinned container passed its PR #21 execution probe on head 26bbdcd. project_validated_platforms remains empty; EXPERIMENTAL only."
   - tool_id: bcftools_consensus
     role: 显式位点证据候选（minimap2/bwa 回贴 → bcftools call → consensus）
+    version: 1.21
     admission_status: EXPERIMENTAL
-    supported_platforms: [dnbseq, cycloneseq]
+    supported_platforms: [dnbseq, illumina, cycloneseq]
     project_validated_platforms: []
-    container_digest: null
-    validation_record: null
-    notes: ""
+    container_digest: "quay.io/biocontainers/bcftools@sha256:969314d56b9131683917cc5801734891a9af130daf7a0fb902b7707060b06027"
+    validation_record: "openspec/changes/m4-hybrid-backbone-and-polish/VALIDATION-m4.md"
+    notes: "Bioconda/BioContainers build h8b25389_0; flat Mamba executable SHA256 frozen. Explicit align/call/normalize/filter/consensus route only; the registered high depth ceiling prevents default high-copy truncation. The pinned container passed its PR #21 execution probe on head 26bbdcd. project_validated_platforms remains empty; EXPERIMENTAL only."
   - tool_id: nextpolish2
     role: 混合抛光
     admission_status: DEFERRED

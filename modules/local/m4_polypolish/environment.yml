@@ -1,0 +1,3 @@
+name: m4_polypolish
+channels: [conda-forge, bioconda]
+dependencies: [polypolish=0.7.1]

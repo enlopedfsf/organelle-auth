@@ -1,0 +1,22 @@
+name: m4_bcftools_call
+description: Apply the frozen haploid bcftools call, normalize, and allele-evidence filter protocol.
+keywords: [bcftools, variant, heldout, hybrid]
+tools:
+  - bcftools: { description: Variant calling and consensus utilities., licence: [MIT] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - bam: { type: file }
+    - bai: { type: file }
+    - depth: { type: file }
+output:
+  calls:
+    - - meta: { type: map }
+      - candidate: { type: file }
+      - "*.bam": { type: file }
+      - "*.bam.bai": { type: file }
+      - "*.depth.tsv": { type: file }
+      - "*.vcf.gz": { type: file }
+      - "*.vcf.gz.csi": { type: file }
+  versions: [{ "${task.process}": { type: string } }, { bcftools: { type: string } }, { "1.21": { type: string } }]
+authors: ["enlopedfsf"]

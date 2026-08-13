@@ -1,0 +1,25 @@
+name: m4_sr_align
+description: Independently map a frozen M4 train or held-out pair and emit primary Q20 BAM plus depth.
+keywords: [minimap2, samtools, heldout, hybrid]
+tools:
+  - minimap2: { description: Sequence aligner., licence: [MIT] }
+  - samtools: { description: SAM/BAM utilities., licence: [MIT] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - reads_r1: { type: file }
+    - reads_r2: { type: file }
+output:
+  alignment:
+    - - meta: { type: map }
+      - candidate: { type: file }
+      - "*.bam": { type: file }
+      - "*.bam.bai": { type: file }
+      - "*.depth.tsv": { type: file }
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { minimap2_samtools: { type: string } },
+      { "2.24_1.20": { type: string } },
+    ]
+authors: ["enlopedfsf"]

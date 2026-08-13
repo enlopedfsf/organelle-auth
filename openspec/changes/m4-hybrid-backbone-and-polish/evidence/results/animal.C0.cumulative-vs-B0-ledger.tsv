@@ -1,0 +1,6 @@
+taxon	arm	route	contig	position_1based	ref	alt	variant_type	region	evaluation_status	depth	ref_count	alt_count	alt_fraction	qual	mapping_ambiguity	filter_reason	allele_evidence	support_source
+animal	C0	cumulative_candidate_vs_B0	contig_1	1726	-	G	INDEL	core	EVALUABLE						ASSEMBLY_ALIGNMENT_MAPQ_60	CUMULATIVE_PROVENANCE_NOT_RANKING_EVIDENCE	query=contig_1;query_pos_1based=1726	animal.C0.candidate-to-b0.paf
+animal	C0	cumulative_candidate_vs_B0	contig_3	4634	-	G	INDEL	NOT_EVALUABLE	NOT_EVALUABLE						ASSEMBLY_ALIGNMENT_MAPQ_60	CUMULATIVE_PROVENANCE_NOT_RANKING_EVIDENCE	query=contig_3;query_pos_1based=4634	animal.C0.candidate-to-b0.paf
+animal	C0	cumulative_candidate_vs_B0	contig_3	8748	-	G	INDEL	core	EVALUABLE						ASSEMBLY_ALIGNMENT_MAPQ_60	CUMULATIVE_PROVENANCE_NOT_RANKING_EVIDENCE	query=contig_3;query_pos_1based=8749	animal.C0.candidate-to-b0.paf
+animal	C0	cumulative_candidate_vs_B0	contig_3	9063	-	G	INDEL	core	EVALUABLE						ASSEMBLY_ALIGNMENT_MAPQ_60	CUMULATIVE_PROVENANCE_NOT_RANKING_EVIDENCE	query=contig_3;query_pos_1based=9065	animal.C0.candidate-to-b0.paf
+animal	C0	cumulative_candidate_vs_B0	contig_3	9837	-	T	INDEL	core	EVALUABLE						ASSEMBLY_ALIGNMENT_MAPQ_60	CUMULATIVE_PROVENANCE_NOT_RANKING_EVIDENCE	query=contig_3;query_pos_1based=9840	animal.C0.candidate-to-b0.paf

@@ -1,0 +1,62 @@
+name: M4 freeze gates
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/m4-freeze.yml"
+      - "openspec/changes/m4-hybrid-backbone-and-polish/**"
+      - "registries/tools.yaml"
+      - "scripts/m4_*.py"
+      - "tests/test_m4_*.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  container-runtime-probes:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - tool: racon
+            image: quay.io/biocontainers/racon@sha256:738d48f530c8e46b28c119da05dd36f552fe3dd00648af02d8f5e8808855cb72
+            entrypoint: racon
+            args: --version
+            expected: 'v1\.4\.20'
+            allowed_exit: 0
+          - tool: bwa
+            image: quay.io/biocontainers/bwa@sha256:99a35e5ee4e9c329e8746c4689890b97a3ac5620cb36d374cba69ba52016e72a
+            entrypoint: bwa
+            args: ""
+            expected: 'Version: 0\.7\.19-r1273'
+            allowed_exit: 1
+          - tool: polypolish
+            image: quay.io/biocontainers/polypolish@sha256:729c4fc24b3e81969c06e8c9eeaf498feb17eeabdb91808615b1e177dd06aa5d
+            entrypoint: polypolish
+            args: --version
+            expected: 'Polypolish 0\.7\.1'
+            allowed_exit: 0
+          - tool: bcftools
+            image: quay.io/biocontainers/bcftools@sha256:969314d56b9131683917cc5801734891a9af130daf7a0fb902b7707060b06027
+            entrypoint: bcftools
+            args: --version
+            expected: '^bcftools 1\.21'
+            allowed_exit: 0
+    steps:
+      - name: Execute pinned ${{ matrix.tool }} image
+        env:
+          IMAGE: ${{ matrix.image }}
+          ENTRYPOINT: ${{ matrix.entrypoint }}
+          ARGS: ${{ matrix.args }}
+          EXPECTED: ${{ matrix.expected }}
+          ALLOWED_EXIT: ${{ matrix.allowed_exit }}
+        run: |
+          set +e
+          output="$(docker run --rm --entrypoint "$ENTRYPOINT" "$IMAGE" $ARGS 2>&1)"
+          status=$?
+          set -e
+          printf '%s\n' "$output"
+          test "$status" -eq "$ALLOWED_EXIT"
+          grep -Eq "$EXPECTED" <<<"$output"

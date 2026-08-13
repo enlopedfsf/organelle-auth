@@ -387,6 +387,44 @@
                     "hidden": true
                 }
             }
+        },
+        "hybrid_reference_build_options": {
+            "title": "Hybrid-reference build local reproduction (M4 EXPERIMENTAL)",
+            "type": "object",
+            "fa_icon": "fas fa-tools",
+            "description": "Hidden executable selectors for checksum-frozen M4 local reproduction only. They do not define scientific thresholds and are not part of IDENTIFY or DECISION.",
+            "properties": {
+                "m4_bwa_bin": {
+                    "type": "string",
+                    "default": "bwa",
+                    "description": "BWA executable selector for the isolated M4 evaluation workflow.",
+                    "hidden": true
+                },
+                "m4_polypolish_bin": {
+                    "type": "string",
+                    "default": "polypolish",
+                    "description": "Polypolish executable selector for the isolated M4 evaluation workflow.",
+                    "hidden": true
+                },
+                "m4_minimap2_bin": {
+                    "type": "string",
+                    "default": "minimap2",
+                    "description": "Minimap2 executable selector for the isolated M4 evaluation workflow.",
+                    "hidden": true
+                },
+                "m4_samtools_bin": {
+                    "type": "string",
+                    "default": "samtools",
+                    "description": "Samtools executable selector for the isolated M4 evaluation workflow.",
+                    "hidden": true
+                },
+                "m4_bcftools_bin": {
+                    "type": "string",
+                    "default": "bcftools",
+                    "description": "Bcftools executable selector for the isolated M4 evaluation workflow.",
+                    "hidden": true
+                }
+            }
         }
     },
     "allOf": [
@@ -413,6 +451,9 @@
         },
         {
             "$ref": "#/$defs/plant_long_read_analysis_options"
+        },
+        {
+            "$ref": "#/$defs/hybrid_reference_build_options"
         }
     ]
 }

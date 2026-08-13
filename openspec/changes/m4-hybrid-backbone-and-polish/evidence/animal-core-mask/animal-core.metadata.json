@@ -1,0 +1,118 @@
+{
+  "schema_version": "m4-animal-core-mask-v2",
+  "status": "FROZEN",
+  "coordinate_frame": "animal Flye B0, 0-based half-open",
+  "owner": "validation/evidence owner",
+  "owner_approval": {
+    "approved_on": "2026-08-13",
+    "record": "evidence/animal-core-mask/animal-core.approval.json",
+    "scope": "animal six-arm local sequence-ranking metrics only",
+    "topology_use": "PROHIBITED"
+  },
+  "eligible_nonrepeat_single_edge_contigs": [
+    "contig_1",
+    "contig_3"
+  ],
+  "excluded_repeat_or_ambiguous_contigs": [
+    "contig_2"
+  ],
+  "assembly_attributes": {
+    "contig_1": {
+      "length": 3243,
+      "coverage": 96,
+      "circular": false,
+      "repeat": false,
+      "multiplicity": 1,
+      "graph_path": "*,1,*"
+    },
+    "contig_2": {
+      "length": 3593,
+      "coverage": 36,
+      "circular": false,
+      "repeat": true,
+      "multiplicity": 1,
+      "graph_path": "*,2,*"
+    },
+    "contig_3": {
+      "length": 10805,
+      "coverage": 130,
+      "circular": false,
+      "repeat": false,
+      "multiplicity": 1,
+      "graph_path": "*,3,*"
+    }
+  },
+  "pretrim_intervals": {
+    "contig_1": [
+      [
+        0,
+        2941
+      ]
+    ],
+    "contig_3": [
+      [
+        15,
+        4300
+      ],
+      [
+        4339,
+        10805
+      ]
+    ]
+  },
+  "final_intervals": {
+    "contig_1": [
+      [
+        500,
+        2441
+      ]
+    ],
+    "contig_3": [
+      [
+        515,
+        3800
+      ],
+      [
+        4839,
+        10305
+      ]
+    ]
+  },
+  "boundary_trim_bp": 500,
+  "minimum_training_depth": 1,
+  "rules": {
+    "assembler_projection": "MAPQ 60, one orientation per B0 contig; retain only atomic target intervals covered by exactly one local alignment",
+    "anchor_projection": "MAPQ 60, one orientation per B0 contig; retain only atomic target intervals covered by exactly one local alignment",
+    "topology_use": "PROHIBITED: retained local blocks support sequence-core evaluation only; their global query order or adjacency is not interpreted",
+    "callability": "training reads only; primary mapped MAPQ>=20, baseQ>=20, depth>=1",
+    "repeat_exclusion": "Flye repeat=Y or non-single-edge contigs excluded",
+    "junction_exclusion": "500 bp removed from both ends of every continuous projected block",
+    "heldout_use": "PROHIBITED"
+  },
+  "inputs": {
+    "assembly_info": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly_info.txt",
+      "sha256": "0dc03605535962154e457d7d07750af174ad76b5bba69930ac8ad90e5acc7cee"
+    },
+    "raven_paf": {
+      "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/raven-vs-b0.paf",
+      "sha256": "8368d5fd26b78d7f978384ce13e8a8e04d81850366083bfe762c4ce53f0ba9f7"
+    },
+    "anchor_paf": {
+      "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/m2-anchor-vs-b0.paf",
+      "sha256": "3d9d07ad08651bd682ffd0662e49f23cf4e1edfbfedbc201e5f7c677b97d28b4"
+    },
+    "training_depth": {
+      "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/training.depth.tsv",
+      "sha256": "36bdc66e02a84fa0122fe1aa1af986a09bfad0ad383e73c9c137d2bde5a54a2c"
+    }
+  },
+  "bed": {
+    "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed",
+    "sha256": "468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0"
+  },
+  "script": {
+    "path": "scripts/m4_build_animal_core_mask.py",
+    "sha256": "798e72638e471658bb9fad576e298748b115b56628e4d2d72eed86d3553db450"
+  }
+}

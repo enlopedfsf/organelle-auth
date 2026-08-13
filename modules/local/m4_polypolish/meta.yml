@@ -1,0 +1,18 @@
+name: m4_polypolish
+description: Filter paired BWA alignments and run one frozen Polypolish round.
+keywords: [polypolish, polishing, hybrid, experimental]
+tools:
+  - polypolish: { description: Short-read polisher retaining multi-mapping evidence., licence: [GPL-3.0-or-later] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - sam_r1: { type: file }
+    - sam_r2: { type: file }
+output:
+  candidate:
+    - - meta: { type: map }
+      - "*.fasta": { type: file }
+      - "*.polypolish-debug.tsv": { type: file }
+      - "*.polypolish-filter.log": { type: file }
+  versions: [{ "${task.process}": { type: string } }, { polypolish: { type: string } }, { "0.7.1": { type: string } }]
+authors: ["enlopedfsf"]
