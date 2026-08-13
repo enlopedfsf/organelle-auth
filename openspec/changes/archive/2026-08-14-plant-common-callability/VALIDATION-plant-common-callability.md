@@ -13,6 +13,8 @@ This addendum answers one registered question: whether plant R1P1 retains the lo
 | CycloneSEQ | `PENDING_REAL_DATA` |
 | PMAT2 / mitoVGP | unchanged |
 | M4-① archive modification | none |
+| Implementation closeout | PR #23, all required checks green, merged into `dev` as `9a5f65abb8678ab1f833a42cec4b13d4ade54ead` |
+| Archive closeout | `2026-08-14-plant-common-callability`; archive PR #24 submitted after implementation merge |
 
 ## 2. Pre-registration and frozen evidence
 
@@ -100,4 +102,6 @@ It does **not** revise M4-①, establish a fully dominant production route, prov
 - arithmetic reproduction of fractions/rates: machine assertion PASS;
 - parent archive tree differs from `origin/dev`: no;
 - local diff/whitespace and lightweight-evidence checks: PASS;
-- PR/CI/merge/archive: pending governed closeout.
+- implementation PR/CI/merge: PASS (#23);
+- OpenSpec archive and one-requirement spec sync: PASS;
+- archive PR: #24 (authoritative CI and final merge state recorded by GitHub).

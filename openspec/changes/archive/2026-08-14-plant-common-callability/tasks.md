@@ -24,4 +24,4 @@
 - [x] 4.2 Assert the combined denominator is non-empty, rates are arithmetically reproducible, and the summary conclusion follows the pre-registered rule.
 - [x] 4.3 Run `openspec validate --all --strict`, repository lint/test gates in scope, and confirm no archived M4-① file changed.
 - [x] 4.4 Submit the scoped implementation through commit, PR #23, green CI, acceptance, and merge into `dev`.
-- [ ] 4.5 Only after implementation merge, archive the change with spec sync and submit the archive through a separately validated PR/CI/merge.
+- [x] 4.5 After implementation merge, archive the change with spec sync and submit the archive as separately validated PR #24; authoritative CI/merge state remains in GitHub.
