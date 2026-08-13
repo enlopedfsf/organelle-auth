@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "scripts/plant_common_callability.py",
+    "run",
+    "--config",
+    "openspec/changes/plant-common-callability/evidence/preregistration.json",
+    "--manifest",
+    "openspec/changes/plant-common-callability/evidence/input-manifest.tsv",
+    "--outdir",
+    "openspec/changes/plant-common-callability/evidence/results"
+  ],
+  "ended_at_utc": "2026-08-13T16:11:04.990371+00:00",
+  "input_manifest_sha256": "87b124e76061776124f034aa52311e08eabd236e8119f7f5b29e4a6dbb89ffaa",
+  "preregistration_sha256": "230883a9b32957dd3f2101356af55524a7c73502495c7530fe4bcda8700b4adf",
+  "python": "3.11.14",
+  "schema_version": "plant-common-callability-execution-v1",
+  "script_sha256": "3ebf03230e9d859cdfc56be7055bb8ad2957f733be773c86e0fa69f14d46c45f",
+  "started_at_utc": "2026-08-13T16:10:36.565091+00:00"
+}

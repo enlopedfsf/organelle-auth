@@ -285,6 +285,13 @@ def write_tsv(path: Path, rows: list[dict], fields: list[str]) -> None:
         writer.writerows(rows)
 
 
+def write_bed(path: Path, rows: list[dict[str, object]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w") as handle:
+        for row in rows:
+            handle.write(f"{row['contig']}\t{row['start']}\t{row['end']}\t{row['region']}\n")
+
+
 def run_analysis(config_path: Path, manifest_path: Path, outdir: Path) -> None:
     started = datetime.now(timezone.utc)
     config = load_config(config_path)
@@ -393,11 +400,7 @@ def run_analysis(config_path: Path, manifest_path: Path, outdir: Path) -> None:
     }
 
     outdir.mkdir(parents=True, exist_ok=True)
-    write_tsv(
-        outdir / "common-callable.bed",
-        merge_positions_by_region(common_callable, intervals),
-        ["contig", "start", "end", "region"],
-    )
+    write_bed(outdir / "common-callable.bed", merge_positions_by_region(common_callable, intervals))
     write_tsv(
         outdir / "arm-region-denominators.tsv",
         denominator_rows,

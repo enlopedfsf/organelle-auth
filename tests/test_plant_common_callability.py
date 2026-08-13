@@ -19,6 +19,7 @@ common_callable_intersection = MODULE.common_callable_intersection
 denominator_metrics = MODULE.denominator_metrics
 load_unique_projection = MODULE.load_unique_projection
 merge_positions_by_region = MODULE.merge_positions_by_region
+write_bed = MODULE.write_bed
 
 
 def test_preregistered_depth_source_matches_archived_policy():
@@ -84,6 +85,12 @@ def test_common_bed_merge_respects_regions():
         {"contig": "b0", "start": 0, "end": 2, "region": "a"},
         {"contig": "b0", "start": 3, "end": 5, "region": "b"},
     ]
+
+
+def test_common_bed_is_headerless(tmp_path: Path):
+    bed = tmp_path / "common.bed"
+    write_bed(bed, [{"contig": "b0", "start": 1, "end": 3, "region": "core"}])
+    assert bed.read_text() == "b0\t1\t3\tcore\n"
 
 
 def test_common_intersection_uses_all_six_arms_and_fails_when_empty():
