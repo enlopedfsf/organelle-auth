@@ -14,7 +14,7 @@
     "uniqueness": "exactly one candidate base and exactly one B0 base in the retained primary projections"
   },
   "callability": {
-    "minimum_depth_source": "evaluation_policy.heldout_read_evidence.minimum_callable_depth",
+    "minimum_depth_source": "evaluation_policy.alignment_filters.minimum_callable_depth",
     "set_rule": "exact intersection of uniquely projected callable B0 bases across B0,R1,P0,C0,R1P1,R1C1"
   },
   "residual_rule": "count unique EVALUABLE residual ledger anchors that project exactly once into the common-callable B0 set; never shift an unprojectable anchor",

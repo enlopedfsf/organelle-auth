@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -18,6 +19,19 @@ common_callable_intersection = MODULE.common_callable_intersection
 denominator_metrics = MODULE.denominator_metrics
 load_unique_projection = MODULE.load_unique_projection
 merge_positions_by_region = MODULE.merge_positions_by_region
+
+
+def test_preregistered_depth_source_matches_archived_policy():
+    preregistration = json.loads(
+        (ROOT / "openspec/changes/plant-common-callability/evidence/preregistration.json").read_text()
+    )
+    policy = json.loads(
+        (ROOT / "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json").read_text()
+    )
+    assert preregistration["callability"]["minimum_depth_source"] == (
+        "evaluation_policy.alignment_filters.minimum_callable_depth"
+    )
+    assert policy["alignment_filters"]["minimum_callable_depth"] == 10
 
 
 def test_cigar_projection_handles_indels_without_inventing_pairs():

@@ -290,7 +290,7 @@ def run_analysis(config_path: Path, manifest_path: Path, outdir: Path) -> None:
     config = load_config(config_path)
     verify_manifest(config, manifest_path)
     policy = json.loads(Path(config["inputs"]["evaluation_policy"]).read_text())
-    minimum_depth = int(policy["heldout_read_evidence"]["minimum_callable_depth"])
+    minimum_depth = int(policy["alignment_filters"]["minimum_callable_depth"])
     minimum_mapq = int(config["projection"]["minimum_mapq"])
     intervals, region_labels = load_regions(Path(config["inputs"]["regions_bed"]))
 
