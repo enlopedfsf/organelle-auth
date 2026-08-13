@@ -1,0 +1,1 @@
+python scripts/plant_common_callability.py run --config openspec/changes/plant-common-callability/evidence/preregistration.json --manifest openspec/changes/plant-common-callability/evidence/input-manifest.tsv --outdir openspec/changes/plant-common-callability/evidence/results
