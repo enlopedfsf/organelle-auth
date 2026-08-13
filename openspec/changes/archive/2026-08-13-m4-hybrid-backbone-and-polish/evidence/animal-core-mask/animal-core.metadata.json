@@ -95,20 +95,20 @@
       "sha256": "0dc03605535962154e457d7d07750af174ad76b5bba69930ac8ad90e5acc7cee"
     },
     "raven_paf": {
-      "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/raven-vs-b0.paf",
+      "path": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/raven-vs-b0.paf",
       "sha256": "8368d5fd26b78d7f978384ce13e8a8e04d81850366083bfe762c4ce53f0ba9f7"
     },
     "anchor_paf": {
-      "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/m2-anchor-vs-b0.paf",
+      "path": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/m2-anchor-vs-b0.paf",
       "sha256": "3d9d07ad08651bd682ffd0662e49f23cf4e1edfbfedbc201e5f7c677b97d28b4"
     },
     "training_depth": {
-      "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/training.depth.tsv",
+      "path": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/training.depth.tsv",
       "sha256": "36bdc66e02a84fa0122fe1aa1af986a09bfad0ad383e73c9c137d2bde5a54a2c"
     }
   },
   "bed": {
-    "path": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed",
+    "path": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed",
     "sha256": "468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0"
   },
   "script": {

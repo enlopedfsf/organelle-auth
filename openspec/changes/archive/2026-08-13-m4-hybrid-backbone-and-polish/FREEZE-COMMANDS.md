@@ -42,11 +42,11 @@ samtools depth -aa -q 20 -Q 20 training.primary.q20.bam > training.depth.tsv
 ```bash
 python3 scripts/m4_build_animal_core_mask.py \
   --assembly-info /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly_info.txt \
-  --raven-paf openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/raven-vs-b0.paf \
-  --anchor-paf openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/m2-anchor-vs-b0.paf \
-  --depth openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/training.depth.tsv \
-  --bed openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed \
-  --metadata openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.metadata.json \
+  --raven-paf openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/raven-vs-b0.paf \
+  --anchor-paf openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/m2-anchor-vs-b0.paf \
+  --depth openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/training.depth.tsv \
+  --bed openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed \
+  --metadata openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.metadata.json \
   --boundary-trim 500 --minimum-depth 1
 ```
 

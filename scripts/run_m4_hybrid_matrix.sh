@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PROJECT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
-CHANGE_DIR="$PROJECT_DIR/openspec/changes/m4-hybrid-backbone-and-polish"
+CHANGE_DIR="$PROJECT_DIR/openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish"
 MANIFEST="$CHANGE_DIR/MANIFEST.sha256"
 INPUT_MANIFEST="$CHANGE_DIR/evidence/execution-inputs.json"
 RUN_ROOT=/home/iris-hp/Project/organelle-auth-ci-fix/runs

@@ -8,7 +8,13 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHANGE = ROOT / "openspec" / "changes" / "m4-hybrid-backbone-and-polish"
+CHANGE = (
+    ROOT
+    / "openspec"
+    / "changes"
+    / "archive"
+    / "2026-08-13-m4-hybrid-backbone-and-polish"
+)
 
 
 def sha256_file(path: Path) -> str:
