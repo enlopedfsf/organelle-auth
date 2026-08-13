@@ -97,7 +97,7 @@ candidates:
     project_validated_platforms: []
     container_digest: "quay.io/biocontainers/racon@sha256:738d48f530c8e46b28c119da05dd36f552fe3dd00648af02d8f5e8808855cb72"
     validation_record: "openspec/changes/m4-hybrid-backbone-and-polish/VALIDATION-m4.md"
-    notes: "Bioconda/BioContainers build hd03093a_2. Flat Mamba runtime /home/iris-hp/miniconda3/envs/racon_compat and executable SHA256 are frozen for local reproduction; exactly two M4 rounds reproduced both plant and animal R1 hashes. The pinned container passed its PR #21 execution probe on head 26bbdcd; local Snap Docker remains blocked by transient-scope DBus isolation. EXPERIMENTAL only; no IDENTIFY/DECISION use."
+    notes: "Bioconda/BioContainers build hd03093a_2. The default local Racon 1.5.0 binary terminated with Illegal instruction on the first animal M4 alignment, so the compatible flat Mamba runtime /home/iris-hp/miniconda3/envs/racon_compat at Racon 1.4.20 was frozen for local reproduction; exactly two M4 rounds reproduced both plant and animal R1 hashes. The pinned 1.4.20 container passed its PR #21 execution probe on head 26bbdcd; local Snap Docker remains blocked by transient-scope DBus isolation. EXPERIMENTAL only; no IDENTIFY/DECISION use."
   - tool_id: bwa_mem
     role: Polypolish 多重比对保留型短读长回贴
     version: 0.7.19
