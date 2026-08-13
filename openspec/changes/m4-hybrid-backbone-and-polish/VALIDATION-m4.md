@@ -2,7 +2,7 @@
 
 ## State
 
-`apply=APPROVED`; `planning_validation=PASS`; `freeze_gate=IN_PROGRESS`; `12-arm_execution=NOT_STARTED`.
+`apply=APPROVED`; `planning_validation=PASS`; `freeze_gate=FROZEN`; `12-arm_execution=NOT_STARTED`.
 
 No arm may run until the three freeze artifacts below are present, non-empty, checksum-recorded, and listed in the signed freeze manifest.
 
@@ -10,9 +10,9 @@ No arm may run until the three freeze artifacts below are present, non-empty, ch
 
 | Artifact | Required evidence | Status |
 |---|---|---|
-| Plant/animal B0 and R1 backbone FASTA | absolute path, non-empty check, SHA256, producing command and tool versions | FROZEN_LOCAL |
-| Per-taxon train/held-out paired FASTQs | deterministic pair-preserving split, counts, source checksums, output checksums, manifest SHA256 | FROZEN_LOCAL |
-| Animal core-mask BED | Flye/Raven/M2-anchor unique projection intersected with training-read callability; BED SHA256; owner | CANDIDATE_PENDING_OWNER_REVIEW |
+| Plant/animal B0 and R1 backbone FASTA | absolute path, non-empty check, SHA256, producing command and tool versions | FROZEN |
+| Per-taxon train/held-out paired FASTQs | deterministic pair-preserving split, counts, source checksums, output checksums, manifest SHA256 | FROZEN |
+| Animal core-mask BED | Flye/Raven/M2-anchor unique projection intersected with training-read callability; BED SHA256; owner | FROZEN |
 
 ## Registered execution parameters
 
@@ -33,10 +33,10 @@ No arm may run until the three freeze artifacts below are present, non-empty, ch
 - Held-out mapper registration: the same Flye-bundled minimap2 binary, `-x sr -t 4`, with output PAF/SAM retained; no held-out reads are used before final evaluation.
 - Training callability registration: `/home/iris-hp/miniconda3/envs/agrvate/bin/samtools` 1.20 with Flye-bundled minimap2 2.24; mapped primary reads use `flye-minimap2 -ax sr --sam-hit-only -t 4 | samtools view -F 0x904 -q 20 | samtools sort`, and callable positions use `samtools depth -aa -q 20 -Q 20` at depth `>=1`. This is intersected with the non-repeat, unique Flye/Raven/M2-anchor projection after 500-bp boundary trimming. Any empty result blocks animal arms.
 - Animal mask prior result (invalidated): `contig_1:0-3004`, SHA256 `94948cc7170c9ae51cef59a1b6903df707df67612d8ce960122cb9217a588be8`. Review found that the generation path hard-coded `contig_1`, omitted other high-confidence collinear segments, and did not implement all pre-registered uniqueness/repeat/junction/liftover exclusions. It MUST NOT be used for ranking or arm execution.
-- Animal mask replacement candidate: `contig_1:500-2441`, `contig_3:515-3800`, and `contig_3:4839-10305` (10,692 bp total), BED SHA256 `468f82...f6b0`. It excludes repeat `contig_2`, the 39-bp multiply projected overlap, unanchored sequence, and 500-bp junction flanks. The retained pieces are local sequence-evaluation blocks only: Raven/anchor global query order and cross-block adjacency are not interpreted and cannot support topology. It remains pending validation/evidence-owner review and cannot yet authorize arm execution.
+- Animal mask replacement: `contig_1:500-2441`, `contig_3:515-3800`, and `contig_3:4839-10305` (10,692 bp total), BED SHA256 `468f82...f6b0`. It excludes repeat `contig_2`, the 39-bp multiply projected overlap, unanchored sequence, and 500-bp junction flanks. The retained pieces are local sequence-evaluation blocks only: Raven/anchor global query order and cross-block adjacency are not interpreted and cannot support topology. The validation/evidence Owner approved this limited use on 2026-08-13.
 - bcftools: BioContainers build `1.21--h8b25389_0`, digest `sha256:969314...6027`; local matching `/home/iris-hp/miniconda3/envs/agrvate/bin/bcftools`, executable SHA256 `4ee4bb...9121`. The bactopia copy is unusable because its `libcrypto.so.1.0.0` dependency is missing.
 - Polypolish: BioContainers build `0.7.1--hec9b1f2_0`, digest `sha256:729c4f...aa5d`; local matching `/home/iris-hp/miniconda3/envs/polypolish/bin/polypolish`, executable SHA256 `de46b9...7622`. Paired inputs are the frozen 80% training split.
-- Container provenance: all four immutable amd64/Linux digests were independently resolved by `skopeo inspect`. Local Docker remained blocked before pull by Snap transient-scope DBus isolation. The authoritative PR #21 workflow then executed every pinned image successfully on head `26bbdcd`: Racon, BWA, Polypolish, and bcftools all passed in [run 31689221509](https://github.com/enlopedfsf/organelle-auth/actions/runs/31689221509). The freeze gate remains `IN_PROGRESS` only because the animal core mask still requires validation/evidence-owner review.
+- Container provenance: all four immutable amd64/Linux digests were independently resolved by `skopeo inspect`. Local Docker remained blocked before pull by Snap transient-scope DBus isolation. The authoritative PR #21 workflow executed every pinned image successfully on head `476ab56`: Racon, BWA, Polypolish, and bcftools all passed in [run 31689611580](https://github.com/enlopedfsf/organelle-auth/actions/runs/31689611580).
 - Public short-read platform correction: ENA identifies SRR38978846 as Illumina HiSeq 2500 and SRR27841063 as Illumina HiSeq 2000. The registry now lists Illumina as an upstream-supported platform for BWA-MEM, Polypolish, and bcftools while keeping `project_validated_platforms=[]`; this M4 run is the project evaluation, not prior validation.
 - Method preflight correction: current upstream Polypolish guidance recommends the paired insert filter after separate `bwa mem -a` mappings, so the fixed default filter is now part of every P arm. bcftools documents a default 250-read `mpileup` ceiling and a separate high-depth indel ceiling, while `consensus` applies variants already present in the VCF without allele-fraction logic. Every C arm therefore uses nonbinding `-d/-L 20000000` ceilings and the pre-registered training-only `QUAL>=30`, depth `>=10`, ALT-fraction `>=0.8` filter before consensus. These corrections were frozen before any arm executed.
 - Indel/homopolymer metrics: final candidates will be normalized against the held-out read-backed callset using the pinned bcftools/normalization toolchain; homopolymer discordance is counted only where held-out reads are callable and support the alternate run-length.
@@ -60,7 +60,8 @@ Corrections completed:
 - Freshly reproduced plant and animal R1 in new `backbones-v2` directories; both final SHA256 values exactly match the earlier two-round outputs.
 - Rebuilt the animal mask using non-repeat Flye contigs, exactly-one local Raven/M2-anchor target projections, and training-only callability. The replacement is 10,692 bp rather than the invalid 3,004-bp hard-coded mask; it is expressly a local sequence core, not adjacency or topology evidence.
 - Confirmed by ENA metadata that short/long runs share BioSample `SAMN60565143` (plant) and `SAMN39735897` (animal). These remain same-source public engineering evaluations, not independent biological transfer validation.
-- Resolved matching immutable BioContainers digests by Quay API and `skopeo inspect` for Racon, BWA, Polypolish, and bcftools. The local Snap Docker probe remains infrastructure-blocked, while authoritative CI executed all four pinned containers successfully on PR #21 head `26bbdcd`.
-- Rebuilt `MANIFEST.sha256` in standard two-column `sha256sum -c` format; all 46 registered local objects passed.
+- Resolved matching immutable BioContainers digests by Quay API and `skopeo inspect` for Racon, BWA, Polypolish, and bcftools. The local Snap Docker probe remains infrastructure-blocked, while authoritative CI executed all four pinned containers successfully on PR #21 head `476ab56`.
+- The validation/evidence Owner explicitly approved BED SHA256 `468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0` on 2026-08-13, solely for animal six-arm local sequence ranking. The signed record is `evidence/animal-core-mask/animal-core.approval.json`; global order, adjacency, repeat copy number, circularity, and complete topology remain prohibited interpretations.
+- Rebuilt `MANIFEST.sha256` in standard two-column `sha256sum -c` format; all 47 registered local objects passed, including the separate Owner-approval record.
 
-Current honest state: B0/R1 and split artifacts are locally frozen; all four pinned-container execution probes passed authoritative CI; the mask is still an unsigned owner-review candidate; twelve-arm execution remains `NOT_STARTED`.
+Current honest state: B0/R1, paired splits, fixed arm protocols, and the Owner-approved animal local-core mask are frozen; all four pinned-container execution probes passed authoritative CI; twelve-arm execution remains `NOT_STARTED`.

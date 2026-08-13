@@ -26,6 +26,9 @@ class M4FreezeContractTests(unittest.TestCase):
         cls.mask = json.loads(
             (CHANGE / "evidence" / "animal-core-mask" / "animal-core.metadata.json").read_text()
         )
+        cls.mask_approval = json.loads(
+            (CHANGE / "evidence" / "animal-core-mask" / "animal-core.approval.json").read_text()
+        )
         cls.compatibility = json.loads(
             (CHANGE / "evidence" / "input-compatibility.json").read_text()
         )
@@ -107,6 +110,23 @@ class M4FreezeContractTests(unittest.TestCase):
             sha256_file(CHANGE / "evidence" / "animal-core-mask" / "animal-core.bed"),
             self.checklist["animal_core_mask"]["sha256"],
         )
+
+    def test_freeze_requires_separate_owner_approval_with_topology_prohibited(self):
+        approval_path = CHANGE / self.checklist["animal_core_mask"]["approval_record"]
+        self.assertEqual(self.checklist["state"], "FROZEN")
+        self.assertEqual(self.checklist["blocking_items"], [])
+        self.assertEqual(self.checklist["animal_core_mask"]["status"], "FROZEN")
+        self.assertEqual(self.mask["status"], "FROZEN")
+        self.assertEqual(self.arm_protocols["state"], "FROZEN")
+        self.assertEqual(sha256_file(approval_path), self.checklist["animal_core_mask"]["approval_record_sha256"])
+        self.assertEqual(self.mask_approval["artifact_sha256"], self.checklist["animal_core_mask"]["sha256"])
+        self.assertEqual(self.mask_approval["total_bases"], 10_692)
+        self.assertEqual(
+            self.mask_approval["approved_scope"],
+            "animal six-arm local sequence-ranking metrics only",
+        )
+        self.assertIn("circularity", self.mask_approval["prohibited_claims"])
+        self.assertIn("complete mitochondrial topology", self.mask_approval["prohibited_claims"])
 
     def test_manifest_is_sha256sum_compatible_and_repo_entries_match(self):
         seen = set()

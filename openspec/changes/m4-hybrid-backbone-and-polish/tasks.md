@@ -25,7 +25,7 @@
 - [ ] 4.3 Align the frozen 20% held-out reads independently to every final candidate with the same registered alignment/callability policy; verify the held-out set never contributed to polishing, mask construction, or parameter selection.
 - [ ] 4.4 For every arm, calculate `residual_unsupported_loci` uniformly within the frozen evaluable core and report `introduced_edits` separately as step-local and cumulative provenance; also report held-out core concordance, evaluable homopolymer discordances, SNVs, indels, regional residuals, resources, and manual review.
 - [ ] 4.5 Apply the pre-registered dominance combination: strictly fewer residual unsupported loci, strictly fewer held-out-supported evaluable homopolymer discordances, and no held-out core-concordance regression relative to B0. If none dominates, report scientific outcome `CONDITIONAL` and machine status `INCONCLUSIVE` with no post hoc winner.
-- [ ] 4.6 Animal Flye/Raven single-copy core BED is intersected with training-read callability and frozen only after the registered collinearity, uniqueness, unresolved-region exclusion, coordinate/liftover, owner, and SHA256 evidence all pass review.
+- [x] 4.6 Animal Flye/Raven single-copy core BED is intersected with training-read callability and frozen after the registered collinearity, uniqueness, unresolved-region exclusion, coordinate/liftover, owner, and SHA256 evidence passed review; Owner approval was recorded on 2026-08-13 for local sequence-ranking use only.
 - [ ] 4.7 Restrict animal ranking to that frozen core; retain unresolved AT-rich/D-loop edits in the ledger as `NOT_EVALUABLE`, outside all ranking metrics.
 
 ## 5. Governance and tests
@@ -37,4 +37,4 @@
 
 ## 6. Review gate
 
-- [x] 6.1 Proposal review completed; explicit user approval for `/opsx:apply` received on 2026-08-13. Execution remains gated by the three-artifact freeze checklist in 1.3, 2.3, and 4.6.
+- [x] 6.1 Proposal review completed; explicit user approval for `/opsx:apply` and separate validation/evidence-Owner approval of the final animal core mask were received on 2026-08-13. The three-artifact pre-run freeze gate in 1.3, 2.3, and 4.6 is satisfied.

@@ -1,8 +1,14 @@
 {
   "schema_version": "m4-animal-core-mask-v2",
-  "status": "FROZEN_CANDIDATE_PENDING_REVIEW",
+  "status": "FROZEN",
   "coordinate_frame": "animal Flye B0, 0-based half-open",
   "owner": "validation/evidence owner",
+  "owner_approval": {
+    "approved_on": "2026-08-13",
+    "record": "evidence/animal-core-mask/animal-core.approval.json",
+    "scope": "animal six-arm local sequence-ranking metrics only",
+    "topology_use": "PROHIBITED"
+  },
   "eligible_nonrepeat_single_edge_contigs": [
     "contig_1",
     "contig_3"

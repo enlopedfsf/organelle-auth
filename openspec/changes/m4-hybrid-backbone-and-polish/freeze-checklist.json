@@ -1,9 +1,7 @@
 {
   "change": "m4-hybrid-backbone-and-polish",
-  "state": "IN_PROGRESS",
-  "blocking_items": [
-    "validation/evidence owner review of animal core-mask candidate"
-  ],
+  "state": "FROZEN",
+  "blocking_items": [],
   "baseline": {
     "origin_dev": "d61db06266d38d6632c5913728ac7094b7d136c1",
     "proposal_commit_parent_matches_origin_dev": true
@@ -59,7 +57,7 @@
       "training_pairs": 5336938,
       "heldout_pairs": 1334802,
       "gzip_test": "PASS",
-      "status": "FROZEN_CANDIDATE"
+      "status": "FROZEN"
     },
     "animal": {
       "manifest": "evidence/animal-split-manifest.json",
@@ -68,15 +66,19 @@
       "training_pairs": 5328722,
       "heldout_pairs": 1330345,
       "gzip_test": "PASS",
-      "status": "FROZEN_CANDIDATE"
+      "status": "FROZEN"
     }
   },
   "animal_core_mask": {
     "bed": "evidence/animal-core-mask/animal-core.bed",
     "sha256": "468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0",
-    "metadata_sha256": "8bfe267be39f560a8f0b7559c787068814f476362b46bd9da913a867cfa25a74",
+    "metadata_sha256": "ff9e02fa8587626b7b7e223d836571ceaaff32b05434ff8b54792315d9e67fd1",
     "builder_script_sha256": "798e72638e471658bb9fad576e298748b115b56628e4d2d72eed86d3553db450",
-    "status": "FROZEN_CANDIDATE_PENDING_OWNER_REVIEW",
+    "approval_record": "evidence/animal-core-mask/animal-core.approval.json",
+    "approval_record_sha256": "1f130dcf985fd91f2c33405291801b098fec1e47e42d3b25db49455941f6a8b1",
+    "approved_on": "2026-08-13",
+    "approved_scope": "animal six-arm local sequence-ranking metrics only; topology use prohibited",
+    "status": "FROZEN",
     "coordinate_frame": "animal Flye B0, 0-based half-open",
     "intervals": [
       "contig_1:500-2441",
@@ -94,9 +96,9 @@
     "polypolish_container": "quay.io/biocontainers/polypolish@sha256:729c4fc24b3e81969c06e8c9eeaf498feb17eeabdb91808615b1e177dd06aa5d",
     "bcftools_container": "quay.io/biocontainers/bcftools@sha256:969314d56b9131683917cc5801734891a9af130daf7a0fb902b7707060b06027",
     "registry_digest_resolution": "PASS_SKOPEO",
-    "container_execution_probe": "PASS_CI_PR21_HEAD_26bbdcd",
+    "container_execution_probe": "PASS_CI_PR21_HEAD_476ab56",
     "ci_probe_workflow": ".github/workflows/m4-freeze.yml",
-    "ci_probe_run": "https://github.com/enlopedfsf/organelle-auth/actions/runs/31689221509",
+    "ci_probe_run": "https://github.com/enlopedfsf/organelle-auth/actions/runs/31689611580",
     "arm_protocols": "evidence/arm-protocols.json"
   },
   "execution": {

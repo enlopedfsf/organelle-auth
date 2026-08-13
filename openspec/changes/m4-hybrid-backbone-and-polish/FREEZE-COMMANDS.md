@@ -37,7 +37,7 @@ flye-minimap2 -ax sr --sam-hit-only -t 4 animal.B0 animal.train.R1.fastq.gz anim
 samtools depth -aa -q 20 -Q 20 training.primary.q20.bam > training.depth.tsv
 ```
 
-`scripts/m4_build_animal_core_mask.py` then retained Flye non-repeat single-edge contigs with exactly-one local MAPQ-60 Raven and M2-anchor target projection and training depth at least one, excluding multiply projected bases and trimming 500 bp at each continuous block boundary. The candidate BED contains 10,692 bp: `contig_1:500-2441`, `contig_3:515-3800`, and `contig_3:4839-10305`. Flye repeat `contig_2`, the 39-bp multiply projected overlap, unanchored sequence, and junction flanks are excluded. These are local sequence-evaluation blocks only; global query order and adjacency are not interpreted. This BED remains pending validation/evidence-owner review and is not yet an authorization to start the twelve arms.
+`scripts/m4_build_animal_core_mask.py` then retained Flye non-repeat single-edge contigs with exactly-one local MAPQ-60 Raven and M2-anchor target projection and training depth at least one, excluding multiply projected bases and trimming 500 bp at each continuous block boundary. The BED contains 10,692 bp: `contig_1:500-2441`, `contig_3:515-3800`, and `contig_3:4839-10305`. Flye repeat `contig_2`, the 39-bp multiply projected overlap, unanchored sequence, and junction flanks are excluded. These are local sequence-evaluation blocks only; global query order and adjacency are not interpreted. The validation/evidence Owner approved this limited ranking use on 2026-08-13; the separate signed record is `evidence/animal-core-mask/animal-core.approval.json`.
 
 ```bash
 python3 scripts/m4_build_animal_core_mask.py \
