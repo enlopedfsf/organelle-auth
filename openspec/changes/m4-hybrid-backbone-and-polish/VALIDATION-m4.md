@@ -10,8 +10,8 @@ No arm may run until the three freeze artifacts below are present, non-empty, ch
 
 | Artifact | Required evidence | Status |
 |---|---|---|
-| Plant/animal B0 and R1 backbone FASTA | absolute path, non-empty check, SHA256, producing command and tool versions | PENDING |
-| Per-taxon train/held-out paired FASTQs | deterministic pair-preserving split, counts, source checksums, output checksums, manifest SHA256 | IN_PROGRESS |
+| Plant/animal B0 and R1 backbone FASTA | absolute path, non-empty check, SHA256, producing command and tool versions | FROZEN |
+| Per-taxon train/held-out paired FASTQs | deterministic pair-preserving split, counts, source checksums, output checksums, manifest SHA256 | FROZEN |
 | Animal core-mask BED | Flye/Raven single-copy collinear intervals intersected with training-read callability; BED SHA256; owner | FROZEN |
 
 ## Registered execution parameters

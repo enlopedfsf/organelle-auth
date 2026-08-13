@@ -18,3 +18,7 @@ faaac7b21b75c53a0748dfe1588a751db0d7526e956cfe55594c5cd6f8045c96  /home/iris-hp/
 c0f23e057bf52207a20d287a93324f9ef0e797dbb3eb2291fa47312e5307c364  /home/iris-hp/miniconda3/envs/racon_compat/bin/racon  runtime.racon-1.4.20
 de46b96fcb2eb4a4cf50fde222e294110ed4a1e099b8563bdc4b2291abf7622d  /home/iris-hp/miniconda3/envs/polypolish/bin/polypolish  runtime.polypolish-0.7.1
 4ee4bbda8af75cd45360b0e29e4a1776035c91d3554e8007859e31232c0e9121  /home/iris-hp/miniconda3/envs/agrvate/bin/bcftools  runtime.bcftools-1.21
+fd61453ad010bf806a8788838fdafa4561f18895831c160180f0656e86179a0a  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.heldout.R1.fastq.gz  plant.final.heldout.R1
+32586de54261953069fdb07a389b7b242e40028434bc5f3eeefb605399bc5927  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.heldout.R2.fastq.gz  plant.final.heldout.R2
+e9f3423505540cd8090a4dd8ca61e265b085781f0c3b0a0237533d9c938c20d7  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.train.R1.fastq.gz  plant.final.train.R1
+32f7a844c11916fced791e10b1db59cfd2f50890e2fa093df29c0d3af45d1eae  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.train.R2.fastq.gz  plant.final.train.R2

@@ -1,6 +1,6 @@
 {
   "change": "m4-hybrid-backbone-and-polish",
-  "state": "FREEZE_IN_PROGRESS",
+  "state": "FROZEN",
   "split_rule": {
     "salt": "m4-hybrid-v1",
     "hash": "SHA256(UTF-8(salt + tab + canonical_pair_id))",
@@ -14,7 +14,7 @@
     "plant.R1": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones/plant/R1.fasta", "sha256": "6744d1ca3ee8b25175fdaf210543c313bb7ca32d0b75bab6909d38445a8e0735", "racon": "1.4.20", "rounds": 2},
     "animal.R1": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones/animal/R1.fasta", "sha256": "c7f60cae9a87ebac3d3556298c0aac8a4d2de6680799449ab5a2f5a7cab4cc47", "racon": "1.4.20", "rounds": 2}
   },
-  "heldout_split": {"plant": {"manifest": "MANIFEST.sha256", "status": "CHECKSUMMED"}, "animal": {"manifest": "animal-split-final-manifest.json", "status": "CHECKSUMMED", "heldout_pairs": 13871088, "training_pairs": 55478196, "gzip_test": "PASS"}},
+  "heldout_split": {"plant": {"manifest": "MANIFEST.sha256", "status": "CHECKSUMMED", "heldout_pairs": 7564366, "training_pairs": 30266480, "gzip_test": "PASS"}, "animal": {"manifest": "animal-split-final-manifest.json", "status": "CHECKSUMMED", "heldout_pairs": 13871088, "training_pairs": 55478196, "gzip_test": "PASS"}},
   "animal_core_mask": {"bed": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/animal-core-mask/animal-core.final.merged.bed", "sha256": "94948cc7170c9ae51cef59a1b6903df707df67612d8ce960122cb9217a588be8", "status": "FROZEN", "coordinate_frame": "animal Flye B0 contig_1", "rule": "Flye/Raven single-copy collinear interval intersected with full training-read callable positions (minimap2 -ax sr; MAPQ>=20; baseQ>=20; depth>=1), merged BED", "owner": "validation/evidence owner"},
   "execution": {"twelve_arms": "NOT_STARTED", "status": "INCONCLUSIVE", "assembly_grade": "CANDIDATE", "decision": "NOT_APPLICABLE", "cycloneseq": "PENDING_REAL_DATA", "pmat2": "GATED_ISSUE_10"}
 }
