@@ -16,5 +16,10 @@ output:
       - "*.bam": { type: file }
       - "*.bam.bai": { type: file }
       - "*.depth.tsv": { type: file }
-  versions: [{ "${task.process}": { type: string } }, { minimap2_samtools: { type: string } }, { "2.24_1.20": { type: string } }]
+  versions:
+    [
+      { "${task.process}": { type: string } },
+      { minimap2_samtools: { type: string } },
+      { "2.24_1.20": { type: string } },
+    ]
 authors: ["enlopedfsf"]

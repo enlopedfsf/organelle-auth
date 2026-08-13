@@ -19,5 +19,6 @@ output:
       - heldout_r2: { type: file }
       - "*.core.bed": { type: file }
       - "*.core-liftover.json": { type: file }
-  versions: [{ "${task.process}": { type: string } }, { m4_hybrid_evidence: { type: string } }, { "0.1.0": { type: string } }]
+  versions:
+    [{ "${task.process}": { type: string } }, { m4_hybrid_evidence: { type: string } }, { "0.1.0": { type: string } }]
 authors: ["enlopedfsf"]

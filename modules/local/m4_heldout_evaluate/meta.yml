@@ -21,5 +21,6 @@ output:
       - "*.heldout-edit-ledger.tsv": { type: file }
       - "*.metrics.json": { type: file }
       - "*.core.bed": { type: file }
-  versions: [{ "${task.process}": { type: string } }, { m4_hybrid_evidence: { type: string } }, { "0.1.0": { type: string } }]
+  versions:
+    [{ "${task.process}": { type: string } }, { m4_hybrid_evidence: { type: string } }, { "0.1.0": { type: string } }]
 authors: ["enlopedfsf"]

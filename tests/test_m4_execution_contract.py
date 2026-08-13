@@ -80,6 +80,25 @@ class M4ExecutionContractTests(unittest.TestCase):
             rows = list(csv.DictReader(handle, delimiter="\t"))
         self.assertTrue(any(row["evaluation_status"] == "NOT_EVALUABLE" for row in rows))
 
+    def test_local_reproduction_executables_are_hidden_schema_metadata(self):
+        schema = json.loads((ROOT / "nextflow_schema.json").read_text())
+        options = schema["$defs"]["hybrid_reference_build_options"]
+        expected = {
+            "m4_bwa_bin": "bwa",
+            "m4_polypolish_bin": "polypolish",
+            "m4_minimap2_bin": "minimap2",
+            "m4_samtools_bin": "samtools",
+            "m4_bcftools_bin": "bcftools",
+        }
+        self.assertIn(
+            {"$ref": "#/$defs/hybrid_reference_build_options"}, schema["allOf"]
+        )
+        self.assertEqual(set(options["properties"]), set(expected))
+        for name, default in expected.items():
+            self.assertEqual(options["properties"][name]["type"], "string")
+            self.assertEqual(options["properties"][name]["default"], default)
+            self.assertTrue(options["properties"][name]["hidden"])
+
 
 if __name__ == "__main__":
     unittest.main()
