@@ -1,0 +1,80 @@
+{
+  "schema_version": "m4-freeze-inputs-v2",
+  "label": "SRR38978846.seed11.2gb",
+  "sample_id": "SRR38978846",
+  "source_data_type": "public_evaluation",
+  "source_processing_budget": "approximately 2 Gb combined paired bases",
+  "source_selection_seed": 11,
+  "inputs": {
+    "r1": {
+      "path": "/home/iris-hp/corydalis_validation/reads/sub/SRR38978846_R1.sub.fq.gz",
+      "bytes": 458552611,
+      "sha256": "310d2e19ca2ccd5fd89702668ac35f7c8cbf5a817df130aacc52a711d149a59b"
+    },
+    "r2": {
+      "path": "/home/iris-hp/corydalis_validation/reads/sub/SRR38978846_R2.sub.fq.gz",
+      "bytes": 468721024,
+      "sha256": "53a769f876f65d82e16012cdb03dcb33e0f8b9c99056f487cb1293ea60e02c2f"
+    }
+  },
+  "outputs": {
+    "train_r1": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R1.fastq.gz",
+      "bytes": 422057541,
+      "sha256": "539e64b5247d76f079dcf83ae0c3c0d8bb6bb82a29eb7bba25daae3445bcdf00",
+      "gzip_integrity": "PASS"
+    },
+    "train_r2": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R2.fastq.gz",
+      "bytes": 431783490,
+      "sha256": "3652ef77d822786898400d904046db509839e7f3d4d9c493754f3fef914a1a68",
+      "gzip_integrity": "PASS"
+    },
+    "heldout_r1": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R1.fastq.gz",
+      "bytes": 107707574,
+      "sha256": "509fd0be03b6f29c912ff5734643812bdebf7f1c3118bf155ceb5cbdbb760e0c",
+      "gzip_integrity": "PASS"
+    },
+    "heldout_r2": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R2.fastq.gz",
+      "bytes": 110105008,
+      "sha256": "7a6850d1ad5308dd43dfdc682506316c03f75e253e7d884a3c0bbee8cdef2f6b",
+      "gzip_integrity": "PASS"
+    }
+  },
+  "pair_counts": {
+    "train_pairs": 5336938,
+    "heldout_pairs": 1334802,
+    "total_pairs": 6671740
+  },
+  "assignment_audit": {
+    "train_pair_id_stream_sha256": "4fe91ab04a8d24fae057eaba1e9b83e9051c6d2c107137dc53af3f53a32fb47b",
+    "heldout_pair_id_stream_sha256": "b0659bf47acd4d0f952d17d810582126e32666bd4334ee50b265c8ee418d5515",
+    "overlap_pairs": 0,
+    "overlap_check": "PASS_BY_EXCLUSIVE_DETERMINISTIC_PARTITION",
+    "count_balance": true
+  },
+  "rule": {
+    "salt": "m4-hybrid-v1",
+    "canonical_id": "first whitespace-delimited token, strip leading @ and terminal /1 or /2",
+    "hash": "SHA256(UTF-8(salt + tab + canonical_pair_id))",
+    "bucket": "first 8 hex digits as unsigned integer modulo 10; 0-1 heldout, 2-9 train",
+    "pair_preservation": true
+  },
+  "runtime": {
+    "pigz_path": "/home/iris-hp/miniconda3/bin/pigz",
+    "pigz_version": "pigz 2.8",
+    "pigz_parameters": [
+      "-n",
+      "-1",
+      "-p",
+      "4",
+      "-c"
+    ]
+  },
+  "script": {
+    "path": "/tmp/organelle-auth-m4-propose.fz4Rwg/scripts/m4_freeze_inputs.py",
+    "sha256": "c8f55cba8cbc2c0ba90e4b1c6cbc4eb7de361da54a15a091ec1609220a27b4b3"
+  }
+}

@@ -122,7 +122,7 @@ def check_traceability():
 
 EXPECTED_CANDIDATES = {
     "fastp", "nanoplot", "kraken2", "getorganelle", "novoplasty", "mitofinder_mitoz",
-    "flye", "raven", "pmat2", "racon", "polypolish", "bcftools_consensus", "nextpolish2", "geseq_plastidhub",
+    "flye", "raven", "pmat2", "racon", "bwa_mem", "polypolish", "bcftools_consensus", "nextpolish2", "geseq_plastidhub",
 }
 EXPECTED_PROHIBITED = {"medaka", "nanopolish", "clair3_ont", "oatk", "tippo", "mitohifi", "hifiasm"}
 
@@ -131,7 +131,7 @@ def check_tools_registry():
     t = load_yaml("registries/tools.yaml")
     cands = t.get("candidates", [])
     proh = t.get("prohibited", [])
-    assert len(cands) == 14, f"expected 14 candidates, got {len(cands)}"
+    assert len(cands) == 15, f"expected 15 candidates, got {len(cands)}"
     cand_ids = {c["tool_id"] for c in cands}
     assert cand_ids == EXPECTED_CANDIDATES, f"candidate mismatch: {cand_ids ^ EXPECTED_CANDIDATES}"
     tier = {c["tool_id"]: c["admission_status"] for c in cands}

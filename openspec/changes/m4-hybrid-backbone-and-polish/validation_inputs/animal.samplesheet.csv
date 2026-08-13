@@ -1,0 +1,2 @@
+sample_id,analysis_mode,taxon_group,targets,short_reads_1,short_reads_2,long_reads,specimen_role,dna_integrity,reference_pack_id,policy_pack_id,batch_id
+M4_ANIMAL_PUBLIC,reference_build,animal,mitome,/home/iris-hp/whitmania_validation/reads/WTM_NORMAL_1.fastq.gz,/home/iris-hp/whitmania_validation/reads/WTM_NORMAL_2.fastq.gz,/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.1-coherent.fastq.gz,reference_candidate,unknown,tcm-animal-cm084263-v0.1,tcm-animal-engineering-test-0.1.0,m4-public-evaluation

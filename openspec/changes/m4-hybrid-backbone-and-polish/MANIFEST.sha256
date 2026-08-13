@@ -1,24 +1,47 @@
-# M4 freeze manifest (large files remain outside Git)
-# Format: SHA256  absolute_path  logical_role
-b8d56a6f4e8d38a08d5668faa36b481eb75e12133a67652d21c6d5871d55cf0b  /home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta  plant.B0
-d8d5f1215a8a688f0001d4fb9177c94d34c558c5f60879d3757ac366ae250e75  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta  animal.B0
-7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta  animal.Raven.comparator
-c7f60cae9a87ebac3d3556298c0aac8a4d2de6680799449ab5a2f5a7cab4cc47  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones/animal/R1.fasta  animal.R1
-6744d1ca3ee8b25175fdaf210543c313bb7ca32d0b75bab6909d38445a8e0735  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones/plant/R1.fasta  plant.R1
-e41cb9ee4fb8de32e560760cd6842059d8575d7ddbccd9fd4a8211a5038fd767  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_1.fastq.heldout.R1.fastq.gz  plant.heldout.R1
-25281943dc5226d5ae3cdd78a7646523948294640c3f38dacb19f2803b50a78e  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_1.fastq.train.R1.fastq.gz  plant.train.R1
-7c58ae322370aba77f2b38ef7fce8cc4f26ea8389be66b741cd42dd0be2d005f  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_2.fastq.heldout.R2.fastq.gz  plant.heldout.R2
-305ac1c30c907399820029afdca721213cfdcc9c4d9e3cd7bd995604ba97baa4  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant/SRR38978846_2.fastq.train.R2.fastq.gz  plant.train.R2
-b989c09b4b82f6cc8db5ed17cee85e5dd723ccec81883958031d53fbc0df4264  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/animal-fast/SRR27841063_1.fastq.heldout.R1.fastq.gz  animal.heldout.R1
-4f645a2f485fd2b33186a37eca48aa6719b40c07809f24d1cc0182813d5131d6  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/animal-fast/SRR27841063_1.fastq.heldout.R2.fastq.gz  animal.heldout.R2
-4c130f9de4b520cb94a31bbadfa127aa3810e751fe04da74dc8498ea75bd7765  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/animal-fast/SRR27841063_1.fastq.train.R1.fastq.gz  animal.train.R1
-faaac7b21b75c53a0748dfe1588a751db0d7526e956cfe55594c5cd6f8045c96  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/animal-fast/SRR27841063_1.fastq.train.R2.fastq.gz  animal.train.R2
-3725de073b661c6fb34d787f11029117458a62d8bc22ff150e6522b24101c606  /tmp/organelle-auth-m4-propose.fz4Rwg/runs/output/m4-hybrid-backbone-and-polish/animal-core-mask/animal-core.mask.bed  animal.core-mask.provisional
-94948cc7170c9ae51cef59a1b6903df707df67612d8ce960122cb9217a588be8  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/animal-core-mask/animal-core.final.merged.bed  animal.core-mask.final
-c0f23e057bf52207a20d287a93324f9ef0e797dbb3eb2291fa47312e5307c364  /home/iris-hp/miniconda3/envs/racon_compat/bin/racon  runtime.racon-1.4.20
-de46b96fcb2eb4a4cf50fde222e294110ed4a1e099b8563bdc4b2291abf7622d  /home/iris-hp/miniconda3/envs/polypolish/bin/polypolish  runtime.polypolish-0.7.1
-4ee4bbda8af75cd45360b0e29e4a1776035c91d3554e8007859e31232c0e9121  /home/iris-hp/miniconda3/envs/agrvate/bin/bcftools  runtime.bcftools-1.21
-fd61453ad010bf806a8788838fdafa4561f18895831c160180f0656e86179a0a  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.heldout.R1.fastq.gz  plant.final.heldout.R1
-32586de54261953069fdb07a389b7b242e40028434bc5f3eeefb605399bc5927  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.heldout.R2.fastq.gz  plant.final.heldout.R2
-e9f3423505540cd8090a4dd8ca61e265b085781f0c3b0a0237533d9c938c20d7  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.train.R1.fastq.gz  plant.final.train.R1
-32f7a844c11916fced791e10b1db59cfd2f50890e2fa093df29c0d3af45d1eae  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits/plant-final/SRR38978846_1.fastq.train.R2.fastq.gz  plant.final.train.R2
+# Standard sha256sum-compatible manifest; logical roles are recorded in freeze-checklist.json.
+b8d56a6f4e8d38a08d5668faa36b481eb75e12133a67652d21c6d5871d55cf0b  /home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta
+93f4fd3bc3969e5d4d3577870b32f4a63d99ddc57a325f84403d7f089531f3c8  /home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/lr_extract_final/SRR38978847.final-recruited.fastq.gz
+d8d5f1215a8a688f0001d4fb9177c94d34c558c5f60879d3757ac366ae250e75  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta
+c0cad1fb291bfd0272fb9be1eb1e24249bf119d8973ac9d9834a02c508cc66fa  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.1-coherent.fastq.gz
+7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta
+6744d1ca3ee8b25175fdaf210543c313bb7ca32d0b75bab6909d38445a8e0735  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones-v2/plant/R1.fasta
+c7f60cae9a87ebac3d3556298c0aac8a4d2de6680799449ab5a2f5a7cab4cc47  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones-v2/animal/R1.fasta
+310d2e19ca2ccd5fd89702668ac35f7c8cbf5a817df130aacc52a711d149a59b  /home/iris-hp/corydalis_validation/reads/sub/SRR38978846_R1.sub.fq.gz
+53a769f876f65d82e16012cdb03dcb33e0f8b9c99056f487cb1293ea60e02c2f  /home/iris-hp/corydalis_validation/reads/sub/SRR38978846_R2.sub.fq.gz
+e9bd633ca0528fa702c0589936b2411cae1cb105623414013430739b70ac0685  /home/iris-hp/whitmania_validation/reads/WTM_NORMAL_1.fastq.gz
+76d17769282c2393b4701db829a607dd4d9e3dc694cbe194c86825d852fbb375  /home/iris-hp/whitmania_validation/reads/WTM_NORMAL_2.fastq.gz
+509fd0be03b6f29c912ff5734643812bdebf7f1c3118bf155ceb5cbdbb760e0c  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R1.fastq.gz
+7a6850d1ad5308dd43dfdc682506316c03f75e253e7d884a3c0bbee8cdef2f6b  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R2.fastq.gz
+539e64b5247d76f079dcf83ae0c3c0d8bb6bb82a29eb7bba25daae3445bcdf00  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R1.fastq.gz
+3652ef77d822786898400d904046db509839e7f3d4d9c493754f3fef914a1a68  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R2.fastq.gz
+471d0f91de4536f66d7664b50aad0ca5d0269a8e5090cefd7eb6bd82245fca1c  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.heldout.R1.fastq.gz
+b8115f828016a617217bb0fdb8f333cffe36083098af41512a9b71da2d8ba791  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.heldout.R2.fastq.gz
+60d03d6055fb142f7ac19fcda2492f70076173fe6306844ccc306c3b74c061ad  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.train.R1.fastq.gz
+53f30250325e887e4360c9e6774dae9a741cbbcf40b1e5c6ee11c6e9c1369dca  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.train.R2.fastq.gz
+5c412a2e94cfcefef80857380d00db28869fd1a13556706d880b598e6585cfb7  /home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/animal-core-mask-v2/training.primary.q20.bam
+62d8f70381caec75f3224fe2a2ef6184ce8b3e5b450adafc77f0f908500a4290  /home/iris-hp/miniconda3/envs/flye/bin/flye-minimap2
+c0f23e057bf52207a20d287a93324f9ef0e797dbb3eb2291fa47312e5307c364  /home/iris-hp/miniconda3/envs/racon_compat/bin/racon
+f295e18cadd60f08af95518c4efda4c4955d9bc0182dd3cb8ff8a567e635cca1  /home/iris-hp/miniconda3/envs/agrvate/bin/samtools
+4ee4bbda8af75cd45360b0e29e4a1776035c91d3554e8007859e31232c0e9121  /home/iris-hp/miniconda3/envs/agrvate/bin/bcftools
+de46b96fcb2eb4a4cf50fde222e294110ed4a1e099b8563bdc4b2291abf7622d  /home/iris-hp/miniconda3/envs/polypolish/bin/polypolish
+2d6b83b4b8851bc09d4aabdfc0429b0ffc8383261252aaed5e00682a04ad0a42  /home/iris-hp/miniconda3/envs/CAT/bin/bwa
+c8f55cba8cbc2c0ba90e4b1c6cbc4eb7de361da54a15a091ec1609220a27b4b3  scripts/m4_freeze_inputs.py
+798e72638e471658bb9fad576e298748b115b56628e4d2d72eed86d3553db450  scripts/m4_build_animal_core_mask.py
+337520f83be4a7737b3146c8c4e80736c819ec8ea40d593c3e244bd868cd7b4e  tests/test_m4_freeze_inputs.py
+c0a2c8e47b901dbb57165b4f992fd941a19257c258c378188822bbcf0c405c2a  tests/test_m4_freeze_contract.py
+966da1fe8da56813d14656997f3265372c9c439a281cb39bc2e43a514ef4c043  tests/test_m4_build_animal_core_mask.py
+0304761d6b9c4e8f1d97c5dd85e96b747a375e17de7780d7b205f9f75ba2612e  .github/workflows/m4-freeze.yml
+246356f6fba1d55c5cec52118a92fe288cbdf1d88eddb877d9c9e8702ba61f13  openspec/changes/m4-hybrid-backbone-and-polish/evidence/plant-split-manifest.json
+8459535e761a7748241535b007fd8477958993588b0be3455ea4e36f3abe7456  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-split-manifest.json
+8368d5fd26b78d7f978384ce13e8a8e04d81850366083bfe762c4ce53f0ba9f7  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/raven-vs-b0.paf
+3d9d07ad08651bd682ffd0662e49f23cf4e1edfbfedbc201e5f7c677b97d28b4  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/m2-anchor-vs-b0.paf
+36bdc66e02a84fa0122fe1aa1af986a09bfad0ad383e73c9c137d2bde5a54a2c  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/training.depth.tsv
+468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed
+8bfe267be39f560a8f0b7559c787068814f476362b46bd9da913a867cfa25a74  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.metadata.json
+20e997a52c75e5b9b01babf509e6a0f4e9d7def846f5deb90ef58da23bd91cbf  openspec/changes/m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json
+8059cbfa1c4e2f74192b770864f7bc768653d715d56cd25d0678ea3dc4a0975a  openspec/changes/m4-hybrid-backbone-and-polish/evidence/public-run-metadata.tsv
+b4615d534c61b53ec7cb544eb942b4f20009275afaff427f14ecf8cac644a483  openspec/changes/m4-hybrid-backbone-and-polish/evidence/input-compatibility.json
+db144d6aa87318e573bb18e4aac5fe682598379702edc8b4269cf1252d5ee15a  openspec/changes/m4-hybrid-backbone-and-polish/evidence/arm-protocols.json
+89674efa13093ffb4a3f4986ecc9cf5fc94c289595a14bdc8195affee3c4ba56  openspec/changes/m4-hybrid-backbone-and-polish/validation_inputs/plant.samplesheet.csv
+ee3849553b92525e028df64283832046a35614fb1d612d08b3527a4aa3ebef22  openspec/changes/m4-hybrid-backbone-and-polish/validation_inputs/animal.samplesheet.csv
+5625d461f24c9e5318644d8bdae288872d010ec81e8c5971eadf757f5caa411e  openspec/changes/m4-hybrid-backbone-and-polish/FREEZE-COMMANDS.md

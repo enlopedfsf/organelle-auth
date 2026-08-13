@@ -1,20 +1,110 @@
 {
   "change": "m4-hybrid-backbone-and-polish",
-  "state": "FROZEN",
+  "state": "IN_PROGRESS",
+  "blocking_items": [
+    "validation/evidence owner review of animal core-mask candidate",
+    "CI execution probes for pinned Racon, BWA, Polypolish, and bcftools containers"
+  ],
+  "baseline": {
+    "origin_dev": "d61db06266d38d6632c5913728ac7094b7d136c1",
+    "proposal_commit_parent_matches_origin_dev": true
+  },
   "split_rule": {
     "salt": "m4-hybrid-v1",
     "hash": "SHA256(UTF-8(salt + tab + canonical_pair_id))",
     "bucket": "first 8 hex as unsigned integer modulo 10; 0-1 heldout, 2-9 train",
-    "pair_preservation": true
+    "pair_preservation": true,
+    "script_sha256": "c8f55cba8cbc2c0ba90e4b1c6cbc4eb7de361da54a15a091ec1609220a27b4b3"
   },
   "backbones": {
-    "plant.B0": {"path": "/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta", "sha256": "b8d56a6f4e8d38a08d5668faa36b481eb75e12133a67652d21c6d5871d55cf0b"},
-    "animal.B0": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta", "sha256": "d8d5f1215a8a688f0001d4fb9177c94d34c558c5f60879d3757ac366ae250e75"},
-    "animal.Raven": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta", "sha256": "7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502"},
-    "plant.R1": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones/plant/R1.fasta", "sha256": "6744d1ca3ee8b25175fdaf210543c313bb7ca32d0b75bab6909d38445a8e0735", "racon": "1.4.20", "rounds": 2},
-    "animal.R1": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones/animal/R1.fasta", "sha256": "c7f60cae9a87ebac3d3556298c0aac8a4d2de6680799449ab5a2f5a7cab4cc47", "racon": "1.4.20", "rounds": 2}
+    "plant.B0": {
+      "path": "/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta",
+      "sha256": "b8d56a6f4e8d38a08d5668faa36b481eb75e12133a67652d21c6d5871d55cf0b"
+    },
+    "plant.recruited_long_reads": {
+      "path": "/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/lr_extract_final/SRR38978847.final-recruited.fastq.gz",
+      "sha256": "93f4fd3bc3969e5d4d3577870b32f4a63d99ddc57a325f84403d7f089531f3c8"
+    },
+    "animal.B0": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta",
+      "sha256": "d8d5f1215a8a688f0001d4fb9177c94d34c558c5f60879d3757ac366ae250e75"
+    },
+    "animal.Raven": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta",
+      "sha256": "7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502"
+    },
+    "animal.recruited_long_reads": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/recruited.v02.1-coherent.fastq.gz",
+      "sha256": "c0cad1fb291bfd0272fb9be1eb1e24249bf119d8973ac9d9834a02c508cc66fa"
+    },
+    "plant.R1": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones-v2/plant/R1.fasta",
+      "sha256": "6744d1ca3ee8b25175fdaf210543c313bb7ca32d0b75bab6909d38445a8e0735",
+      "racon": "1.4.20",
+      "rounds": 2,
+      "fresh_reproduction_matches_prior": true
+    },
+    "animal.R1": {
+      "path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones-v2/animal/R1.fasta",
+      "sha256": "c7f60cae9a87ebac3d3556298c0aac8a4d2de6680799449ab5a2f5a7cab4cc47",
+      "racon": "1.4.20",
+      "rounds": 2,
+      "fresh_reproduction_matches_prior": true
+    }
   },
-  "heldout_split": {"plant": {"manifest": "MANIFEST.sha256", "status": "CHECKSUMMED", "heldout_pairs": 7564366, "training_pairs": 30266480, "gzip_test": "PASS"}, "animal": {"manifest": "animal-split-final-manifest.json", "status": "CHECKSUMMED", "heldout_pairs": 13871088, "training_pairs": 55478196, "gzip_test": "PASS"}},
-  "animal_core_mask": {"bed": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/animal-core-mask/animal-core.final.merged.bed", "sha256": "94948cc7170c9ae51cef59a1b6903df707df67612d8ce960122cb9217a588be8", "status": "FROZEN", "coordinate_frame": "animal Flye B0 contig_1", "rule": "Flye/Raven single-copy collinear interval intersected with full training-read callable positions (minimap2 -ax sr; MAPQ>=20; baseQ>=20; depth>=1), merged BED", "owner": "validation/evidence owner"},
-  "execution": {"twelve_arms": "NOT_STARTED", "status": "INCONCLUSIVE", "assembly_grade": "CANDIDATE", "decision": "NOT_APPLICABLE", "cycloneseq": "PENDING_REAL_DATA", "pmat2": "GATED_ISSUE_10"}
+  "heldout_split": {
+    "plant": {
+      "manifest": "evidence/plant-split-manifest.json",
+      "manifest_sha256": "246356f6fba1d55c5cec52118a92fe288cbdf1d88eddb877d9c9e8702ba61f13",
+      "source_pairs": 6671740,
+      "training_pairs": 5336938,
+      "heldout_pairs": 1334802,
+      "gzip_test": "PASS",
+      "status": "FROZEN_CANDIDATE"
+    },
+    "animal": {
+      "manifest": "evidence/animal-split-manifest.json",
+      "manifest_sha256": "8459535e761a7748241535b007fd8477958993588b0be3455ea4e36f3abe7456",
+      "source_pairs": 6659067,
+      "training_pairs": 5328722,
+      "heldout_pairs": 1330345,
+      "gzip_test": "PASS",
+      "status": "FROZEN_CANDIDATE"
+    }
+  },
+  "animal_core_mask": {
+    "bed": "evidence/animal-core-mask/animal-core.bed",
+    "sha256": "468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0",
+    "metadata_sha256": "8bfe267be39f560a8f0b7559c787068814f476362b46bd9da913a867cfa25a74",
+    "builder_script_sha256": "798e72638e471658bb9fad576e298748b115b56628e4d2d72eed86d3553db450",
+    "status": "FROZEN_CANDIDATE_PENDING_OWNER_REVIEW",
+    "coordinate_frame": "animal Flye B0, 0-based half-open",
+    "intervals": [
+      "contig_1:500-2441",
+      "contig_3:515-3800",
+      "contig_3:4839-10305"
+    ],
+    "total_bases": 10692,
+    "owner": "validation/evidence owner"
+  },
+  "tool_runtime": {
+    "flye_minimap2": "2.24-r1155-dirty",
+    "samtools": "1.20",
+    "racon_container": "quay.io/biocontainers/racon@sha256:738d48f530c8e46b28c119da05dd36f552fe3dd00648af02d8f5e8808855cb72",
+    "bwa_container": "quay.io/biocontainers/bwa@sha256:99a35e5ee4e9c329e8746c4689890b97a3ac5620cb36d374cba69ba52016e72a",
+    "polypolish_container": "quay.io/biocontainers/polypolish@sha256:729c4fc24b3e81969c06e8c9eeaf498feb17eeabdb91808615b1e177dd06aa5d",
+    "bcftools_container": "quay.io/biocontainers/bcftools@sha256:969314d56b9131683917cc5801734891a9af130daf7a0fb902b7707060b06027",
+    "registry_digest_resolution": "PASS_SKOPEO",
+    "container_execution_probe": "PENDING_CI",
+    "ci_probe_workflow": ".github/workflows/m4-freeze.yml",
+    "arm_protocols": "evidence/arm-protocols.json"
+  },
+  "execution": {
+    "twelve_arms": "NOT_STARTED",
+    "status": "INCONCLUSIVE",
+    "assembly_grade": "CANDIDATE",
+    "decision": "NOT_APPLICABLE",
+    "cycloneseq": "PENDING_REAL_DATA",
+    "pmat2": "GATED_ISSUE_10"
+  }
 }

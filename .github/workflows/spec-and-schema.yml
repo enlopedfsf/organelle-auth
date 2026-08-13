@@ -30,5 +30,14 @@ jobs:
 
       - name: JSON/YAML schema + registry + contract integrity
         run: |
-          python3 -m pip install --quiet pyyaml jsonschema
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq pigz
+          python3 -m pip install --quiet pyyaml jsonschema pytest
           python3 .github/scripts/check_schema_traceability.py
+
+      - name: M4 freeze static contracts
+        run: |
+          python3 -m pytest -q tests/test_m4_freeze_inputs.py
+          python3 -m unittest -v \
+            tests/test_m4_freeze_contract.py \
+            tests/test_m4_build_animal_core_mask.py
