@@ -33,7 +33,7 @@
 - [x] 5.1 Keep `EXPERIMENTAL` only as evidence/tool tier; assert every candidate has `status=INCONCLUSIVE`, `assembly_grade=CANDIDATE`, and `decision=NOT_APPLICABLE`, remains outside `IDENTIFY`/`DECISION`, and keeps CycloneSEQ transfer `PENDING_REAL_DATA`.
 - [x] 5.2 Assert PMAT2 is not invoked while Issue #10 is OPEN and prohibited tools are absent.
 - [x] 5.3 Add nf-test and schema/status tests covering valid inputs, missing/checksum-invalid inputs, route isolation, edit-ledger fields, and expected non-decision status. (Local nf-test execution is infrastructure-blocked at the remote plugin index; structural stub and all static/status tests pass.)
-- [ ] 5.4 Produce the complete audit bundle and validation report; run `openspec validate --all --strict` and CI.
+- [x] 5.4 Produce the complete audit bundle and validation report; run `openspec validate --all --strict` and CI. (PR #21 head `74b5f91`: 27/27 checks successful, zero pending/failed.)
 
 ## 6. Review gate
 

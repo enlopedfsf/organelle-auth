@@ -159,6 +159,15 @@ ledgers, candidate checksums, raw trace rows, and `RESULT-MANIFEST.sha256` are c
 - Python targeted tests: PASS (evidence parsing, mask liftover, core-only metrics, dominance/tie
   handling).
 - `openspec validate --all --strict`: PASS (10/10) after implementation, before final archive.
+- PR #21 CI on head `74b5f91`: PASS (27/27 checks successful, zero pending/failed;
+  merge state `CLEAN`). This includes `nf-test-changes`, both seven-shard Docker matrices,
+  `confirm-pass`, `pre-commit`, `nf-core`, `spec-and-schema`, four M4 pinned-container runtime
+  probes, the MitoFinder image build, and T1-T3 animal-identify smoke. Authoritative run links:
+  [nf-test matrix](https://github.com/enlopedfsf/organelle-auth/actions/runs/31706236349),
+  [nf-core lint](https://github.com/enlopedfsf/organelle-auth/actions/runs/31706236312),
+  [spec/schema](https://github.com/enlopedfsf/organelle-auth/actions/runs/31706236329),
+  [M4 runtime probes](https://github.com/enlopedfsf/organelle-auth/actions/runs/31706236220), and
+  [animal image/smoke](https://github.com/enlopedfsf/organelle-auth/actions/runs/31706236233).
 - Local `nf-test`: `INFRASTRUCTURE_BLOCKED`; both the direct and one proxy retry failed before test
   execution on the remote plugin index (file lookup failure, then connection timeout). The
   repository-owned workflow test and structural `-stub-run` exist; CI remains authoritative for
