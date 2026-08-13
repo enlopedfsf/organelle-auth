@@ -1,0 +1,8 @@
+{
+  "animal_inherited_topology": "INCONCLUSIVE",
+  "new_junction_claims": [],
+  "note": "Polishing changed bases only; no arm is permitted to infer adjacency, circularity, or repeat copy number.",
+  "plant_inherited_topology": "INCONCLUSIVE",
+  "result": "NOT_APPLICABLE_NO_NEW_JUNCTION_CLAIM",
+  "schema_version": "m4-junction-audit-v1"
+}

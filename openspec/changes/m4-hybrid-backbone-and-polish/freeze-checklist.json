@@ -102,7 +102,14 @@
     "arm_protocols": "evidence/arm-protocols.json"
   },
   "execution": {
-    "twelve_arms": "NOT_STARTED",
+    "twelve_arms": "COMPLETE_12_OF_12",
+    "nextflow_tasks": 80,
+    "task_result": "80_OF_80_COMPLETED_EXIT_0",
+    "result_manifest": "evidence/results/RESULT-MANIFEST.sha256",
+    "comparison_table": "evidence/results/six-arm-comparison.tsv",
+    "dominance_record": "evidence/results/dominance.json",
+    "plant_scientific_outcome": "NUMERIC_DOMINANT_R1P1_WITH_CALLABILITY_CAVEAT",
+    "animal_scientific_outcome": "CONDITIONAL",
     "status": "INCONCLUSIVE",
     "assembly_grade": "CANDIDATE",
     "decision": "NOT_APPLICABLE",

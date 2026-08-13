@@ -1,0 +1,4 @@
+contig_1	0	99	unique_or_unresolved_flank
+contig_1	99	37957	ir_gap_closure_interval
+contig_1	37957	104098	unique_or_unresolved_flank
+contig_2	0	96046	unique_or_unresolved_flank

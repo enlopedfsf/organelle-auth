@@ -1,0 +1,20 @@
+name: m4_bcftools_consensus
+description: Apply one frozen filtered VCF to its declared B0 or R1 candidate.
+keywords: [bcftools, consensus, hybrid, experimental]
+tools:
+  - bcftools: { description: Variant calling and consensus utilities., licence: [MIT] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - bam: { type: file }
+    - bai: { type: file }
+    - depth: { type: file }
+    - vcf: { type: file }
+    - csi: { type: file }
+output:
+  candidate:
+    - - meta: { type: map }
+      - "*.fasta": { type: file }
+      - "*.vcf.gz": { type: file }
+  versions: [{ "${task.process}": { type: string } }, { bcftools: { type: string } }, { "1.21": { type: string } }]
+authors: ["enlopedfsf"]

@@ -1,0 +1,14 @@
+{
+  "schema_version": "m4-plant-region-labels-v1",
+  "coordinate_frame": "plant Flye B0, 0-based half-open",
+  "ranking_core": "all B0 bases after per-candidate liftover",
+  "ir_gap_closure_interval": {
+    "contig": "contig_1",
+    "start": 99,
+    "end": 37957,
+    "source": "archived M3 structural evidence projected_candidate_gap_coordinates_0based"
+  },
+  "interpretation": "Region labels stratify held-out residuals; they do not prove IR copy number, adjacency, or circular topology.",
+  "status": "FROZEN_BEFORE_ARM_EXECUTION",
+  "topology_use": "PROHIBITED"
+}

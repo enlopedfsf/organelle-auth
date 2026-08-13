@@ -14,25 +14,25 @@
 
 ## 3. Parallel short-read evidence routes
 
-- [ ] 3.1 Run exactly the six pre-registered arms per taxon: B0, R1, B0→Polypolish, B0→bcftools consensus, R1→Polypolish, and R1→bcftools consensus; do not add arms during execution.
-- [ ] 3.2 Use only the frozen 80% training split for P/C polishing and mask callability; record insert/pairing metadata, multi-mapping behavior, applicability findings, and all fixed route parameters without using held-out results to tune them.
-- [ ] 3.3 Emit per-base edit ledgers for both routes and preserve pre/post sequences, support counts, depth, allele evidence, ambiguity, and filtering reasons.
+- [x] 3.1 Run exactly the six pre-registered arms per taxon: B0, R1, B0→Polypolish, B0→bcftools consensus, R1→Polypolish, and R1→bcftools consensus; do not add arms during execution.
+- [x] 3.2 Use only the frozen 80% training split for P/C polishing and mask callability; record insert/pairing metadata, multi-mapping behavior, applicability findings, and all fixed route parameters without using held-out results to tune them.
+- [x] 3.3 Emit per-base edit ledgers for both routes and preserve pre/post sequences, support counts, depth, allele evidence, ambiguity, and filtering reasons.
 
 ## 4. Region and structure validation
 
-- [ ] 4.1 Validate plant unique/IR/repeat regions and animal unique/D-loop/AT-rich/homopolymer regions separately.
-- [ ] 4.2 Audit each claimed junction with read IDs, alignment geometry, identity, two-sided anchors, and chimera/repeat risk under the project independent-support definition.
-- [ ] 4.3 Align the frozen 20% held-out reads independently to every final candidate with the same registered alignment/callability policy; verify the held-out set never contributed to polishing, mask construction, or parameter selection.
-- [ ] 4.4 For every arm, calculate `residual_unsupported_loci` uniformly within the frozen evaluable core and report `introduced_edits` separately as step-local and cumulative provenance; also report held-out core concordance, evaluable homopolymer discordances, SNVs, indels, regional residuals, resources, and manual review.
-- [ ] 4.5 Apply the pre-registered dominance combination: strictly fewer residual unsupported loci, strictly fewer held-out-supported evaluable homopolymer discordances, and no held-out core-concordance regression relative to B0. If none dominates, report scientific outcome `CONDITIONAL` and machine status `INCONCLUSIVE` with no post hoc winner.
+- [x] 4.1 Validate plant unique/IR/repeat regions and animal unique/D-loop/AT-rich/homopolymer regions separately.
+- [x] 4.2 Audit each claimed junction with read IDs, alignment geometry, identity, two-sided anchors, and chimera/repeat risk under the project independent-support definition. (No new M4 junction claim was made; audit result is explicitly NOT_APPLICABLE and inherited topologies remain INCONCLUSIVE.)
+- [x] 4.3 Align the frozen 20% held-out reads independently to every final candidate with the same registered alignment/callability policy; verify the held-out set never contributed to polishing, mask construction, or parameter selection.
+- [x] 4.4 For every arm, calculate `residual_unsupported_loci` uniformly within the frozen evaluable core and report `introduced_edits` separately as step-local and cumulative provenance; also report held-out core concordance, evaluable homopolymer discordances, SNVs, indels, regional residuals, resources, and manual review.
+- [x] 4.5 Apply the pre-registered dominance combination: strictly fewer residual unsupported loci, strictly fewer held-out-supported evaluable homopolymer discordances, and no held-out core-concordance regression relative to B0. If none dominates, report scientific outcome `CONDITIONAL` and machine status `INCONCLUSIVE` with no post hoc winner.
 - [x] 4.6 Animal Flye/Raven single-copy core BED is intersected with training-read callability and frozen after the registered collinearity, uniqueness, unresolved-region exclusion, coordinate/liftover, owner, and SHA256 evidence passed review; Owner approval was recorded on 2026-08-13 for local sequence-ranking use only.
-- [ ] 4.7 Restrict animal ranking to that frozen core; retain unresolved AT-rich/D-loop edits in the ledger as `NOT_EVALUABLE`, outside all ranking metrics.
+- [x] 4.7 Restrict animal ranking to that frozen core; retain unresolved AT-rich/D-loop edits in the ledger as `NOT_EVALUABLE`, outside all ranking metrics.
 
 ## 5. Governance and tests
 
-- [ ] 5.1 Keep `EXPERIMENTAL` only as evidence/tool tier; assert every candidate has `status=INCONCLUSIVE`, `assembly_grade=CANDIDATE`, and `decision=NOT_APPLICABLE`, remains outside `IDENTIFY`/`DECISION`, and keeps CycloneSEQ transfer `PENDING_REAL_DATA`.
-- [ ] 5.2 Assert PMAT2 is not invoked while Issue #10 is OPEN and prohibited tools are absent.
-- [ ] 5.3 Add nf-test and schema/status tests covering valid inputs, missing/checksum-invalid inputs, route isolation, edit-ledger fields, and expected non-decision status.
+- [x] 5.1 Keep `EXPERIMENTAL` only as evidence/tool tier; assert every candidate has `status=INCONCLUSIVE`, `assembly_grade=CANDIDATE`, and `decision=NOT_APPLICABLE`, remains outside `IDENTIFY`/`DECISION`, and keeps CycloneSEQ transfer `PENDING_REAL_DATA`.
+- [x] 5.2 Assert PMAT2 is not invoked while Issue #10 is OPEN and prohibited tools are absent.
+- [x] 5.3 Add nf-test and schema/status tests covering valid inputs, missing/checksum-invalid inputs, route isolation, edit-ledger fields, and expected non-decision status. (Local nf-test execution is infrastructure-blocked at the remote plugin index; structural stub and all static/status tests pass.)
 - [ ] 5.4 Produce the complete audit bundle and validation report; run `openspec validate --all --strict` and CI.
 
 ## 6. Review gate

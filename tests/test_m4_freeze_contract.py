@@ -37,9 +37,11 @@ class M4FreezeContractTests(unittest.TestCase):
         )
         cls.tools = yaml.safe_load((ROOT / "registries" / "tools.yaml").read_text())
 
-    def test_execution_is_still_non_decision_and_not_started(self):
+    def test_execution_completed_without_crossing_nondecision_boundary(self):
         execution = self.checklist["execution"]
-        self.assertEqual(execution["twelve_arms"], "NOT_STARTED")
+        self.assertEqual(execution["twelve_arms"], "COMPLETE_12_OF_12")
+        self.assertEqual(execution["task_result"], "80_OF_80_COMPLETED_EXIT_0")
+        self.assertEqual(execution["animal_scientific_outcome"], "CONDITIONAL")
         self.assertEqual(execution["status"], "INCONCLUSIVE")
         self.assertEqual(execution["assembly_grade"], "CANDIDATE")
         self.assertEqual(execution["decision"], "NOT_APPLICABLE")

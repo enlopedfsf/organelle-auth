@@ -1,0 +1,3 @@
+name: m4_heldout_evaluate
+channels: [conda-forge, bioconda]
+dependencies: [python=3.12]

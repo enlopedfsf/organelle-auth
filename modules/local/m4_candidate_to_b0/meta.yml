@@ -1,0 +1,23 @@
+name: m4_candidate_to_b0
+description: Align each final candidate to frozen B0 for coordinate-only core-mask liftover.
+keywords: [minimap2, liftover, core-mask, hybrid]
+tools:
+  - minimap2: { description: Sequence aligner., licence: [MIT] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - b0: { type: file }
+    - source_bed: { type: file }
+    - heldout_r1: { type: file }
+    - heldout_r2: { type: file }
+output:
+  alignment:
+    - - meta: { type: map }
+      - candidate: { type: file }
+      - b0: { type: file }
+      - source_bed: { type: file }
+      - heldout_r1: { type: file }
+      - heldout_r2: { type: file }
+      - "*.paf": { type: file }
+  versions: [{ "${task.process}": { type: string } }, { minimap2: { type: string } }, { "2.24": { type: string } }]
+authors: ["enlopedfsf"]

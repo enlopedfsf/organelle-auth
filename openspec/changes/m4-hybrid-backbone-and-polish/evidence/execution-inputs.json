@@ -1,0 +1,27 @@
+{
+  "schema_version": "m4-execution-inputs-v1",
+  "state": "FROZEN",
+  "evaluation_policy": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json",
+  "taxa": {
+    "plant": {
+      "sample_id": "SRR38978846",
+      "b0": "/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta",
+      "r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones-v2/plant/R1.fasta",
+      "train_r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R1.fastq.gz",
+      "train_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R2.fastq.gz",
+      "heldout_r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R1.fastq.gz",
+      "heldout_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R2.fastq.gz",
+      "source_bed": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/plant-regions.bed"
+    },
+    "animal": {
+      "sample_id": "WTM_NORMAL",
+      "b0": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta",
+      "r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/backbones-v2/animal/R1.fasta",
+      "train_r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.train.R1.fastq.gz",
+      "train_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.train.R2.fastq.gz",
+      "heldout_r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.heldout.R1.fastq.gz",
+      "heldout_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.heldout.R2.fastq.gz",
+      "source_bed": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed"
+    }
+  }
+}

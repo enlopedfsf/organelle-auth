@@ -1,0 +1,23 @@
+name: m4_lift_mask
+description: Lift a frozen B0-coordinate evaluation mask onto one candidate; topology use is prohibited.
+keywords: [python, bed, liftover, hybrid]
+tools:
+  - python: { description: Evidence-only mask translation., licence: [PSF-2.0] }
+input:
+  - - meta: { type: map }
+    - candidate: { type: file }
+    - b0: { type: file }
+    - source_bed: { type: file }
+    - heldout_r1: { type: file }
+    - heldout_r2: { type: file }
+    - paf: { type: file }
+output:
+  lifted:
+    - - meta: { type: map }
+      - candidate: { type: file }
+      - heldout_r1: { type: file }
+      - heldout_r2: { type: file }
+      - "*.core.bed": { type: file }
+      - "*.core-liftover.json": { type: file }
+  versions: [{ "${task.process}": { type: string } }, { m4_hybrid_evidence: { type: string } }, { "0.1.0": { type: string } }]
+authors: ["enlopedfsf"]

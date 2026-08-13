@@ -2,9 +2,9 @@
 
 ## State
 
-`apply=APPROVED`; `planning_validation=PASS`; `freeze_gate=FROZEN`; `12-arm_execution=NOT_STARTED`.
+`apply=APPROVED`; `planning_validation=PASS`; `freeze_gate=FROZEN`; `12-arm_execution=PASS`; `heldout_evaluation=COMPLETE`.
 
-No arm may run until the three freeze artifacts below are present, non-empty, checksum-recorded, and listed in the signed freeze manifest.
+All three freeze artifacts below were present, non-empty, checksum-recorded, and listed in the signed freeze manifest before the arm run began.
 
 ## Freeze checklist
 
@@ -64,4 +64,115 @@ Corrections completed:
 - The validation/evidence Owner explicitly approved BED SHA256 `468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0` on 2026-08-13, solely for animal six-arm local sequence ranking. The signed record is `evidence/animal-core-mask/animal-core.approval.json`; global order, adjacency, repeat copy number, circularity, and complete topology remain prohibited interpretations.
 - Rebuilt `MANIFEST.sha256` in standard two-column `sha256sum -c` format; all 47 registered local objects passed, including the separate Owner-approval record.
 
-Current honest state: B0/R1, paired splits, fixed arm protocols, and the Owner-approved animal local-core mask are frozen; all four pinned-container execution probes passed authoritative CI; twelve-arm execution remains `NOT_STARTED`.
+Current honest state before execution was: B0/R1, paired splits, fixed arm protocols, and the Owner-approved animal local-core mask were frozen; all four pinned-container execution probes passed authoritative CI. The execution and evaluation results are recorded below.
+
+## Twelve-arm execution result (2026-08-13)
+
+The standalone `m4_hybrid.nf` evaluator ran in the fixed locations below. It is not imported by
+`main.nf` or `workflows/organelleauth.nf`, so no candidate can reach IDENTIFY or DECISION.
+
+- Output: `/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1`
+- Work/cache: `/home/iris-hp/Project/organelle-auth-ci-fix/runs/work/m4-hybrid-backbone-and-polish/matrix-v1`
+- Trace/report/timeline: `matrix-v1/run-metadata/`
+- Execution audit: 80/80 tasks `COMPLETED`, all exit 0; PMAT2, IDENTIFY, and DECISION invocation counts are zero.
+- Exact matrix: B0, R1, P0, C0, R1P1, and R1C1 for each of plant and animal; no additional arm or result-driven round was run.
+
+### Uniform held-out comparison
+
+| Taxon | Arm | callable core bp | residual unsupported loci | evaluable HP discordances | core concordance | SNV / indel |
+|---|---:|---:|---:|---:|---:|---:|
+| plant | B0 | 134,324 | 231 | 224 | 0.996330 | 1 / 230 |
+| plant | R1 | 120,796 | 103 | 68 | 0.997955 | 14 / 89 |
+| plant | P0 | 107,186 | 2 | 2 | 0.999963 | 0 / 2 |
+| plant | C0 | 137,114 | 11 | 10 | 0.999803 | 0 / 11 |
+| plant | R1P1 | 106,968 | 1 | 1 | 0.999981 | 0 / 1 |
+| plant | R1C1 | 120,814 | 3 | 2 | 0.999917 | 0 / 3 |
+| animal | B0 | 10,494 | 4 | 4 | 0.999238 | 0 / 4 |
+| animal | R1 | 10,494 | 2 | 2 | 0.999619 | 0 / 2 |
+| animal | P0 | 10,494 | 0 | 0 | 1.000000 | 0 / 0 |
+| animal | C0 | 10,494 | 0 | 0 | 1.000000 | 0 / 0 |
+| animal | R1P1 | 10,494 | 0 | 0 | 1.000000 | 0 / 0 |
+| animal | R1C1 | 10,494 | 0 | 0 | 1.000000 | 0 / 0 |
+
+The table is generated from `evidence/results/six-arm-comparison.tsv`; all underlying normalized
+held-out records are in `heldout-residual-ledger.tsv`. These are read-backed experimental metrics,
+not reference truth and not production acceptance thresholds.
+
+### Pre-registered dominance result
+
+- **Plant:** R1P1 is the sole numeric winner under the exact pre-registered rule: 1 residual and
+  1 evaluable homopolymer discordance are each strictly lower than every other arm, and its core
+  concordance does not regress from B0. This is recorded as
+  `NUMERIC_DOMINANT_UNDER_PREREGISTERED_RULE`, while the machine state remains
+  `INCONCLUSIVE / CANDIDATE / NOT_APPLICABLE`.
+- **Animal:** P0, C0, R1P1, and R1C1 tie at 0/0/1.0, so no arm is strictly better than every
+  competitor. The pre-registered result is `CONDITIONAL`, not a post-hoc winner.
+- **Plant callability caveat:** callable bases range from 106,968 to 137,114 across arms. In
+  particular, P arms lose MAPQ20 callability in the IR/repeat-labelled interval and some flanking
+  sequence. Callability was not registered as a ranking metric, so no post-hoc threshold was added
+  and the numeric R1P1 result is reported unchanged; it must not be generalized into a production
+  preference until transfer data or a separately pre-registered common-callability analysis exists.
+
+### Route edit evidence and applicability
+
+| Taxon | P0 edits | C0 edits | R1P1 edits | R1C1 edits |
+|---|---:|---:|---:|---:|
+| plant | 382 | 242 | 230 | 109 |
+| animal | 6 | 5 | 2 | 2 |
+
+Each short-read route has a per-base introduced-edit ledger with input base, proposed allele,
+depth/support evidence, ambiguity semantics, region, and filtering reason. Polypolish retained
+multi-mapping evidence and inferred the expected `fr` orientation. Matching pair counts were
+434,547/434,713 for plant P0/R1P1 and 14,250/14,228 for animal P0/R1P1; insert ranges were
+45–643 bp across the four P arms. The two animal R1-derived routes produce identical biological
+sequence content (canonical sequence SHA256
+`3f7a1680f0d89fb414c2f0c824fc4310df3bbac2b4923253791b8558085cab77`) despite different FASTA
+wrapping, providing independent-tool agreement for the evaluable sequence but not for topology.
+
+### Region and junction interpretation
+
+- Plant B0 has 21 residuals in the archived M3 IR-gap-closure interval and 210 in the remaining
+  labelled sequence; R1P1 has one residual in the labelled flank and none callable in that IR
+  interval. The absent IR residual count is not a topology or IR-copy-number result because P-arm
+  callability in the interval is substantially lower.
+- Animal ranking uses only the Owner-approved 10,692-bp B0 core translated into each candidate.
+  Polishing removes all held-out residuals within the 10,494 callable bases. Edits and residuals
+  outside the mask remain `NOT_EVALUABLE` and cannot rank arms.
+- No M4 arm makes a new junction, adjacency, repeat-copy, or circularity claim. The junction audit
+  is therefore `NOT_APPLICABLE_NO_NEW_JUNCTION_CLAIM`; the inherited plant and animal topologies
+  both remain `INCONCLUSIVE`.
+
+### Resources and retained artifacts
+
+The full run took approximately 9.5 minutes from first to last task submission on this workstation.
+The slowest individual task was BWA-MEM at 409 seconds; maximum observed RSS was approximately
+829 MB in Polypolish. The fixed result tree is approximately 127 MB and the resumable Nextflow work
+cache approximately 29 GB. Large BAM/work intermediates remain outside Git. Lightweight results,
+ledgers, candidate checksums, raw trace rows, and `RESULT-MANIFEST.sha256` are committed under
+`evidence/results/`; every manifest entry passes `sha256sum -c`.
+
+## Verification status
+
+- Real-data one-taxon smoke: PASS, including Polypolish, bcftools filtering/consensus, mask
+  liftover, held-out mapping/calling, and metric generation.
+- Full matrix: PASS, 80/80 tasks completed, 12/12 metrics present.
+- Python targeted tests: PASS (evidence parsing, mask liftover, core-only metrics, dominance/tie
+  handling).
+- `openspec validate --all --strict`: PASS (10/10) after implementation, before final archive.
+- Local `nf-test`: `INFRASTRUCTURE_BLOCKED`; both the direct and one proxy retry failed before test
+  execution on the remote plugin index (file lookup failure, then connection timeout). The
+  repository-owned workflow test and structural `-stub-run` exist; CI remains authoritative for
+  this gate.
+- Local `nf-core pipelines lint`: `INFRASTRUCTURE_BLOCKED` before lint assertions because this
+  workstation's nf-core 4.1.0 installation calls an absent `prek` executable while normalizing
+  `modules.json`. The partial formatting-only mutation was inspected and restored; CI remains the
+  authoritative lint gate and no `--fix` operation was used.
+
+## Final scientific and governance statement
+
+Plant R1P1 is the pre-registered numeric leader on this public engineering dataset, with an explicit
+callability caveat. Animal short-read polishing is beneficial in the frozen core, but four routes
+tie and remain conditional. Neither result promotes a reference, changes topology, enters
+authentication, or resolves CycloneSEQ transfer. Every candidate remains
+`status=INCONCLUSIVE`, `assembly_grade=CANDIDATE`, and `decision=NOT_APPLICABLE`; CycloneSEQ remains
+`PENDING_REAL_DATA`, and PMAT2 remains gated by Issue #10.

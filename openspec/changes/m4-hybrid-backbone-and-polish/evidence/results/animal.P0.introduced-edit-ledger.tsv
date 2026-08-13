@@ -1,0 +1,7 @@
+taxon	arm	route	contig	position_1based	ref	alt	variant_type	region	evaluation_status	depth	ref_count	alt_count	alt_fraction	qual	mapping_ambiguity	filter_reason	allele_evidence	support_source
+animal	P0	polypolish	contig_1	1725	T	TG	INDEL	core	EVALUABLE	203.0	14	186			BWA_MEM_A_MULTIMAPPING_RETAINED	POLYPOLISH_CHANGED	TGGx3,TGx186,Tx14	animal.P0.polypolish-debug.tsv
+animal	P0	polypolish	contig_3	4561	T	TA	INDEL	NOT_EVALUABLE	NOT_EVALUABLE	160.0	28	124			BWA_MEM_A_MULTIMAPPING_RETAINED	POLYPOLISH_CHANGED	TAAAx1,TAAx7,TAx124,Tx28	animal.P0.polypolish-debug.tsv
+animal	P0	polypolish	contig_3	4633	A	AG	INDEL	NOT_EVALUABLE	NOT_EVALUABLE	191.0	6	180			BWA_MEM_A_MULTIMAPPING_RETAINED	POLYPOLISH_CHANGED	AGx180,Ax6,Gx5	animal.P0.polypolish-debug.tsv
+animal	P0	polypolish	contig_3	8747	A	AG	INDEL	core	EVALUABLE	368.0	12	350			BWA_MEM_A_MULTIMAPPING_RETAINED	POLYPOLISH_CHANGED	ACx1,AGx350,Ax12,Gx5	animal.P0.polypolish-debug.tsv
+animal	P0	polypolish	contig_3	9062	T	TG	INDEL	core	EVALUABLE	383.0	12	363			BWA_MEM_A_MULTIMAPPING_RETAINED	POLYPOLISH_CHANGED	Gx7,TGGx1,TGx363,Tx12	animal.P0.polypolish-debug.tsv
+animal	P0	polypolish	contig_3	9836	A	AT	INDEL	core	EVALUABLE	298.0	1	288			BWA_MEM_A_MULTIMAPPING_RETAINED	POLYPOLISH_CHANGED	ATTx1,ATx288,Ax1,Tx8	animal.P0.polypolish-debug.tsv
