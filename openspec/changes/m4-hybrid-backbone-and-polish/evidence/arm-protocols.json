@@ -1,6 +1,6 @@
 {
   "schema_version": "m4-arm-protocols-v1",
-  "state": "FROZEN_CANDIDATE_PENDING_CI",
+  "state": "FROZEN_CANDIDATE",
   "frozen_before_arm_execution": true,
   "short_read_platforms_in_this_evaluation": [
     "ILLUMINA"

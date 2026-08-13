@@ -40,8 +40,8 @@ c0a2c8e47b901dbb57165b4f992fd941a19257c258c378188822bbcf0c405c2a  tests/test_m4_
 8bfe267be39f560a8f0b7559c787068814f476362b46bd9da913a867cfa25a74  openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.metadata.json
 20e997a52c75e5b9b01babf509e6a0f4e9d7def846f5deb90ef58da23bd91cbf  openspec/changes/m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json
 8059cbfa1c4e2f74192b770864f7bc768653d715d56cd25d0678ea3dc4a0975a  openspec/changes/m4-hybrid-backbone-and-polish/evidence/public-run-metadata.tsv
-b4615d534c61b53ec7cb544eb942b4f20009275afaff427f14ecf8cac644a483  openspec/changes/m4-hybrid-backbone-and-polish/evidence/input-compatibility.json
-db144d6aa87318e573bb18e4aac5fe682598379702edc8b4269cf1252d5ee15a  openspec/changes/m4-hybrid-backbone-and-polish/evidence/arm-protocols.json
+a6b93bea00c9636824439ee739804996060c2392ea0c22a64d5996266cecc107  openspec/changes/m4-hybrid-backbone-and-polish/evidence/input-compatibility.json
+728dfd2e59804f553ba95939a44f16414daa6184bfb7ceb1c8516537bf41f89e  openspec/changes/m4-hybrid-backbone-and-polish/evidence/arm-protocols.json
 89674efa13093ffb4a3f4986ecc9cf5fc94c289595a14bdc8195affee3c4ba56  openspec/changes/m4-hybrid-backbone-and-polish/validation_inputs/plant.samplesheet.csv
 ee3849553b92525e028df64283832046a35614fb1d612d08b3527a4aa3ebef22  openspec/changes/m4-hybrid-backbone-and-polish/validation_inputs/animal.samplesheet.csv
 5625d461f24c9e5318644d8bdae288872d010ec81e8c5971eadf757f5caa411e  openspec/changes/m4-hybrid-backbone-and-polish/FREEZE-COMMANDS.md

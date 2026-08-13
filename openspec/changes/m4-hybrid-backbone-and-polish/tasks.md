@@ -3,7 +3,7 @@
 - [x] 1.1 Confirm the clean `origin/dev` baseline, explicit plant/animal samplesheets, specimen matching, and reference/policy/tool compatibility records.
 - [x] 1.2 Public evaluation inputs are non-empty, paired, gzip-validated, and checksum-recorded; CycloneSEQ remains pending real data.
 - [x] 1.3 Exact paired-read split rule implemented and frozen for both taxa with pair counts, rule text, and SHA256 values.
-- [ ] 1.4 Deterministic ordering, parameters, runtime identifiers, manifests, and pair preservation were verified before arm execution.
+- [x] 1.4 Deterministic ordering, parameters, runtime identifiers, manifests, and pair preservation were verified before arm execution; pinned-container probes passed on PR #21 head `26bbdcd`.
 
 ## 2. Long-read backbone
 

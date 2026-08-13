@@ -37,7 +37,8 @@
     "bwa_mem": "EXPERIMENTAL",
     "polypolish": "EXPERIMENTAL",
     "bcftools_consensus": "EXPERIMENTAL",
-    "container_execution_probe": "PENDING_CI",
+    "container_execution_probe": "PASS_CI_PR21_HEAD_26bbdcd",
+    "container_execution_probe_run": "https://github.com/enlopedfsf/organelle-auth/actions/runs/31689221509",
     "pmat2": "GATED_ISSUE_10"
   },
   "metadata_source": {

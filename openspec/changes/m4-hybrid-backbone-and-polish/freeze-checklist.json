@@ -2,8 +2,7 @@
   "change": "m4-hybrid-backbone-and-polish",
   "state": "IN_PROGRESS",
   "blocking_items": [
-    "validation/evidence owner review of animal core-mask candidate",
-    "CI execution probes for pinned Racon, BWA, Polypolish, and bcftools containers"
+    "validation/evidence owner review of animal core-mask candidate"
   ],
   "baseline": {
     "origin_dev": "d61db06266d38d6632c5913728ac7094b7d136c1",
@@ -95,8 +94,9 @@
     "polypolish_container": "quay.io/biocontainers/polypolish@sha256:729c4fc24b3e81969c06e8c9eeaf498feb17eeabdb91808615b1e177dd06aa5d",
     "bcftools_container": "quay.io/biocontainers/bcftools@sha256:969314d56b9131683917cc5801734891a9af130daf7a0fb902b7707060b06027",
     "registry_digest_resolution": "PASS_SKOPEO",
-    "container_execution_probe": "PENDING_CI",
+    "container_execution_probe": "PASS_CI_PR21_HEAD_26bbdcd",
     "ci_probe_workflow": ".github/workflows/m4-freeze.yml",
+    "ci_probe_run": "https://github.com/enlopedfsf/organelle-auth/actions/runs/31689221509",
     "arm_protocols": "evidence/arm-protocols.json"
   },
   "execution": {
