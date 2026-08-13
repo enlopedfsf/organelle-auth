@@ -1,7 +1,7 @@
 {
   "schema_version": "m4-execution-inputs-v1",
   "state": "FROZEN",
-  "evaluation_policy": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json",
+  "evaluation_policy": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json",
   "taxa": {
     "plant": {
       "sample_id": "SRR38978846",
@@ -11,7 +11,7 @@
       "train_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.train.R2.fastq.gz",
       "heldout_r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R1.fastq.gz",
       "heldout_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/plant/SRR38978846.seed11.2gb.heldout.R2.fastq.gz",
-      "source_bed": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/plant-regions.bed"
+      "source_bed": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/plant-regions.bed"
     },
     "animal": {
       "sample_id": "WTM_NORMAL",
@@ -21,7 +21,7 @@
       "train_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.train.R2.fastq.gz",
       "heldout_r1": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.heldout.R1.fastq.gz",
       "heldout_r2": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/short-read-splits-v2/animal/WTM_NORMAL.seed11.2gb.heldout.R2.fastq.gz",
-      "source_bed": "openspec/changes/m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed"
+      "source_bed": "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/animal-core-mask/animal-core.bed"
     }
   }
 }

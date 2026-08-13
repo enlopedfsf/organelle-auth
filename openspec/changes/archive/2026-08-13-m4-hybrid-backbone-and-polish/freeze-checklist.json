@@ -72,7 +72,7 @@
   "animal_core_mask": {
     "bed": "evidence/animal-core-mask/animal-core.bed",
     "sha256": "468f82bd65353bc89b28d94b5cc795e9216ae338ce7fde2c86e969bba9a9f6b0",
-    "metadata_sha256": "ff9e02fa8587626b7b7e223d836571ceaaff32b05434ff8b54792315d9e67fd1",
+    "metadata_sha256": "a5becfaf36277496aa1ad58a8087fbc037e4e7392387d1a173880b00e89c91fa",
     "builder_script_sha256": "798e72638e471658bb9fad576e298748b115b56628e4d2d72eed86d3553db450",
     "approval_record": "evidence/animal-core-mask/animal-core.approval.json",
     "approval_record_sha256": "1f130dcf985fd91f2c33405291801b098fec1e47e42d3b25db49455941f6a8b1",
