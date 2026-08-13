@@ -31,13 +31,19 @@ The capability SHALL construct or consume a long-read structural candidate using
 
 ### Requirement: Parallel polishing from an identical backbone
 
-The Polypolish route and the explicit alignment/variant-call/consensus route SHALL start from the identical frozen backbone and identical declared paired short-read input set. Their outputs MUST be produced as parallel candidates, with no route allowed to consume the other route's polished sequence as its input (SCI-004, ENG-POL-004).
+The capability SHALL pre-register exactly six arms per taxon: unpolished backbone (B0), Racon-only (R1), B0→Polypolish (P0), B0→bcftools call/consensus (C0), R1→Polypolish (R1→P1), and R1→bcftools call/consensus (R1→C1). The paired short-read routes SHALL use identical declared reads within each backbone stratum, and no additional arm, polishing round, or alternate read type SHALL be introduced during execution without a change revision (SCI-004, ENG-POL-004).
 
 #### Scenario: Routes are comparable
 
 - **WHEN** both polishing routes run for the same sample
 - **THEN** their input backbone checksum and short-read manifest identifiers are identical
 - **AND** each route emits an independent candidate and evidence bundle
+
+#### Scenario: Matrix scope is capped
+
+- **WHEN** execution begins for plant and animal routes
+- **THEN** exactly twelve arm/taxon combinations are registered
+- **AND** an unregistered combination fails review as out of scope
 
 #### Scenario: Unsupported route is not silently used
 
@@ -60,6 +66,32 @@ Every candidate-producing route SHALL emit an edit ledger recording the referenc
 - **WHEN** a candidate claims a structural junction
 - **THEN** the bundle records junction coordinates, read IDs, alignment length, direction, identity, both-side anchors, and repeat/chimera risk
 - **AND** a circular-looking candidate alone cannot upgrade topology
+
+### Requirement: Proxy-reference metrics and pre-registered ranking
+
+The capability SHALL label reference-comparison metrics as proxy evidence: disagreement with a reference MUST NOT be treated as an assembly error without this sample's read-level support. Every arm SHALL report the same declared metric set, including core identity, read-back consistency, SNV count, indel count, evaluable homopolymer error count, unsupported-edit count, and region-level residual conflicts. A route SHALL be called dominant only if it has fewer unsupported edits and fewer evaluable homopolymer errors than every competitor while core identity does not decrease relative to the common baseline; otherwise the result SHALL be `CONDITIONAL` with multiple routes retained.
+
+#### Scenario: Reference disagreement is adjudicated by reads
+
+- **WHEN** a candidate differs from a reference at a reported site
+- **THEN** the report labels the reference comparison as proxy evidence
+- **AND** adjudication uses this sample's read-level evidence rather than reference authority
+
+#### Scenario: No dominant route
+
+- **WHEN** no arm satisfies all three dominance conditions
+- **THEN** the result is reported as `CONDITIONAL` with multiple routes
+- **AND** no post hoc winner is selected
+
+### Requirement: Animal unresolved-repeat exclusion
+
+Animal polishing MAY run across the full candidate backbone, but route-ranking metrics SHALL be restricted to the double-assembler-consensus core. Edits within unresolved AT-rich repeat regions SHALL be counted separately, labeled `NOT_EVALUABLE`, and excluded from ranking and any reference-grade claim.
+
+#### Scenario: Repeat edits are isolated
+
+- **WHEN** an animal polishing arm edits an unresolved AT-rich repeat
+- **THEN** the edit is retained in the ledger as `NOT_EVALUABLE`
+- **AND** it is excluded from arm comparison and topology qualification
 
 ### Requirement: Transfer and decision gates remain closed
 

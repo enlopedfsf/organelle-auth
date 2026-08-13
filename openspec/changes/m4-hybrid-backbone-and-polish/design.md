@@ -24,15 +24,23 @@ M3 is closed on `origin/dev` with plant topology and animal repeat adjacency sti
 
 2. **Frozen common backbone.** The long-read candidate is assembled/selected once, optionally Racon-polished under an explicitly recorded experimental arm, checksum-frozen, and then supplied unchanged to both short-read routes. Reassembling separately per polishing route would confound structure and polishing effects.
 
-3. **Parallel short-read routes.** Polypolish and the explicit align→call→consensus route use the same paired reads and common backbone. They are parallel candidates, not sequential polishing stages. Insert size, pairing, multi-mapping, and repeat behavior are evidence fields, not a single automatic skip threshold.
+3. **Pre-registered six-arm matrix.** For each taxon, the capped matrix is exactly twelve evaluations total (six arms × two taxa): B0 (unpolished backbone), R1 (Racon only), P0 (B0→Polypolish), C0 (B0→bcftools call/consensus), R1→P1 (Racon→Polypolish), and R1→C1 (Racon→bcftools call/consensus). No extra combination, polishing round, or alternate read type may be added during execution; a new arm is a new hypothesis and requires a change revision.
+
+4. **Parallel short-read routes.** The Polypolish and explicit align→call→consensus arms use the same paired reads and the declared B0 or R1 backbone. They are parallel candidates within each backbone stratum, not sequential alternatives. Insert size, pairing, multi-mapping, and repeat behavior are evidence fields, not a single automatic skip threshold.
+
+5. **Common metrics and proxy-reference caveat.** Every arm reports the same metric set: core-region identity, read-back consistency, SNV count, indel count, homopolymer error count, unsupported-edit count, residual conflicts by region, and resource/manual-review burden. Any metric comparing with a reference is explicitly a proxy measure: disagreement with a reference does not equal assembly error. A discordant site is adjudicated by this sample's read-level evidence, not by reference authority.
+
+6. **Pre-registered winner rule.** A route can be called dominant only if it has fewer unsupported edits and fewer evaluable homopolymer errors than every competing arm while its core-region identity does not decrease relative to the common baseline. If no arm dominates under all three conditions, the outcome is `CONDITIONAL` with multiple routes retained; no post hoc winner narrative is permitted.
+
+7. **Backbone-freeze responsibility.** The validation/evidence owner records the freeze checklist: assembly graph/path, contig status, core coverage, structural evidence, Racon round and edit ledger, and SHA256. B0 and R1 are both frozen before any P/C arm starts; a route cannot silently replace the declared backbone.
 
 4. **Evidence over reference concordance.** A related reference may be used as secondary context, but it cannot by itself validate edits or junctions. The primary ledger records read-backed support, ambiguity, and region-specific residuals; any in-sample validation is labeled as such.
 
-5. **Taxon-separated evaluation.** Plant IR/repeat regions and animal D-loop/AT-rich regions are evaluated separately. A successful plant route cannot qualify the animal route, and vice versa.
+8. **Taxon-separated evaluation.** Plant IR/repeat regions and animal D-loop/AT-rich regions are evaluated separately. A successful plant route cannot qualify the animal route, and vice versa. For animal candidates, polishing may run over the full backbone, but comparison metrics are restricted to the double-assembler-consensus core; edits inside unresolved AT-rich repeats are counted separately and marked `NOT_EVALUABLE`, never included in route ranking.
 
-6. **Status isolation.** All outputs remain `EXPERIMENTAL`; long-read/CycloneSEQ evidence stays outside `IDENTIFY` and `DECISION`. CycloneSEQ transfer remains `PENDING_REAL_DATA`; PMAT2 is excluded while Issue #10 is OPEN.
+9. **Status isolation.** All outputs remain `EXPERIMENTAL`; long-read/CycloneSEQ evidence stays outside `IDENTIFY` and `DECISION`. CycloneSEQ transfer remains `PENDING_REAL_DATA`; PMAT2 is excluded while Issue #10 is OPEN.
 
-7. **Deterministic reproducibility.** Record fixed seeds, ordering, tool versions, containers, parameters, and checksums. Use attribute-based assertions for non-deterministic assembly outputs; exact output hashes are not scientific contracts unless the tool/runtime is proven deterministic.
+10. **Deterministic reproducibility.** Record fixed seeds, ordering, tool versions, containers, parameters, and checksums. Use attribute-based assertions for non-deterministic assembly outputs; exact output hashes are not scientific contracts unless the tool/runtime is proven deterministic.
 
 ## Risks / Trade-offs
 
