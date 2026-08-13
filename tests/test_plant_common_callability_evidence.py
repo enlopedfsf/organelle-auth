@@ -5,7 +5,13 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHANGE = ROOT / "openspec" / "changes" / "plant-common-callability"
+CHANGE = (
+    ROOT
+    / "openspec"
+    / "changes"
+    / "archive"
+    / "2026-08-14-plant-common-callability"
+)
 RESULTS = CHANGE / "evidence" / "results"
 ARMS = ("B0", "R1", "P0", "C0", "R1P1", "R1C1")
 

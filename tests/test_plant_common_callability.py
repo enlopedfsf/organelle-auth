@@ -24,7 +24,10 @@ write_bed = MODULE.write_bed
 
 def test_preregistered_depth_source_matches_archived_policy():
     preregistration = json.loads(
-        (ROOT / "openspec/changes/plant-common-callability/evidence/preregistration.json").read_text()
+        (
+            ROOT
+            / "openspec/changes/archive/2026-08-14-plant-common-callability/evidence/preregistration.json"
+        ).read_text()
     )
     policy = json.loads(
         (ROOT / "openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json").read_text()

@@ -23,4 +23,5 @@
 - [x] 4.1 Run focused tests and assert each region has identical common callable bases across all six arms.
 - [x] 4.2 Assert the combined denominator is non-empty, rates are arithmetically reproducible, and the summary conclusion follows the pre-registered rule.
 - [x] 4.3 Run `openspec validate --all --strict`, repository lint/test gates in scope, and confirm no archived M4-① file changed.
-- [ ] 4.4 Submit the scoped change through commit, PR, green CI, acceptance, merge, and only then archive it with a separately validated archive PR.
+- [x] 4.4 Submit the scoped implementation through commit, PR #23, green CI, acceptance, and merge into `dev`.
+- [x] 4.5 After implementation merge, archive the change with spec sync and submit the archive as separately validated PR #24; authoritative CI/merge state remains in GitHub.
