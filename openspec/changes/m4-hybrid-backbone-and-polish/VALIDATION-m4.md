@@ -12,7 +12,7 @@ No arm may run until the three freeze artifacts below are present, non-empty, ch
 |---|---|---|
 | Plant/animal B0 and R1 backbone FASTA | absolute path, non-empty check, SHA256, producing command and tool versions | PENDING |
 | Per-taxon train/held-out paired FASTQs | deterministic pair-preserving split, counts, source checksums, output checksums, manifest SHA256 | IN_PROGRESS |
-| Animal core-mask BED | Flye/Raven single-copy collinear intervals intersected with training-read callability; BED SHA256; owner | IN_PROGRESS |
+| Animal core-mask BED | Flye/Raven single-copy collinear intervals intersected with training-read callability; BED SHA256; owner | FROZEN |
 
 ## Registered execution parameters
 
@@ -31,6 +31,7 @@ No arm may run until the three freeze artifacts below are present, non-empty, ch
 - Racon execution preflight: the default 1.5.0 binary terminated with `Illegal instruction` after the first minimap2 mapping on animal B0. A separate flat mamba environment `/home/iris-hp/miniconda3/envs/racon_compat` with Racon `1.4.20` (conda-forge/bioconda, no defaults) passed the same command and produced both two-round R1 candidates; the runtime identity and checksums are recorded in `MANIFEST.sha256`.
 - Held-out mapper registration: the same Flye-bundled minimap2 binary, `-x sr -t 4`, with output PAF/SAM retained; no held-out reads are used before final evaluation.
 - Training callability registration: `/home/iris-hp/miniconda3/envs/bactopia/bin/samtools` 1.22.1; mapped training reads are retained with `minimap2 -ax sr -t 4`, and callable positions are defined before mask freeze as depth `>=1` at mapping quality `>=20` and base quality `>=20`, intersected with the single-copy Flye/Raven collinear BED. Any empty result blocks animal arms.
+- Animal mask freeze result: B0/Flye coordinate frame `contig_1:0-3004` after single-copy Flye/Raven collinearity and full training-read callability intersection; merged BED SHA256 `94948cc7170c9ae51cef59a1b6903df707df67612d8ce960122cb9217a588be8`.
 - bcftools: use `/home/iris-hp/miniconda3/envs/agrvate/bin/bcftools`, version `1.21`; the bactopia copy is unusable because its `libcrypto.so.1.0.0` dependency is missing. The working executable and environment identity must be checksum-recorded before C arms.
 - Polypolish: `/home/iris-hp/miniconda3/envs/polypolish/bin/polypolish`, version `0.7.1`; paired short-read inputs are the frozen 80% training split. The executable/environment identity must be checksum-recorded before P arms.
 - Indel/homopolymer metrics: final candidates will be normalized against the held-out read-backed callset using the pinned bcftools/normalization toolchain; homopolymer discordance is counted only where held-out reads are callable and support the alternate run-length.
