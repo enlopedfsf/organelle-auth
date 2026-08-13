@@ -10,7 +10,8 @@
   "backbones": {
     "plant.B0": {"path": "/home/iris-hp/corydalis_validation/out_lr_reference_first_v4/plant_long_read_evaluation/flye_final/SRR38978847.final.flye.fasta", "sha256": "b8d56a6f4e8d38a08d5668faa36b481eb75e12133a67652d21c6d5871d55cf0b"},
     "animal.B0": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/D/flye-baseline-rep1-2.9.6/assembly.fasta", "sha256": "d8d5f1215a8a688f0001d4fb9177c94d34c558c5f60879d3757ac366ae250e75"},
-    "animal.Raven": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta", "sha256": "7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502"}
+    "animal.Raven": {"path": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/animal-lr-recruitment-diagnostics/E/raven-original/assembly.fasta", "sha256": "7741da5692480fe15cf93f7a1c37488bb99ba16aae816342f49ca67a3cff0502"},
+    "R1": {"status": "BLOCKED_RUNTIME_ILLEGAL_INSTRUCTION", "method": "two fixed Racon rounds", "sha256": null}
   },
   "heldout_split": {"plant": {"manifest": "MANIFEST.sha256", "status": "CHECKSUMMED; pair counts pending seqkit completion"}, "animal": {"status": "NOT_STARTED"}},
   "animal_core_mask": {"bed": "animal-core.mask.bed", "sha256": "3725de073b661c6fb34d787f11029117458a62d8bc22ff150e6522b24101c606", "status": "PROVISIONAL; training-read callability intersection pending", "owner": "validation/evidence owner"},
