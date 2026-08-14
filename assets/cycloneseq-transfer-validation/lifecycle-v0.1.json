@@ -1,0 +1,23 @@
+{
+    "schema_version": "cycloneseq-transfer-lifecycle-v0.1",
+    "pre_entry_state": "PENDING_REAL_DATA",
+    "active_stages": [
+        "ARRIVAL_QUARANTINE",
+        "ARRIVAL_VALIDATED",
+        "PROTOCOL_FROZEN",
+        "BLINDED_RESULTS_FROZEN",
+        "UNBLINDED_EVALUATION",
+        "OWNER_GO_NO_GO_REVIEW"
+    ],
+    "allowed_transitions": {
+        "PENDING_REAL_DATA": ["ARRIVAL_QUARANTINE"],
+        "ARRIVAL_QUARANTINE": ["ARRIVAL_VALIDATED"],
+        "ARRIVAL_VALIDATED": ["PROTOCOL_FROZEN"],
+        "PROTOCOL_FROZEN": ["BLINDED_RESULTS_FROZEN"],
+        "BLINDED_RESULTS_FROZEN": ["UNBLINDED_EVALUATION"],
+        "UNBLINDED_EVALUATION": ["OWNER_GO_NO_GO_REVIEW"],
+        "OWNER_GO_NO_GO_REVIEW": []
+    },
+    "decision": "NOT_APPLICABLE",
+    "automatic_go_prohibited": true
+}

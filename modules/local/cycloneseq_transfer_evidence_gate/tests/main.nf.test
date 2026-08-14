@@ -1,0 +1,100 @@
+nextflow_process {
+
+    name "Test Process CYCLONESEQ_TRANSFER_EVIDENCE_GATE"
+    script "../main.nf"
+    process "CYCLONESEQ_TRANSFER_EVIDENCE_GATE"
+    tag "modules_local"
+    tag "cycloneseq_transfer_evidence_gate"
+
+    test("synthetic pending bundle remains research-only and non-decision") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [id:'BLIND-A'],
+                    [
+                        schema_version:'cycloneseq-transfer-evidence-v0.1',
+                        status:'INCONCLUSIVE',
+                        decision:'NOT_APPLICABLE',
+                        transfer_outcome:'PENDING_REAL_DATA',
+                        reason_codes:['REAL_DATA_NOT_PRESENT'],
+                        cycloneseq:'PENDING_REAL_DATA',
+                        evidence_tier:'ENGINEERING_FIXTURE',
+                        branch_simulation:true,
+                        scientific_conclusion_allowed:false,
+                        route_role:'CYCLONESEQ_ONLY_RESEARCH',
+                        channels:['RESEARCH_EVIDENCE'],
+                        governance:[
+                            pmat2:'GATED_ISSUE_10',
+                            mitovgp:'OUT_OF_SCOPE_UNADMITTED',
+                            cycloneseq_only_terminal_decision:'PROHIBITED'
+                        ],
+                        denominators:[
+                            eligible_samples:0,
+                            attempted_routes:0,
+                            declared_sequence_bases:0,
+                            callable_sequence_bases:0,
+                            declared_junctions:0
+                        ],
+                        evidence:[platform:[:], sequence:[:], structure:[:], blind_decision:[:], operations:[:]]
+                    ]
+                ]
+                """
+            }
+        }
+        then {
+            assert process.success
+            def result = new groovy.json.JsonSlurper().parseText(path(process.out.evidence.get(0).get(1)).text)
+            assert result.status == 'INCONCLUSIVE'
+            assert result.decision == 'NOT_APPLICABLE'
+            assert result.transfer_outcome == 'PENDING_REAL_DATA'
+            assert result.evidence_tier == 'ENGINEERING_FIXTURE'
+            assert result.branch_simulation == true
+            assert result.scientific_conclusion_allowed == false
+            assert result.channels == ['RESEARCH_EVIDENCE']
+            assert !result.channels.contains('IDENTIFY')
+            assert !result.channels.contains('DECISION')
+        }
+    }
+
+    test("authentication decision and IDENTIFY channel fail closed") {
+        when {
+            process {
+                """
+                input[0] = [
+                    [id:'BLIND-LEAK'],
+                    [
+                        schema_version:'cycloneseq-transfer-evidence-v0.1',
+                        status:'PASS',
+                        decision:'AUTHENTIC',
+                        transfer_outcome:'ELIGIBLE_FOR_GO_REVIEW',
+                        reason_codes:[],
+                        cycloneseq:'REAL_DATA_ARRIVAL_VALIDATED',
+                        evidence_tier:'SCIENTIFIC_TRANSFER',
+                        branch_simulation:false,
+                        scientific_conclusion_allowed:false,
+                        route_role:'CYCLONESEQ_ONLY_RESEARCH',
+                        channels:['IDENTIFY'],
+                        governance:[
+                            pmat2:'GATED_ISSUE_10',
+                            mitovgp:'OUT_OF_SCOPE_UNADMITTED',
+                            cycloneseq_only_terminal_decision:'PROHIBITED'
+                        ],
+                        denominators:[
+                            eligible_samples:1,
+                            attempted_routes:1,
+                            declared_sequence_bases:1,
+                            callable_sequence_bases:1,
+                            declared_junctions:0
+                        ],
+                        evidence:[platform:[:], sequence:[:], structure:[:], blind_decision:[:], operations:[:]]
+                    ]
+                ]
+                """
+            }
+        }
+        then {
+            assert !process.success
+        }
+    }
+}

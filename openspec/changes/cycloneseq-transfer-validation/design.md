@@ -19,9 +19,9 @@ The canonical `validation-and-go-no-go` spec already separates engineering and s
 
 ## Decisions
 
-### 1. Use a six-state gated lifecycle
+### 1. Use a pre-entry state followed by a six-stage gated lifecycle
 
-The implementation state machine will be:
+`PENDING_REAL_DATA` is the pre-entry state. Once a signed real-data package exists, the implementation state machine enters the following six active validation stages:
 
 ```text
 PENDING_REAL_DATA
@@ -56,6 +56,13 @@ Unblinding records both truthset and result-manifest hashes. Any truth leak or p
 ### 4. Register scope and thresholds without fabricating numbers
 
 This proposal fixes metric names, evidence semantics, and outcome branches. Numeric pass/harm thresholds, minimum sample/batch scope, acceptable failure/resource bounds, and orthogonal-validation quotas remain explicit nulls until an owner-reviewed protocol revision can justify them before outcome access. Production execution must fail fast on null required gates rather than substitute defaults.
+
+Numeric decision gates have exactly two policy locations:
+
+- `assets/policies/cycloneseq-transfer-validation/engineering-test-v0.1.json` contains conspicuously labelled temporary values used only to exercise synthetic engineering fixtures and every pre-written branch. Its header states that the values are uncalibrated, cannot support scientific conclusions, and cannot become production defaults.
+- `assets/policies/cycloneseq-transfer-validation/production-null-v0.1.json` is the production-scope placeholder. Every numeric threshold is `null`; any attempt to evaluate a production outcome with it must fail closed as `status=INCONCLUSIVE`, `transfer_outcome=INCONCLUSIVE_NOT_EVALUABLE`, and reason code `THRESHOLD_NOT_CONFIGURED`.
+
+No numeric Go/No-Go gate may be hardcoded in workflow, validator, schema, or fixture code. A future data-bearing protocol revision must replace the production nulls with owner-approved, evidence-cited values before outcome access.
 
 The real protocol must declare at least one eligible plant scope and one eligible animal scope, matched or documented-comparable DNBSEQ/CycloneSEQ evidence, batch/individual roles, and any discovery versus independent validation partition. A small feasibility pilot may yield method evidence but cannot claim broad production GO unless it satisfies the pre-frozen scope gate.
 

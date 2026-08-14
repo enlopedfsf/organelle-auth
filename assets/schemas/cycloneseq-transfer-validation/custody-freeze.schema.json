@@ -1,0 +1,88 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://organelle-auth.local/schemas/cycloneseq-transfer/custody-freeze-v0.1.json",
+    "title": "CycloneSEQ blind custody, result freeze, and unblinding records",
+    "oneOf": [{ "$ref": "#/$defs/custody" }, { "$ref": "#/$defs/freeze" }, { "$ref": "#/$defs/unblind" }],
+    "$defs": {
+        "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "custody": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "record_type",
+                "custodian",
+                "truthset_path",
+                "truthset_sha256",
+                "analysis_access",
+                "access_log"
+            ],
+            "properties": {
+                "record_type": { "const": "TRUTH_CUSTODY" },
+                "custodian": { "type": "string", "minLength": 1 },
+                "truthset_path": { "type": "string", "minLength": 1 },
+                "truthset_sha256": { "$ref": "#/$defs/hash" },
+                "analysis_access": { "const": "DENIED_UNTIL_RESULT_FREEZE" },
+                "access_log": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": ["actor", "action", "timestamp"],
+                        "properties": {
+                            "actor": { "type": "string", "minLength": 1 },
+                            "action": { "enum": ["CUSTODY_CREATED", "ACCESS_DENIED", "AUTHORIZED_UNBLIND"] },
+                            "timestamp": { "type": "string", "format": "date-time" }
+                        }
+                    }
+                }
+            }
+        },
+        "freeze": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "record_type",
+                "owner",
+                "frozen_at",
+                "sample_results",
+                "exclusions",
+                "deviations",
+                "commands",
+                "input_manifest_sha256",
+                "result_manifest_sha256"
+            ],
+            "properties": {
+                "record_type": { "const": "RESULT_FREEZE" },
+                "owner": { "type": "string", "minLength": 1 },
+                "frozen_at": { "type": "string", "format": "date-time" },
+                "sample_results": { "type": "array" },
+                "exclusions": { "type": "array" },
+                "deviations": { "type": "array" },
+                "commands": { "type": "array", "minItems": 1 },
+                "input_manifest_sha256": { "$ref": "#/$defs/hash" },
+                "result_manifest_sha256": { "$ref": "#/$defs/hash" }
+            }
+        },
+        "unblind": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "record_type",
+                "authorized_by",
+                "custodian",
+                "unblinded_at",
+                "truthset_sha256",
+                "result_manifest_sha256",
+                "evaluation_command"
+            ],
+            "properties": {
+                "record_type": { "const": "UNBLINDING_EVENT" },
+                "authorized_by": { "type": "string", "minLength": 1 },
+                "custodian": { "type": "string", "minLength": 1 },
+                "unblinded_at": { "type": "string", "format": "date-time" },
+                "truthset_sha256": { "$ref": "#/$defs/hash" },
+                "result_manifest_sha256": { "$ref": "#/$defs/hash" },
+                "evaluation_command": { "type": "string", "minLength": 1 }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "schema_version": "cycloneseq-transfer-outcome-precedence-v0.1",
+    "ordered_outcomes": [
+        "PENDING_REAL_DATA",
+        "ARRIVAL_BLOCKED",
+        "INCONCLUSIVE_NOT_EVALUABLE",
+        "NO_GO_CONTROL_FAILURE",
+        "NO_GO_HARM_OR_FALSE_STRUCTURE",
+        "NO_GO_NO_INDEPENDENT_GAIN",
+        "CONDITIONAL_MIXED_EVIDENCE",
+        "INSUFFICIENT_SCOPE_FOR_GO",
+        "ELIGIBLE_FOR_GO_REVIEW"
+    ],
+    "status_vocabulary": ["PASS", "WARN", "FAIL", "INCONCLUSIVE"],
+    "decision": "NOT_APPLICABLE",
+    "owner_review_required": true,
+    "go_is_not_an_allowed_machine_outcome": true
+}

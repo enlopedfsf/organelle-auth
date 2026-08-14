@@ -1,0 +1,61 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://organelle-auth.local/schemas/cycloneseq-transfer/transfer-protocol-v0.1.json",
+    "title": "CycloneSEQ transfer protocol freeze",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schema_version",
+        "protocol_id",
+        "version",
+        "owner",
+        "status",
+        "execution_scope",
+        "scope",
+        "route_roles",
+        "metrics",
+        "denominators",
+        "threshold_policy",
+        "orthogonal_evidence",
+        "versions",
+        "input_manifest_sha256",
+        "policy_sha256"
+    ],
+    "properties": {
+        "schema_version": { "const": "cycloneseq-transfer-protocol-v0.1" },
+        "protocol_id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["DRAFT", "FROZEN"] },
+        "execution_scope": { "enum": ["ENGINEERING_FIXTURE", "REAL_DATA"] },
+        "scope": {
+            "type": "object",
+            "required": ["taxa", "sample_roles", "batches", "discovery_validation_partition"],
+            "properties": {
+                "taxa": { "type": "array", "contains": { "const": "plant" } },
+                "sample_roles": { "type": "array", "minItems": 1 },
+                "batches": { "type": "array", "minItems": 1 },
+                "discovery_validation_partition": { "type": ["string", "null"] }
+            }
+        },
+        "route_roles": {
+            "type": "array",
+            "const": ["SHORT_READ_BASELINE", "CYCLONESEQ_ONLY_RESEARCH", "HYBRID"]
+        },
+        "metrics": { "type": "array", "minItems": 1, "uniqueItems": true },
+        "denominators": { "type": "object", "minProperties": 1 },
+        "threshold_policy": {
+            "type": "object",
+            "required": ["path", "sha256", "status"],
+            "properties": {
+                "path": { "type": "string", "minLength": 1 },
+                "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                "status": { "enum": ["engineering_test", "production"] }
+            }
+        },
+        "orthogonal_evidence": { "type": "object" },
+        "versions": { "type": "object", "minProperties": 1 },
+        "input_manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "policy_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+    }
+}

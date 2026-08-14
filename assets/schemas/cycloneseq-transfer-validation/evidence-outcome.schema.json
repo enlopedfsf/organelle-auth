@@ -1,0 +1,93 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://organelle-auth.local/schemas/cycloneseq-transfer/evidence-outcome-v0.1.json",
+    "title": "CycloneSEQ transfer evidence and outcome bundle",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schema_version",
+        "status",
+        "decision",
+        "transfer_outcome",
+        "reason_codes",
+        "cycloneseq",
+        "evidence_tier",
+        "branch_simulation",
+        "scientific_conclusion_allowed",
+        "route_role",
+        "channels",
+        "governance",
+        "denominators",
+        "evidence"
+    ],
+    "properties": {
+        "schema_version": { "const": "cycloneseq-transfer-evidence-v0.1" },
+        "status": { "enum": ["PASS", "WARN", "FAIL", "INCONCLUSIVE"] },
+        "decision": { "const": "NOT_APPLICABLE" },
+        "transfer_outcome": {
+            "enum": [
+                "PENDING_REAL_DATA",
+                "ARRIVAL_BLOCKED",
+                "INCONCLUSIVE_NOT_EVALUABLE",
+                "NO_GO_CONTROL_FAILURE",
+                "NO_GO_HARM_OR_FALSE_STRUCTURE",
+                "NO_GO_NO_INDEPENDENT_GAIN",
+                "CONDITIONAL_MIXED_EVIDENCE",
+                "INSUFFICIENT_SCOPE_FOR_GO",
+                "ELIGIBLE_FOR_GO_REVIEW"
+            ]
+        },
+        "reason_codes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "cycloneseq": { "enum": ["PENDING_REAL_DATA", "REAL_DATA_ARRIVAL_VALIDATED"] },
+        "evidence_tier": {
+            "enum": ["ENGINEERING_FIXTURE", "PROTOCOL_ONLY", "SCIENTIFIC_TRANSFER"]
+        },
+        "branch_simulation": { "type": "boolean" },
+        "scientific_conclusion_allowed": { "const": false },
+        "route_role": { "enum": ["SHORT_READ_BASELINE", "CYCLONESEQ_ONLY_RESEARCH", "HYBRID"] },
+        "channels": {
+            "type": "array",
+            "items": { "enum": ["VALIDATE", "RESEARCH_EVIDENCE"] },
+            "uniqueItems": true
+        },
+        "governance": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["pmat2", "mitovgp", "cycloneseq_only_terminal_decision"],
+            "properties": {
+                "pmat2": { "const": "GATED_ISSUE_10" },
+                "mitovgp": { "const": "OUT_OF_SCOPE_UNADMITTED" },
+                "cycloneseq_only_terminal_decision": { "const": "PROHIBITED" }
+            }
+        },
+        "denominators": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "eligible_samples",
+                "attempted_routes",
+                "declared_sequence_bases",
+                "callable_sequence_bases",
+                "declared_junctions"
+            ],
+            "properties": {
+                "eligible_samples": { "type": "integer", "minimum": 0 },
+                "attempted_routes": { "type": "integer", "minimum": 0 },
+                "declared_sequence_bases": { "type": "integer", "minimum": 0 },
+                "callable_sequence_bases": { "type": "integer", "minimum": 0 },
+                "declared_junctions": { "type": "integer", "minimum": 0 }
+            }
+        },
+        "evidence": {
+            "type": "object",
+            "required": ["platform", "sequence", "structure", "blind_decision", "operations"],
+            "properties": {
+                "platform": { "type": "object" },
+                "sequence": { "type": "object" },
+                "structure": { "type": "object" },
+                "blind_decision": { "type": "object" },
+                "operations": { "type": "object" }
+            }
+        }
+    }
+}

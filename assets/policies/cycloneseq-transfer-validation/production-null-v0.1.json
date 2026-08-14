@@ -1,0 +1,38 @@
+{
+    "_comment_1": "PRODUCTION PLACEHOLDER: every scientific Go/No-Go threshold is intentionally null pending owner-approved CycloneSEQ calibration before outcome access.",
+    "_comment_2": "Loading this policy for outcome evaluation MUST fail closed with status=INCONCLUSIVE, transfer_outcome=INCONCLUSIVE_NOT_EVALUABLE, and reason code THRESHOLD_NOT_CONFIGURED. No fallback or engineering-test value may be substituted.",
+    "policy_id": "cycloneseq-transfer-validation-production-null-v0.1",
+    "version": "0.1.0",
+    "status": "production",
+    "scientific_conclusion_allowed": false,
+    "thresholds": {
+        "scope": {
+            "min_eligible_plant_samples": null,
+            "min_eligible_animal_samples": null,
+            "min_independent_batches": null,
+            "min_orthogonal_validation_samples": null
+        },
+        "quality": {
+            "min_callable_fraction": null,
+            "max_route_failure_fraction": null
+        },
+        "controls": {
+            "max_failed_controls": null
+        },
+        "gain": {
+            "min_incremental_resolved_samples": null,
+            "min_incremental_gain_fraction": null
+        },
+        "harm": {
+            "max_unsupported_false_structures": null,
+            "max_residual_error_regression_per_10kb": null
+        },
+        "reproducibility": {
+            "min_replicate_concordance_fraction": null
+        },
+        "operations": {
+            "max_compute_time_multiplier": null,
+            "max_storage_multiplier": null
+        }
+    }
+}

@@ -1,0 +1,105 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://organelle-auth.local/schemas/cycloneseq-transfer/arrival-manifest-v0.1.json",
+    "title": "CycloneSEQ transfer arrival manifest",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "schema_version",
+        "manifest_id",
+        "manifest_version",
+        "signed_by",
+        "signed_at",
+        "signature",
+        "allowlisted_root",
+        "samples"
+    ],
+    "properties": {
+        "schema_version": { "const": "cycloneseq-arrival-manifest-v0.1" },
+        "manifest_id": { "type": "string", "minLength": 1 },
+        "manifest_version": { "type": "integer", "minimum": 1 },
+        "supersedes_manifest_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+        },
+        "signed_by": { "type": "string", "minLength": 1 },
+        "signed_at": { "type": "string", "format": "date-time" },
+        "signature": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["method", "signer", "signed_payload_sha256"],
+            "properties": {
+                "method": { "const": "OWNER_ATTESTATION_SHA256" },
+                "signer": { "type": "string", "minLength": 1 },
+                "signed_payload_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+            }
+        },
+        "allowlisted_root": { "type": "string", "minLength": 1 },
+        "samples": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/sample" }
+        }
+    },
+    "$defs": {
+        "sample": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "sample_code",
+                "taxon_group",
+                "specimen_code",
+                "dna_extract_code",
+                "relationship",
+                "batch_code",
+                "platform",
+                "library_protocol",
+                "sequencing_software",
+                "basecaller",
+                "hmw_qc",
+                "files"
+            ],
+            "properties": {
+                "sample_code": { "type": "string", "pattern": "^BLIND-[A-Z0-9_-]+$" },
+                "taxon_group": { "enum": ["plant", "animal"] },
+                "specimen_code": { "type": "string", "pattern": "^SPEC-[A-Z0-9_-]+$" },
+                "dna_extract_code": { "type": "string", "pattern": "^DNA-[A-Z0-9_-]+$" },
+                "relationship": { "enum": ["MATCHED_DNA", "DOCUMENTED_COMPARABLE"] },
+                "comparability_reason": { "type": ["string", "null"] },
+                "batch_code": { "type": "string", "minLength": 1 },
+                "platform": { "enum": ["CYCLONESEQ", "DNBSEQ"] },
+                "library_protocol": { "type": "string", "minLength": 1 },
+                "sequencing_software": { "type": "string", "minLength": 1 },
+                "basecaller": { "type": "string", "minLength": 1 },
+                "hmw_qc": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["status", "method", "artifact_sha256", "missing_reason"],
+                    "properties": {
+                        "status": { "enum": ["AVAILABLE", "NOT_APPLICABLE", "MISSING"] },
+                        "method": { "type": ["string", "null"] },
+                        "artifact_sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+                        "missing_reason": { "type": ["string", "null"] }
+                    }
+                },
+                "files": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["role", "path", "size_bytes", "sha256", "format", "compression"],
+                        "properties": {
+                            "role": { "enum": ["LONG_READS", "SHORT_READ_R1", "SHORT_READ_R2"] },
+                            "path": { "type": "string", "minLength": 1 },
+                            "size_bytes": { "type": "integer", "minimum": 1 },
+                            "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                            "format": { "const": "FASTQ" },
+                            "compression": { "enum": ["NONE", "GZIP"] }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
