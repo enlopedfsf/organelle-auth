@@ -1,0 +1,2 @@
+role\tpath\tsize_bytes\tsha256\tnon_empty\tintegrity
+plant_recruited_fastq\t/home/iris-hp/Project/organelle-auth-pmat2-fix-or-drop/runs/input/SRR38978847.final-recruited.fastq.gz\t132373641\t93f4fd3bc3969e5d4d3577870b32f4a63d99ddc57a325f84403d7f089531f3c8\ttrue\tsha256_matches_archived_validation_and_local_manifest

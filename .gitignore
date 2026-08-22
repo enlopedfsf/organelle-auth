@@ -4,6 +4,9 @@ data/
 results/
 runs/output/
 runs/work/
+runs/input/**
+!runs/input/README.md
+!runs/input/MANIFEST.sha256
 # Canonical run policy: large interim data stays local; manifests and reports are force-added explicitly.
 !runs/output/animal-lr-recruitment-diagnostics/
 !runs/output/animal-lr-recruitment-diagnostics/MANIFEST.sha256
