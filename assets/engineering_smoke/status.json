@@ -1,0 +1,9 @@
+{
+  "stage": "cycloneseq_engineering_smoke",
+  "status": "INCONCLUSIVE",
+  "assembly_grade": "NOT_APPLICABLE",
+  "decision": "NOT_APPLICABLE",
+  "reason_codes": ["ENGINEERING_FIXTURE_ONLY", "REAL_DATA_PENDING"],
+  "evidence_files": ["assets/engineering_smoke/accession-manifest.json"],
+  "routes": {"IDENTIFY": "BLOCKED", "DECISION": "BLOCKED"}
+}
