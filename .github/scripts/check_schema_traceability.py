@@ -122,7 +122,7 @@ def check_traceability():
 
 EXPECTED_CANDIDATES = {
     "fastp", "nanoplot", "kraken2", "getorganelle", "novoplasty", "mitofinder_mitoz",
-    "flye", "raven", "pmat2", "racon", "bwa_mem", "polypolish", "bcftools_consensus", "nextpolish2", "geseq_plastidhub",
+    "flye", "raven", "racon", "bwa_mem", "polypolish", "bcftools_consensus", "nextpolish2", "geseq_plastidhub",
 }
 EXPECTED_PROHIBITED = {"medaka", "nanopolish", "clair3_ont", "oatk", "tippo", "mitohifi", "hifiasm"}
 
@@ -131,14 +131,15 @@ def check_tools_registry():
     t = load_yaml("registries/tools.yaml")
     cands = t.get("candidates", [])
     proh = t.get("prohibited", [])
-    assert len(cands) == 15, f"expected 15 candidates, got {len(cands)}"
+    assert len(cands) == 14, f"expected 14 candidates, got {len(cands)}"
     cand_ids = {c["tool_id"] for c in cands}
     assert cand_ids == EXPECTED_CANDIDATES, f"candidate mismatch: {cand_ids ^ EXPECTED_CANDIDATES}"
     tier = {c["tool_id"]: c["admission_status"] for c in cands}
     # spot-check the 3 the audit emphasised (no inflation vs §8.3)
     assert tier["getorganelle"] == "CONDITIONAL", "GetOrganelle must be CONDITIONAL"
-    assert tier["pmat2"] == "EXPERIMENTAL", "PMAT2 must be EXPERIMENTAL"
     assert tier["nextpolish2"] == "DEFERRED", "NextPolish2 must be DEFERRED"
+    dropped = {c["tool_id"]: c for c in t.get("retired", [])}
+    assert dropped.get("pmat2", {}).get("disposition") == "DROP", "PMAT2 must be retired as DROP"
     assert len(proh) == 7, f"expected 7 prohibited, got {len(proh)}"
     proh_ids = {p["tool_id"] for p in proh}
     assert proh_ids == EXPECTED_PROHIBITED, f"prohibited mismatch: {proh_ids ^ EXPECTED_PROHIBITED}"
