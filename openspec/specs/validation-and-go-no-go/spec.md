@@ -26,6 +26,8 @@ VALIDATE workflow SHALL 在揭示完整测试结果前把通过标准写入版�
 
 Go/No-Go 评价 SHALL 覆盖正确判定率、假阳性率、假阴性率、`INCONCLUSIVE` 率、诊断位点可重复性、结构假阳性率、跨批次一致性、单样本失败率、计算资源与人工复核负担、以及三代相对纯二代的经验证增益（§15.4）。若 CycloneSEQ 或混合路线未产生预定义的独立增益，长读长分支 SHALL 降为研究层，不进入正式鉴定 SOP。
 
+CycloneSEQ 盲样验证的 truth-custodian 密钥和未揭盲真值表 MUST 保存在仓库外的访问受控位置；公开仓库只能记录编码样本 ID 及其 SHA256 承诺值，禁止提交可用于揭盲的密钥或真值映射。
+
 #### Scenario: 无增益则降级
 
 - **WHEN** a Go/No-Go evaluation finds no predefined independent long-read/hybrid gain
