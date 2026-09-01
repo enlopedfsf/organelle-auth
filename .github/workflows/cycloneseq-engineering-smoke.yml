@@ -1,0 +1,57 @@
+name: CycloneSEQ engineering smoke (non-scientific)
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+jobs:
+  srr31850014-acquisition-and-qc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download paired FASTQ from ENA and verify MD5
+        id: ena
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          mkdir -p runs/input/cycloneseq-engineering-smoke/ena
+          cd runs/input/cycloneseq-engineering-smoke/ena
+          curl --fail --location --retry 3 --retry-all-errors --retry-delay 5 -C - -o SRR31850014_1.fastq.gz \
+            https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR318/014/SRR31850014/SRR31850014_1.fastq.gz
+          curl --fail --location --retry 3 --retry-all-errors --retry-delay 5 -C - -o SRR31850014_2.fastq.gz \
+            https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR318/014/SRR31850014/SRR31850014_2.fastq.gz
+          printf '%s  %s\n' bbbdb3ab15f90bb0b3e597ac581e5e9f SRR31850014_1.fastq.gz | md5sum -c -
+          printf '%s  %s\n' 8e9d8a36413228a54485414421b02d9f SRR31850014_2.fastq.gz | md5sum -c -
+      - name: Fallback to SRA conversion in pinned container
+        if: steps.ena.outcome == 'failure'
+        run: |
+          set -euo pipefail
+          mkdir -p runs/input/cycloneseq-engineering-smoke/sra
+          docker run --rm -v "$PWD/runs/input/cycloneseq-engineering-smoke:/out" ncbi/sra-tools:3.2.1 \
+            prefetch --max-size 3G --output-directory /out/sra SRR31850014
+          docker run --rm -v "$PWD/runs/input/cycloneseq-engineering-smoke:/out" ncbi/sra-tools:3.2.1 \
+            fasterq-dump --threads 4 --split-files --gzip --outdir /out/sra /out/sra/SRR31850014/SRR31850014.sra
+      - name: Run engineering QC only
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq seqkit
+          mkdir -p runs/output/cycloneseq-engineering-smoke
+          if [ -s runs/input/cycloneseq-engineering-smoke/ena/SRR31850014_1.fastq.gz ]; then
+            seqkit stats -T runs/input/cycloneseq-engineering-smoke/ena/SRR31850014_*.fastq.gz \
+              > runs/output/cycloneseq-engineering-smoke/seqkit-stats.tsv
+          else
+            seqkit stats -T runs/input/cycloneseq-engineering-smoke/sra/SRR31850014_*.fastq.gz \
+              > runs/output/cycloneseq-engineering-smoke/seqkit-stats.tsv
+          fi
+          printf 'status\tINCONCLUSIVE\nassembly_grade\tNOT_APPLICABLE\ndecision\tNOT_APPLICABLE\nCycloneSEQ\tPENDING_REAL_DATA\n' \
+            > runs/output/cycloneseq-engineering-smoke/status.tsv
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycloneseq-engineering-smoke-${{ github.sha }}
+          path: runs/output/cycloneseq-engineering-smoke

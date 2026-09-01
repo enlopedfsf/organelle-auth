@@ -1,0 +1,27 @@
+{
+    "schema_version": "cycloneseq-engineering-smoke-0.1",
+    "title": "CycloneSEQ 工程冒烟，非科学结论 / CycloneSEQ engineering smoke, not a scientific conclusion",
+    "purpose": "engineering_fixture_only",
+    "decision": "NOT_APPLICABLE",
+    "cycloneseq_state": "PENDING_REAL_DATA",
+    "inputs": [
+        {
+            "accession": "CNP0006129",
+            "organism_class": "bacterial_public_fixture",
+            "status": "PLANNED",
+            "sha256": null
+        },
+        {
+            "accession": "PRJNA1194773",
+            "run_accession": "SRR31850014",
+            "organism_class": "bacterial_public_fixture",
+            "status": "DOWNLOADED_CONVERSION_BLOCKED",
+            "size_bytes": 1853276640,
+            "sha256": "7a9108b9821decd5fa1e20fe9790b766681b2aedaa438daf3b7ff049a896e085",
+            "download": "prefetch --output-directory --max-size 3G"
+        }
+    ],
+    "rosa": { "status": "QUEUED", "executed": false },
+    "q10_q11": { "expected_band": true, "calibrated": false, "gating": false },
+    "scientific_validation": { "eligible": false, "go_no_go_eligible": false, "identify_or_decision_eligible": false }
+}
