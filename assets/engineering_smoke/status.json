@@ -1,10 +1,18 @@
 {
-  "stage": "cycloneseq_engineering_smoke",
-  "status": "INCONCLUSIVE",
-  "assembly_grade": "NOT_APPLICABLE",
-  "decision": "NOT_APPLICABLE",
-  "reason_codes": ["ENGINEERING_FIXTURE_ONLY", "REAL_DATA_PENDING"],
-  "evidence_files": ["assets/engineering_smoke/accession-manifest.json", "runs/input/cycloneseq-engineering-smoke/ena/ena-filereport.tsv"],
-  "ena": {"run_accession": "SRR31850014", "metadata_status": "RESOLVED", "download_status": "BLOCKED_SLOW_OR_PARTIAL", "fastq_md5": {"R1": "bbbdb3ab15f90bb0b3e597ac581e5e9f", "R2": "8e9d8a36413228a54485414421b02d9f"}},
-  "routes": {"IDENTIFY": "BLOCKED", "DECISION": "BLOCKED"}
+    "stage": "cycloneseq_engineering_smoke",
+    "status": "INCONCLUSIVE",
+    "assembly_grade": "NOT_APPLICABLE",
+    "decision": "NOT_APPLICABLE",
+    "reason_codes": ["ENGINEERING_FIXTURE_ONLY", "REAL_DATA_PENDING"],
+    "evidence_files": [
+        "assets/engineering_smoke/accession-manifest.json",
+        "runs/input/cycloneseq-engineering-smoke/ena/ena-filereport.tsv"
+    ],
+    "ena": {
+        "run_accession": "SRR31850014",
+        "metadata_status": "RESOLVED",
+        "download_status": "BLOCKED_SLOW_OR_PARTIAL",
+        "fastq_md5": { "R1": "bbbdb3ab15f90bb0b3e597ac581e5e9f", "R2": "8e9d8a36413228a54485414421b02d9f" }
+    },
+    "routes": { "IDENTIFY": "BLOCKED", "DECISION": "BLOCKED" }
 }
