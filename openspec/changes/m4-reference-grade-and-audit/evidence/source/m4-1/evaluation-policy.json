@@ -1,0 +1,33 @@
+{
+  "schema_version": "m4-heldout-evaluation-v1",
+  "scope": "public-data experimental route ranking only",
+  "production_thresholds": false,
+  "frozen_before_arm_execution": true,
+  "mapper": {
+    "tool": "flye-minimap2",
+    "version": "2.24-r1155-dirty",
+    "preset": "sr",
+    "threads": 4,
+    "sam_hit_only": true
+  },
+  "alignment_filters": {
+    "exclude_sam_flags": "0x904",
+    "minimum_mapping_quality": 20,
+    "minimum_base_quality": 20,
+    "minimum_callable_depth": 10
+  },
+  "allele_filters": {
+    "ploidy": 1,
+    "minimum_variant_qual": 30,
+    "minimum_alternate_allele_fraction": 0.8
+  },
+  "homopolymer": {
+    "minimum_candidate_run_length": 4,
+    "discordance_definition": "normalized residual indel changes the run length"
+  },
+  "metric_definition": {
+    "residual_unsupported_locus": "normalized haploid ALT call inside the frozen evaluable core passing mapping quality, base quality, depth, variant QUAL, and ALT-fraction filters",
+    "introduced_edits": "normalized candidate-versus-input-backbone differences, reported separately as step-local and cumulative provenance"
+  },
+  "governance": "Values are pre-registered engineering parameters for this experimental comparison, not qualified biological acceptance thresholds and not reusable in IDENTIFY or DECISION."
+}

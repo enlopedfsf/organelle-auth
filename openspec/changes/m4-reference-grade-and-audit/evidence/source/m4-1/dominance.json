@@ -1,0 +1,46 @@
+[
+  {
+    "assembly_grade": "CANDIDATE",
+    "callability_is_not_a_preregistered_ranking_metric": true,
+    "callable_core_bases_by_arm": {
+      "B0": 134324,
+      "C0": 137114,
+      "P0": 107186,
+      "R1": 120796,
+      "R1C1": 120814,
+      "R1P1": 106968
+    },
+    "callable_core_spread_bases": 30146,
+    "cycloneseq": "PENDING_REAL_DATA",
+    "decision": "NOT_APPLICABLE",
+    "interpretation_caveat": "Absolute residual counts must be read together with arm-specific callable bases; no post-hoc callability threshold was introduced.",
+    "preregistered_numeric_winners": [
+      "R1P1"
+    ],
+    "scientific_outcome": "NUMERIC_DOMINANT_UNDER_PREREGISTERED_RULE",
+    "status": "INCONCLUSIVE",
+    "taxon": "plant",
+    "topology_claim": "PROHIBITED"
+  },
+  {
+    "assembly_grade": "CANDIDATE",
+    "callability_is_not_a_preregistered_ranking_metric": true,
+    "callable_core_bases_by_arm": {
+      "B0": 10494,
+      "C0": 10494,
+      "P0": 10494,
+      "R1": 10494,
+      "R1C1": 10494,
+      "R1P1": 10494
+    },
+    "callable_core_spread_bases": 0,
+    "cycloneseq": "PENDING_REAL_DATA",
+    "decision": "NOT_APPLICABLE",
+    "interpretation_caveat": "Absolute residual counts must be read together with arm-specific callable bases; no post-hoc callability threshold was introduced.",
+    "preregistered_numeric_winners": [],
+    "scientific_outcome": "CONDITIONAL",
+    "status": "INCONCLUSIVE",
+    "taxon": "animal",
+    "topology_claim": "PROHIBITED"
+  }
+]
