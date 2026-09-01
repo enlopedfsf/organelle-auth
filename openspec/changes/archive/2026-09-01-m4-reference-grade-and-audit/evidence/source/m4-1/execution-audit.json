@@ -1,0 +1,24 @@
+{
+  "all_tasks_exit_zero": true,
+  "assembly_grade": "CANDIDATE",
+  "cumulative_vs_b0_records": 1950,
+  "decision": "NOT_APPLICABLE",
+  "identify_or_decision_invoked": false,
+  "introduced_edit_records": 978,
+  "metric_records": 12,
+  "nextflow_tasks": 80,
+  "pmat2_invoked": false,
+  "registered_arms": [
+    "B0",
+    "R1",
+    "P0",
+    "C0",
+    "R1P1",
+    "R1C1"
+  ],
+  "schema_version": "m4-execution-audit-v1",
+  "status": "INCONCLUSIVE",
+  "task_status_counts": {
+    "COMPLETED": 80
+  }
+}

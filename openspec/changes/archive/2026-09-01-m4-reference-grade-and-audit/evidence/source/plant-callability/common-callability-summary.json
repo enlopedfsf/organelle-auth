@@ -1,0 +1,79 @@
+{
+  "answer": "RETAINS_SOLE_LEAD",
+  "common_callable_bases": 105154,
+  "common_callable_bases_by_region": {
+    "ir_gap_closure_interval": 562,
+    "unique_or_unresolved_flank": 104592
+  },
+  "cycloneseq": "PENDING_REAL_DATA",
+  "decision": "NOT_APPLICABLE",
+  "execution_status": "PASS",
+  "leaders": [
+    "R1P1"
+  ],
+  "minimum_callable_depth": 10,
+  "minimum_projection_mapq": 60,
+  "parent_m4_result_modified": false,
+  "pmat2_and_mitovgp": "UNCHANGED",
+  "projection_stats": {
+    "B0": {
+      "primary_alignments_used": 2,
+      "unique_b0_bases": 200144,
+      "unique_query_bases": 200144
+    },
+    "C0": {
+      "primary_alignments_used": 2,
+      "unique_b0_bases": 200144,
+      "unique_query_bases": 200144
+    },
+    "P0": {
+      "primary_alignments_used": 2,
+      "unique_b0_bases": 200144,
+      "unique_query_bases": 200144
+    },
+    "R1": {
+      "primary_alignments_used": 2,
+      "unique_b0_bases": 199956,
+      "unique_query_bases": 199956
+    },
+    "R1C1": {
+      "primary_alignments_used": 2,
+      "unique_b0_bases": 199989,
+      "unique_query_bases": 199989
+    },
+    "R1P1": {
+      "primary_alignments_used": 2,
+      "unique_b0_bases": 200004,
+      "unique_query_bases": 200004
+    }
+  },
+  "question": "Does R1P1 retain its residual lead on the six-arm common-callable denominator?",
+  "residual_exclusions": {
+    "B0": {
+      "OUTSIDE_COMMON_CALLABLE": 43
+    },
+    "C0": {
+      "OUTSIDE_COMMON_CALLABLE": 8
+    },
+    "P0": {},
+    "R1": {
+      "OUTSIDE_COMMON_CALLABLE": 4,
+      "SOURCE_NOT_EVALUABLE": 4
+    },
+    "R1C1": {
+      "SOURCE_NOT_EVALUABLE": 1
+    },
+    "R1P1": {}
+  },
+  "residual_loci_all_regions": {
+    "B0": 188,
+    "C0": 3,
+    "P0": 2,
+    "R1": 99,
+    "R1C1": 3,
+    "R1P1": 1
+  },
+  "schema_version": "plant-common-callability-summary-v1",
+  "scientific_scope": "fair-denominator residual comparison only",
+  "topology_claim": "NOT_EVALUATED"
+}
