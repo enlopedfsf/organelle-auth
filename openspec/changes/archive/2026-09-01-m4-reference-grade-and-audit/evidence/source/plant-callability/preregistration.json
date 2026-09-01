@@ -1,0 +1,79 @@
+{
+  "schema_version": "plant-common-callability-preregistration-v1",
+  "state": "PREREGISTERED_BEFORE_EXECUTION",
+  "parent_change": "2026-08-13-m4-hybrid-backbone-and-polish",
+  "parent_dev_commit": "d527060019fca8236a78cc857cb3a77ecab3a043",
+  "taxon": "plant",
+  "coordinate_frame": "M4 plant B0",
+  "projection": {
+    "alignment_class": "tp:A:P",
+    "minimum_mapq": 60,
+    "accepted_cigar_ops": ["M", "=", "X"],
+    "candidate_only_ops": ["I"],
+    "b0_only_ops": ["D", "N"],
+    "uniqueness": "exactly one candidate base and exactly one B0 base in the retained primary projections"
+  },
+  "callability": {
+    "minimum_depth_source": "evaluation_policy.alignment_filters.minimum_callable_depth",
+    "set_rule": "exact intersection of uniquely projected callable B0 bases across B0,R1,P0,C0,R1P1,R1C1"
+  },
+  "residual_rule": "count unique EVALUABLE residual ledger anchors that project exactly once into the common-callable B0 set; never shift an unprojectable anchor",
+  "comparison_row": "all_regions",
+  "conclusion_rule": {
+    "RETAINS_SOLE_LEAD": "R1P1 residual_loci is strictly lower than every other arm on the shared all_regions denominator",
+    "TIED_LOWEST": "R1P1 equals the minimum residual_loci with at least one other arm",
+    "DOES_NOT_LEAD": "R1P1 residual_loci is greater than the minimum"
+  },
+  "required_columns": [
+    "projected_bases",
+    "callable_bases",
+    "callable_fraction",
+    "residual_loci",
+    "residual_rate_per_10kb"
+  ],
+  "inputs": {
+    "evaluation_policy": "/home/iris-hp/Project/organelle-auth-plant-callability/openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/evaluation-policy.json",
+    "regions_bed": "/home/iris-hp/Project/organelle-auth-plant-callability/openspec/changes/archive/2026-08-13-m4-hybrid-backbone-and-polish/evidence/plant-regions.bed",
+    "arms": {
+      "B0": {
+        "projection_paf": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_candidate_to_b0/plant.B0.candidate-to-b0.paf",
+        "heldout_depth": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_sr_align_heldout/plant.B0.heldout.depth.tsv",
+        "residual_ledger": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_heldout_evaluate/plant.B0.heldout-edit-ledger.tsv"
+      },
+      "R1": {
+        "projection_paf": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_candidate_to_b0/plant.R1.candidate-to-b0.paf",
+        "heldout_depth": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_sr_align_heldout/plant.R1.heldout.depth.tsv",
+        "residual_ledger": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_heldout_evaluate/plant.R1.heldout-edit-ledger.tsv"
+      },
+      "P0": {
+        "projection_paf": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_candidate_to_b0/plant.P0.candidate-to-b0.paf",
+        "heldout_depth": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_sr_align_heldout/plant.P0.heldout.depth.tsv",
+        "residual_ledger": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_heldout_evaluate/plant.P0.heldout-edit-ledger.tsv"
+      },
+      "C0": {
+        "projection_paf": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_candidate_to_b0/plant.C0.candidate-to-b0.paf",
+        "heldout_depth": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_sr_align_heldout/plant.C0.heldout.depth.tsv",
+        "residual_ledger": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_heldout_evaluate/plant.C0.heldout-edit-ledger.tsv"
+      },
+      "R1P1": {
+        "projection_paf": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_candidate_to_b0/plant.R1P1.candidate-to-b0.paf",
+        "heldout_depth": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_sr_align_heldout/plant.R1P1.heldout.depth.tsv",
+        "residual_ledger": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_heldout_evaluate/plant.R1P1.heldout-edit-ledger.tsv"
+      },
+      "R1C1": {
+        "projection_paf": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_candidate_to_b0/plant.R1C1.candidate-to-b0.paf",
+        "heldout_depth": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_sr_align_heldout/plant.R1C1.heldout.depth.tsv",
+        "residual_ledger": "/home/iris-hp/Project/organelle-auth-ci-fix/runs/output/m4-hybrid-backbone-and-polish/matrix-v1/m4_hybrid_evaluation/m4_heldout_evaluate/plant.R1C1.heldout-edit-ledger.tsv"
+      }
+    }
+  },
+  "red_lines": {
+    "modify_parent_archive": false,
+    "rerun_polishing_or_mapping": false,
+    "animal_analysis": false,
+    "topology_claim": false,
+    "authentication_decision": false,
+    "cycloneseq_status": "PENDING_REAL_DATA",
+    "pmat2_and_mitovgp": "UNCHANGED"
+  }
+}
