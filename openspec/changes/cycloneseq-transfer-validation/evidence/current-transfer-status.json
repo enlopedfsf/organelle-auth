@@ -1,0 +1,36 @@
+{
+  "branch_simulation": false,
+  "channels": [
+    "RESEARCH_EVIDENCE"
+  ],
+  "cycloneseq": "PENDING_REAL_DATA",
+  "decision": "NOT_APPLICABLE",
+  "denominators": {
+    "attempted_routes": 0,
+    "callable_sequence_bases": 0,
+    "declared_junctions": 0,
+    "declared_sequence_bases": 0,
+    "eligible_samples": 0
+  },
+  "evidence": {
+    "blind_decision": {},
+    "operations": {},
+    "platform": {},
+    "sequence": {},
+    "structure": {}
+  },
+  "evidence_tier": "PROTOCOL_ONLY",
+  "governance": {
+    "cycloneseq_only_terminal_decision": "PROHIBITED",
+    "mitovgp": "OUT_OF_SCOPE_UNADMITTED",
+    "pmat2": "GATED_ISSUE_10"
+  },
+  "reason_codes": [
+    "REAL_DATA_NOT_PRESENT"
+  ],
+  "route_role": "CYCLONESEQ_ONLY_RESEARCH",
+  "schema_version": "cycloneseq-transfer-evidence-v0.1",
+  "scientific_conclusion_allowed": false,
+  "status": "INCONCLUSIVE",
+  "transfer_outcome": "PENDING_REAL_DATA"
+}

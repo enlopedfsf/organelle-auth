@@ -1,0 +1,38 @@
+{
+    "_comment_1": "ENGINEERING-TEST ONLY: 临时阈值未经标定，仅用于验证流程逻辑，不得用于科学结论、CycloneSEQ 转移结论、Go/No-Go 或生产默认值。 Temporary thresholds are uncalibrated and exist solely to test workflow logic; they MUST NOT support scientific conclusions, transfer claims, Go/No-Go, or production defaults.",
+    "_comment_2": "All values below are synthetic branch-exercising fixtures. They are not estimated from ONT, CycloneSEQ, public biological data, or the future blinded validation set.",
+    "policy_id": "cycloneseq-transfer-validation-engineering-test-v0.1",
+    "version": "0.1.0",
+    "status": "engineering_test",
+    "scientific_conclusion_allowed": false,
+    "thresholds": {
+        "scope": {
+            "min_eligible_plant_samples": 1,
+            "min_eligible_animal_samples": 1,
+            "min_independent_batches": 1,
+            "min_orthogonal_validation_samples": 1
+        },
+        "quality": {
+            "min_callable_fraction": 0.5,
+            "max_route_failure_fraction": 0.5
+        },
+        "controls": {
+            "max_failed_controls": 0
+        },
+        "gain": {
+            "min_incremental_resolved_samples": 1,
+            "min_incremental_gain_fraction": 0.1
+        },
+        "harm": {
+            "max_unsupported_false_structures": 0,
+            "max_residual_error_regression_per_10kb": 1.0
+        },
+        "reproducibility": {
+            "min_replicate_concordance_fraction": 0.9
+        },
+        "operations": {
+            "max_compute_time_multiplier": 10.0,
+            "max_storage_multiplier": 10.0
+        }
+    }
+}

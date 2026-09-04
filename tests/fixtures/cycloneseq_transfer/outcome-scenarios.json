@@ -1,0 +1,72 @@
+{
+    "schema_version": "cycloneseq-transfer-engineering-scenarios-v0.1",
+    "notice": "Synthetic engineering fixtures only; not CycloneSEQ observations and not scientific validation.",
+    "base_metrics": {
+        "real_data_present": true,
+        "arrival_valid": true,
+        "blinding_valid": true,
+        "qc_evaluable": true,
+        "callable_fraction": 0.8,
+        "route_failure_fraction": 0.0,
+        "failed_controls": 0,
+        "unsupported_false_structures": 0,
+        "residual_error_regression_per_10kb": 0.0,
+        "incremental_resolved_samples": 2,
+        "incremental_gain_fraction": 0.2,
+        "mixed_evidence": false,
+        "eligible_plant_samples": 1,
+        "eligible_animal_samples": 1,
+        "independent_batches": 1,
+        "orthogonal_validation_samples": 1,
+        "replicate_concordance_fraction": 1.0,
+        "compute_time_multiplier": 1.0,
+        "storage_multiplier": 1.0
+    },
+    "scenarios": [
+        {
+            "id": "no-real-data",
+            "override": { "real_data_present": false },
+            "expected": "PENDING_REAL_DATA"
+        },
+        {
+            "id": "arrival-failure",
+            "override": { "arrival_valid": false },
+            "expected": "ARRIVAL_BLOCKED"
+        },
+        {
+            "id": "not-evaluable",
+            "override": { "qc_evaluable": false },
+            "expected": "INCONCLUSIVE_NOT_EVALUABLE"
+        },
+        {
+            "id": "control-failure",
+            "override": { "failed_controls": 1 },
+            "expected": "NO_GO_CONTROL_FAILURE"
+        },
+        {
+            "id": "harm",
+            "override": { "unsupported_false_structures": 1 },
+            "expected": "NO_GO_HARM_OR_FALSE_STRUCTURE"
+        },
+        {
+            "id": "no-gain",
+            "override": { "incremental_resolved_samples": 0 },
+            "expected": "NO_GO_NO_INDEPENDENT_GAIN"
+        },
+        {
+            "id": "mixed",
+            "override": { "mixed_evidence": true },
+            "expected": "CONDITIONAL_MIXED_EVIDENCE"
+        },
+        {
+            "id": "scope-incomplete",
+            "override": { "eligible_animal_samples": 0 },
+            "expected": "INSUFFICIENT_SCOPE_FOR_GO"
+        },
+        {
+            "id": "eligible-for-owner-review",
+            "override": {},
+            "expected": "ELIGIBLE_FOR_GO_REVIEW"
+        }
+    ]
+}

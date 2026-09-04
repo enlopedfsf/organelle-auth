@@ -1,0 +1,18 @@
+{
+  "schema_version": "cycloneseq-transfer-metrics-v0.1",
+  "fixture_scope": "CURRENT_STATE_ONLY",
+  "real_data_present": false,
+  "arrival_valid": false,
+  "blinding_valid": false,
+  "qc_evaluable": false,
+  "eligible_samples": 0,
+  "attempted_routes": 0,
+  "declared_sequence_bases": 0,
+  "callable_sequence_bases": 0,
+  "declared_junctions": 0,
+  "platform": {},
+  "sequence": {},
+  "structure": {},
+  "blind_decision": {},
+  "operations": {}
+}

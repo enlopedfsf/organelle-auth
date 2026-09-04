@@ -45,3 +45,6 @@ jobs:
             tests/test_m4_freeze_contract.py \
             tests/test_m4_build_animal_core_mask.py \
             tests/test_m4_execution_contract.py
+
+      - name: CycloneSEQ transfer engineering contracts
+        run: python3 -m pytest -q tests/test_cycloneseq_transfer_guard.py

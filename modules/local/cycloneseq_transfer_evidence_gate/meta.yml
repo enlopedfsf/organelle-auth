@@ -1,0 +1,12 @@
+name: cycloneseq_transfer_evidence_gate
+description: Enforce CycloneSEQ transfer evidence isolation and fixed non-decision vocabularies.
+keywords: [cycloneseq, validation, blinding, evidence, governance]
+tools: []
+input:
+  - - meta: { type: map }
+    - bundle: { type: map }
+output:
+  evidence:
+    - meta: { type: map }
+    - "*.cycloneseq-transfer.json": { type: file }
+authors: ["enlopedfsf"]
